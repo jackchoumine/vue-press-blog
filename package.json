@@ -1,0 +1,14 @@
+{
+  "name": "vue-press-blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vuepress dev docs --open",
+    "build": "vuepress build docs",
+    "d": "bash deploy.sh"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
