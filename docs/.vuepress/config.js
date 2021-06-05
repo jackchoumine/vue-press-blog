@@ -50,7 +50,7 @@ module.exports = {
       indexName: '<INDEX_NAME>',
     },
   },
-  base: '/blog/',
+  // base: '/blog/',
   // 构建输出目录
   dest: './dist', // 默认 .vuepress/dist
   // 开发运行的端口

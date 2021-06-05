@@ -1,7 +1,7 @@
 ---
 home: true
 lang: zh-CN
-heroImage: https://jackchoumine.github.io/images/portrait.png
+heroImage: https://tva1.sinaimg.cn/large/008i3skNgy1gr80pnhlmcj3050050mxi.jpg
 heroText: JackChouMine
 tagline: Jack 个人博客
 actionText: 开始阅读 →
