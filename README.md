@@ -33,3 +33,7 @@ yarn add -D @mr-hope/vuepress-plugin-copy-code
 ```js
 plugins: [['@mr-hope/copy-code', {}]],
 ```
+
+3. 图片放大
+
+使用 `@vuepress/plugin-medium-zoom` 插件 没有生效，有空再看看其他方案。

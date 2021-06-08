@@ -205,6 +205,13 @@
   optionalDependencies:
     prettier "^1.18.2"
 
+"@vuepress/plugin-medium-zoom@^1.8.2":
+  version "1.8.2"
+  resolved "https://registry.nlark.com/@vuepress/plugin-medium-zoom/download/@vuepress/plugin-medium-zoom-1.8.2.tgz#0243dd27edf0c710f9a41a234d253d76ab51e625"
+  integrity sha1-AkPdJ+3wxxD5pBojTSU9dqtR5iU=
+  dependencies:
+    medium-zoom "^1.0.4"
+
 ansi-styles@^3.2.1:
   version "3.2.1"
   resolved "https://registry.nlark.com/ansi-styles/download/ansi-styles-3.2.1.tgz?cache=0&sync_timestamp=1618995625950&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fansi-styles%2Fdownload%2Fansi-styles-3.2.1.tgz#41fbb20243e50b12be0f04b8dedbf07520ce841d"
@@ -398,6 +405,11 @@ markdown-it-anchor@*:
   resolved "https://registry.npm.taobao.org/markdown-it-anchor/download/markdown-it-anchor-7.1.0.tgz#30fb21497bf59e83ff4d1ddc052d821962e2489e"
   integrity sha1-MPshSXv1noP/TR3cBS2CGWLiSJ4=
 
+medium-zoom@^1.0.4:
+  version "1.0.6"
+  resolved "https://registry.npm.taobao.org/medium-zoom/download/medium-zoom-1.0.6.tgz#9247f21ca9313d8bbe9420aca153a410df08d027"
+  integrity sha1-kkfyHKkxPYu+lCCsoVOkEN8I0Cc=
+
 merge-source-map@^1.1.0:
   version "1.1.0"
   resolved "https://registry.npm.taobao.org/merge-source-map/download/merge-source-map-1.1.0.tgz#2fdde7e6020939f70906a68f2d7ae685e4c8c646"
@@ -534,11 +546,6 @@ vue@^2.6.12:
   version "2.6.14"
   resolved "https://registry.nlark.com/vue/download/vue-2.6.14.tgz#e51aa5250250d569a3fbad3a8a5a687d6036e235"
   integrity sha1-5RqlJQJQ1Wmj+606ilpofWA24jU=
-
-vuepress-plugin-code-copy@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.nlark.com/vuepress-plugin-code-copy/download/vuepress-plugin-code-copy-1.0.6.tgz#6431dab764b48b5b203e4936d98b1943651ce4ad"
-  integrity sha1-ZDHat2S0i1sgPkk22YsZQ2Uc5K0=
 
 webpack-chain@^6.5.1:
   version "6.5.1"

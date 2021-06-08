@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {},
   "devDependencies": {
-    "@mr-hope/vuepress-plugin-copy-code": "^1.18.1"
+    "@mr-hope/vuepress-plugin-copy-code": "^1.18.1",
+    "@vuepress/plugin-medium-zoom": "^1.8.2"
   }
 }
