@@ -5,7 +5,7 @@ heroImage: https://tva1.sinaimg.cn/large/008i3skNgy1gr80pnhlmcj3050050mxi.jpg
 heroText: JackChouMine
 tagline: Jack 个人博客
 actionText: 开始阅读 →
-actionLink: /node/
+actionLink: /vue2/
 features:
   - title: Wiki - 求索
     details: 基于书签对知识点进行 整理，吸收，吐纳，归档。吾将上下而求索...
