@@ -1,3 +1,5 @@
+[[toc]]
+
 # render 函数
 
 在 vue 的项目入口文件中，下面的代码新建一个 vue 的根组件，并默认命名为 `Root`，并将其挂载在 HTML 模板 `#app` div 上，它的模板在哪？
@@ -10,8 +12,8 @@ new Vue({
 
 > 这是一个没有模板的组件。
 
-> $mount('#app')，选择器对应 dom 会被渲染结果替换，但是会智能地把 dom 上地属性添加到根据组件的根元素上。
-手动通过`$mount(elector)`挂载元素，替换 selector 后，dom 的属性丢失。 两者表现不同，有点奇怪，但是不需要太关注这个区别。
+> \$mount('#app')，选择器对应 dom 会被渲染结果替换，但是会智能地把 dom 上地属性添加到根据组件的根元素上。
+> 手动通过`$mount(elector)`挂载元素，替换 selector 后，dom 的属性丢失。 两者表现不同，有点奇怪，但是不需要太关注这个区别。
 
 今天再来复习 render 函数，重点关注这些容易踩坑的地方：
 
@@ -29,7 +31,7 @@ new Vue({
 
 render 函数签名：
 
-```bash
+```js
 render(createElement: CreateElement, hack: RenderContext<Props>): VNode;
 ```
 
@@ -99,9 +101,11 @@ render:function(){ // 显示传递 h:  function(h) 才行
 
 ## createElement
 
-1. 返回值：VNode
+### 返回值：VNode
 
-2. 参数
+VNode 是一个描述组件的普通 js 对象。
+
+### 参数
 
 ```js
 createElement(
@@ -125,7 +129,7 @@ createElement(
 
 > 重点关注第二个参数
 
-1. 处理样式和类
+#### 处理样式和类
 
 ```js
 {
@@ -142,7 +146,7 @@ createElement(
 }
 ```
 
-2. 组件 props
+#### 组件 props
 
 ```js
 {
@@ -152,7 +156,7 @@ createElement(
 }
 ```
 
-3. HTML 特性和 DOM 属性
+#### HTML 特性和 DOM 属性
 
 ```js
 {
@@ -180,7 +184,7 @@ createElement(
 ②. 注意区分 HTML 特性和 DOM 属性的区别。
 :::
 
-3. 处理事件
+#### 处理事件
 
 ```js
 {
@@ -203,7 +207,7 @@ createElement(
 `nativeOn` 只能用于自定义组件。
 :::
 
-5. 插槽
+#### 插槽
 
 ```js
 {
@@ -425,7 +429,7 @@ export default {
 ④. 注意检查是否存在插槽，以启用后备内容。
 :::
 
-6. 指令
+#### 指令
 
 ```js
 {
@@ -509,7 +513,7 @@ export default {
 
 :::
 
-7. v-model 指令
+#### v-model 指令
 
 使用 render 定义组件，如何提供 `v-model`？
 
@@ -568,7 +572,7 @@ prop:--value + `使用 on` 监听组件的事件，在处理函数中触发 `inp
 
 jsx+ `vModel` 属性，简洁，常用。
 
-8. 其他属性
+#### 其他属性
 
 ```js
 {

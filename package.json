@@ -10,5 +10,9 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@mr-hope/vuepress-plugin-copy-code": "^1.18.1"
+  }
 }

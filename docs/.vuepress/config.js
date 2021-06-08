@@ -2,7 +2,7 @@
  * @Description: vue-press 配置
  * @Date: 2021-06-04 15:36:47 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-04 16:11:49 +0800
+ * @LastEditTime: 2021-06-09 07:00:39 +0800
  * @LastEditors: JackChou
  */
 module.exports = {
@@ -11,6 +11,9 @@ module.exports = {
   head: [['link', { rel: 'icon', href: '/logo.gif' }]],
   markdown: {
     lineNumbers: true, // 代码块显示行号
+    toc: {
+      includeLevel: [1, 2, 3, 4], //生成目录的 markdown 标题 默认 2 3
+    },
   },
   themeConfig: {
     sidebar: 'auto', // 所有页面开启自动根据 markdown 的标题生成侧边栏
@@ -50,6 +53,7 @@ module.exports = {
       indexName: '<INDEX_NAME>',
     },
   },
+  plugins: [['@mr-hope/copy-code']],
   // base: '/blog/',
   // 构建输出目录
   dest: './dist', // 默认 .vuepress/dist
