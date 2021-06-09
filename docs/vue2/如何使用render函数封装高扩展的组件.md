@@ -386,6 +386,10 @@ export default {
 
 > 在 Container 内部调用 titleList 传入的函数。
 
+[安装 npm 体验](https://www.npmjs.com/package/j-form-table)
+
+> 打包后有 2.8M，很大啊，估计没有用，就不优化了。
+
 ## 总结
 
 1. 封装组件时优先考虑数据驱动
