@@ -388,7 +388,7 @@ export default {
 
 [安装 npm 体验](https://www.npmjs.com/package/j-form-table)
 
-> 打包后有 2.8M，很大啊，估计没有用，就不优化了。
+> 打包后有 2.8M，很大啊，估计没有人用，就不优化了。
 
 ## 总结
 
