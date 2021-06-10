@@ -3,6 +3,7 @@
     "Hyperscript",
     "Renderless",
     "flelds",
+    "unshift",
     "vuepress"
   ]
 }
