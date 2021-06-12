@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vuepress dev docs --open",
     "build": "vuepress build docs",
-    "d": "bash deploy.sh"
+    "d": "bash deploy.sh",
+    "scm":"scheme < ./docs/scheme/src/hello.scm"
   },
   "keywords": [],
   "author": "",
