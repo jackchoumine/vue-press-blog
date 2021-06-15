@@ -4,6 +4,7 @@
     "Renderless",
     "chezscheme",
     "flelds",
+    "instanceof",
     "unshift",
     "vuepress"
   ]
