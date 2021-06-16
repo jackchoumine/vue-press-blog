@@ -1,5 +1,21 @@
 {
+  // 这些文件将不会显示在工作空间中
+  "files.exclude": {
+    "**/node_modules": false
+  },
+  "search.exclude": {
+    "**/node_modules": false,
+    "**/bower_components": true,
+    "**/target": true,
+    "**/logs": true,
+    "**/dist": true,
+  },
   "cSpell.words": [
+    "Cascader",
+    "builtins",
+    "mixins",
+    "prettierconfig",
+    "prettierignore",
     "Hyperscript",
     "Renderless",
     "chezscheme",
@@ -7,5 +23,10 @@
     "instanceof",
     "unshift",
     "vuepress"
-  ]
+  ],
+  "files.associations": {
+    "*.vue": "vue",
+    "*.html": "html",
+    "ostream": "cpp"
+  }
 }
