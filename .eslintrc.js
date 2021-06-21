@@ -12,7 +12,7 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'comma-dangle': [2, 'always-multiline'],
-    'space-before-function-paren': [2, 'never'],
+    'space-before-function-paren': 0, //[0, 'never'],
     quotes: [2, 'single', { allowTemplateLiterals: true }],
     'no-void': 0,
     semi: [2, 'never'],

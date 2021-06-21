@@ -2,7 +2,7 @@
  * @Description vue 项目配置
  * @Date: 2021-06-01 11:30:40 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-04 23:01:20 +0800
+ * @LastEditTime: 2021-06-20 10:11:23 +0800
  * @LastEditors: JackChou
  */
 /**
@@ -20,6 +20,7 @@ module.exports = {
       .set('@ex', resolve('src/examples'))
       .set('@ds', resolve('src/data-structure'))
       .set('@qs', resolve('src/data-structure/questions'))
+      .set('@lc', resolve('src/leetcode'))
     config.resolve.extensions.add('.js').add('.jsx').add('.vue').add('.json')
   },
 }
