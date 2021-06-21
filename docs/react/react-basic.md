@@ -219,8 +219,7 @@ class BookComponent extends Component {
         <button
           onClick={() => {
             this.vote()
-          }}
-        >
+          }}>
           喜欢
         </button>
         &nbsp;&nbsp;
@@ -229,8 +228,7 @@ class BookComponent extends Component {
         <button
           onClick={() => {
             this.hate()
-          }}
-        >
+          }}>
           不喜欢
         </button>
         &nbsp;&nbsp;
@@ -303,8 +301,7 @@ function BookFun(props) {
         onClick={event => {
           console.log(event) //使用箭头函数绑定事件处理器
           props.onDislike(bookId)
-        }}
-      >
+        }}>
         不喜欢
       </button>
       &nbsp;&nbsp;
@@ -426,7 +423,7 @@ export default Books
 
 函数组件没有生命周期方法，没有状态，没有 this，而这些类组件具有，所以不用生命周期和状态从父组件传入时才适合使用函数组件。
 
-<!-- todo -->
+<!--  TODO -->
 
 比较 react 自定义事件和 vue 自定义事件的区别：
 
@@ -441,7 +438,7 @@ propTypes 的 key 是 props 的属性，值从 PropTypes 中获取。
 
 ```js
 // props 类型约束
-// todo 如何自定义检查函数
+// TODO 如何自定义检查函数
 BookFun.propTypes = {
   book: PropTypes.shape({
     title: PropTypes.string,
@@ -454,7 +451,7 @@ BookFun.propTypes = {
   onLike: PropTypes.func.isRequired,
   onDislike: PropTypes.func.isRequired,
 }
-// todo 如何该props的内层属性设置默认值 属性默认值
+// TODO 如何对props的内层属性设置默认值 属性默认值
 // BookFun.defaultProps = { book.price: 39 }
 ```
 
@@ -480,7 +477,7 @@ BookFun.propTypes = {
    react 元素是一个描述 react 组件的 JS 对象，react 组件时一个 class 或者函数。
 
 8. 组件生命周期
-   组件从被创建到被销毁的过程称为组件的生命周期。React 为组件 在不同的生命周期阶段提供不同的生命周期方法，让开发者可以在组件 的生命周期过程中更好地控制组件的行为。通常，组件的生命周期可以 被分为三个阶段:**挂载阶段**、**更新阶段**、**卸载阶段**。_只有类组件有生命周期方法，函数组件没有。_
+   组件从被创建到被销毁的过程称为组件的生命周期。React 为组件在不同的生命周期阶段提供不同的生命周期方法，让开发者可以在组件的生命周期过程中更好地控制组件的行为。通常，组件的生命周期可以 被分为三个阶段:**挂载阶段**、**更新阶段**、**卸载阶段**。_只有类组件有生命周期方法，函数组件没有。_
 
 Ⅰ . 挂载阶段
 
@@ -498,29 +495,102 @@ BookFun.propTypes = {
 
 组件被挂载到 DOM 后，组件的 props 或 state 可以引起组件更新。props 引起组件更新，是因为父组件调用了 render。依次调用的方法：
 
-① componentWillReceiveProps -- 接受父组件传递的 props 作为参数。 父组件 render 方法的调用 并不能保证传递给子组件的 props 发生变化，也就是说 nextProps 的值可 能和子组件当前 props 的值相等，因此往往需要比较 nextProps 和 this.props 来决定是否执行 props 发生变化后的逻辑，比如根据新的 props 调用 this.setState 触发组件的重新渲染。
+① componentWillReceiveProps -- 接受父组件传递的 props 作为参数。 父组件 render 方法的调用并不能保证传递给子组件的 props 发生变化，也就是说，子组件的 nextProps 的值可能和当前 props 相等，因此往往需要比较 nextProps 和 this.props 来决定是否执行 props 发生变化后的逻辑，比如根据新的 props 调用 this.setState 触发组件的重新渲染。
 
-② shouldComponentUpdate -- 决定组件是否更新。返回 false，组件不会更新，后面的方法不调用。通过比较 nextProps、 nextState 和组件当前的 props、state 决定这个方法的返回结果。这个方法 可以用来减少组件不必要的渲染，从而优化组件的性能。
+② shouldComponentUpdate -- 决定组件是否更新。返回 false，组件不会更新，后面的方法不调用。通过比较 nextProps、 nextState 和组件当前的 props、state 决定这个方法的返回结果。这个方法可以用来减少组件不必要的渲染，从而优化组件的性能。
 
-③ componentWillUpdate -- render 调用前执行，可以作为组件更新发生前执行 某些工作的地方，一般也很少用到。
+③ componentWillUpdate -- render 调用前执行，可以作为组件更新发生前执行某些工作的地方，一般也很少用到。
 
 ④ render -- 返回 react 元素。shouldComponentUpdate、componentWillUpdate(nextProps, nextState)，不能调用 setState，否则组件死循环，永远无法渲染。
 
 ⑤ componentDidUpdate -- 组件更新后调用，可操作 DOM。componentDidUpdate(prevProps, prevState)。
 
+> 哪些行为会触发更新？
+
+①. new props ②. setState ③. forceUpdate
+
 Ⅲ . 卸载阶段
 
-componentWillUnmount，执行一些清楚工作，比如清楚定时器，清除手动创建的 DOM。
+componentWillUnmount，执行一些收尾工作，比如清除定时器，清除手动创建的 DOM。
 
-9. 事件处理
-   react 中的是事件是合成事件，采用 on+事件名命名，不是原生 DOM 事件。行为和原生事件有点区别，阻止事件的默认行为需要显示调用 preventDefault。如果在某些场 景下必须使用 DOM 提供的原生事件，可以通过 React 事件对象的 nativeEvent 属性获取。
-   事件处理器最容易出错的是 this 而绑定，因为 ES6 class 不会自动绑定 this 到当前对象。
-   三种事件处理器的绑定方式：
-   1. 箭头函数，在 render 方法中为元素事件定义事件处理函数，最大的问题 是，每次 render 调用时，都会重新创建一个新的事件处理函数，带来额 外的性能开销，组件所处层级越低，这种开销就越大。当然，很多时候，不必在意这点开销。
-   2. 使用组件方法，在 constructor 中使用 bind 指定 this，执行 render 时，不会重复创建函数，没性能开销，但是事件多时比较繁琐。
-      给组件赋值时，同时指定 this,可以传递额外的参数，会创建新函数，有性能损耗。
-   3. 属性初始化语法：使用箭头函数定义方法，不必在 constructor 中指定 this，不会重复创建函数。
-   4. 事件处理器的默认参数是 event 对象，需要传递 额外的参数时，使用箭头函数或者 bind。
+新版本的生命周期钩子：删除 `componentWillMount`、`componentWillReceiveProps`、`componentWillUpdate`
+
+新增`static getDerivedStateFromProps(props, state)`、`getSnapshotBeforeUpdate(prevProps, prevState)`
+
+> 为何要删除？
+
+这些钩子很容易被滥用，在 17 以上版本还可能带来 bug。
+
+![](https://tva1.sinaimg.cn/large/008i3skNgy1grq9282k23j31gq0u0qqr.jpg 'react-生命周期')
+
+> 父子组件生命周期执行顺序？
+
+```bash
+# 挂载
+parent constructor
+parent componentWillMount ❌ 在17以上版本会移除
+parent getDerivedStateFromProps  ✅ 新增的钩子
+parent render
+child constructor
+child componentWillMount
+child render
+child componentDidMount
+parent componentDidMount
+
+# 更新
+parent getDerivedStateFromProps(nextProps, nextState)  ✅ 新增的钩子
+parent shouldComponentUpdate
+parent componentWillUpdate ❌ 在17以上版本会移除
+parent render
+child componentWillReceiveProps # new props 调用 setState 不调用
+child getDerivedStateFromProps(nextProps, nextState) ✅ 新增的钩子 new props、 setState、forceUpdate 都会调用 即 render 前调用
+child shouldComponentUpdate(nextProps, nextState)
+child componentWillUpdate ❌ 在17以上版本会移除
+child render
+
+child getSnapshotBeforeUpdate(prevProps, prevState) ✅ 新增的钩子 获取组件更新之前的快照
+parent getSnapshotBeforeUpdate(prevProps, prevState)
+
+child componentDidUpdate(prevProps, prevState, snapshot)
+parent componentDidUpdate(prevProps, prevState, snapshot)
+
+# 卸载
+parent componentWillUnmount
+child componentWillUnmount
+child 销毁完毕
+parent 销毁完毕
+```
+
+关于钩子函数参数：
+
+①. render 函数之前的都是最新的 props 和 state `getDerivedStateFromProps(nextProps, nextState)`、`shouldComponentUpdate(nextProps, nextState)`
+
+getDerivedStateFromProps 要求返回一个新的状态，很少使用，当组件 state 完全依赖 props 可使用。
+
+shouldComponentUpdate 返回一个布尔值，控制组件是否更新。
+
+②. render 函数之后的都是之前的 props 和 state `getSnapshotBeforeUpdate(prevProps, prevState)`、`componentDidUpdate(prevProps, prevState, snapshot)`
+
+getSnapshotBeforeUpdate 组件更新到 DOM 前获取组件快照，比如长列表更新之前，获取滚动条位置，返回值会传递到 componentDidUpdate 的第三个参数中。
+
+9.  事件处理
+    react 中的是事件是合成事件，采用 on+事件名命名，不是原生 DOM 事件。行为和原生事件有点区别，阻止事件的默认行为需要显示调用 preventDefault。如果在某些场 景下必须使用 DOM 提供的原生事件，可以通过 React 事件对象的 nativeEvent 属性获取。
+    事件处理器最容易出错的是 this 而绑定，因为 ES6 class 不会自动绑定 this 到当前对象。
+    四种事件处理器的绑定方式：
+
+        ①. 箭头函数，在 render 方法中为元素事件定义事件处理函数，最大的问题是，每次 render 调用时，都会重新创建一个新的事件处理函数，带来额 外的性能开销，组件所处层级越低，这种开销就越大。当然，很多时候，不必在意这点开销。
+
+        ②. 使用组件方法，在 constructor 中使用 bind 指定 this，执行 render 时，不会重复创建函数，没性能开销，但是事件多时比较繁琐。给组件赋值时，同时指定 this,可以传递额外的参数，会创建新函数，有性能损耗。
+
+        ③. 属性初始化语法：使用**箭头函数定义方法**，不必在 constructor 中指定 this，不会重复创建函数。
+
+        ④. 调用一个返回接收 event 的函数，`<button onClick={this.onClick('button')}> 点击 </button>`
+          // onClick 返回一个函数
+          onClick = p => event => {
+            console.log(p, event)
+          }
+
+1.  事件处理器的默认参数是 event 对象，需要传递 额外的参数时，使用箭头函数或者 bind。
 
 事件处理 DEMO：
 
@@ -557,6 +627,7 @@ select 元素和 textarea 元素也支持通过 defaultValue 设置默认值，<
 除 props 、 state 以外的上属性，【props 和 state 是 react 预先定义好的属性】，叫普通属性，props 对于使用它的组件来 说是只读的，是通过父组件传递过来的，要想修改 props，只能在父组件中修改；而 state 是组件内部自己维护的状态，是可变的。组件中需要用到一个变量，并且它和渲染无关时（不会在 render 中用到)，就该定义为普通属性。
 
 以下情况不是一个状态：
+
 ① props
 
 ② 整个生命周期保持不变的变量
@@ -586,14 +657,14 @@ select 元素和 textarea 元素也支持通过 defaultValue 设置默认值，<
 
 ① constructor，可行，但是构造函数适合初始化工作，不适合有副作用的 AJAX 的请求，因为从服务器端获取数据后往往会修改状态。
 
-② componentWillMount，可行，挂载前发送请求，但是服务器端渲染会调用两次；
+② ~~ componentWillMount，可行，挂载前发送请求，但是服务器端渲染会调用两次；~~
 
 ③ componentDidMount，挂载后发送请求，DOM 操作安全，保证只调用一次；
 
-④ componentWillReceiveProps，当属性改变时，向服务器发送请求，类似 vue 在 watch 中发送请求;
+④ ~~componentWillReceiveProps~~，shouldComponentUpdate，当属性改变时，向服务器发送请求，类似 vue 在 watch 中发送请求;
 
 ```js
-componentWillReceiveProps(nextProps){
+shouldComponentUpdate(nextProps){
   // 保证属性改变才请求
   if(nextProps.id !== this.props.id) {
     // do ajax
