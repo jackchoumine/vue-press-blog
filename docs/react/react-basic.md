@@ -655,13 +655,13 @@ select 元素和 textarea 元素也支持通过 defaultValue 设置默认值，<
 
 可执行 AJAX 的地方：
 
-① constructor，可行，但是构造函数适合初始化工作，不适合有副作用的 AJAX 的请求，因为从服务器端获取数据后往往会修改状态。
+① constructor，可行，但是构造函数适合初始化工作，不适合有副作用的 AJAX 的请求，因为从服务器端获取数据后往往会修改状态；
 
-② ~~ componentWillMount，可行，挂载前发送请求，但是服务器端渲染会调用两次；~~
+② ~~componentWillMount，可行，挂载前发送请求，但是服务器端渲染会调用两次；~~ getDerivedStateFromProps 挂载前发送请求；
 
 ③ componentDidMount，挂载后发送请求，DOM 操作安全，保证只调用一次；
 
-④ ~~componentWillReceiveProps~~，shouldComponentUpdate，当属性改变时，向服务器发送请求，类似 vue 在 watch 中发送请求;
+④ ~~componentWillReceiveProps，~~ shouldComponentUpdate，当属性改变时，向服务器发送请求，类似 vue 在 watch 中发送请求。
 
 ```js
 shouldComponentUpdate(nextProps){
