@@ -14,8 +14,10 @@
     "Cascader",
     "Hyperscript",
     "Renderless",
+    "Unmount",
     "builtins",
     "chezscheme",
+    "codepen",
     "flelds",
     "instanceof",
     "leetcode",
@@ -23,6 +25,7 @@
     "onmouseover",
     "prettierconfig",
     "prettierignore",
+    "todos",
     "unshift",
     "vuepress"
   ],
