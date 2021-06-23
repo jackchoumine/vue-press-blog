@@ -1,0 +1,98 @@
+<!--
+ * @Description: this 指向
+ * @Date: 2020-09-26 16:45:45 +0800
+ * @Author: JackChouMine
+ * @LastEditTime: 2020-09-26 19:56:34 +0800
+ * @LastEditors: JackChouMine
+-->
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>this</title>
+</head>
+
+<body>
+  <h1>this 指向</h1>
+  <script>
+    // 独立调用
+    function independentCall() {
+      console.log('独立调用')
+      console.log(this)
+      console.log(this === window)
+    }
+    independentCall();
+    (function () {
+      console.log('外部立即执行函数')
+      console.log(this)
+    })()
+    const obj = {
+      foo: independentCall
+    }
+    const bar = obj.foo
+    bar()
+    // 作为对象属性
+    const testObj = {
+      name: 'Jack',
+      myFun: function () {
+        console.log('对象的属性')
+        console.log(this)
+        console.log(this === testObj)
+        function innerFun() {
+          console.log('内部函数')
+          console.log(this)
+        }
+        innerFun()
+        const inner = () => {
+          console.log('内部箭头函数')
+          console.log(this)
+        }
+        inner();
+
+        (function () {
+          console.log('内部立即执行函数')
+          console.log(this)
+        })()
+      }
+    }
+    testObj.myFun()
+    function ConstructorExample() {
+      console.log(this);
+      this.value = 10;
+      console.log(this);
+      return 1
+    }
+
+    new ConstructorExample();
+
+    // -> ConstructorExample {}
+    // -> ConstructorExample { value: 10 }
+
+    var fullName = "aaa";
+
+    var obj1 = {
+      fullName: "bbb",
+      getFullName: () => this.fullName,
+      prop: {
+        fullName: "ccc",
+        getFullName: function () {
+          return this.fullName;
+        }
+      }
+    };
+
+    console.log(obj1.prop.getFullName());//ccc
+
+    console.log(obj1.getFullName());//aaa
+
+    var func1 = obj1.prop.getFullName;
+    console.log(func1());//aaa
+
+    var func2 = obj1.getFullName;
+    console.log(func2());//aaa
+  </script>
+</body>
+
+</html>

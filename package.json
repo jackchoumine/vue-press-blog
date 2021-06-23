@@ -66,7 +66,7 @@
     "attributes": "./vetur/attributes.json"
   },
   "lint-staged": {
-    "*.{js,jsx,html,vue,css,scss}": [
+    "*.{js,jsx,vue,css,scss}": [
       "prettier --write"
     ],
     "*.{js,jsx,vue}": [

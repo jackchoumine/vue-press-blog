@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>测试页面</title>
+</head>
+
+<body>
+  <h1>你好</h1>
+  <button id="btn1">按钮</button>
+  <p style="height: 1000px;background-color: red">酿豆腐</p>
+  <button id="btn2">按钮</button>
+  <script>
+    const goToTop = () => {
+      const h1 = document.querySelector('p')
+      console.log(h1.offsetTop)
+      // h1.scrollIntoView(
+      //   { behavior: 'smooth', block: 'nearest' }
+      // )
+      window.scrollTo({
+        top: h1.offsetTop,
+        left: 0,
+        behavior: 'smooth'
+      })
+    };
+    const btn1 = document.querySelector('#btn1')
+    const btn2 = document.querySelector('#btn2')
+    btn1.addEventListener('click', goToTop, false)
+    btn2.addEventListener('click', goToTop, false)
+  </script>
+</body>
+
+</html>
