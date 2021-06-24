@@ -2,7 +2,7 @@
  * @Description: vue-press 配置
  * @Date: 2021-06-04 15:36:47 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-23 15:17:25 +0800
+ * @LastEditTime: 2021-06-24 18:07:09 +0800
  * @LastEditors: JackChou
  */
 module.exports = {
@@ -12,8 +12,8 @@ module.exports = {
   markdown: {
     lineNumbers: true, // 代码块显示行号
     toc: {
-      includeLevel: [1, 2, 3, 4], //生成目录的 markdown 标题 默认 2 3
-    },
+      includeLevel: [1, 2, 3, 4] //生成目录的 markdown 标题 默认 2 3
+    }
   },
   themeConfig: {
     sidebar: 'auto', // 所有页面开启自动根据 markdown 的标题生成侧边栏
@@ -29,8 +29,8 @@ module.exports = {
         items: [
           { text: 'js', link: '/web/js/' },
           { text: 'css', link: '/web/css/' },
-          { text: 'html', link: '/web/html/' },
-        ],
+          { text: 'html', link: '/web/html/' }
+        ]
       },
       { text: 'node', link: '/node/' },
       {
@@ -38,9 +38,9 @@ module.exports = {
         // 二级下拉
         items: [
           // { text: 'ts', link: '/others/ts/' },
-          { text: '函数式编程', link: '/others/functional-programming/' },
-        ],
-      },
+          { text: '函数式编程', link: '/others/functional-programming/' }
+        ]
+      }
       // { text: '面试', link: '/interview/' },
     ],
     // 博客仓库配置
@@ -53,8 +53,8 @@ module.exports = {
     // 内置搜索智能搜索 h2 h3 标题
     algolia: {
       apiKey: '<API_KEY>',
-      indexName: '<INDEX_NAME>',
-    },
+      indexName: '<INDEX_NAME>'
+    }
   },
   plugins: [['@mr-hope/copy-code']],
   // base: '/blog/',
@@ -63,5 +63,5 @@ module.exports = {
   // 开发运行的端口
   port: '7777',
   // 开发运行的地址
-  host: '127.0.0.1',
+  host: '127.0.0.1'
 }
