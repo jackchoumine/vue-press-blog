@@ -2,7 +2,7 @@
  * @Description: prettier 配置
  * @Date: 2021-06-02 02:19:27 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-02 02:20:03 +0800
+ * @LastEditTime: 2021-06-24 17:21:25 +0800
  * @LastEditors: JackChou
  */
 module.exports = {
@@ -23,7 +23,8 @@ module.exports = {
   // parser: 'vue-eslint-parser', //  格式化的解析器，默认是babylon
   requireConfig: false, // Require a 'prettierconfig' to format prettier
   stylelintIntegration: false, // 不让prettier使用stylelint的代码格式进行校验
-  trailingComma: 'es5', // 在对象或数组最后一个元素后面是否加逗号（在ES5中加尾逗号）
+  // trailingComma: 'es5', // 在对象或数组最后一个元素后面是否加逗号（在ES5中加尾逗号）
+  trailingComma: 'none',
   tslintIntegration: false, // 不让prettier使用tslint的代码格式进行校验
   endOfLine: 'lf',
   vueIndentScriptAndStyle: false,
@@ -33,8 +34,8 @@ module.exports = {
     {
       files: '*.md',
       options: {
-        tabWidth: 2,
-      },
-    },
-  ],
+        tabWidth: 2
+      }
+    }
+  ]
 }

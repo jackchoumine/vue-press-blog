@@ -2,16 +2,16 @@ module.exports = {
   root: true,
   env: {
     node: true,
-    jest: true,
+    jest: true
   },
   extends: ['plugin:vue/essential', '@vue/standard'],
   parserOptions: {
-    parser: 'babel-eslint',
+    parser: 'babel-eslint'
   },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'comma-dangle': [2, 'always-multiline'],
+    'comma-dangle': [2, 'never'], // 'always-multiline'],
     'space-before-function-paren': 0, //[0, 'never'],
     quotes: [2, 'single', { allowTemplateLiterals: true }],
     'no-void': 0,
@@ -44,9 +44,9 @@ module.exports = {
         singleline: 4,
         multiline: {
           max: 4,
-          allowFirstLine: true,
-        },
-      },
+          allowFirstLine: true
+        }
+      }
     ],
     // 自闭和标签
     'vue/html-self-closing': [
@@ -55,17 +55,17 @@ module.exports = {
         html: {
           void: 'never', // 通用的标签
           normal: 'never', // 知名的html元素
-          component: 'always', // vue组件
-        },
-      },
+          component: 'always' // vue组件
+        }
+      }
     ],
     'vue/component-name-in-template-casing': [
       2,
       'PascalCase',
       {
         registeredComponentsOnly: false,
-        ignores: ['/el-(.*)/', '/router(.*)/', 'component', 'keep-alive'],
-      },
+        ignores: ['/el-(.*)/', '/router(.*)/', 'component', 'keep-alive']
+      }
     ],
     'vue/html-indent': [
       2,
@@ -75,8 +75,8 @@ module.exports = {
         baseIndent: 1,
         closeBracket: 0,
         alignAttributesVertically: true,
-        ignores: [],
-      },
+        ignores: []
+      }
     ],
     // https://eslint.vuejs.org/rules/attributes-order.html
     'vue/attributes-order': [
@@ -93,10 +93,10 @@ module.exports = {
           'OTHER_DIRECTIVES',
           'OTHER_ATTR',
           'EVENTS',
-          'CONTENT',
+          'CONTENT'
         ],
-        alphabetical: false,
-      },
+        alphabetical: false
+      }
     ],
     'vue/order-in-components': [
       2,
@@ -119,9 +119,9 @@ module.exports = {
           'LIFECYCLE_HOOKS',
           'methods',
           ['template', 'render'],
-          'renderError',
-        ],
-      },
-    ],
-  },
+          'renderError'
+        ]
+      }
+    ]
+  }
 }
