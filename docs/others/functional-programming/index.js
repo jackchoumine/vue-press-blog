@@ -2,45 +2,19 @@
  * @Description:
  * @Date: 2021-06-17 05:23:19 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-24 17:51:12 +0800
+ * @LastEditTime: 2021-06-25 08:55:28 +0800
  * @LastEditors: JackChou
  */
-const curry = (fn, argsSize = fn.length) => {
-  if (typeof fn !== 'function') {
-    throw new Error('no function provided!')
-  }
-  return function curriedFn(...args) {
-    if (args.length === argsSize) {
-      return fn(...args)
-    }
-    return (...params) => {
-      return curriedFn(...args.concat(params))
-    }
-  }
-}
+const splitSentence = str => str.split(' ')
+const count = array => array.length
 
-function sum(a, b, c) {
-  return a + b + c
+const oddOrEven = count => (count % 2 === 0 ? 'even' : 'odd')
+const pipe = (...fns) => {
+  // 存在一个不是函数 立即返回
+  if (fns.some(fn => typeof fn !== 'function')) return
+  return value => fns.reduce((acc, fn) => fn(acc), value)
 }
-const curriedSum = curry(sum)
-// 100 0000 0000
-// 100 差不多
-// 1000 sum 快一个数量级
-// 10000 sum 快2个数量级
-// 100000 sum 快2个数量级
-// 1000000 sum 快2个数量级
-// 10000000 sum 快2个数量级
-const bigNumber = 1000000
-
-let sumCount = 0
-console.time('sum')
-while (sumCount++ <= bigNumber) {
-  sum(sumCount, sumCount - 1, sumCount - 2)
-}
-console.timeEnd('sum')
-console.time('curriedSum')
-let sumCount2 = 0
-while (sumCount2++ <= bigNumber) {
-  curriedSum(sumCount2)(sumCount2 - 1)(sumCount2 - 2)
-}
-console.timeEnd('curriedSum')
+const isOdd = str => str === 'odd'
+const isOddWords = pipe(splitSentence, pipe(count, oddOrEven), isOdd)
+const str = `hello function programming react`
+console.log(isOddWords(str)) // false
