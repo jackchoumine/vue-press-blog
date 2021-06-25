@@ -1,6 +1,6 @@
 [[toc]]
 
-# 如何使用 render 函数封装高扩展的组件
+# 如何使用 render 改善组件
 
 前面的文章有提到，vue 官网给出的 render 函数的例子只能体现 render 函数的优雅的一方面，却不能看出其扩展性，今天就来封装一个体现其扩展性的组件。
 
@@ -24,17 +24,13 @@
 <FormTable :data="lessonPackageArr" :fleldsInfo="lessonPackageInfo" :maxColumn="3" label-width="120px">
   <template #presentedHours="{ data }">
     <div class="flex-box between">
-      <span>
-        {{ data.presentedHours }}
-      </span>
+      <span>{{ data.presentedHours }}</span>
       <span class="column-btn" @click="editPresentedHours(data)">修改</span>
     </div>
   </template>
   <template #gifts="{ data }">
     <div class="flex-box between">
-      <span>
-        {{ data.gifts }}
-      </span>
+      <span>{{ data.gifts }}</span>
       <span class="column-btn" @click="editPresentedHours(data)">修改</span>
     </div>
   </template>
@@ -135,31 +131,31 @@ lessonPackageInfo: {
   export default {
     name: 'FormTable',
     components: {
-      TableColContent,
+      TableColContent
     },
     props: {
       // 数据
       data: {
         required: true,
-        type: [Object, Array, null],
+        type: [Object, Array, null]
       },
       // 字段信息
       fleldsInfo: {
         required: true,
-        type: Object,
+        type: Object
         // className: { type: "text", desc: "班级名称", column: 3 },
       },
       // 最多显示列数
       maxColumn: {
         required: false,
         type: Number,
-        default: 2,
+        default: 2
       },
       labelWidth: {
         required: false,
         type: String,
-        default: '90px',
-      },
+        default: '90px'
+      }
     },
     data() {
       return {}
@@ -198,7 +194,7 @@ lessonPackageInfo: {
           returnArray.push(item)
         }
         return returnArray
-      },
+      }
     },
     methods: {
       getSpan(column) {
@@ -206,8 +202,8 @@ lessonPackageInfo: {
           column = 1
         }
         return column * (24 / this.maxColumn)
-      },
-    },
+      }
+    }
   }
 </script>
 ```
