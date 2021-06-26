@@ -1,116 +1,21 @@
-# react 基础
+[[toc]]
 
-## JSX 语法
-
-JSX 是 JS 扩展语法，用来描述 UI，本质还是 JS。
-
-为何要用 JSX?
-
-用户界面需要解决的问题是服务器的动态数据，如何高效地显示在界面上，而用户界面和数据是分离的即界面模板代码和数据数据没有同时渲染，为了此问题，创造了各种模板。将 UI 放在模板文件中，将数据放在 JS 代码中，通过模板引擎，把数据和模板渲染成 html 代码。使用这些模板，还要学习它们的语法，且对于复杂 UI，模板难以清晰描述。
-
-react 将 UI 分成一个个组件，组件具备描述 UI 和数据的完整功能，不应该分开，所以开发了 JSX。
-
-疑问：
-
-① UI 和数据分离，是什么意思？
-
-② 分离和不分离分优劣是什么？
-
-### 基本语法
-
-使用成对的 html 标签构成一个描述 UI 的元素。
-
-```jsx
-const element = (
-  <div>
-    <h1>hello react</h1>
-  </div>
-)
-```
-
-### 标签类型
-
-dom 类型，使用是必须小写，react 组件类型，使用时首字母必须大写，react 通过首字母大小写来区分它们。
-
-### JS 表达式
-
-在 JSX 中使用表达式，需要使用`{}`将表达式括起来。两种场景：
-
-1. 给标签属性赋值
-
-```jsx
-const element = <MyComponent foo={1 + 2} /> // 没有子节点，可自闭合
-```
-
-2. 定义子组件
-
-```jsx
-const todos = ['up', 'eat', 'school']
-const todoList = (
-  <ul>
-    {todos.map(todo => (
-      <li>{todo}</li> // 这里定义了 li 组件
-    ))}
-  </ul>
-)
-```
-
-3. 标签属性
-
-dom 类型的标签，大部分属性和 html 一致，部分属性改变：
-class 变为 className，因为 class 是 ES6 保留字，
-onclick 变成 onClick,react 对事件进行了封装，采用小托峰式名字事件。
-
-```jsx
-const element = (
-  <div
-    id='content'
-    className='foo'
-    onClick={() => {
-      console.log('Hello,React')
-    }}
-  />
-)
-```
-
-组件类型，了自定义属性名。
-
-4. 注释
-
-注释写在`{}`中，使用多行注释，`/**/`
-
-```jsx
-const element = (
-  <div>
-    {/*这里是一个注释*/}
-    {/*不可以使用单行注释*/}
-    <span>React</span>
-  </div>
-)
-```
-
-5. JSX 是必需的吗？
-
-JSX 是 `React.createElement(component,props,...children)`的语法糖，使用 JSX 阅读性更好，UI 结构更清晰。
-
-## 组件
+# react 核心概念
 
 react 将 UI 分成独立可复用的组件.
 根据定义方式不同，可分为函数组件和类组件。
 
-1. 类组件
-   需要满足两个条件：
-   ① class 继承自 React.Component;
-   ② 类必须具有 render 函数，且返回代表该组件的 UI 元素。
+**声明式**编写组件：你想要什么，直接给出结果，不需要执行详细的过程，react 就会帮你渲染出来。
+
+## 定义组件
+
+类组件，需要满足两个条件：
+
+① class 继承自 React.Component;
+
+② 类必须具有 render 函数，且返回代表该组件的 UI 元素。
 
 ```js
-/*
- * @Description: 书组件
- * @Date: 2020-04-19 17:05:20
- * @Author: JackChouMine
- * @LastEditTime: 2020-04-19 17:18:44
- * @LastEditors: JackChouMine
- */
 import React, { Component } from 'react'
 class BookComponent extends Component {
   render() {
@@ -128,55 +33,11 @@ class BookComponent extends Component {
 export default BookComponent
 ```
 
-2. 组件 props (属性)
-   以上定义了一个图书列表组件，我想要在添加一本书籍和添加图书作、版本等信息时，要去修改组件，会比较麻烦。如果能在图书列表组件 Books 中使用一个 Book 组件接收图书信息，在 Books 中维护这些图书信息，然后传递给 Book，那将是很好的。
+::: tip react 元素和 react 组件
+react 元素是一个描述 react 组件的 JS 对象，react 组件时一个 class 或者函数。
+:::
 
-```js
-import React, { Component } from 'react'
-class BookComponent extends Component {
-  render() {
-    const { title, author, version } = this.props //所有传递进来的属性会组成一个简单的对象
-    const Book = (
-      <li>
-        <h2>{title}</h2>
-        <p>作者：{author}</p>
-        <p>版本：{version}</p>
-      </li>
-    )
-    return Book
-  }
-}
-export default BookComponent
-```
-
-在图书列表组件中使用图书组件
-
-```js
-import React, { Component } from 'react'
-import Book from './book' // 引入图书组件
-class BookComponent extends Component {
-  render() {
-    const bookList = [
-      { title: 'react入门', author: '小马', version: '第二版' },
-      { title: 'react进阶', author: '小明', version: '第三版' },
-      { title: 'react专家之路', author: '小华', version: '第一版' },
-    ]
-    const Books = (
-      <ol>
-        {/*<Book {...book} /> 还可以这样传递 推荐分分开传递，传递的属性会更加清晰，不会传递多余的属性*/}
-        {/* 所有属性会组成一个对象传递给 props */}
-        {bookList.map(book => (
-          <Book title={book.title} author={book.author} version={book.version} />
-        ))}
-      </ol>
-    )
-    return Books
-  }
-}
-export default BookComponent
-```
-
-3. 组件状态 state
+## 组件状态 state
 
 state 是组件的内部状态，state 的变化会反映到组件上。在构造方法中的 `this.state` 对象中定义初始状态，使用`this.setState`方法改变组件状态（**唯一改变组件状态的方法**），组件会重新渲染。
 
@@ -190,7 +51,7 @@ class BookComponent extends Component {
     this.state = {
       // 定义内部状态
       like: 0,
-      dislike: 0,
+      dislike: 0
     }
   }
   vote() {
@@ -200,13 +61,13 @@ class BookComponent extends Component {
     //   vote: vote,
     // }
     this.setState({
-      like: ++like,
+      like: ++like
     })
   }
   hate() {
     let { dislike } = this.state
     this.setState({
-      dislike: ++dislike,
+      dislike: ++dislike
     })
   }
   render() {
@@ -263,9 +124,108 @@ constructor(props) {
 
 UI = Component(props,state), 组件可看成一个函数，输入外部的属性 props 和内部状态 state, 输出组件的 UI。
 
-4. 无状态组件
-   上面的 Book 组件内部有 state，组件需要维持这个状态，叫作状态组件， 图书列表 Books，没有定义 state，叫作无状态组件。
-   无状态组件不关注内部状态，专注 UI 展示，还可使用函数还定义无状态组件，此时组件也叫函数组件，props 作为函数参数传入。
+### 如何确定最小的 state 集合
+
+组件的 state 中的所有状态都用于反映组件的 UI 变化，不该有多余状态，也不该存在通过其他状态计算出来的中间状态。状态可分为两类数据：**是否展示**和**展示什么**，即决定是否展示和展示哪些的数据。
+
+除 props 、 state 以外的上属性，【props 和 state 是 react 预先定义好的属性】，叫普通属性，props 对于使用它的组件来 说是只读的，是通过父组件传递过来的，要想修改 props，只能在父组件中修改；而 state 是组件内部自己维护的状态，是可变的。组件中需要用到一个变量，并且它和渲染无关时（不会在 render 中用到)，就该定义为普通属性。
+
+以下情况不是一个状态：
+
+① props
+
+② 整个生命周期保持不变的变量
+
+③ 通过状态 state 或者属性 props 计算得到
+
+④ 没有在 render 中使用
+
+> 如何修改 state ?
+
+① setSate 是修改状态的唯一方式；
+
+② 更新可能异步的，出于性能 原因，可能会将多次 setState 的状态修改合并成一次状态修改。比如每次点击按钮，增加一个商品到购物车，执行`this.setState({quantity: this.state.quantity + 1})`,点击两次，react 会处理成 `Object.assign(previousState,{quantity: this.state.quantity + 1}, {quantity: this.state.quantity + 1})`，商品数量只增加一个。当后一个状态依赖前一个状态时，应该给 setState 传入参数，`this.setState((preSate,preProps) => ({counter: preState.quantity + 1}))`；
+
+③ state 的更新是一个合并的过程，只需要传入改变的 state；
+
+④ state 的所有状态都应该是**不可变对象**。 状态改变，应该重建状态对象，而不是直接修改原来的对象。对于简单数据类型（string，number，boolean，null，undefined），都是不可变对象，修改它们本质就是重置。
+数组类型的状态，使用 `concat` 和 `...` 新建一个数组，再重置状态。concat、 slice、filter 会返回一个新的数组，push、pop、shift、unshift、splice 等方法修改原数组。对象类型的状态，使用`Object.assign` 或者 `...` 修改它。
+
+> 创建新的状态对象的关键是， 避免使用会直接修改原对象的方法， 而是使用可以返回一个新对象的方法。
+
+使用不可变对象的原因：方便调试和提高性能，shouldComponentUpdate 方法中仅需要比较前后两次状态对象的引用就可以判断状态是否真的改变，避免不必要的 render 方法调用。
+
+### 状态的更新是同步还是异步
+
+是同步还是异步，取决于`setState`执行位置：
+
+1. 由 react 控制的回调，是**异步**的：生命周期钩子、react 事件监听；
+2. 在非 react 控制的`异步回调`中，是**同步**的：定时器、原生事件
+
+### 两种 setState 调用方式
+
+```js
+this.setState(newState, [callback]) // callback 是更新后的回调
+this.setState(
+  (state, props) => {
+    return newState
+  },
+  [callback]
+)
+```
+
+如何选择：
+
+1. 新状态不依赖原状态，使用对象；
+2. 行状态依赖原状态，使用回调；
+
+setState 的第二个回调的执行时机：render 之后，没有参数，在此能拿到更新后的状态。
+
+## 事件处理
+
+react 中的是事件是合成事件，采用 on+事件名命名，不是原生 DOM 事件。行为和原生事件有点区别，阻止事件的默认行为需要显示调用 preventDefault。如果在某些场 景下必须使用 DOM 提供的原生事件，可以通过 React 事件对象的 nativeEvent 属性获取。
+事件处理器最容易出错的是 this 而绑定，因为 ES6 class 不会自动绑定 this 到当前对象。
+四种事件处理器的绑定方式：
+
+①. 箭头函数，在 render 方法中为元素事件定义事件处理函数，最大的问题是，每次 render 调用时，都会重新创建一个新的事件处理函数，带来额 外的性能开销，组件所处层级越低，这种开销就越大。当然，很多时候，不必在意这点开销。
+
+②. 使用组件方法，在 constructor 中使用 bind 指定 this，执行 render 时，不会重复创建函数，没性能开销，但是事件多时比较繁琐。给组件赋值时，同时指定 this,可以传递额外的参数，会创建新函数，有性能损耗。
+
+③. 属性初始化语法：使用**箭头函数定义方法**，不必在 constructor 中指定 this，不会重复创建函数。
+
+④. 调用一个返回接收 event 的函数，`<button onClick={this.onClick('button')}> 点击 </button>`
+
+```js
+// onClick 返回一个函数
+onClick = p => event => {
+  console.log(p, event)
+}
+```
+
+<!--  TODO
+
+比较 react 自定义事件和 vue 自定义事件的区别：
+
+几种事件绑定的区别：
+-->
+
+> 事件处理器的默认参数是 event 对象，需要传递 额外的参数时，使用箭头函数或者 bind。
+
+事件处理 DEMO：
+
+<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="js,result" data-user="JackZhouMine" data-slug-hash="XvbXrN" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="处理事件">
+  <span>See the Pen <a href="https://codepen.io/JackZhouMine/pen/XvbXrN">
+  处理事件</a> by JackChouMine (<a href="https://codepen.io/JackZhouMine">@JackZhouMine</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+
+[合成事件](https://react.docschina.org/docs/events.html)
+
+## 无状态组件
+
+上面的 Book 组件内部有 state，组件需要维持这个状态，叫作状态组件， 图书列表 Books，没有定义 state，叫作无状态组件。
+无状态组件不关注内部状态，专注 UI 展示，还可使用函数还定义无状态组件，此时组件也叫函数组件，props 作为函数参数传入。
 
 Book 组件维持 like 和 dislike 状态，这些属性作为书籍的属性传入更加适合，故可以把 Book 组件定义成函数组件，专注展示书籍信息，数据和事件处理函数从外部传入。
 
@@ -283,7 +243,7 @@ function Welcome(props) {
 import React from 'react'
 function BookFun(props) {
   const {
-    book: { title, author, version, bookId, dislike, like },
+    book: { title, author, version, bookId, dislike, like }
   } = props // 所有传递进来的属性会组成一个简单的对象
   const handleLike = () => {
     props.onLike(bookId)
@@ -328,7 +288,7 @@ class Books extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      books: [],
+      books: []
     }
     this.timer = ''
     this.handleLike = this.handleLike.bind(this) // es6 的 class，需要手动绑定 this
@@ -346,7 +306,7 @@ class Books extends Component {
             version: '第二版',
             like: 0,
             dislike: 0,
-            bookId: (Math.random() + 1).toString(36).substring(2), // 随机字符串
+            bookId: (Math.random() + 1).toString(36).substring(2) // 随机字符串
           },
           {
             title: 'react进阶',
@@ -354,7 +314,7 @@ class Books extends Component {
             version: '第三版',
             like: 0,
             dislike: 0,
-            bookId: (Math.random() + 1).toString(36).substring(2),
+            bookId: (Math.random() + 1).toString(36).substring(2)
           },
           {
             title: 'react专家之路',
@@ -362,9 +322,9 @@ class Books extends Component {
             version: '第一版',
             like: 0,
             dislike: 0,
-            bookId: (Math.random() + 1).toString(36).substring(2),
-          },
-        ],
+            bookId: (Math.random() + 1).toString(36).substring(2)
+          }
+        ]
       })
     }, 100)
   }
@@ -376,7 +336,7 @@ class Books extends Component {
       return book.bookId === id ? { ...book, dislike: ++book.dislike } : book
     })
     this.setState({
-      books,
+      books
     })
   }
   handleLike(id) {
@@ -384,7 +344,7 @@ class Books extends Component {
       return book.bookId === id ? { ...book, like: ++book.like } : book
     })
     this.setState({
-      books,
+      books
     })
   }
   render() {
@@ -423,13 +383,56 @@ export default Books
 
 函数组件没有生命周期方法，没有状态，没有 this，而这些类组件具有，所以不用生命周期和状态从父组件传入时才适合使用函数组件。
 
-<!--  TODO -->
+## 组件 props (属性)
 
-比较 react 自定义事件和 vue 自定义事件的区别：
+以上定义了一个图书列表组件，我想要在添加一本书籍和添加图书作、版本等信息时，要去修改组件，会比较麻烦。如果能在图书列表组件 Books 中使用一个 Book 组件接收图书信息，在 Books 中维护这些图书信息，然后传递给 Book，那将是很好的。
 
-几种事件绑定的区别：
+```js
+import React, { Component } from 'react'
+class BookComponent extends Component {
+  render() {
+    const { title, author, version } = this.props //所有传递进来的属性会组成一个简单的对象
+    const Book = (
+      <li>
+        <h2>{title}</h2>
+        <p>作者：{author}</p>
+        <p>版本：{version}</p>
+      </li>
+    )
+    return Book
+  }
+}
+export default BookComponent
+```
 
-5. 属性校验和默认属性
+在图书列表组件中使用图书组件
+
+```js
+import React, { Component } from 'react'
+import Book from './book' // 引入图书组件
+class BookComponent extends Component {
+  render() {
+    const bookList = [
+      { title: 'react入门', author: '小马', version: '第二版' },
+      { title: 'react进阶', author: '小明', version: '第三版' },
+      { title: 'react专家之路', author: '小华', version: '第一版' }
+    ]
+    const Books = (
+      <ol>
+        {/*<Book {...book} /> 还可以这样传递 推荐分分开传递，传递的属性会更加清晰，不会传递多余的属性*/}
+        {/* 所有属性会组成一个对象传递给 props */}
+        {bookList.map(book => (
+          <Book title={book.title} author={book.author} version={book.version} />
+        ))}
+      </ol>
+    )
+    return Books
+  }
+}
+export default BookComponent
+```
+
+### 属性校验和默认值
 
 和 vue 一样，react 也可以可对 props 进行校验和提供默认值。react 通过`propTypes` 和 `PropTypes` 实现该功能。
 propTypes 的 key 是 props 的属性，值从 PropTypes 中获取。
@@ -446,17 +449,18 @@ BookFun.propTypes = {
     version: PropTypes.string,
     price: PropTypes.number,
     like: PropTypes.number,
-    disLike: PropTypes.number,
+    disLike: PropTypes.number
   }).isRequired,
   onLike: PropTypes.func.isRequired,
-  onDislike: PropTypes.func.isRequired,
+  onDislike: PropTypes.func.isRequired
 }
 // TODO 如何对props的内层属性设置默认值 属性默认值
 // BookFun.defaultProps = { book.price: 39 }
 ```
 
-6. 组件的样式
-   给组件添加样式的方式有两种：外部样式和内联样式
+## 组件的样式
+
+给组件添加样式的方式有两种：外部样式和内联样式
 
 ①. 外部样式引入的两种方式
 在使用组件的 html 也页面中引入：
@@ -473,11 +477,9 @@ BookFun.propTypes = {
 将样式属性写成 JS 对象，使用 style 属性引入。
 **具有中划线的样式属性，要采用小驼峰名名。**
 
-7. react 元素和 react 组件
-   react 元素是一个描述 react 组件的 JS 对象，react 组件时一个 class 或者函数。
+## 组件生命周期
 
-8. 组件生命周期
-   组件从被创建到被销毁的过程称为组件的生命周期。React 为组件在不同的生命周期阶段提供不同的生命周期方法，让开发者可以在组件的生命周期过程中更好地控制组件的行为。通常，组件的生命周期可以 被分为三个阶段:**挂载阶段**、**更新阶段**、**卸载阶段**。_只有类组件有生命周期方法，函数组件没有。_
+组件从被创建到被销毁的过程称为组件的生命周期。React 为组件在不同的生命周期阶段提供不同的生命周期方法，让开发者可以在组件的生命周期过程中更好地控制组件的行为。通常，组件的生命周期可以 被分为三个阶段:**挂载阶段**、**更新阶段**、**卸载阶段**。_只有类组件有生命周期方法，函数组件没有。_
 
 Ⅰ. 挂载阶段
 
@@ -573,85 +575,7 @@ shouldComponentUpdate 返回一个布尔值，控制组件是否更新。
 
 getSnapshotBeforeUpdate 组件更新到 DOM 前获取组件快照，比如长列表更新之前，获取滚动条位置，返回值会传递到 componentDidUpdate 的第三个参数中。
 
-9.  事件处理
-    react 中的是事件是合成事件，采用 on+事件名命名，不是原生 DOM 事件。行为和原生事件有点区别，阻止事件的默认行为需要显示调用 preventDefault。如果在某些场 景下必须使用 DOM 提供的原生事件，可以通过 React 事件对象的 nativeEvent 属性获取。
-    事件处理器最容易出错的是 this 而绑定，因为 ES6 class 不会自动绑定 this 到当前对象。
-    四种事件处理器的绑定方式：
-
-        ①. 箭头函数，在 render 方法中为元素事件定义事件处理函数，最大的问题是，每次 render 调用时，都会重新创建一个新的事件处理函数，带来额 外的性能开销，组件所处层级越低，这种开销就越大。当然，很多时候，不必在意这点开销。
-
-        ②. 使用组件方法，在 constructor 中使用 bind 指定 this，执行 render 时，不会重复创建函数，没性能开销，但是事件多时比较繁琐。给组件赋值时，同时指定 this,可以传递额外的参数，会创建新函数，有性能损耗。
-
-        ③. 属性初始化语法：使用**箭头函数定义方法**，不必在 constructor 中指定 this，不会重复创建函数。
-
-        ④. 调用一个返回接收 event 的函数，`<button onClick={this.onClick('button')}> 点击 </button>`
-          // onClick 返回一个函数
-          onClick = p => event => {
-            console.log(p, event)
-          }
-
-1.  事件处理器的默认参数是 event 对象，需要传递 额外的参数时，使用箭头函数或者 bind。
-
-事件处理 DEMO：
-
-<p class="codepen" data-height="265" data-theme-id="light" data-default-tab="js,result" data-user="JackZhouMine" data-slug-hash="XvbXrN" style="height: 265px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;" data-pen-title="处理事件">
-  <span>See the Pen <a href="https://codepen.io/JackZhouMine/pen/XvbXrN">
-  处理事件</a> by JackChouMine (<a href="https://codepen.io/JackZhouMine">@JackZhouMine</a>)
-  on <a href="https://codepen.io">CodePen</a>.</span>
-</p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
-
-10. 表单
-
-表单元素的值是由 React 来管理的，那么它就是一个受控组件，否则就是非受控组件。React 组件渲染表单元素，并在用户和表单元素发生交互时控制表单元素的行为，从而保证组件的 state 成为界面上所有元素状态的唯一来源。
-
-input 和 textarea 的非受控组件，state 的状态赋值给 value ,通过监听 change 事件，来改变 state。
-select 在 select 上设置 value 属性，checkbox 通过修改 checked 属性。
-
-非受控组件指表单元素的状态依然由表单元 素自己管理，而不是交给 React 组件管理。属性 ref，用 来引用 React 组件或 DOM 元素的实例来获取表单上的值。
-ref 的值是一个函数，这个函数会接收当前元素作为参数。
-`this.nameInput` 是当前元素，不必提前声明。使用 `this.nameInput.value` 获取表单值，默认值使用 defaultValue 属性设置。
-select 元素和 textarea 元素也支持通过 defaultValue 设置默认值，`<input type="checkbox"> `和 `<input type="radio">` 则支持通过 defaultChecked 属性设置默认值。
-
-```js
-<input type='text' name='name' defaultValue='hello' ref={nameInput => (this.nameInput = nameInput)} />
-```
-
-非受控组件需要为表单组件定义事件，表单字段多了会比较繁琐，而受控组件，简化了表单操作，但是破坏了 react 状态管理的一致性，不易排查错误，推荐使用非受控组件。
-
-11. 组件的 state
-
-11.1 如何确定最小的 state 集合？
-
-组件的 state 中的所有状态都用于反映组件的 UI 变化，不该有多余状态，也不该存在通过其他状态计算出来的中间状态。状态可分为两类数据：是否展示和展示什么，即决定是否展示和展示哪些的数据。
-除 props 、 state 以外的上属性，【props 和 state 是 react 预先定义好的属性】，叫普通属性，props 对于使用它的组件来 说是只读的，是通过父组件传递过来的，要想修改 props，只能在父组件中修改；而 state 是组件内部自己维护的状态，是可变的。组件中需要用到一个变量，并且它和渲染无关时（不会在 render 中用到)，就该定义为普通属性。
-
-以下情况不是一个状态：
-
-① props
-
-② 整个生命周期保持不变的变量
-
-③ 通过状态 state 或者属性 props 计算得到
-
-④ 没有在 render 中使用
-
-11.2 如何修改 state ?
-
-① setSate 是修改状态的唯一方式；
-
-② 更新是异步的，出于性能 原因，可能会将多次 setState 的状态修改合并成一次状态修改。比如每次点击按钮，增加一个商品到购物车，执行`this.setState({quantity: this.state.quantity + 1})`,点击两次，react 会处理成 `Object.assign(previousState,{quantity: this.state.quantity + 1}, {quantity: this.state.quantity + 1})`，商品数量只增加一个。当后一个状态依赖前一个状态时，应该给 setState 传入参数，`this.setState((preSate,preProps) => ({counter: preState.quantity + 1}))`；
-
-③ state 的更新是一个合并的过程，只需要传入改变的 state；
-
-④ state 的所有状态都应该是**不可变对象**。 状态改变，应该重建状态对象，而不是直接修改原来的对象。对于简单数据类型（string，number，boolean，null，undefined），都是不可变对象，修改它们本质就是重置。
-数组类型的状态，使用 `concat` 和 `...` 新建一个数组，再重置状态。concat、 slice、filter 会返回一个新的数组，push、pop、shift、unshift、splice 等方法修改原数组。对象类型的状态，使用`Object.assign` 或者 `...` 修改它。
-
-> 创建新的状态对象的关键是， 避免使用会直接修改原对象的方法， 而是使用可以返回一个新对象的方法。
-
-使用不可变对象的原因：方便调试和提高性能，shouldComponentUpdate 方法中仅需要比较前后两次状态对象的引用就可以判断状态是否真的改变，避免不必要的 render 方法调用。
-
-12. 组件和服务器通信
+## 组件和服务器通信
 
 可执行 AJAX 的地方：
 
@@ -674,7 +598,7 @@ shouldComponentUpdate(nextProps){
 
 ⑤ 事件处理函数，比如点击按钮时再向服务器请求数据。
 
-13. 组件通信
+## 组件通信
 
 ① 父子组件通信：props 可传递函数。父组件通过 props 向子组件传递**普通数据**，子组件调用通过 props 传递到子组件的**函数**修改父组件中的数据；
 
@@ -702,7 +626,7 @@ this.context.onAddUser(this.state.newUser)
 
 // 声明 context 的类型
 Child.contextTypes = {
-  onAddUser: PropTypes.func,
+  onAddUser: PropTypes.func
 }
 ```
 
@@ -711,3 +635,23 @@ Child.contextTypes = {
 ④ 消息队列（事件队列）：改变数据的组件发起一个消息，使用数据的组件监听这个消息，并在响应函数中触发 setState 来改变组件状态。和 vue 的 emit 类似。`Postal.js` 库可实现。
 
 ⑤ 状态管理库。
+
+## 表单
+
+表单元素的值是由 React 来管理的，那么它就是一个受控组件，否则就是非受控组件。React 组件渲染表单元素，并在用户和表单元素发生交互时控制表单元素的行为，从而保证组件的 state 成为界面上所有元素状态的唯一来源。
+
+input 和 textarea 的非受控组件，state 的状态赋值给 value ,通过监听 change 事件，来改变 state。
+select 在 select 上设置 value 属性，checkbox 通过修改 checked 属性。
+
+非受控组件指表单元素的状态依然由表单元 素自己管理，而不是交给 React 组件管理。属性 ref，用 来引用 React 组件或 DOM 元素的实例来获取表单上的值。
+ref 的值是一个函数，这个函数会接收当前元素作为参数。
+`this.nameInput` 是当前元素，不必提前声明。使用 `this.nameInput.value` 获取表单值，默认值使用 defaultValue 属性设置。
+select 元素和 textarea 元素也支持通过 defaultValue 设置默认值，`<input type="checkbox"> `和 `<input type="radio">` 则支持通过 defaultChecked 属性设置默认值。
+
+```js
+<input type='text' name='name' defaultValue='hello' ref={nameInput => (this.nameInput = nameInput)} />
+```
+
+非受控组件需要为表单组件定义事件，表单字段多了会比较繁琐，而受控组件，简化了表单操作，但是破坏了 react 状态管理的一致性，不易排查错误，推荐使用非受控组件。
+
+[更多表单的信息](https://react.docschina.org/docs/forms.html)
