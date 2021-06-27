@@ -598,6 +598,294 @@ shouldComponentUpdate(nextProps){
 
 ⑤ 事件处理函数，比如点击按钮时再向服务器请求数据。
 
+## refs 和 DOM
+
+和 vue 中使用 `refs` 属性获取 DOM 或者组件实例一样，react 中使用 refs 获取 DOM 或者**组件实例**。
+
+三种使用 refs 使用四种方式：
+
+- `createRef()`
+
+- ref 回调函数
+
+- `forwardRef()`
+
+- ref 字符串
+
+### React.createRef()
+
+创建 ref 变量，然后绑定到 DOM 或者组件上，通过`current` 属性获取 DOM 或者组件实例，然后即可操作 DOM 或者组件实例了。
+
+```js{11-12,23,27}
+class MyInput extends React.Component {
+  inputDom = React.createRef()
+  render() {
+    return <input type='text' ref={this.inputDom} placeholder='点击聚焦' />
+  }
+  focus = () => {
+    this.inputDom.current.focus()
+  }
+}
+class App extends React.Component {
+  inputDom = React.createRef()
+  myInput = React.createRef()
+  render() {
+    return (
+      <div>
+        <input type='text' ref={this.inputDom} placeholder='自动聚焦' />
+        <MyInput ref={this.myInput} />
+        <button onClick={this.onClick}>点击聚焦</button>
+      </div>
+    )
+  }
+  componentDidMount() {
+    this.inputDom.current.focus()
+  }
+  onClick = () => {
+    console.log(this.myInput.current)
+    this.myInput.current.focus()
+  }
+}
+ReactDOM.render(<App />, document.getElementById('root'))
+```
+
+效果：
+
+<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="KKmPXjJ" data-user="JackZhouMine" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/JackZhouMine/pen/KKmPXjJ">
+  createRef函数</a> by JackChouMine (<a href="https://codepen.io/JackZhouMine">@JackZhouMine</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+### 回调形式的 ref
+
+ref 还可以接收一个函数，参数为 DOM 或组件实例，可将其赋值给一个组件属性，然后直接通过该属性获取 DOM。
+
+回调的执行时机：
+
+- componentDidMount、ComponentDidUpdate 前，参数为组件实例；
+
+- componentWillUnmount 之后执行，参数为 null。
+
+将上面的 App 组件改写成回调形式：
+
+```js{5-7,22}
+class App extends React.Component {
+  refFn = input => {
+    this.inputDom = input
+  }
+  myInputRef = myInput => {
+    this.myInput = myInput
+  }
+  render() {
+    return (
+      <div>
+        <input type='text' ref={this.refFn} placeholder='自动聚焦' />
+        <MyInput ref={this.myInputRef} />
+        <button onClick={this.onClick}>点击聚焦</button>
+      </div>
+    )
+  }
+  componentDidMount() {
+    this.inputDom.focus()
+  }
+  onClick = () => {
+    // NOTE 不是 this.myInput.current
+    this.myInput.focus()
+  }
+}
+```
+
+通过 props 传递 ref:
+
+```js
+const MyButton2 = props => {
+  return (
+    <div>
+      <button ref={props._ref}>按钮</button>
+    </div>
+  )
+}
+// 使用
+
+;<MyButton2
+  _ref={com => {
+    this.myButton2 = com
+  }}
+/>
+// 获取 ref
+console.log(this.myButton2)
+```
+
+### forwardRef() -- 传递 ref
+
+标签上的 key 和 ref 属属性会被 react 特殊处理，不能通过 props 传递。
+
+> forwardRef 返回一个 React 组件，能够将其接受的 ref 属性转发到其子组件中，第一个参数为 props, 第二个参数为`ref`
+
+将 `MyInput` 改写成 ref 的形式：
+
+```js
+const MyInput = React.forwardRef((props, ref) => {
+  console.log(props)
+  return <input type='text' ref={ref} placeholder='点击聚焦' value={props.value} />
+})
+// 使用 MyInput 时，绑定 ref , 就能拿到 input DOM
+```
+
+上面的 ref 直接绑定到`input`上，当 forwardRef 返回的是一个自定义组件时，还能将 ref 通过`非ref`属性，比如 `_ref` 传递到组件中。
+
+```js
+const MyButton = React.forwardRef((props, ref) => {
+  // 没有 ref
+  console.log(props)
+  // 这样传递 ref
+  return <Button {...props} _ref={ref} />
+})
+
+class Button extends React.Component {
+  render() {
+    // 有 ref
+    console.log(this.props)
+    return (
+      <div>
+        <button ref={this.props._ref}>{this.props.text}</button>
+      </div>
+    )
+  }
+}
+// 使用 ref
+// <MyButton text="按钮" ref={this.myButtonRef} />
+```
+
+demo:
+
+<p class="codepen" data-height="300" data-default-tab="result" data-slug-hash="eYWOeZY" data-user="JackZhouMine" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/JackZhouMine/pen/eYWOeZY">
+  ref回调函数</a> by JackChouMine (<a href="https://codepen.io/JackZhouMine">@JackZhouMine</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+
+:::tip 函数式组件的 ref
+函数式组件没有`this`，只能通过 forwardRef 设置 ref。
+:::
+
+### 字符形式 ref
+
+直接给 ref 设置一个字符串，然后通过`this.refs.refString`获取。
+
+```js
+<input ref="inputDOM" value="hello" />
+<button onClick={this.myClick}>字符串 ref</button>
+
+ myClick = () => {
+  //  通过 refs 获取 dom
+    console.log(this.refs.inputDOM)
+ };
+```
+
+::: warning 这种形式的会被废弃
+
+1. 性能不好，ref 会被 react 处理成闭包；
+2. 不好跟踪 this;
+3. 处理循环不方便。
+   :::
+
+### 循环中的 ref
+
+vue 中 ref 和循环一起使用，拿到的`this.$refs` 是一个数组。
+
+1. 声明一个数字存储 ref
+
+```js{3,11,22}
+class App extends React.Component {
+  items = [{ name: 'jack' }, { name: 'tom' }]
+  list = []
+  render() {
+    return (
+      <ul>
+        {this.items.map((item, index) => {
+          return (
+            <li
+              ref={li => {
+                this.list.push(li)
+              }}>
+              {item.name}
+            </li>
+          )
+        })}
+        <button onClick={this.getRef}>按钮</button>
+      </ul>
+    )
+  }
+  getRef = () => {
+    console.log(this.list[0].textContent)
+  }
+}
+```
+
+2. 使用对象
+
+将 list 声明为对象，使用下标设置对象的 key
+
+```js
+this.list[index] = li
+```
+
+3. 使用 hooks 形式
+
+```js
+const itemEls = useRef(new Array())
+{items.map(item => (
+ <p key={item} ref={(element) => itemEls.current.push(element)}>{item}</p>
+))
+```
+
+或者设置对象：
+
+```js
+const itemEls = useRef({})
+{items.map((item, index)) => (
+ <p key={item} ref={(element) => itemEls.current[index] = element}>{item}</p>
+))
+```
+
+或者
+
+```js
+import React, { useRef, useEffect } from 'react'
+export const Component = ({ items }) => {
+  const itemsEls = useRef(new Array())
+
+  return (
+    {items.map((item) => {
+      const getRef = (element) => (itemsEls.current.push(element))
+      return <p key={getRef}>{item}</p>
+    })}
+  )
+}
+```
+
+### ref 的其他问题
+
+> 给多个 DOM 或者组件绑定 ref，会怎样？
+
+后面的 ref 优先。
+
+::: tip 能不用则不用 ref
+因为容易导致滥用，尽量使用通过声明式实现来完成的事情。
+
+比如，避免在 Dialog 组件里暴露 open() 和 close() 方法，最好传递 isOpen 属性
+:::
+
+### 哪些场景可使用 ref
+
+1. 管理焦点。
+
+2. 暴露组件方法。
+
 ## 组件通信
 
 ① 父子组件通信：props 可传递函数。父组件通过 props 向子组件传递**普通数据**，子组件调用通过 props 传递到子组件的**函数**修改父组件中的数据；
@@ -638,20 +926,50 @@ Child.contextTypes = {
 
 ## 表单
 
-表单元素的值是由 React 来管理的，那么它就是一个受控组件，否则就是非受控组件。React 组件渲染表单元素，并在用户和表单元素发生交互时控制表单元素的行为，从而保证组件的 state 成为界面上所有元素状态的唯一来源。
+表单元素的值是由 React 来管理的，那么它就是一个受控组件，否则就是非受控组件。React 组件渲染表单元素，并在用户和表单元素发生交互时控制表单元素的行为，从而保证组件的 state 成为界面上所有元素状态的**唯一来源**。
 
-input 和 textarea 的非受控组件，state 的状态赋值给 value ,通过监听 change 事件，来改变 state。
+input 和 textarea 的非受控组件，state 的状态赋值给 value，通过监听 change 事件，来改变 state。
 select 在 select 上设置 value 属性，checkbox 通过修改 checked 属性。
 
-非受控组件指表单元素的状态依然由表单元 素自己管理，而不是交给 React 组件管理。属性 ref，用 来引用 React 组件或 DOM 元素的实例来获取表单上的值。
-ref 的值是一个函数，这个函数会接收当前元素作为参数。
-`this.nameInput` 是当前元素，不必提前声明。使用 `this.nameInput.value` 获取表单值，默认值使用 defaultValue 属性设置。
+非受控组件指表单元素的状态依然由**表单元素**自己管理，而不是交给 React 组件管理。属性 ref，用来引用 React 组件或 DOM 元素的实例来获取表单上的值。
+
+使用 `this.nameInput.value` 获取表单值，默认值使用 defaultValue 属性设置。
 select 元素和 textarea 元素也支持通过 defaultValue 设置默认值，`<input type="checkbox"> `和 `<input type="radio">` 则支持通过 defaultChecked 属性设置默认值。
 
 ```js
 <input type='text' name='name' defaultValue='hello' ref={nameInput => (this.nameInput = nameInput)} />
 ```
 
-非受控组件需要为表单组件定义事件，表单字段多了会比较繁琐，而受控组件，简化了表单操作，但是破坏了 react 状态管理的一致性，不易排查错误，推荐使用非受控组件。
+### 如何处理大量表单的情况
+
+> 事件处理函数使用高阶函数
+
+```js{22}
+import React, { Component } from 'react'
+class MyForm extends Component {
+  state = {}
+  render() {
+    return (
+      <div>
+        <h2>受控组件</h2>
+        <form>
+          <label htmlFor='name'>
+            用户名：
+            <input type='text' id='name' name='myName' onChange={this.onChange('myName')} />
+          </label>
+          <label htmlFor='password'>
+            年纪：
+            <input type='number' id='password' name='age' onChange={this.onChange('age')} />
+          </label>
+        </form>
+      </div>
+    )
+  }
+  // 高阶函数
+  onChange = key => event => this.setState({ [key]: event.target.value })
+}
+
+export default MyForm
+```
 
 [更多表单的信息](https://react.docschina.org/docs/forms.html)
