@@ -458,6 +458,12 @@ BookFun.propTypes = {
 // BookFun.defaultProps = { book.price: 39 }
 ```
 
+## 子节点 children 属性
+
+vue 通过插槽 `slot` 来传递 html 或者组件，react 通过 `children` 属性来传递，同时提供了操作 children 的一些方法。
+
+[React.children](https://zh-hans.reactjs.org/docs/react-api.html#reactchildren)
+
 ## 组件的样式
 
 给组件添加样式的方式有两种：外部样式和内联样式
