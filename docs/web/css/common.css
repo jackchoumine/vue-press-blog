@@ -1,0 +1,37 @@
+html {
+  font-size: 1rem;
+}
+
+p.one {
+  font-size: 2rem;
+  width: 10rem;
+  height: 10rem;
+  background-color: lightblue;
+}
+
+p.two {
+  font-size: 20px;
+  width: 100px;
+  height: 100px;
+  background-color: lightgreen;
+}
+
+p.three {
+  font-size: 20px;
+  width: 10em;
+  height: 10em;
+  background-color: lightcoral;
+}
+
+p.four {
+  background-color: lightcyan;
+  height: 10vh;
+  width: 10vw;
+}
+
+p.five {
+  font-size: 5ex;
+  width: 10ex;
+  height: 10ex;
+  background-color: lightsalmon;
+}
