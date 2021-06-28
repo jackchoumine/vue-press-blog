@@ -22,7 +22,7 @@ function startServer(route, handle) {
 }
 
 module.exports = {
-  startServer: startServer,
+  startServer: startServer
 }
 ```
 
@@ -44,26 +44,26 @@ server.startServer(router.route, handle)
 
 **router.js**
 
-```
+```js
 /**
  * 路由控制，类似 java 里的 controller
  */
-var fs = require('fs');
+var fs = require('fs')
 //handle 是路由处理函数
 function route(handle, pathname, response) {
-    console.log('Routing a request for ' + pathname);
-    if ('function' === typeof handle[pathname]) {
-        handle[pathname](response);
-    } else {
-        response.writeHead(404, {
-            'Content-Type': 'text/html'
-        });
-        fs.createReadStream(__dirname + '/404.html', 'utf8').pipe(response);
-    }
+  console.log('Routing a request for ' + pathname)
+  if ('function' === typeof handle[pathname]) {
+    handle[pathname](response)
+  } else {
+    response.writeHead(404, {
+      'Content-Type': 'text/html'
+    })
+    fs.createReadStream(__dirname + '/404.html', 'utf8').pipe(response)
+  }
 }
 
 module.exports = {
-    route:route,
+  route: route
 }
 ```
 
@@ -75,24 +75,24 @@ var fs = require('fs')
 
 function home(response) {
   response.writeHead(200, {
-    'Content-Type': 'text/html',
+    'Content-Type': 'text/html'
   })
   fs.createReadStream(__dirname + '/index.html', 'utf8').pipe(response)
 }
 
 function review(response) {
   response.writeHead(200, {
-    'Content-Type': 'text/html',
+    'Content-Type': 'text/html'
   })
   fs.createReadStream(__dirname + '/review.html', 'utf8').pipe(response)
 }
 
 function api_records(response) {
   response.writeHead(200, {
-    'Content-Type': 'application/json',
+    'Content-Type': 'application/json'
   })
   var jsonObj = {
-    name: 'hfpp2012',
+    name: '2012'
   }
   response.end(JSON.stringify(jsonObj))
 }
@@ -100,25 +100,25 @@ function api_records(response) {
 module.exports = {
   home: home,
   review: review,
-  api_records: api_records,
+  api_records: api_records
 }
 ```
 
 **app.js**
 
-```
-var server = require('./server');
-var router = require('./router');
-var handler = require('./handler');
+```js
+var server = require('./server')
+var router = require('./router')
+var handler = require('./handler')
 
-var handle = {};
-handle['/'] = handler.home;
-handle['/home'] = handler.home;
-handle['/review'] = handler.review;
-handle['/api/v1/records'] = handler.api_records;
+var handle = {}
+handle['/'] = handler.home
+handle['/home'] = handler.home
+handle['/review'] = handler.review
+handle['/api/v1/records'] = handler.api_records
 
-console.log('app started!');//加提示
-server.startServer(router.route, handle);
+console.log('app started!') //加提示
+server.startServer(router.route, handle)
 ```
 
 **home.html**

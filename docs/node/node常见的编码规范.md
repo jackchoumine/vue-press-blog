@@ -1,4 +1,4 @@
-# node 最佳实践
+# node 常见的编码规范
 
 ## 总是使用`异步函数`
 
@@ -25,7 +25,7 @@ CommonJS 规范加载模块是`同步`的，在函数内部加载模块，先加
 ## 检查回调函数是不是一个函数
 
 ```js
-if (typeof callbacl === 'function') {
+if (typeof callback === 'function') {
   callback()
 }
 ```

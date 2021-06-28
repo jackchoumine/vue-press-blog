@@ -15,6 +15,7 @@ Node 开发必须用到 npm，而脚本功能是 npm 最强大、最常用的功
 ```
 
 执行`npm run dev`就相当于执行`node index.js`。
+
 使用脚本的优点：
 
 - 集中到一起，方便管理；
@@ -208,7 +209,7 @@ if (TARGET === 'posttest') {
 }
 ```
 
-env-chechk.js
+env-check.js
 
 ```js
 // 获取正在执行的脚本名字

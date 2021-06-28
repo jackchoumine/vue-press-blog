@@ -1,7 +1,5 @@
 # node 环境变量
 
-[TOC]
-
 配置环境变量是一种配置应用的好方式，灵活的环境配置方式可使得程序能轻易的运行在各种环境中，而不需要修改源代码。程序可根据不同的环境变量，执行的不同的行为，比如日志记录模块，开发环境下，将日志输出到控制台，线上环境，将日志保存在文件中。
 
 ## 不同环境对 Node 程序可能的影响
@@ -98,7 +96,8 @@ MY_VARIABLE=JACK
 ```
 
 没有语法高亮？
-推荐下载 vscod 扩展，DotENV，除了语法高亮，还有拼写检查等功能，墙裂推荐。
+
+推荐下载 vscode 扩展，DotENV，除了语法高亮，还有拼写检查等功能，墙裂推荐。
 
 然后将其**加入 git 的忽略文件**里，因为配置文件**包含敏感信息**，不要上传到仓库里，而且，团队成员需要各自的配置信息。（那么把代码给分享给其他人，他怎么知道需要配置哪些信息呢？稍后有答案）
 
@@ -149,7 +148,7 @@ dotenv.config()
 module.exports = {
   mode: process.env.NODE_ENV,
   port: process.env.PORT,
-  my_variable: process.env.MY_VARIABLE,
+  my_variable: process.env.MY_VARIABLE
 }
 ```
 
@@ -162,7 +161,7 @@ dotenv.config()
 module.exports = {
   mode: process.env.NODE_ENV,
   port: process.env.PORT,
-  my_variable: process.env.MY_VARIABLE,
+  my_variable: process.env.MY_VARIABLE
 }
 ```
 
@@ -213,6 +212,8 @@ node -r dotenv/config server.js
 配置文件含有敏感信息，不加入版本控制。但是团队成员之间分享代码，想要程序运行起来，就要知道需要配置哪些环境变量，在写一个`.env.example`作为配置环境变量的例子，加入版本控制，在 README 在中说明如何配置。
 
 ## 环境变量结合 PM2
+
+还需学习了解
 
 <!-- TODO -->
 

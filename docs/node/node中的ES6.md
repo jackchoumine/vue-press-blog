@@ -89,7 +89,7 @@ let myFun = () => {
 }
 let obj = {
   age: 10,
-  ID: '1313134',
+  ID: '1313134'
 }
 let arr = ['1', '2']
 let oNum = new Number(12)
@@ -143,7 +143,7 @@ import './name' //多次加载，只会执行一次
 import json from './json'
 import Vue from 'vue'
 const directives = {
-  json,
+  json
 }
 for (const [key, value] of Object.entries(directives)) {
   Vue.directive(key, value)
@@ -171,7 +171,7 @@ let myFun = () => {
 }
 let obj = {
   age: 10,
-  ID: '1313134',
+  ID: '1313134'
 }
 let arr = ['1', '2']
 let oNum = new Number(12)
@@ -308,7 +308,11 @@ async function dynamicLoad() {
 
 ## 模块继承
 
+待完成
+
 ## 跨模块常量
+
+待完成
 
 ## 参考
 

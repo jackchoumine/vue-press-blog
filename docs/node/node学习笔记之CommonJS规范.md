@@ -208,7 +208,7 @@ let incCounter = () => {
 console.log('lib', require.main === module) // 被require 执行，输出 false
 module.exports = {
   counter,
-  incCounter,
+  incCounter
 }
 ```
 

@@ -39,13 +39,3 @@ curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | 
 V0.33.11，是想要安装的版本，可选择其他。
 
 重启终端就可用了。
-
-## nvm 常用命令
-
-```bash
-nvm ls # 查看所有安装的 node 版本，带箭头，绿色的，为正在使用的版本。
-nvm ls-remote # 查看可安装的 node 版本
-nvm install version # 安装特定版本的 node
-nvm uninstall version #卸载
-nvm use version # 切换正在用的版本
-```

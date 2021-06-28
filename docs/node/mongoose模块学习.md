@@ -37,18 +37,18 @@ let UserSchema = new Schema(
     userName: {
       type: String,
       max: 100,
-      lowercase: true,
+      lowercase: true
     },
     userPass: String, //直接指定字段类型
     userAge: {
       type: Number, //指定数值范围，可选
       min: 18,
-      maxlength: 120,
+      maxlength: 120
     },
     loginDate: {
       type: Date,
-      required: true, //loginDate是必需字段
-    },
+      required: true //loginDate是必需字段
+    }
   }, // model 对象定义完了
   //集合的额外配置项，和 model 对象的定义同级
   {
@@ -56,14 +56,14 @@ let UserSchema = new Schema(
       //这是封顶集合
       size: 1024,
       max: 100,
-      autoIndexId: true,
-    },
+      autoIndexId: true
+    }
   },
   {
-    collection: 'collection_name', //指定表名，默认 用户model名称的复数
+    collection: 'collection_name' //指定表名，默认 用户model名称的复数
   },
   {
-    id: false, //默认生成一个虚拟 id,指向文档 _id,可禁用
+    id: false //默认生成一个虚拟 id,指向文档 _id,可禁用
   }
 )
 //将 Schema 转为 Model,第一个参数是往往是一个单数名词，会被转为 复数形式，充当表名。若已经指定表名，不会转换。Model 的实例是数据库中的文档
@@ -112,15 +112,15 @@ Map 类型的字段，Map 类型的字段是一个内嵌文档。
 const userSchema = new Schema({
   nestedDoc: {
     type: Map, //nestedDoc 字段是一个字段值为 String 的 Map
-    of: String, //用 of 指定该map的字段值的类型
-  },
+    of: String //用 of 指定该map的字段值的类型
+  }
 })
 const User = mongoose.model('User', userSchema)
 let user = new User({
   nestedDoc: {
     github: 'jack',
-    twitter: '@jack222',
-  },
+    twitter: '@jack222'
+  }
 })
 console.log(user.nesteDoc)
 // Map { 'github' => 'jack', 'twitter' => '@jack222' }
@@ -128,7 +128,7 @@ console.log(user.nesteDoc.get['github'])
 //jack
 // nestedDoc 是一个 Map，可调用 Map 的方法设置值
 let user = new User({
-  nestedDoc: {},
+  nestedDoc: {}
 })
 user.nestedDoc.set('github', 'jack')
 user.set('nestedDoc.twitter', '@jack222')
@@ -146,7 +146,7 @@ function insert() {
     username: 'Tom',
     userPass: '12134',
     userAge: 12,
-    loginDate: new Date(),
+    loginDate: new Date()
   })
   user.save(function (error, result) {
     if (error) {
@@ -372,7 +372,7 @@ getByPager()
 ```js
 let User = new Schema({
   username: { type: String, index: true, unique: true },
-  loginDate: { type: Date, default: Date.now },
+  loginDate: { type: Date, default: Date.now }
 })
 ```
 
