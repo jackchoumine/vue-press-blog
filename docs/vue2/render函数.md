@@ -1,12 +1,10 @@
-[[toc]]
-
 # render 函数
 
 在 vue 的项目入口文件中，下面的代码新建一个 vue 的根组件，并默认命名为 `Root`，并将其挂载在 HTML 模板 `#app` div 上，它的模板在哪？
 
 ```js
 new Vue({
-  render: h => h(App),
+  render: h => h(App)
 }).$mount('#app')
 ```
 
@@ -244,10 +242,10 @@ resolve 的用法我没有搜索到例子，欢迎大佬告诉我。
       return {
         person: {
           name: 'jack',
-          age: 23,
-        },
+          age: 23
+        }
       }
-    },
+    }
   }
 </script>
 ```
@@ -279,7 +277,7 @@ export default {
     const slotDefault = h('template', { slot: 'default' }, '默认插槽')
     const children = [slotLeft, slotDefault, slotRight]
     return h(MyButton, {}, children)
-  },
+  }
 }
 ```
 
@@ -308,12 +306,12 @@ export default {
             const { age } = props
             // 返回 jsx
             return <span>按钮右边 {age} 岁</span>
-          },
-        },
+          }
+        }
       },
       children
     )
-  },
+  }
 }
 ```
 
@@ -332,8 +330,8 @@ export default {
     return {
       person: {
         name: 'jack',
-        age: 23,
-      },
+        age: 23
+      }
     }
   },
   render(h) {
@@ -346,7 +344,7 @@ export default {
     const rightSlot = right(this.person)
     const button = h('button', {}, [defaultSlot])
     return h('div', {}, [leftSlot, button, rightSlot])
-  },
+  }
 }
 ```
 
@@ -359,8 +357,8 @@ export default {
     return {
       person: {
         name: 'jack',
-        age: 23,
-      },
+        age: 23
+      }
     }
   },
   render(h) {
@@ -378,7 +376,7 @@ export default {
         {rightSlot}
       </div>
     )
-  },
+  }
 }
 ```
 
@@ -391,8 +389,8 @@ export default {
   props: {
     person: {
       type: Object,
-      default: () => ({ name: 'jack', age: 23 }),
-    },
+      default: () => ({ name: 'jack', age: 23 })
+    }
   },
   // NO DATA in functional component
   // data() {
@@ -416,7 +414,7 @@ export default {
         {rightSlot}
       </div>
     )
-  },
+  }
 }
 ```
 
@@ -480,12 +478,12 @@ export default {
           } else {
             that.setTile(el, value)
           }
-        },
-      },
+        }
+      }
     },
     data() {
       return {
-        data: { age: 23, job: 'web dev' },
+        data: { age: 23, job: 'web dev' }
       }
     },
     methods: {
@@ -499,8 +497,8 @@ export default {
       },
       expresFun(data) {
         return data.age + '岁'
-      },
-    },
+      }
+    }
   }
 </script>
 ```
@@ -596,33 +594,33 @@ export default {
     // 需要实现 v-model 指令
     value: {
       type: [String, Number],
-      default: '',
-    },
+      default: ''
+    }
   },
   render(h) {
     return h('input', {
       class: {
-        'my-input': true,
+        'my-input': true
       },
       style: {
-        backgroundColor: '#ccc',
+        backgroundColor: '#ccc'
       },
       attrs: {
         id: 'my-input',
         class: 'a-my-input',
-        'data-key': 'key',
+        'data-key': 'key'
       },
       domProps: {
-        value: this.value,
+        value: this.value
       },
       // 监听 input 的 input 事件
       on: {
         input: ({ target }) => {
           this.$emit('input', target.value)
-        },
-      },
+        }
+      }
     })
-  },
+  }
 }
 ```
 
@@ -645,7 +643,7 @@ export default {
   name: 'UseInput',
   data() {
     return {
-      input: '',
+      input: ''
     }
   },
   render(h) {
@@ -656,12 +654,12 @@ export default {
           callback: value => {
             // 可在此做其他事件
             this.input = value
-          },
-        },
+          }
+        }
       }),
-      h('h3', {}, this.input),
+      h('h3', {}, this.input)
     ])
-  },
+  }
 }
 ```
 
@@ -674,7 +672,7 @@ import MyInput from './my-input.jsx'
 export default {
   name: 'UseInput',
   props: {
-    value: { type: [String, Number], default: '' },
+    value: { type: [String, Number], default: '' }
   },
   render(h) {
     return h('div', {}, [
@@ -684,12 +682,12 @@ export default {
           callback: value => {
             // 可在此做其他事件
             this.$emit('input', value)
-          },
-        },
+          }
+        }
       }),
-      h('h3', {}, this.value),
+      h('h3', {}, this.value)
     ])
-  },
+  }
 }
 ```
 
@@ -700,23 +698,23 @@ import MyInput from './my-input.jsx'
 export default {
   name: 'UseInput',
   props: {
-    value: { type: [String, Number], default: '' },
+    value: { type: [String, Number], default: '' }
   },
   render(h) {
     return h('div', {}, [
       h(MyInput, {
         props: {
-          value: this.value,
+          value: this.value
         },
         on: {
           input: value => {
             this.$emit('input', value)
-          },
-        },
+          }
+        }
       }),
-      h('h3', {}, this.value),
+      h('h3', {}, this.value)
     ])
-  },
+  }
 }
 ```
 
@@ -731,11 +729,11 @@ import MyInput from './my-input.jsx'
 export default {
   name: 'UseInput',
   props: {
-    value: { type: [String, Number], default: '' },
+    value: { type: [String, Number], default: '' }
   },
   data() {
     return {
-      input: this.value,
+      input: this.value
     }
   },
   render(h) {
@@ -745,7 +743,7 @@ export default {
         {/* <h2>{this.input}</h2> */}
       </div>
     )
-  },
+  }
 }
 ```
 
