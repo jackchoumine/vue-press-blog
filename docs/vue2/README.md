@@ -7,3 +7,5 @@
 ## [函数式组件是什么](./函数式组件.md)
 
 ## [如何使用 render 改善组件](./如何使用render函数封装高扩展的组件.md)
+
+## [commonJS 和 ES6 模块在 Vue 中混用](./commonJS和ES6模块在Vue中混用.md)
