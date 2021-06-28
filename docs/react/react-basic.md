@@ -1,5 +1,3 @@
-[[toc]]
-
 # react 核心概念
 
 react 将 UI 分成独立可复用的组件.
@@ -954,6 +952,18 @@ select 元素和 textarea 元素也支持通过 defaultValue 设置默认值，`
 <input type='text' name='name' defaultValue='hello' ref={nameInput => (this.nameInput = nameInput)} />
 ```
 
+### 小结
+
+受控组件：受到组件状态（state）控制的组件。
+
+state + 在事件处理函数中改变组件状态
+
+state + 事件能实现 vue 中 v-model 的效果
+
+非受控组件：没有到组件状态（state）控制的组件。
+
+通过 DOM 获取表单的 value
+
 ### 如何处理大量表单的情况
 
 > 事件处理函数使用高阶函数
@@ -992,9 +1002,9 @@ export default MyForm
 
 react 主张**以声明式编写 UI**，什么是声明式？
 
-和声明式相反的是命令式，命令式详细得告诉计算机如何做，开发需要关注每一步，而命令式只需要关注**做什么**和结果。
+和声明式相反的是命令式，命令式详细得告诉计算机**如何做**，程序员需要关注每一步，而声明式只需要关注**做什么**和**结果**。
 
-jquery 直接操作 DOM,就是命令式的，下面的代码是命令式的：
+直接操作 DOM，就是命令式的，下面的代码是命令式的：
 
 ```js
 const container = document.getElementById('container')
@@ -1032,9 +1042,9 @@ class Button extends React.Component{
 }
 ```
 
-> 当你写组件时，把关注点放在在新的状态下，组件长什么样式，而不是如何得到你想要的组件样式。
+> 当你写组件时，把关注点放在在新的状态下，UI 的状态，而不是如何得到你想要的 UI。
 
-### 写出声明式的代码的建议
+### 如何确保写出声明式代码
 
 1. 避免使用 refs，它命令式的;
 
