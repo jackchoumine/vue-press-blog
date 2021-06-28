@@ -19,6 +19,7 @@
     "builtins",
     "chezscheme",
     "codepen",
+    "eval",
     "flelds",
     "instanceof",
     "leetcode",
