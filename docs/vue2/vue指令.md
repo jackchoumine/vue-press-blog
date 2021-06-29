@@ -183,19 +183,19 @@ vue3 中在 jsx 中实现 v-html:
 
 ```js
 {
-      title: '商品描述',
-      dataIndex: 'sourceDesc',
-      customRender: ({ record }) => {
-        let divEl = document.createElement('div')
-        divEl.innerHTML = record.sourceDesc
-        const content = divEl.textContent
-        // @ts-ignore
-        divEl = null
-        return (
-          (record.sourceDesc && (
-            <teleport innerHTML={record.sourceDesc} title={content || '暂无数据'}></teleport>
-          )) || <span title="暂无数据">-</span>
-        )
-      },
-},
+  title: '商品描述',
+  dataIndex: 'sourceDesc',
+  customRender: ({ record }) => {
+    let divEl = document.createElement('div')
+    divEl.innerHTML = record.sourceDesc
+    const content = divEl.textContent
+    // @ts-ignore
+    divEl = null
+    return (
+      (record.sourceDesc && <teleport innerHTML={record.sourceDesc} title={content || '暂无数据'}></teleport>) || (
+        <span title='暂无数据'>-</span>
+      )
+    )
+  }
+}
 ```
