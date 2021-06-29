@@ -4,6 +4,11 @@
 
 2. 何时使用 `===`，何时使用`==`?
 
+> 强制类型转换和隐式类型转换
+
+强制：parseInt parseFloat toString 等
+隐式： == + if 逻辑运算
+
 3. `window.onload` 和 `DOMContentLoaded` 的区别？
 
 4. JS 创建 10 个 `a` 标签，点击时弹窗它的序号？
@@ -104,3 +109,57 @@ fn2()
 ```
 
 13. 手写 ajax
+
+14. 常见的前端攻击方式有哪些？
+
+① XSS -- 跨站请求攻击
+
+预防：`<` 变成 `&lt`、`>` 变成`&gt`
+
+使用 npm 包`xss`
+
+② XSRF -- 跨站请求伪造
+
+- 使用 post 接口
+
+- 支付时添加二次验证，比如密码、短信等
+
+15. 手写 lodash isEqual
+
+```js
+const isObject = value => {
+  return typeof value === 'object' && value !== null
+}
+const isEqual = (obj1, obj2) => {
+  if (!isObject(obj1) || !isObject(obj2)) {
+    return obj1 === obj2
+  }
+  if (obj1 === obj2) return true
+  // 比较 keys，数组和对象都有 key
+  const objKey1 = Object.keys(obj1)
+  const objKey2 = Object.keys(obj2)
+  if (objKey1.length !== objKey2.length) return false
+  // 递归比较
+  const size = objKey1.length - 1
+  let i = 0
+  while (i <= size) {
+    const key = objKey1[i]
+    if (!isEqual(obj1[key], obj2[key])) {
+      return false
+    }
+    ++i
+  }
+  // 到达这里 说明全等
+  return true
+}
+```
+
+16. new Object() 和 Object.create() 的区别？
+
+`{}` 等同于`new Object()` 原型为`Object.prototype`。
+
+`Object.create(null)` 没有原型。
+
+17. requestAnimationFrame
+
+18. 性能优化从哪些方面考虑
