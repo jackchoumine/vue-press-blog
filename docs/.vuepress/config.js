@@ -2,7 +2,7 @@
  * @Description: vue-press 配置
  * @Date: 2021-06-04 15:36:47 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-24 18:07:09 +0800
+ * @LastEditTime: 2021-06-29 13:57:47 +0800
  * @LastEditors: JackChou
  */
 module.exports = {
@@ -23,6 +23,7 @@ module.exports = {
       { text: 'vue2', link: '/vue2/' },
       { text: 'vue3', link: '/vue3/' },
       { text: 'react', link: '/react/' },
+      { text: 'angular', link: '/angular/' },
       {
         text: '前端',
         // 二级下拉
