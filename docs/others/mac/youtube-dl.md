@@ -1,4 +1,4 @@
-# 软件使用
+# 使用命令下载网站视频
 
 ## youtube-dl 的使用
 
@@ -18,23 +18,9 @@ youtube-dl video-url # 单个视频
 
 类似 youtube-dl
 
-````bash
+```bash
 you-get -i url # 查看了视频信息 格式 质量 大小等
 you-get --playlist url # 批量下载
 you-get --format=dash-flv url # 指定格式下载
 you-get --playlist --format=dash-flv url # 指定格式批量下载
-``
-## iina 播放器使用
-
-快捷键
-
-```bash
-space # 暂停、开始
-cmd + → # 下一个媒体
-cmd + ← # 上一个媒体
-cmd + shift + p # 播放列表
-cmd + [ # 0.5倍速
-cmd + ] # 2 倍速
-option + cmd + [ # 0.9091 倍速
-option + cmd + ] # 1.1 倍速
-````
+```

@@ -262,3 +262,28 @@ brew cask install launchrocket # 服务查看器
 ```
 
 ## brew 问题
+
+## java 环境搭建
+
+```bash
+brew cask install java # 安装最新的版本
+# 安装指定版本
+brew tap adoptopenjdk/openjdk
+brew cask install adoptopenjdk8
+brew cask install adoptopenjdk11
+brew cask install adoptopenjdk13
+# 更新 .bash_profile
+sudo vim .bash_profile
+export JAVA_8_HOME=$(/usr/libexec/java_home -v1.8)
+export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
+
+alias java8='export JAVA_HOME=$JAVA_8_HOME'
+alias java11='export JAVA_HOME=$JAVA_11_HOME'
+
+# default to Java 11
+java11
+# 刷新
+source ~/.bash_profile
+# 查看安装的版本
+java --version
+```

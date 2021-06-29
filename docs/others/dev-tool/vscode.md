@@ -10,6 +10,8 @@ cmd + j # 打开内置终端
 cmd + shift + n # 打开新的项目窗口
 cmd + \ # 向右拆分
 cmd + shift + v # 预览markdown
+          option + delete # 删除左边整个单词
+control + option + delete # 删除左边部分单词
 ```
 
 ## 批量修改
