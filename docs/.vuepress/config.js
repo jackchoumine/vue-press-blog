@@ -2,7 +2,7 @@
  * @Description: vue-press 配置
  * @Date: 2021-06-04 15:36:47 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-29 15:51:15 +0800
+ * @LastEditTime: 2021-06-29 16:14:47 +0800
  * @LastEditors: JackChou
  */
 module.exports = {
@@ -28,9 +28,9 @@ module.exports = {
         text: '前端',
         // 二级下拉
         items: [
-          { text: 'js', link: '/web/js/' },
-          { text: 'css', link: '/web/css/' },
-          { text: 'html', link: '/web/html/' }
+          { text: 'js', link: '/web/js/' }
+          // { text: 'css', link: '/web/css/' },
+          // { text: 'html', link: '/web/html/' }
         ]
       },
       { text: 'node', link: '/node/' },
