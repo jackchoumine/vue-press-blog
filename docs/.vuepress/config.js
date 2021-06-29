@@ -2,7 +2,7 @@
  * @Description: vue-press 配置
  * @Date: 2021-06-04 15:36:47 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-29 13:57:47 +0800
+ * @LastEditTime: 2021-06-29 15:51:15 +0800
  * @LastEditors: JackChou
  */
 module.exports = {
@@ -38,8 +38,9 @@ module.exports = {
         text: '其他',
         // 二级下拉
         items: [
-          // { text: 'ts', link: '/others/ts/' },
-          { text: '函数式编程', link: '/others/functional-programming/' }
+          { text: '函数式编程', link: '/others/functional-programming/' },
+          { text: '开发工具', link: '/others/dev-tool/' },
+          { text: 'mac使用', link: '/others/mac/' }
         ]
       }
       // { text: '面试', link: '/interview/' },
