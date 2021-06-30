@@ -2,7 +2,7 @@
  * @Description: 侧边栏
  * @Date: 2021-06-01 15:03:58 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-30 11:28:08 +0800
+ * @LastEditTime: 2021-07-01 01:05:08 +0800
  * @LastEditors: JackChou
 -->
 <template>
@@ -87,8 +87,14 @@ const menuList = [
   {
     type: 'path',
     path: '/store',
-    name: 'vuex',
+    name: 'my-vuex',
     id: 'store1213'
+  },
+  {
+    type: 'path',
+    path: '/my-router',
+    name: 'my-router',
+    id: 'router1213'
   }
 ]
 export default {
