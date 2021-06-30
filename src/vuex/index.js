@@ -3,7 +3,7 @@
  * @Description: vuex 手写
  * @Date: 2021-06-30 13:22:00 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-30 15:44:34 +0800
+ * @LastEditTime: 2021-06-30 16:01:11 +0800
  * @LastEditors: JackChou
  */
 function forEach(obj, callback) {
@@ -39,9 +39,18 @@ class Store {
     // mutations
     const mutations = options.mutations
     this.mutations = {}
-    forEach(mutations, (key, value) => {
-      this.mutations[key] = payload => {
+    forEach(mutations, (mutationName, value) => {
+      this.mutations[mutationName] = payload => {
         value(this.state, payload)
+      }
+    })
+    // actions
+    const actions = options.actions
+    this.actions = {}
+    forEach(actions, (actionName, value) => {
+      this.actions[actionName] = payload => {
+        // NOTE 传递 this
+        value(this, payload)
       }
     })
   }
@@ -55,6 +64,11 @@ class Store {
   // commit
   commit = (mutationName, payload) => {
     this.mutations[mutationName](payload)
+  }
+
+  // dispatch
+  dispatch = (actionName, payload) => {
+    this.actions[actionName](payload)
   }
 }
 let Vue = null
