@@ -1,9 +1,10 @@
 /* eslint-disable vue/require-name-property */
+
 /*
  * @Description: vuex 手写
  * @Date: 2021-06-30 13:22:00 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-30 20:45:49 +0800
+ * @LastEditTime: 2021-06-30 21:15:04 +0800
  * @LastEditors: JackChou
  */
 function forEach(obj, callback) {
@@ -179,6 +180,16 @@ class Store {
   // dispatch
   dispatch = (actionName, payload) => {
     this.actions[actionName].forEach(fn => fn(payload))
+  }
+
+  registerModule(moduleName, module) {
+    let path = moduleName
+    if (!Array.isArray(moduleName)) {
+      path = [moduleName]
+    }
+
+    this.modules.register(path, module)
+    installModule(this, this.state, path, this.modules.root)
   }
 }
 let Vue = null

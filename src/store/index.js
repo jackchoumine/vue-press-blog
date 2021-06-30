@@ -2,7 +2,7 @@
  * @Description: 状态管理
  * @Date: 2021-06-30 11:21:16 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-30 19:04:46 +0800
+ * @LastEditTime: 2021-06-30 21:03:38 +0800
  * @LastEditors: JackChou
  */
 import Vue from 'vue'
@@ -42,7 +42,7 @@ const moduleB = {
   }
 }
 
-export default new Vuex.Store({
+const store = new Vuex.Store({
   // 这样获取 模块的状态
   // this.$store.state.a.age
   modules: {
@@ -72,3 +72,9 @@ export default new Vuex.Store({
     }
   }
 })
+
+store.registerModule('d', {
+  state: { age: '50' }
+})
+
+export default store
