@@ -3,9 +3,14 @@
  * @Description: vuex 手写
  * @Date: 2021-06-30 13:22:00 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-30 15:25:43 +0800
+ * @LastEditTime: 2021-06-30 15:33:00 +0800
  * @LastEditors: JackChou
  */
+function forEach(obj, callback) {
+  Object.keys(obj).forEach(key => {
+    callback(key, obj[key])
+  })
+}
 class Store {
   constructor(options) {
     // this.state = options.state
@@ -21,12 +26,13 @@ class Store {
       //   }
       // }
     })
+
     this.getters = {}
     const getters = options.getters
-    Object.keys(getters).forEach(key => {
+    forEach(getters, (key, value) => {
       Object.defineProperty(this.getters, key, {
         get: () => {
-          return getters[key](this.state)
+          return value(this.state)
         }
       })
     })
