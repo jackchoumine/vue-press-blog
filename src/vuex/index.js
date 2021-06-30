@@ -3,7 +3,7 @@
  * @Description: vuex 手写
  * @Date: 2021-06-30 13:22:00 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-30 14:51:22 +0800
+ * @LastEditTime: 2021-06-30 15:25:43 +0800
  * @LastEditors: JackChou
  */
 class Store {
@@ -21,9 +21,18 @@ class Store {
       //   }
       // }
     })
+    this.getters = {}
+    const getters = options.getters
+    Object.keys(getters).forEach(key => {
+      Object.defineProperty(this.getters, key, {
+        get: () => {
+          return getters[key](this.state)
+        }
+      })
+    })
   }
 
-  // this.$store.state 会执 get
+  // this.$store.state, this.state 会执 get
   get state() {
     // NOTE vm 实例上有 $store 属性，因为会执行全局的 mixin，但是因为  new Vue 时，没传递 store，它的只为 undefined
     return this.vm.state
