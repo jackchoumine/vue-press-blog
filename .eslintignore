@@ -1,2 +1,3 @@
 jquery*.js
 *.html
+./src/my-store/index.js
