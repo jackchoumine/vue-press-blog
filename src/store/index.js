@@ -2,7 +2,7 @@
  * @Description: 状态管理
  * @Date: 2021-06-30 11:21:16 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-30 14:27:38 +0800
+ * @LastEditTime: 2021-06-30 19:04:46 +0800
  * @LastEditors: JackChou
  */
 import Vue from 'vue'
@@ -12,7 +12,43 @@ import Vuex from '../vuex'
 
 Vue.use(Vuex)
 
+const moduleA = {
+  state: {
+    age: 'a100'
+  },
+  mutations: {
+    syncChangeAge(state, payload) {
+      state.age += payload
+    }
+  }
+}
+const moduleC = {
+  state: {
+    age: 'c100'
+  },
+  mutations: {
+    syncChangeAge(state, payload) {
+      state.age += payload
+    }
+  }
+}
+const moduleB = {
+  state: {
+    age: 'c100'
+  },
+  // this.$store.state.b.c
+  modules: {
+    c: moduleC
+  }
+}
+
 export default new Vuex.Store({
+  // 这样获取 模块的状态
+  // this.$store.state.a.age
+  modules: {
+    a: moduleA,
+    b: moduleB
+  },
   state: {
     age: 12
   },

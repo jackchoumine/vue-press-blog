@@ -3,12 +3,117 @@
  * @Description: vuex 手写
  * @Date: 2021-06-30 13:22:00 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-30 16:01:11 +0800
+ * @LastEditTime: 2021-06-30 20:45:49 +0800
  * @LastEditors: JackChou
  */
 function forEach(obj, callback) {
   Object.keys(obj).forEach(key => {
     callback(key, obj[key])
+  })
+}
+function isObject(obj) {
+  return obj !== null && typeof obj === 'object'
+}
+function isFunction(value) {
+  return typeof value === 'function'
+}
+/**
+ * root = {
+ *  _raw:rootModule,
+ *  state:rootModule.state,
+ *  _children: {
+ *      a:{
+ *        _raw:aModule,
+ *        state:aModule.state,
+ *        _children:{}
+ *       }
+ *      },
+ *      b:{
+ *        _raw:bModule,
+ *        state:bModule.state,
+ *        _children:{
+ *            c: {
+ *                _raw:aModule,
+ *                state:cModule.state,
+ *                _children:{}
+ *             }
+ *          }
+ *       }
+ *    }
+ *  }
+ * }
+ */
+class ModuleCollection {
+  constructor(options) {
+    this.register([], options)
+  }
+
+  register(path, rootModule) {
+    const rawModule = {
+      _raw: rootModule,
+      state: rootModule.state,
+      _children: {}
+    }
+    if (!this.root) {
+      this.root = rawModule
+    } else {
+      // NOTE 关键
+      const parentModule = path.slice(0, -1).reduce((root, current) => {
+        return root._children[current]
+      }, this.root)
+      parentModule._children[path[path.length - 1]] = rawModule
+    }
+    if (rootModule.modules) {
+      forEach(rootModule.modules, (moduleName, module) => {
+        this.register(path.concat(moduleName), module)
+      })
+    }
+    // console.log(this.root)
+  }
+}
+
+function installModule(store, state, path, rawModule) {
+  if (path.length > 0) {
+    // 安装模块
+    const parentState = path.slice(0, -1).reduce((root, current) => {
+      return state[current]
+    }, state)
+    Vue.set(parentState, path[path.length - 1], rawModule.state)
+  }
+  const getters = rawModule.getters
+  if (getters) {
+    forEach(getters, (getterName, value) => {
+      Object.defineProperty(store.getters, getterName, {
+        get: () => {
+          return value(rawModule.state)
+        }
+      })
+    })
+  }
+
+  const mutations = rawModule._raw.mutations
+  if (mutations) {
+    // 订阅
+    forEach(mutations, (mutationName, mutation) => {
+      const arr = store.mutations[mutationName] || (store.mutations[mutationName] = [])
+      arr.push(payload => {
+        mutation(rawModule.state, payload)
+      })
+    })
+  }
+
+  // actions
+  const actions = rawModule._raw.actions
+  if (actions) {
+    forEach(actions, (actionName, action) => {
+      const arr = store.actions[actionName] || (store.actions[actionName] = [])
+      arr.push(payload => {
+        action(store, payload)
+      })
+    })
+  }
+  forEach(rawModule._children, (moduleName, module) => {
+    installModule(store, state, path.concat(moduleName), module)
   })
 }
 class Store {
@@ -28,31 +133,36 @@ class Store {
     })
 
     this.getters = {}
-    const getters = options.getters
-    forEach(getters, (key, value) => {
-      Object.defineProperty(this.getters, key, {
-        get: () => {
-          return value(this.state)
-        }
-      })
-    })
-    // mutations
-    const mutations = options.mutations
     this.mutations = {}
-    forEach(mutations, (mutationName, value) => {
-      this.mutations[mutationName] = payload => {
-        value(this.state, payload)
-      }
-    })
-    // actions
-    const actions = options.actions
     this.actions = {}
-    forEach(actions, (actionName, value) => {
-      this.actions[actionName] = payload => {
-        // NOTE 传递 this
-        value(this, payload)
-      }
-    })
+    // 格式化配置
+    this.modules = new ModuleCollection(options)
+    // 安装模块
+    installModule(this, this.state, [], this.modules.root)
+    console.log(this.modules.root)
+    // const getters = options.getters
+    // forEach(getters, (key, value) => {
+    //   Object.defineProperty(this.getters, key, {
+    //     get: () => {
+    //       return value(this.state)
+    //     }
+    //   })
+    // })
+    // // mutations
+    // const mutations = options.mutations
+    // forEach(mutations, (mutationName, value) => {
+    //   this.mutations[mutationName] = payload => {
+    //     value(this.state, payload)
+    //   }
+    // })
+    // // actions
+    // const actions = options.actions
+    // forEach(actions, (actionName, value) => {
+    //   this.actions[actionName] = payload => {
+    //     // NOTE 传递 this
+    //     value(this, payload)
+    //   }
+    // })
   }
 
   // this.$store.state, this.state 会执 get
@@ -63,12 +173,12 @@ class Store {
 
   // commit
   commit = (mutationName, payload) => {
-    this.mutations[mutationName](payload)
+    this.mutations[mutationName].forEach(fn => fn(payload))
   }
 
   // dispatch
   dispatch = (actionName, payload) => {
-    this.actions[actionName](payload)
+    this.actions[actionName].forEach(fn => fn(payload))
   }
 }
 let Vue = null
