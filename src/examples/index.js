@@ -26,7 +26,7 @@ const myComponents = {
     } catch (error) {
       console.error(error)
     }
-  },
+  }
 }
 
 export default myComponents

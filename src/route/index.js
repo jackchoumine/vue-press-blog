@@ -17,8 +17,8 @@ const router = new Router({
     {
       path: '/',
       component: () => import('views'),
-      children: childrenRoutes,
-    },
-  ],
+      children: childrenRoutes
+    }
+  ]
 })
 export default router

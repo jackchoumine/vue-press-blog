@@ -9,7 +9,7 @@ const homeRoutes = [
   {
     path: '', // NOTE path 为 '' 否则 路径为 / 时，不会渲染 home 组件
     name: 'Home',
-    component: () => import('./index.vue'),
-  },
+    component: () => import('./index.vue')
+  }
 ]
 export default homeRoutes

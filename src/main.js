@@ -2,7 +2,7 @@
  * @Description: 应用入口
  * @Date: 2021-06-01 10:07:44 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-09 20:50:26 +0800
+ * @LastEditTime: 2021-06-30 10:58:09 +0800
  * @LastEditors: JackChou
  */
 import Vue from 'vue'
@@ -28,5 +28,5 @@ Vue.config.productionTip = false
 new Vue({
   name: 'Root',
   router, // NOTE 属性必须为 router
-  render: h => h(App),
+  render: h => h(App)
 }).$mount('#app')

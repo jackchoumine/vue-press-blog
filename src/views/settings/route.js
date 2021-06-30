@@ -10,22 +10,22 @@ const homeRoutes = [
   {
     path: '/settings',
     name: 'settings',
-    component: () => import('./index.vue'),
+    component: () => import('./index.vue')
   },
   {
     path: '/role',
     name: 'role',
-    component: () => import('./role'),
+    component: () => import('./role')
   },
   {
     path: '/menu',
     name: 'menu',
-    component: () => import('./menu'),
+    component: () => import('./menu')
   },
   {
     path: '/test',
     name: 'test',
-    component: () => import('./test-page'),
-  },
+    component: () => import('./test-page')
+  }
 ]
 export default homeRoutes

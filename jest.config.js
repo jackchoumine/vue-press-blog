@@ -12,13 +12,13 @@ module.exports = {
     'js',
     'json',
     // tell Jest to handle `*.vue` files
-    'vue',
+    'vue'
   ],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
     '^@ex/(.*)$': '<rootDir>/src/examples/$1',
     '^@ds/(.*)$': '<rootDir>/src/data-structure/$1',
-    '^@qs/(.*)$': '<rootDir>/src/data-structure/questions/$1',
+    '^@qs/(.*)$': '<rootDir>/src/data-structure/questions/$1'
   },
   collectCoverage: false,
   coverageDirectory: '<rootDir>/tests/unit/coverage', // 同 webpack.output
@@ -27,6 +27,6 @@ module.exports = {
     'src/**/*.{js,vue}',
     '!src/main.js',
     '!src/**/route.js',
-    '!**/node_modules/**',
-  ],
+    '!**/node_modules/**'
+  ]
 }

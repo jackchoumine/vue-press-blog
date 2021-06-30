@@ -12,7 +12,7 @@
 <script>
 export default {
   name: 'MenuPage',
-  components: {},
+  components: {}
 }
 </script>
 <style scoped lang="scss"></style>

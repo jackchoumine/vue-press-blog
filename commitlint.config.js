@@ -27,11 +27,11 @@ module.exports = {
         'test', // 增加测试
         'chore', // 构建过程或辅助工具的变动
         'revert', // 回退
-        'build', // 打包
-      ],
+        'build' // 打包
+      ]
     ],
     // subject 大小写不做校验
     // 自动部署的BUILD ROBOT的commit信息大写，以作区别
-    'subject-case': [0],
-  },
+    'subject-case': [0]
+  }
 }

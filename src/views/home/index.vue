@@ -22,8 +22,8 @@ export default {
     showConfirm() {
       // TODO如何知道用户点了确定或者取消？
       this.$myConfirm('删除后不能恢复', '确定删除吗？')
-    },
-  },
+    }
+  }
 }
 </script>
 

@@ -44,7 +44,7 @@ const menuList = [
     type: 'path',
     name: '首页',
     path: '/',
-    id: 'homeakfaketwrwr32',
+    id: 'homeakfaketwrwr32'
   },
   {
     type: 'menu',
@@ -55,13 +55,13 @@ const menuList = [
         type: 'path',
         path: '/role',
         name: '角色管理',
-        id: 'alfkjakfakwer',
+        id: 'alfkjakfakwer'
       },
       {
         type: 'path',
         path: '/menu',
         name: '菜单配置',
-        id: 'alfk343fakwer',
+        id: 'alfk343fakwer'
       },
       {
         type: 'menu',
@@ -72,18 +72,18 @@ const menuList = [
             type: 'path',
             path: '/test',
             name: '子菜单',
-            id: 'a3e23fsfd43fakwer',
-          },
-        ],
-      },
-    ],
+            id: 'a3e23fsfd43fakwer'
+          }
+        ]
+      }
+    ]
   },
   {
     type: 'path',
     path: '/settings',
     name: '其他菜单',
-    id: 'yyte2alkfakfjakfj',
-  },
+    id: 'yyte2alkfakfjakfj'
+  }
 ]
 export default {
   name: 'Aside',
@@ -91,9 +91,9 @@ export default {
   data() {
     return {
       menuList,
-      defaultOpeneds,
+      defaultOpeneds
     }
-  },
+  }
 }
 </script>
 <style lang="less">

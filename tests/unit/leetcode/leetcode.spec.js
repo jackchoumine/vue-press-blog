@@ -21,7 +21,7 @@ describe('twoSum', () => {
     const test = [-1, 0, 1, 2, -1, -4]
     expect(threeSum.threeSum(test)).toEqual([
       [-1, 0, 1],
-      [-1, -1, 2],
+      [-1, -1, 2]
     ])
     // [-4, 2, 2],
   })

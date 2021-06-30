@@ -2,14 +2,14 @@
  * @Description: 优先级队列
  * @Date: 2020-05-17 21:23:31
  * @Author: JackChouMine
- * @LastEditTime: 2021-06-05 05:57:41 +0800
+ * @LastEditTime: 2021-06-30 11:00:23 +0800
  * @LastEditors: JackChou
  */
 /**
  * 优先级队列：在插入元素时会考虑优先级，根据优先级确定插入位置
  */
 
-import { Queue } from '../index.js'
+// import { Queue } from '../index.js'
 
 /**
  *基于数组实现优先级队列
