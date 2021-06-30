@@ -2,7 +2,7 @@
  * @Description: 侧边栏
  * @Date: 2021-06-01 15:03:58 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-02 02:03:42 +0800
+ * @LastEditTime: 2021-06-30 11:28:08 +0800
  * @LastEditors: JackChou
 -->
 <template>
@@ -83,6 +83,12 @@ const menuList = [
     path: '/settings',
     name: '其他菜单',
     id: 'yyte2alkfakfjakfj'
+  },
+  {
+    type: 'path',
+    path: '/store',
+    name: 'vuex',
+    id: 'store1213'
   }
 ]
 export default {

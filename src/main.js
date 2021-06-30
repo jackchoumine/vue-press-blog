@@ -2,7 +2,7 @@
  * @Description: 应用入口
  * @Date: 2021-06-01 10:07:44 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-30 10:58:09 +0800
+ * @LastEditTime: 2021-06-30 11:24:52 +0800
  * @LastEditors: JackChou
  */
 import Vue from 'vue'
@@ -14,6 +14,7 @@ import globalComponents from './components'
 import myComponents from './examples'
 import FormTable from 'j-form-table'
 import router from './route'
+import store from './store'
 
 const plugins = [VueRouter, globalComponents, myComponents, FormTable]
 // 注入 element-ui 组件
@@ -27,6 +28,7 @@ Vue.config.productionTip = false
 
 new Vue({
   name: 'Root',
+  store,
   router, // NOTE 属性必须为 router
   render: h => h(App)
 }).$mount('#app')
