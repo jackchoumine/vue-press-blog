@@ -3,7 +3,7 @@
  * @Description: vuex 手写
  * @Date: 2021-06-30 13:22:00 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-30 15:33:00 +0800
+ * @LastEditTime: 2021-06-30 15:44:34 +0800
  * @LastEditors: JackChou
  */
 function forEach(obj, callback) {
@@ -36,12 +36,25 @@ class Store {
         }
       })
     })
+    // mutations
+    const mutations = options.mutations
+    this.mutations = {}
+    forEach(mutations, (key, value) => {
+      this.mutations[key] = payload => {
+        value(this.state, payload)
+      }
+    })
   }
 
   // this.$store.state, this.state 会执 get
   get state() {
     // NOTE vm 实例上有 $store 属性，因为会执行全局的 mixin，但是因为  new Vue 时，没传递 store，它的只为 undefined
     return this.vm.state
+  }
+
+  // commit
+  commit = (mutationName, payload) => {
+    this.mutations[mutationName](payload)
   }
 }
 let Vue = null
