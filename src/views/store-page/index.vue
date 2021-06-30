@@ -2,7 +2,7 @@
  * @Description: store 测试页面
  * @Date: 2021-06-30 11:29:14 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-30 15:18:44 +0800
+ * @LastEditTime: 2021-06-30 16:11:49 +0800
  * @LastEditors: JackChou
 -->
 <template>
@@ -24,8 +24,8 @@ export default {
   },
   methods: {
     syncChange() {
-      this.$store.state.age = 100
-      // this.$store.commit('syncChangeAge', 100)
+      // this.$store.state.age = 100
+      this.$store.commit('syncChangeAge', 100)
     },
     asyncChange() {
       this.$store.dispatch('asyncChangeAge', -10)
