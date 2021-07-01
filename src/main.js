@@ -2,7 +2,7 @@
  * @Description: 应用入口
  * @Date: 2021-06-01 10:07:44 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-07-01 15:42:32 +0800
+ * @LastEditTime: 2021-07-01 16:31:47 +0800
  * @LastEditors: JackChou
  */
 import Vue from 'vue'
@@ -36,5 +36,5 @@ new Vue({
     // debugger
   },
   router, // NOTE 属性必须为 router
-  render: h => h(App)
+  render: h => h(App),
 }).$mount('#app')
