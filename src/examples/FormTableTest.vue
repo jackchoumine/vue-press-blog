@@ -23,7 +23,7 @@ export default {
         slary: '3000',
         address: '四川省成都市成华区十里店寺庙',
         education: '本科',
-        isGood: 1
+        isGood: 1,
       },
       titleList: [
         { title: '姓名', prop: 'name' },
@@ -33,28 +33,28 @@ export default {
           titleTips: data => {
             return (data.image && '生成图，点击放大') || '暂无头像'
           },
-          prop: 'image'
+          prop: 'image',
         },
         {
           title: '职业',
-          prop: 'job'
+          prop: 'job',
         },
         {
           title: '月薪',
           prop: (h, data) => {
             return <span>{data.slary + '$'}</span>
           },
-          enableCopy: true // 开启点击赋值内容
+          enableCopy: true, // 开启点击赋值内容
         },
         {
           title: '住址',
           prop: 'address',
-          span: 2
+          span: 2,
         },
         {
           title: '学历',
           prop: 'education',
-          span: 1
+          span: 1,
         },
         {
           title: '是否统招',
@@ -62,10 +62,10 @@ export default {
             const map = { 0: '否', 1: '是' }
             return <span>{map[data.isGood]}</span>
           },
-          span: 2
-        }
-      ]
+          span: 2,
+        },
+      ],
     }
-  }
+  },
 }
 </script>

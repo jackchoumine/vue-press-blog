@@ -27,16 +27,16 @@ export default {
   props: {
     title: {
       type: String,
-      default: '确定操作吗？'
+      default: '确定操作吗？',
     },
     content: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   data() {
     return {
-      show: false
+      show: false,
     }
   },
   methods: {
@@ -50,8 +50,8 @@ export default {
     },
     hiddenModal() {
       this.show = false
-    }
-  }
+    },
+  },
 }
 </script>
 

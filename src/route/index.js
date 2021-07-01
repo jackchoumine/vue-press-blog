@@ -2,7 +2,7 @@
  * @Description: 路由配置
  * @Date: 2021-06-01 14:24:30 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-07-01 15:41:49 +0800
+ * @LastEditTime: 2021-07-01 18:26:43 +0800
  * @LastEditors: JackChou
  */
 import VueRouter from 'vue-router'
@@ -25,8 +25,8 @@ const router = new VueRouter({
     {
       path: '/',
       component: () => import('views'),
-      children: childrenRoutes
-    }
-  ]
+      children: childrenRoutes,
+    },
+  ],
 })
 export default router

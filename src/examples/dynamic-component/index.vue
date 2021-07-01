@@ -26,7 +26,7 @@ export default {
       const SubVue = Vue.extend(MyButton)
       const MyButtonInstance = new SubVue({
         // el: this.$refs.container,
-        propsData: { type: 'success' }
+        propsData: { type: 'success' },
       })
       // MyButtonInstance.$slots.default = [<span>传递vnode</span>, '哈哈哈']
       MyButtonInstance.$scopedSlots = { name: ({ age }) => <span>{age}</span> }
@@ -37,8 +37,8 @@ export default {
       // 我们可以构造一个方法，方法内部完成组件的创建、挂载，再把方法挂载到 Vue 原型上的，需要动态渲染该组件，就调用该方法
       // 比如 element-ui 的 comfirm alert 都是这个思路
       // this.$refs.container.appendChild(MyButtonInstance.$el)
-    }
-  }
+    },
+  },
 }
 </script>
 

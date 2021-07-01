@@ -17,8 +17,8 @@ const confirm = (content = '插槽内容', title = '弹窗标题', options = {})
       el: document.createElement('div'),
       propsData: {
         content: content,
-        title
-      }
+        title,
+      },
     })
   }
   // 设置组件 data 为 true，内部 div 渲染

@@ -9,7 +9,7 @@ const myRouterRoutes = [
   {
     path: '/my-router',
     name: 'myRouter',
-    component: () => import('./index.vue')
-  }
+    component: () => import('./index.vue'),
+  },
 ]
 export default myRouterRoutes

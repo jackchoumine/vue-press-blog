@@ -33,8 +33,8 @@ export default {
     myClick(event) {
       const now = dayjs().format('YYYY-MM-DD HH:mm:ss')
       console.log('目标函数执行了', now)
-    }
-  }
+    },
+  },
 }
 </script>
 

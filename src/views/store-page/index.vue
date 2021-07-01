@@ -35,8 +35,8 @@ export default {
     },
     asyncChange() {
       this.$store.dispatch('asyncChangeAge', -10)
-    }
-  }
+    },
+  },
 }
 </script>
 

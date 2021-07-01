@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'RolePage'
+  name: 'RolePage',
 }
 </script>
 

@@ -9,7 +9,7 @@ const storeRoutes = [
   {
     path: '/store',
     name: 'store-page',
-    component: () => import('./index.vue')
-  }
+    component: () => import('./index.vue'),
+  },
 ]
 export default storeRoutes

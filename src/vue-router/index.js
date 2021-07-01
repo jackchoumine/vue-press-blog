@@ -57,14 +57,14 @@ const install = function (_vue) {
     props: {
       to: {
         type: String,
-        required: true
-      }
+        required: true,
+      },
     },
     render(h) {
       console.log(this.$router)
       // NOTE 哈希模式，添加 #
       return <a href={'#' + this.to}>{this.$slots.default}</a>
-    }
+    },
   })
 
   Vue.component('router-view', {
@@ -78,7 +78,7 @@ const install = function (_vue) {
       const router = this.$router.routes.find(router => router.path === current)
       // console.log(router)
       return h(router.component)
-    }
+    },
   })
 
   // eslint-disable-next-line vue/require-name-property
@@ -92,7 +92,7 @@ const install = function (_vue) {
       //   this._router = this.$parent && this.$parent.$options.router
       // }
       // this._router.init(this)
-    }
+    },
   })
 }
 export default { Router, install }

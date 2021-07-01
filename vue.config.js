@@ -22,7 +22,7 @@ module.exports = {
       .set('@qs', resolve('src/data-structure/questions'))
       .set('@lc', resolve('src/leetcode'))
     config.resolve.extensions.add('.js').add('.jsx').add('.vue').add('.json')
-  }
+  },
 }
 
 /** @type {Options} */

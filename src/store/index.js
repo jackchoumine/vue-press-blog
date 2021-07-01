@@ -14,32 +14,32 @@ Vue.use(Vuex)
 
 const moduleA = {
   state: {
-    age: 'a100'
+    age: 'a100',
   },
   mutations: {
     syncChangeAge(state, payload) {
       state.age += payload
-    }
-  }
+    },
+  },
 }
 const moduleC = {
   state: {
-    age: 'c100'
+    age: 'c100',
   },
   mutations: {
     syncChangeAge(state, payload) {
       state.age += payload
-    }
-  }
+    },
+  },
 }
 const moduleB = {
   state: {
-    age: 'c100'
+    age: 'c100',
   },
   // this.$store.state.b.c
   modules: {
-    c: moduleC
-  }
+    c: moduleC,
+  },
 }
 
 const store = new Vuex.Store({
@@ -47,34 +47,34 @@ const store = new Vuex.Store({
   // this.$store.state.a.age
   modules: {
     a: moduleA,
-    b: moduleB
+    b: moduleB,
   },
   state: {
-    age: 12
+    age: 12,
   },
   strict: true, // 严格模式,mutations 更改状态会报错
   // 类似计算属性
   getters: {
     myAge(state) {
       return state.age + '岁'
-    }
+    },
   },
   mutations: {
     syncChangeAge(state, payload) {
       state.age += payload
-    }
+    },
   },
   actions: {
     asyncChangeAge({ commit }, payload) {
       setTimeout(() => {
         commit('syncChangeAge', payload)
       }, 1000)
-    }
-  }
+    },
+  },
 })
 
 store.registerModule('d', {
-  state: { age: '50' }
+  state: { age: '50' },
 })
 
 export default store

@@ -53,7 +53,7 @@ class ModuleCollection {
     const rawModule = {
       _raw: rootModule,
       state: rootModule.state,
-      _children: {}
+      _children: {},
     }
     if (!this.root) {
       this.root = rawModule
@@ -87,7 +87,7 @@ function installModule(store, state, path, rawModule) {
       Object.defineProperty(store.getters, getterName, {
         get: () => {
           return value(rawModule.state)
-        }
+        },
       })
     })
   }
@@ -124,8 +124,8 @@ class Store {
     // 当 this.$store.state.age = value 时，页面会刷新
     this.vm = new Vue({
       data: {
-        state: options.state
-      }
+        state: options.state,
+      },
       // data() {
       //   return {
       //     state: options.state
@@ -220,10 +220,10 @@ const install = _Vue => {
         // 组件创建过程是先父后子
         this.$store = this.$parent && this.$parent.$store
       }
-    }
+    },
   })
 }
 export default {
   install,
-  Store
+  Store,
 }

@@ -61,7 +61,7 @@ import {
   Tabs,
   Card,
   TabPane,
-  Tree
+  Tree,
   // Notice
   // Dialog,
   // MessageBox,
@@ -118,7 +118,7 @@ const formComponents = [
   ButtonGroup,
   DatePicker,
   TimeSelect,
-  TimePicker
+  TimePicker,
 ]
 // const dataComponents = [
 //   Table,
@@ -143,7 +143,7 @@ const layoutComponents = [Container, Footer, Main, Header, Breadcrumb, Breadcrum
 const allComponents = [
   ...formComponents,
   // ...dataComponents,
-  ...layoutComponents
+  ...layoutComponents,
   // ...menuComponents,
   // ...noticeComponents,
 ]
@@ -164,7 +164,7 @@ const elComponents = {
     } catch (error) {
       console.error(error)
     }
-  }
+  },
 }
 
 export default elComponents

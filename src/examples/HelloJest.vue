@@ -12,6 +12,6 @@
 <script>
 export default {
   name: 'HelloJest',
-  props: ['msg']
+  props: ['msg'],
 }
 </script>

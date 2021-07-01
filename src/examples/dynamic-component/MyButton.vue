@@ -19,19 +19,19 @@ export default {
   props: {
     type: {
       type: String,
-      default: ''
-    }
+      default: '',
+    },
   },
   data() {
     return {
-      name: 'jack'
+      name: 'jack',
     }
   },
   methods: {
     myClick() {
       console.log('my-button')
-    }
-  }
+    },
+  },
 }
 </script>
 

@@ -75,5 +75,5 @@ const threeSum2 = function (nums) {
 }
 export default {
   threeSum,
-  threeSum2
+  threeSum2,
 }
