@@ -2,12 +2,12 @@
  * @Description: 应用入口
  * @Date: 2021-06-01 10:07:44 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-07-01 04:54:49 +0800
+ * @LastEditTime: 2021-07-01 15:42:32 +0800
  * @LastEditors: JackChou
  */
 import Vue from 'vue'
+import VueRouter from 'vue-router'
 import App from './App'
-import VueRouter from './vue-router'
 import './assets/style/reset.css'
 import elComponents from './element-ui'
 import globalComponents from './components'
@@ -15,7 +15,6 @@ import myComponents from './examples'
 import FormTable from 'j-form-table'
 import router from './route'
 import store from './store'
-// console.log(VueRouter)
 const plugins = [VueRouter, globalComponents, myComponents, FormTable]
 // 注入 element-ui 组件
 Vue.use(elComponents)
