@@ -2,9 +2,44 @@
  * @Description: 常用工具函数
  * @Date: 2021-06-03 17:46:35 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-04 00:21:28 +0800
+ * @LastEditTime: 2021-07-02 23:28:51 +0800
  * @LastEditors: JackChou
  */
+/**
+ * 柯里化
+ * @param {Fn} fn 需要柯里化的函数
+ * @returns Fn
+ */
+export const curry = fn => {
+  if (typeof fn !== 'function') {
+    throw new Error('no function provided!')
+  }
+  // 因为要递归，使用箭头函数会不方便
+  return function curriedFn(...args) {
+    // 递归出口放在前面，更加好理解
+    if (args.length === fn.length) {
+      return fn(...args)
+    }
+    // 箭头函数没有 arguments 需要显示给出参数
+    return (...params) => {
+      return curriedFn(...args.concat(params))
+    }
+  }
+}
+const log = (size, color, info) => {
+  console.log(`%c${info}`, `color:${color};font-size:${size}px`)
+}
+export const blueLog = curry(log)(20)('#44cef6')
+export const redLog = curry(log)(20)('red')
+export const blackLog = curry(log)(18)('#161823')
+
+export const logInfo = ({ status, statusText, config }) => {
+  redLog(`${status}，${statusText}：参数错误`)
+  blackLog(`url：`)
+  blueLog(config.url)
+  blackLog('请求参数：')
+  blueLog(config.data)
+}
 
 /**
  * 防抖函数
@@ -48,11 +83,11 @@ export const debounce = (callback, wait = 300, immediate = false) => {
  * @param {Boolean} [immediate=false] 是否立即执行 默认 false
  * @returns {Function} 函数
  */
-export const throttle = function(callback, wait = 300, immediate = false) {
+export const throttle = function (callback, wait = 300, immediate = false) {
   let timer = ''
   let last = Date.now()
   let callTimes = 0
-  return function(...rest) {
+  return function (...rest) {
     const that = this
     timer && clearTimeout(timer)
     const now = Date.now()
@@ -72,7 +107,7 @@ export const throttle = function(callback, wait = 300, immediate = false) {
       callTimes += 1
       timer = ''
     } else {
-      timer = setTimeout(function() {
+      timer = setTimeout(function () {
         // 保证最后一次操作执行
         callTimes > 1 && callback.apply(that, rest)
         last = Date.now()
