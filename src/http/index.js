@@ -4,7 +4,7 @@
  * @Description: 封装 axios
  * @Date: 2021-07-02 19:19:37 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-07-03 00:39:24 +0800
+ * @LastEditTime: 2021-07-03 00:49:55 +0800
  * @LastEditors: JackChou
  */
 
@@ -90,8 +90,25 @@ export const get = (url, params) => {
 }
 
 export const post = (url, params, confirm = false) => {
-  // NOTE 不使用 { } 包裹
-  return http.post(url, params)
+  return new Promise((resolve, reject) => {
+    if (confirm || confirm.confirm) {
+      MessageBox.confirm(confirm.confirm || '确认操作吗', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning',
+      })
+        .then(() => {
+          // NOTE 不要使用 {} 包裹 params
+          resolve(http.post(url, params))
+        })
+        .catch(error => {
+          console.log(error)
+          reject()
+        })
+    } else {
+      resolve(http.post(url, params))
+    }
+  })
 }
 
 export default {
