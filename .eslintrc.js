@@ -17,6 +17,7 @@ module.exports = {
     quotes: [2, 'single', { allowTemplateLiterals: true }],
     'no-void': 0,
     semi: [2, 'never'],
+    yoda: [2, 'never', { exceptRange: true }], // 犹大条件 变量在前 color === 'red'
     'no-new': 2, // 禁用 new 创建对象而不赋值给变量
     // 强制在关键字前后使用一致的空格 (前后腰需要)
     'keyword-spacing': 2,

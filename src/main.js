@@ -2,7 +2,7 @@
  * @Description: 应用入口
  * @Date: 2021-06-01 10:07:44 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-07-01 16:31:47 +0800
+ * @LastEditTime: 2021-07-02 20:27:28 +0800
  * @LastEditors: JackChou
  */
 import Vue from 'vue'
@@ -15,6 +15,7 @@ import myComponents from './examples'
 import FormTable from 'j-form-table'
 import router from './route'
 import store from './store'
+import http from './http'
 const plugins = [VueRouter, globalComponents, myComponents, FormTable]
 // 注入 element-ui 组件
 Vue.use(elComponents)
@@ -22,6 +23,8 @@ Vue.use(elComponents)
 plugins.forEach(plugin => {
   Vue.use(plugin)
 })
+
+Vue.prototype.$http = http
 
 Vue.config.productionTip = false
 

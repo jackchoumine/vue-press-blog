@@ -2,7 +2,7 @@
  * @Description vue 项目配置
  * @Date: 2021-06-01 11:30:40 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-20 10:11:23 +0800
+ * @LastEditTime: 2021-07-02 20:50:48 +0800
  * @LastEditors: JackChou
  */
 /**
@@ -12,16 +12,44 @@ const path = require('path')
 const resolve = dir => path.resolve(__dirname, dir)
 /** @type {Options} */
 module.exports = {
-  chainWebpack: config => {
-    config.resolve.alias
-      .set('@', resolve('src/'))
-      .set('@com', resolve('src/components'))
-      .set('views', resolve('src/views'))
-      .set('@ex', resolve('src/examples'))
-      .set('@ds', resolve('src/data-structure'))
-      .set('@qs', resolve('src/data-structure/questions'))
-      .set('@lc', resolve('src/leetcode'))
-    config.resolve.extensions.add('.js').add('.jsx').add('.vue').add('.json')
+  // chainWebpack: config => {
+  //   config.resolve.alias
+  //     .set('@', resolve('src/'))
+  //     .set('@com', resolve('src/components'))
+  //     .set('views', resolve('src/views'))
+  //     .set('@ex', resolve('src/examples'))
+  //     .set('@ds', resolve('src/data-structure'))
+  //     .set('@qs', resolve('src/data-structure/questions'))
+  //     .set('@lc', resolve('src/leetcode'))
+  //   config.resolve.extensions.add('.js').add('.jsx').add('.vue').add('.json')
+  // },
+  configureWebpack: {
+    resolve: {
+      extensions: ['.js', '.jsx', '.vue', '.json'],
+      alias: {
+        '@': resolve('src/'),
+        '@com': resolve('src/components'),
+        views: resolve('src/views'),
+        '@ex': resolve('src/examples'),
+        '@ds': resolve('src/data-structure'),
+        '@qs': resolve('src/data-structure/questions'),
+        '@lc': resolve('src/leetcode'),
+      },
+    },
+    devServer: {
+      host: '0.0.0.0',
+      disableHostCheck: false,
+      open: true,
+      proxy: {
+        '/admin': {
+          target: 'http://127.0.0.1:3000',
+          // changeOrigin: true,
+          pathRewrite: {
+            '^/admin/': '', // remove base path
+          },
+        },
+      },
+    },
   },
 }
 
