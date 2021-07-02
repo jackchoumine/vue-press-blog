@@ -1,16 +1,21 @@
+/* eslint-disable no-fallthrough */
 /* eslint prefer-promise-reject-errors: ["error", {"allowEmptyReject": true}] */
 /* eslint comma-dangle: 0 */
 /*
  * @Description: 封装 axios
  * @Date: 2021-07-02 19:19:37 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-07-03 00:49:55 +0800
+ * @LastEditTime: 2021-07-03 01:40:30 +0800
  * @LastEditors: JackChou
  */
 
 import axios from 'axios'
 import { logInfo, redLog, blackLog } from '@/utils'
 import { Message, MessageBox } from 'element-ui'
+
+const message = ({ data }) => {
+  Message({ message: data.msg, type: 'error' })
+}
 
 const http = axios.create({
   // timeout: 1000 * 4,
@@ -43,37 +48,13 @@ const responseSuccess = response => {
   const isOk = response.status >= 200 && response.status < 300
   return isOk ? Promise.resolve(response.data) : Promise.reject(response.data)
 }
-const handleError = res => {
-  switch (res.status) {
-    case 400:
-      Message({ message: res.data.msg, type: 'error' })
-      logInfo(res)
-      break
-    case 401:
-      // 验证失败
-      // 跳转页面、弹窗提示
-      break
-    case 403:
-      // 服务其拒绝执行，一般是 token 过期
-      // 提示登录、弹窗提示
-      break
-    case 404:
-      // 资源不存在
-      break
-    case 500:
-      Message({ message: res.data.msg, type: 'error' })
-      logInfo(res)
-      break
-
-    default:
-      break
-  }
-}
 
 const responseFailed = error => {
   const { response } = error
   if (response) {
-    handleError(response)
+    // handleError(response)
+    message(response)
+    logInfo(response)
     // cons error = new Error(response.data.msg)
     return Promise.reject()
   } else if (!window.navigator.onLine) {
@@ -114,4 +95,76 @@ export const post = (url, params, confirm = false) => {
 export default {
   get,
   post,
+}
+
+function handleError(res) {
+  switch (res.status) {
+    case 301:
+    // Moved Permanently 永久移动  方法和消息主体不变
+    // Location
+    // GET 适用，请使用 308
+    // break
+    case 302:
+    // found 暂时的移动  方法和消息主体不变
+    // Location
+    // GET 适用 请使用 307
+    // break
+    case 303:
+    // see other 改变为 GET
+    // 通常作为 POST PUT 的返回
+    // break
+    case 307:
+    // 暂时重定向，重定向时方法和消息主体不变
+    // break
+    case 308:
+      // 永久重定向，重定向时方法和消息主体不变
+      message(res)
+      logInfo(res)
+      break
+    case 400:
+      // 参数错误
+      message(res)
+      logInfo(res)
+      break
+    case 401:
+      // 认证失败
+      // 跳转登录页面、弹窗提示
+      message(res)
+      break
+    case 402:
+      // 请求付费
+      break
+    case 403:
+      // 服务其拒绝执行，一般是 token 过期，没权限
+      // 提示登录、弹窗提示
+      break
+    case 404:
+      // 资源不存在
+      break
+    case 405:
+      // 请求方法不允许
+      break
+    case 406:
+      // 不能接收 服务器端无法提供与  Accept-Charset 以及 Accept-Language 消息头指定的值相匹配的响应。
+      // NOTE 极少使用
+      break
+    case 500:
+      // 服务器内部错误
+      message(res)
+      logInfo(res)
+      break
+    case 503:
+      // 处理不过来了
+      message(res)
+      logInfo(res)
+      break
+    case 504:
+      // 网关超时
+      message(res)
+      logInfo(res)
+      break
+
+    default:
+      break
+  }
 }
