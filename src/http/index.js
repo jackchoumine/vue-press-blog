@@ -5,17 +5,20 @@
  * @Description: 封装 axios
  * @Date: 2021-07-02 19:19:37 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-07-03 01:40:30 +0800
+ * @LastEditTime: 2021-07-03 22:29:05 +0800
  * @LastEditors: JackChou
  */
 
 import axios from 'axios'
+import { generateReqKey } from './utils'
 import { logInfo, redLog, blackLog } from '@/utils'
 import { Message, MessageBox } from 'element-ui'
 
 const message = ({ data }) => {
   Message({ message: data.msg, type: 'error' })
 }
+
+let repeatRequests = {}
 
 const http = axios.create({
   // timeout: 1000 * 4,
@@ -25,16 +28,40 @@ const http = axios.create({
   headers: {
     // 为何不使用？
     // 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-    'Content-Type': 'application/json;charset=UTF-8',
+    'content-type': 'application/json;charset=UTF-8',
   },
 })
+
+function addPendingRequest(config) {
+  const requestKey = generateReqKey(config)
+  config.cancelToken = new axios.CancelToken(cancel => {
+    !repeatRequests[requestKey] && (repeatRequests[requestKey] = [])
+    repeatRequests[requestKey].push(cancel)
+  })
+  return config
+}
+
+function removePendingRequest(config) {
+  const requestKey = generateReqKey(config)
+  const needCancel = repeatRequests[requestKey]?.length > 1
+  if (needCancel) {
+    // 不重复，不取消
+    repeatRequests[requestKey].forEach(cancel => {
+      cancel(requestKey)
+    })
+  }
+  needCancel ? (repeatRequests[requestKey] = []) : (repeatRequests = {})
+}
 
 // 请求拦截器
 const beforeRequest = config => {
   // 设置 token
   const token = localStorage.getItem('token')
   token && (config.headers.Authorization = token)
+  // NOTE  添加自定义头部
   config.headers['my-header'] = 'jack'
+  // NOTE 记录请求
+  addPendingRequest(config)
   return config
 }
 const beforeRequestError = error => {
@@ -45,12 +72,19 @@ http.interceptors.request.use(beforeRequest, beforeRequestError)
 
 // 响应拦截器
 const responseSuccess = response => {
-  const isOk = response.status >= 200 && response.status < 300
+  // NOTE 请求成功返回后，移出重复请求
+  removePendingRequest(response.config)
+  // eslint-disable-next-line yoda
+  const isOk = 200 <= response.status && response.status < 300
   return isOk ? Promise.resolve(response.data) : Promise.reject(response.data)
 }
 
 const responseFailed = error => {
   const { response } = error
+  if (axios.isCancel(error)) {
+    // 取消请求
+    return Promise.reject(error)
+  }
   if (response) {
     // handleError(response)
     message(response)
@@ -82,9 +116,8 @@ export const post = (url, params, confirm = false) => {
           // NOTE 不要使用 {} 包裹 params
           resolve(http.post(url, params))
         })
-        .catch(error => {
-          console.log(error)
-          reject()
+        .catch(_ => {
+          console.log('取消请求')
         })
     } else {
       resolve(http.post(url, params))
