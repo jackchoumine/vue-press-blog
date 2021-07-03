@@ -5,7 +5,7 @@
  * @Description: 封装 axios，取消请求：只允许最新的请求发送，老的请求都取消
  * @Date: 2021-07-02 19:19:37 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-07-03 22:37:11 +0800
+ * @LastEditTime: 2021-07-03 23:08:13 +0800
  * @LastEditors: JackChou
  */
 
@@ -59,7 +59,7 @@ const beforeRequest = config => {
   config.headers['my-header'] = 'jack'
   // NOTE 先取消老的请求
   removePendingRequest(config)
-  // NOTE 记录请求
+  // NOTE 记录当前请求
   addPendingRequest(config)
   return config
 }
@@ -71,7 +71,6 @@ http.interceptors.request.use(beforeRequest, beforeRequestError)
 
 // 响应拦截器
 const responseSuccess = response => {
-  // NOTE 请求成功返回后，移出重复请求
   removePendingRequest(response.config)
   // eslint-disable-next-line yoda
   const isOk = 200 <= response.status && response.status < 300
