@@ -2,10 +2,10 @@
 /* eslint prefer-promise-reject-errors: ["error", {"allowEmptyReject": true}] */
 /* eslint comma-dangle: 0 */
 /*
- * @Description: 封装 axios
+ * @Description: 封装 axios，取消请求：只允许最新的请求发送，老的请求都取消
  * @Date: 2021-07-02 19:19:37 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-07-03 22:33:24 +0800
+ * @LastEditTime: 2021-07-03 22:37:11 +0800
  * @LastEditors: JackChou
  */
 
@@ -18,7 +18,7 @@ const message = ({ data }) => {
   Message({ message: data.msg, type: 'error' })
 }
 
-let repeatRequests = {}
+const pendingRequest = new Map()
 
 const http = axios.create({
   // timeout: 1000 * 4,
@@ -35,22 +35,19 @@ const http = axios.create({
 function addPendingRequest(config) {
   const requestKey = generateReqKey(config)
   config.cancelToken = new axios.CancelToken(cancel => {
-    !repeatRequests[requestKey] && (repeatRequests[requestKey] = [])
-    repeatRequests[requestKey].push(cancel)
+    if (!pendingRequest.has(requestKey)) {
+      pendingRequest.set(requestKey, cancel)
+    }
   })
-  return config
 }
 
 function removePendingRequest(config) {
   const requestKey = generateReqKey(config)
-  const needCancel = repeatRequests[requestKey]?.length > 1
-  if (needCancel) {
-    // 不重复，不取消
-    repeatRequests[requestKey].forEach(cancel => {
-      cancel(requestKey)
-    })
+  if (pendingRequest.has(requestKey)) {
+    const cancel = pendingRequest.get(requestKey)
+    cancel(requestKey)
+    pendingRequest.delete(requestKey)
   }
-  needCancel ? (repeatRequests[requestKey] = []) : (repeatRequests = {})
 }
 
 // 请求拦截器
@@ -60,6 +57,8 @@ const beforeRequest = config => {
   token && (config.headers.Authorization = token)
   // NOTE  添加自定义头部
   config.headers['my-header'] = 'jack'
+  // NOTE 先取消老的请求
+  removePendingRequest(config)
   // NOTE 记录请求
   addPendingRequest(config)
   return config
