@@ -2,7 +2,7 @@
  * @Description: 手写router
  * @Date: 2021-07-01 00:29:56 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-07-03 22:26:52 +0800
+ * @LastEditTime: 2021-07-04 00:04:47 +0800
  * @LastEditors: JackChou
 -->
 <template>
@@ -10,6 +10,9 @@
     <h1>axios</h1>
     <button @click="axiosGet">axiosGet 请求</button>
     <button @click="cancelAxiosGet">取消 axiosGet 请求</button>
+    <br >
+    <button @click="get1">Get 请求</button>
+    <button @click="cancelSignal">signal 取消请求</button>
     <br >
     <button @click="axiosPost">axiosPost 请求</button>
     <button @click="cancelAxiosPost">取消 axiosPost 请求</button>
@@ -30,6 +33,8 @@
 import axios from 'axios'
 import qs from 'qs'
 const CancelToken = axios.CancelToken
+const controller = new AbortController()
+const signal = controller.signal
 export default {
   name: 'MyRouter',
   data() {
@@ -170,6 +175,28 @@ export default {
     createHttpKey(options) {
       const { data, url, method, headers } = options
       return [url, method, qs.stringify(data), headers['Content-Type']].join('-')
+    },
+    get1() {
+      axios
+        .get('admin/test', {}, { signal })
+        .then(res => {
+          console.log(res.data)
+        })
+        .catch(error => {
+          if (axios.isCancel(error)) {
+            console.log('取消请求')
+          } else {
+            console.log(error)
+          }
+        })
+        .finally(() => {
+          this.cancel = null
+        })
+    },
+    cancelSignal() {
+      console.log(22)
+      // this.cancel && this.cancel('取消请求')
+      controller.abort()
     },
   },
 }
