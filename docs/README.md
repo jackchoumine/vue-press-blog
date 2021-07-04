@@ -21,3 +21,9 @@ footer: MIT Licensed | Copyright © 2019.01.11-present JackChou
 ### [如何优雅地封装 axios?](./web/js/封装axios.md)
 
 ### [如何使用 render 函数封装高扩展的组件?](./vue2/如何使用render函数封装高扩展的组件.md)
+
+### [react 核心概念](./react/react-basic.md)
+
+### [函数式编程概述](./others/functional-programming/函数式编程概述.md)
+
+### [函数计算得到函数](./others/functional-programming/函数计算得到函数.md)
