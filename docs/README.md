@@ -15,3 +15,9 @@ features:
     details: 记录一些人生感悟、想法...
 footer: MIT Licensed | Copyright © 2019.01.11-present JackChou
 ---
+
+## 最近的文章
+
+### [如何优雅地封装 axios?](./web/js/封装axios.md)
+
+### [如何使用 render 函数封装高扩展的组件?](./vue2/如何使用render函数封装高扩展的组件.md)
