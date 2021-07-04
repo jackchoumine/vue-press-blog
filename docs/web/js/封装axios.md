@@ -361,7 +361,7 @@ new CancelToken(c => {
 })
 ```
 
-调用 `CancelToken`，传入一个执行器，axios 调用该函数时，会被传递一个函数，就是 c，它执行 promise.resolve , 调用它就可取消请求了，同时传入 message。
+调用 `CancelToken`，得到一个取消配置，配置有 promise 实例。CancelToken 参数是一个函数，axios 调用该函数时，又传递一个函数，就是取消函数 c， c 又调用取消配置的 promise.resolve，在请求适配器内，检测到 promise 变化，在 then 中执行 xhr 的 reject 方法。
 
 ```js
 function CancelToken(fn) {
@@ -370,7 +370,7 @@ function CancelToken(fn) {
   }
 
   var resolvePromise
-  // NOTE 添加一个 promise 属性
+  // NOTE 添加一个 promise 实例
   this.promise = new Promise(function promiseExecutor(resolve) {
     // 函数
     resolvePromise = resolve
@@ -388,7 +388,40 @@ function CancelToken(fn) {
 }
 ```
 
-CancelToken 有一个状态为 pending 的 promise 属性，可以调用这样调用：
+可这样调用：
+
+```js
+let resole = null
+const cancel = new CancelToken(onResoled => {
+  resole = onResoled
+})
+
+resolve()
+// 等同一执行
+cancel.promise.then(message => {
+  //
+})
+```
+
+比如：
+
+```js
+let myPromise = null
+function myXHR() {
+  const promise = new Promise(resolve => {
+    resole()
+  })
+  myPromise = promise
+  return promise
+}
+
+// 可以这样执行
+myXHR().then(res => {})
+// 也可以
+myPromise.then()
+```
+
+CancelToken 有一个 promise 属性，可以调用这样调用：
 
 ```js
 config.cancelToken.promise.then(message => {
