@@ -78,9 +78,9 @@ export default {
 
 > 关于请求头的指定
 
-axios 很根据参数格式，自动采用何时的`content-type`，传递对象，就自动设置为 json 提交，符合需求，没必要再指定格式，传递字符串时，资源设置为 `application/x-www-form-urlencoded;charset=UTF-8`。
+axios 根据参数格式，自动采设置`content-type`：传递对象，设置为 json 提交，传递字符串时，资源设置为 `application/x-www-form-urlencoded;charset=UTF-8`。
 
-> 希望只限制接口事，只传递对象，所以设置 content-type 为`json`
+> 希望只传递对象，且不想 axios 自动设置，就手动设置 content-type 为 `json`
 
 ```js
 const http = axios.create({
@@ -120,7 +120,7 @@ const responseSuccess = response => {
 
 > 只有 status 为 200 --- 299 才是成功吗？
 
-REST 风格主张在接口设计中充分利用 http 语义，来表示接口状态，我也喜欢这种方式。有几个好处：
+REST 风格主张在接口设计中充分利用 http 语义，使用 http 状态码来表示接口状态，我也喜欢这种方式。有几个好处：
 
 1. 通用：http 是通用协议，没有额外的沟通成本；
 2. 自带文档：充分利用 http 的语义写 REST 风格的 API，可不写文档。理由：它们已被很多人了解。
