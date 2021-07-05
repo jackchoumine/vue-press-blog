@@ -24,6 +24,7 @@
     "qs": "^6.10.1",
     "vue": "^2.6.11",
     "vue-router": "^3.5.1",
+    "vuepress-plugin-mygitalk": "^1.0.5",
     "vuex": "^3.6.2"
   },
   "devDependencies": {
