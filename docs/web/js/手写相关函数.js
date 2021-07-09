@@ -2,7 +2,7 @@
  * @Description:
  * @Date: 2021-06-23 14:53:51 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-07-10 00:55:26 +0800
+ * @LastEditTime: 2021-07-10 01:07:25 +0800
  * @LastEditors: JackChou
  */
 function throttle(callback, wait) {
@@ -72,7 +72,12 @@ const b = {
 
 console.log(isEqual(a, b))
 const getType = value => Object.prototype.toString.call(value).slice(8, -1)
-const deepCopy = value => {
+const deepCopy = (value, cache = []) => {
+  // 使用缓存解决循环引用
+  let size = cache.length - 1
+  while (size--) {
+    if (value === cache[size]) return cache[size].dist
+  }
   const type = getType(value)
   let dist = null
   if (['Boolean', 'String', 'Number', 'Undefined', 'Null'].includes(type)) {
@@ -88,6 +93,7 @@ const deepCopy = value => {
   } else if (type === 'Object') {
     dist = {}
   }
+  cache.push({ value, dist })
   // 确保自有属性， for in 包含原型属性
   Object.keys(value).forEach(key => {
     dist[key] = deepCopy(value[key])
