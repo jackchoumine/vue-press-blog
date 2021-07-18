@@ -273,3 +273,32 @@ package.json
 3. 复制 `.cz-config.js` 和 `commitlint.config.js` 到新项目
 
 4. 执行 `git cz` 验证是否成功。
+
+依赖以及`package.json`配置:
+
+```js
+  "devDependencies": {
+    "@commitlint/config-conventional": "^12.1.4",
+    "commitizen": "^4.2.4",
+    "commitlint": "^12.1.4",
+    "cz-customizable": "^6.3.0",
+    "husky": "^4.3.8",
+    "lint-staged": "^11.0.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-customizable"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx,css,scss}": [
+      "prettier --write"
+    ]
+  },
+```
