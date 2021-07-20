@@ -6,6 +6,8 @@
  * @LastEditors: JackChou
  */
 import VueRouter from 'vue-router'
+import { MessageBox } from 'element-ui'
+
 // import Vue from 'vue'
 const childrenRoutes = []
 
@@ -28,5 +30,30 @@ const router = new VueRouter({
       children: childrenRoutes,
     },
   ],
+})
+router.beforeEach((to, from, next) => {
+  try {
+    if (to.path === '/role' && from.path === '/') {
+      // MessageBox.confirm('确认操作吗', '提示', {
+      //   confirmButtonText: '确定',
+      //   cancelButtonText: '取消',
+      //   type: 'warning',
+      // })
+      //   .then(() => {
+      //     next(true)
+      //   })
+      //   .catch(_ => {
+      //     next(false)
+      //     console.log('取消请求')
+      //   })
+      const answer = window.confirm('Do you really want to leave? you have unsaved changes!')
+      console.log(answer)
+      if (!answer) return next(false)
+      next()
+    }
+    next()
+  } catch (error) {
+    console.log(error.message)
+  }
 })
 export default router
