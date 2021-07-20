@@ -18,6 +18,10 @@
 
 - 重复请求，可取消；
 
+- 文件下载；
+
+<!--BUG https://attacomsian.com/blog/javascript-download-file -->
+
 > 额外的功能
 
 有 mock 服务的，可指定是否走 mock 服务，似乎很多公司都没有这个。
