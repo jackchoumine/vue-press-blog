@@ -2,7 +2,7 @@
  * @Description:
  * @Date: 2021-06-23 14:53:51 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-29 22:07:28 +0800
+ * @LastEditTime: 2021-07-10 01:07:25 +0800
  * @LastEditors: JackChou
  */
 function throttle(callback, wait) {
@@ -57,16 +57,49 @@ const a = {
   a: 100,
   b: 200,
   c: {
-    name: 'jack'
+    name: 'jack',
   },
-  d: '33'
+  d: '33',
 }
 const b = {
   a: 100,
   b: 200,
   c: {
-    name: 'jack22'
-  }
+    name: 'jack22',
+  },
+  d: [1, 2, 3, { name: 'jack' }],
 }
 
 console.log(isEqual(a, b))
+const getType = value => Object.prototype.toString.call(value).slice(8, -1)
+const deepCopy = (value, cache = []) => {
+  // 使用缓存解决循环引用
+  let size = cache.length - 1
+  while (size--) {
+    if (value === cache[size]) return cache[size].dist
+  }
+  const type = getType(value)
+  let dist = null
+  if (['Boolean', 'String', 'Number', 'Undefined', 'Null'].includes(type)) {
+    return value
+  } else if (type === 'Date') {
+    return new Date(value)
+  } else if (type === 'RegExp') {
+    return new RegExp(value.source, value.flags)
+  } else if (type === 'Function') {
+    return value.bind(this)
+  } else if (type === 'Array') {
+    dist = []
+  } else if (type === 'Object') {
+    dist = {}
+  }
+  cache.push({ value, dist })
+  // 确保自有属性， for in 包含原型属性
+  Object.keys(value).forEach(key => {
+    dist[key] = deepCopy(value[key])
+  })
+  return dist
+}
+const c = deepCopy(b)
+console.log(isEqual(c, b))
+console.log(c === b)
