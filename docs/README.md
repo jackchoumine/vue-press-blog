@@ -19,6 +19,8 @@ footer: MIT Licensed | Copyright © 2019.01.11-present JackChou -->
 
 ## 最近的文章
 
+### [箭头函数和普通函数的有哪些区别？](./web/js/箭头函数和普通函数的区别.md)
+
 ### [如何优雅地封装 axios?](./web/js/封装axios.md)
 
 ### [如何使用 render 函数封装高扩展的组件?](./vue2/如何使用render函数封装高扩展的组件.md)
@@ -28,5 +30,3 @@ footer: MIT Licensed | Copyright © 2019.01.11-present JackChou -->
 ### [函数式编程概述](./others/functional-programming/函数式编程概述.md)
 
 ### [函数计算得到函数](./others/functional-programming/函数计算得到函数.md)
-
-
