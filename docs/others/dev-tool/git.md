@@ -86,7 +86,7 @@ Hi jackchoumine! You've successfully authenticated, but GitHub does not provide 
 
 ① 使用 ssh 协议，推荐；
 
-② 执行`git pull origin master --allow-unrelated-histories`,在 push。
+② 执行`git pull origin master --allow-unrelated-histories`,再 push。
 
 最后的 config
 
