@@ -1,18 +1,33 @@
+/**
+ * 相关npm:
+ *  
+ *  "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-standard": "^5.1.2",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "prettier": "2.3.2",
+ */
 module.exports = {
   root: true,
   env: {
     node: true,
-    jest: true,
+    jest: true
   },
+  plugins: ['prettier'],
   extends: ['plugin:vue/essential', '@vue/standard', '@vue/prettier'],
   parserOptions: {
-    parser: 'babel-eslint',
+    parser: 'babel-eslint'
   },
   rules: {
+    'prettier/prettier': 0,
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-    'comma-dangle': [2, 'always-multiline'],
-    'prettier/prettier': 0,
+    'comma-dangle': 0, // [2, 'always-multiline'],
     'space-before-function-paren': 0, //[0, 'never'],
     quotes: [2, 'single', { allowTemplateLiterals: true }],
     'no-void': 0,
@@ -46,28 +61,28 @@ module.exports = {
         singleline: 4,
         multiline: {
           max: 4,
-          allowFirstLine: true,
-        },
-      },
+          allowFirstLine: true
+        }
+      }
     ],
     // 自闭和标签
     'vue/html-self-closing': [
       'error',
       {
         html: {
-          void: 'never', // 通用的标签
+          void: 'always', // 通用的标签
           normal: 'never', // 知名的html元素
-          component: 'always', // vue组件
-        },
-      },
+          component: 'always' // vue组件
+        }
+      }
     ],
     'vue/component-name-in-template-casing': [
       2,
       'PascalCase',
       {
         registeredComponentsOnly: false,
-        ignores: ['/el-(.*)/', '/router(.*)/', 'component', 'keep-alive'],
-      },
+        ignores: ['/el-(.*)/', '/router(.*)/', 'component', 'keep-alive']
+      }
     ],
     'vue/html-indent': [
       2,
@@ -77,8 +92,8 @@ module.exports = {
         baseIndent: 1,
         closeBracket: 0,
         alignAttributesVertically: true,
-        ignores: [],
-      },
+        ignores: []
+      }
     ],
     // https://eslint.vuejs.org/rules/attributes-order.html
     'vue/attributes-order': [
@@ -95,10 +110,10 @@ module.exports = {
           'OTHER_DIRECTIVES',
           'OTHER_ATTR',
           'EVENTS',
-          'CONTENT',
+          'CONTENT'
         ],
-        alphabetical: false,
-      },
+        alphabetical: false
+      }
     ],
     'vue/order-in-components': [
       2,
@@ -121,9 +136,9 @@ module.exports = {
           'LIFECYCLE_HOOKS',
           'methods',
           ['template', 'render'],
-          'renderError',
-        ],
-      },
-    ],
-  },
+          'renderError'
+        ]
+      }
+    ]
+  }
 }
