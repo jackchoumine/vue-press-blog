@@ -80,6 +80,14 @@ ssh -T git@gitee.com
 Hi jackchoumine! You've successfully authenticated, but GitHub does not provide shell access.
 ```
 
+### 可能的报错
+
+`but GitHub does not provide shell access.`，出现这个，使用 https 设置远程的 origin，会推送失败，两种解决办法：
+
+① 使用 ssh 协议，推荐；
+
+② 执行`git pull origin master --allow-unrelated-histories`,再 push。
+
 最后的 config
 
 ```bash
