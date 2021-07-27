@@ -7,10 +7,7 @@
       "label": "run scheme",
       "type": "shell",
       "command": "scheme",
-      "args": [
-        "<",
-        "${file}"
-      ]
+      "args": ["<", "${file}"]
     }
   ]
 }

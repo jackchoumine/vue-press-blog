@@ -8,7 +8,7 @@
     "**/bower_components": true,
     "**/target": true,
     "**/logs": true,
-    "**/dist": true,
+    "**/dist": true
   },
   "cSpell.words": [
     "Cascader",
@@ -43,7 +43,9 @@
     "mkdir",
     "msword",
     "mvvm",
+    "mygitalk",
     "newversion",
+    "nocheck",
     "npmrc",
     "onhashchange",
     "onmouseover",
