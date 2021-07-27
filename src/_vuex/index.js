@@ -1,5 +1,5 @@
+// @ts-nocheck
 /* eslint-disable vue/require-name-property */
-/* eslint-disable indent */
 /* eslint-disable max-len */
 function applyMixin(Vue) {
   Vue.mixin({ beforeCreate: vuexInit })
@@ -7,6 +7,7 @@ function applyMixin(Vue) {
    * Vuex init hook, injected into each instances init hooks list.
    */
   function vuexInit() {
+    // @ts-ignore /* eslint-disable comma-dangle */
     console.log(this.$options)
     const options = this.$options
     // store injection
@@ -38,14 +39,14 @@ function devtoolPlugin(store) {
     function (mutation, state) {
       devtoolHook.emit('vuex:mutation', mutation, state)
     },
-    { prepend: true },
+    { prepend: true }
   )
 
   store.subscribeAction(
     function (action, state) {
       devtoolHook.emit('vuex:action', action, state)
     },
-    { prepend: true },
+    { prepend: true }
   )
 }
 
@@ -58,6 +59,7 @@ function devtoolPlugin(store) {
  * @return {*}
  */
 function find(list, f) {
+  // @ts-ignore
   return list.filter(f)[0]
 }
 
@@ -91,7 +93,7 @@ function deepCopy(obj, cache) {
   // because we want to refer it in recursive deepCopy
   cache.push({
     original: obj,
-    copy: copy,
+    copy: copy
   })
 
   Object.keys(obj).forEach(function (key) {
@@ -217,6 +219,7 @@ ModuleCollection.prototype.getNamespace = function getNamespace(path) {
   let module = this.root
   return path.reduce(function (namespace, key) {
     module = module.getChild(key)
+    // @ts-ignore
     return namespace + (module.namespaced ? key + '/' : '')
   }, '')
 }
@@ -305,20 +308,20 @@ const functionAssert = {
   assert: function (value) {
     return typeof value === 'function'
   },
-  expected: 'function',
+  expected: 'function'
 }
 
 const objectAssert = {
   assert: function (value) {
     return typeof value === 'function' || (typeof value === 'object' && typeof value.handler === 'function')
   },
-  expected: 'function or object with "handler" function',
+  expected: 'function or object with "handler" function'
 }
 
 const assertTypes = {
   getters: functionAssert,
   mutations: functionAssert,
-  actions: objectAssert,
+  actions: objectAssert
 }
 
 function assertRawModule(path, rawModule) {
@@ -423,6 +426,7 @@ prototypeAccessors$1.state.get = function () {
   return this._vm._data.$$state
 }
 
+// @ts-ignore
 prototypeAccessors$1.state.set = function (v) {
   if (process.env.NODE_ENV !== 'production') {
     assert(false, 'use store.replaceState() to explicit replace store state.')
@@ -455,6 +459,7 @@ Store.prototype.commit = function commit(_type, _payload, _options) {
   this._subscribers
     .slice() // shallow copy to prevent iterator invalidation if subscriber synchronously calls unsubscribe
     .forEach(function (sub) {
+      // @ts-ignore
       return sub(mutation, this$1.state)
     })
 
@@ -463,7 +468,7 @@ Store.prototype.commit = function commit(_type, _payload, _options) {
       '[vuex] mutation type: ' +
         type +
         '. Silent option has been removed. ' +
-        'Use the filter functionality in the vue-devtools',
+        'Use the filter functionality in the vue-devtools'
     )
   }
 }
@@ -492,6 +497,7 @@ Store.prototype.dispatch = function dispatch(_type, _payload) {
         return sub.before
       })
       .forEach(function (sub) {
+        // @ts-ignore
         return sub.before(action, this$1.state)
       })
   } catch (e) {
@@ -515,6 +521,7 @@ Store.prototype.dispatch = function dispatch(_type, _payload) {
               return sub.after
             })
             .forEach(function (sub) {
+              // @ts-ignore
               return sub.after(action, this$1.state)
             })
         } catch (e) {
@@ -532,6 +539,7 @@ Store.prototype.dispatch = function dispatch(_type, _payload) {
               return sub.error
             })
             .forEach(function (sub) {
+              // @ts-ignore
               return sub.error(action, this$1.state, error)
             })
         } catch (e) {
@@ -541,7 +549,7 @@ Store.prototype.dispatch = function dispatch(_type, _payload) {
           }
         }
         reject(error)
-      },
+      }
     )
   })
 }
@@ -563,10 +571,11 @@ Store.prototype.watch = function watch(getter, cb, options) {
   }
   return this._watcherVM.$watch(
     function () {
+      // @ts-ignore
       return getter(this$1.state, this$1.getters)
     },
     cb,
-    options,
+    options
   )
 }
 
@@ -574,6 +583,7 @@ Store.prototype.replaceState = function replaceState(state) {
   const this$1 = this
 
   this._withCommit(function () {
+    // @ts-ignore
     this$1._vm._data.$$state = state
   })
 }
@@ -591,8 +601,10 @@ Store.prototype.registerModule = function registerModule(path, rawModule, option
   }
 
   this._modules.register(path, rawModule)
+  // @ts-ignore
   installModule(this, this.state, path, this._modules.get(path), options.preserveState)
   // reset store to update getters...
+  // @ts-ignore
   resetStoreVM(this, this.state)
 }
 
@@ -609,6 +621,7 @@ Store.prototype.unregisterModule = function unregisterModule(path) {
 
   this._modules.unregister(path)
   this._withCommit(function () {
+    // @ts-ignore
     const parentState = getNestedState(this$1.state, path.slice(0, -1))
     Vue.delete(parentState, path[path.length - 1])
   })
@@ -683,7 +696,7 @@ function resetStoreVM(store, state, hot) {
       get: function () {
         return store._vm[key]
       },
-      enumerable: true, // for local getters
+      enumerable: true // for local getters
     })
   })
 
@@ -694,9 +707,9 @@ function resetStoreVM(store, state, hot) {
   Vue.config.silent = true
   store._vm = new Vue({
     data: {
-      $$state: state,
+      $$state: state
     },
-    computed: computed,
+    computed: computed
   })
   Vue.config.silent = silent
 
@@ -743,7 +756,7 @@ function installModule(store, rootState, path, module, hot) {
               moduleName +
               '" was overridden by a module with the same name at "' +
               path.join('.') +
-              '"',
+              '"'
           )
         }
       }
@@ -813,20 +826,20 @@ function makeLocalContext(store, namespace, path) {
             }
           }
           store.commit(type, payload, options)
-        },
+        }
   }
 
   // getters and state object must be gotten lazily
   // because they will be changed by vm update
   Object.defineProperties(local, {
     getters: {
-      get: noNamespace ? () => store.getters : () => makeLocalGetters(store, namespace),
+      get: noNamespace ? () => store.getters : () => makeLocalGetters(store, namespace)
     },
     state: {
       get: function () {
         return getNestedState(store.state, path)
-      },
-    },
+      }
+    }
   })
 
   return local
@@ -852,7 +865,7 @@ function makeLocalGetters(store, namespace) {
         get: function () {
           return store.getters[type]
         },
-        enumerable: true,
+        enumerable: true
       })
     })
     store._makeLocalGettersCache[namespace] = gettersProxy
@@ -879,9 +892,9 @@ function registerAction(store, type, handler, local) {
         getters: local.getters,
         state: local.state,
         rootGetters: store.getters,
-        rootState: store.state,
+        rootState: store.state
       },
-      payload,
+      payload
     )
     if (!isPromise(res)) {
       res = Promise.resolve(res)
@@ -909,7 +922,7 @@ function registerGetter(store, type, rawGetter, local) {
       local.state, // local state
       local.getters, // local getters
       store.state, // root state
-      store.getters, // root getters
+      store.getters // root getters
     )
   }
 }
@@ -924,7 +937,7 @@ function enableStrictMode(store) {
         assert(store._committing, 'do not mutate vuex store state outside mutation handlers.')
       }
     },
-    { deep: true, sync: true },
+    { deep: true, sync: true }
   )
 }
 
@@ -1110,7 +1123,7 @@ const createNamespacedHelpers = function (namespace) {
     mapState: mapState.bind(null, namespace),
     mapGetters: mapGetters.bind(null, namespace),
     mapMutations: mapMutations.bind(null, namespace),
-    mapActions: mapActions.bind(null, namespace),
+    mapActions: mapActions.bind(null, namespace)
   }
 }
 
@@ -1179,6 +1192,7 @@ function createLogger(ref) {
   if (collapsed === void 0) collapsed = true
   let filter = ref.filter
   if (filter === void 0) {
+    // @ts-ignore
     filter = function (mutation, stateBefore, stateAfter) {
       return true
     }
@@ -1197,6 +1211,7 @@ function createLogger(ref) {
   }
   let actionFilter = ref.actionFilter
   if (actionFilter === void 0) {
+    // @ts-ignore
     actionFilter = function (action, state) {
       return true
     }
@@ -1215,6 +1230,7 @@ function createLogger(ref) {
   if (logger === void 0) logger = console
 
   return function (store) {
+    // @ts-ignore
     let prevState = deepCopy(store.state)
 
     if (typeof logger === 'undefined') {
@@ -1223,6 +1239,7 @@ function createLogger(ref) {
 
     if (logMutations) {
       store.subscribe(function (mutation, state) {
+        // @ts-ignore
         const nextState = deepCopy(state)
 
         if (filter(mutation, prevState, nextState)) {
@@ -1307,7 +1324,7 @@ export default {
   mapGetters: mapGetters,
   mapActions: mapActions,
   createNamespacedHelpers: createNamespacedHelpers,
-  createLogger: createLogger,
+  createLogger: createLogger
 }
 
 // module.exports = index_cjs

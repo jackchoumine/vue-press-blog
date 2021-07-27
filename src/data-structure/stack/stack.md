@@ -1,11 +1,12 @@
 # 栈结构
 
 ## 简介
+
 数组是一种线性结构，并且可在数组的任意位置插入和删除元素。栈和队列是常见的受限的线性结构。
 
 如图：
 
-![栈结构](<https://gitee.com/jackzhoumine/jack-picture/raw/master/data-structure/stack.png>)
+![栈结构](https://gitee.com/jackzhoumine/jack-picture/raw/master/data-structure/stack.png)
 
 栈是一种后进先出的线性结构。
 
@@ -21,5 +22,3 @@
 4. isEmpty()--判断栈中是否有元素；
 5. size()--返回元素个数，类似数组的 length ;
 6. toString()--将栈中元素以字符串形式返回。
-
-

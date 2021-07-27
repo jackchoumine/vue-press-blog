@@ -10,16 +10,16 @@
     <h1>axios</h1>
     <button @click="axiosGet">axiosGet 请求</button>
     <button @click="cancelAxiosGet">取消 axiosGet 请求</button>
-    <br >
+    <br />
     <button @click="get1">Get 请求</button>
     <button @click="cancelSignal">signal 取消请求</button>
-    <br >
+    <br />
     <button @click="axiosPost">axiosPost 请求</button>
     <button @click="cancelAxiosPost">取消 axiosPost 请求</button>
-    <hr >
+    <hr />
     <button @click="httpPost">post 请求 设置请求拦截器</button>
     <button @click="cancelHttp">取消请求（在请求拦截器中记录请求）</button>
-    <hr >
+    <hr />
     <h2>二次封装axios</h2>
     <button @click="getHttp">get请求</button>
     <button @click="postHttp">post请求,二次确认</button>
@@ -42,7 +42,7 @@ export default {
       cancel: '',
       source: CancelToken.source(),
       cancelInterceptor: '',
-      httpMap: new Map(),
+      httpMap: new Map()
     }
   },
   methods: {
@@ -79,7 +79,7 @@ export default {
         .get('admin/test', {
           cancelToken: new CancelToken(c => {
             this.cancel = c
-          }),
+          })
         })
         .then(res => {
           console.log(res.data)
@@ -104,8 +104,8 @@ export default {
           'admin/test',
           {},
           {
-            cancelToken: this.source.token,
-          },
+            cancelToken: this.source.token
+          }
         )
         .then(res => {
           console.log(res.data)
@@ -138,7 +138,7 @@ export default {
         error => {
           console.log(error)
           return Promise.reject(error)
-        },
+        }
       )
       http.interceptors.response.use(
         res => {
@@ -150,7 +150,7 @@ export default {
         error => {
           console.log(error)
           return Promise.reject(error)
-        },
+        }
       )
       http
         .post('admin/test', { name: 'jack', age: 24 })
@@ -197,8 +197,8 @@ export default {
       console.log(22)
       // this.cancel && this.cancel('取消请求')
       controller.abort()
-    },
-  },
+    }
+  }
 }
 </script>
 
