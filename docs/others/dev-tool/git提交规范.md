@@ -59,7 +59,7 @@ subject `必填`用于对 commit 进行简短的描述。
 安装依赖：
 
 ```bash
-npm i commitlint  @commitlint/config-conventional -D
+npm i @commitlint/cli @commitlint/config-conventional -D
 ```
 
 项目根目录添加规则 `commitlint.config.js`
@@ -143,7 +143,7 @@ npm install commitizen -D # 本地安装
 执行 commitizen 命令
 
 ```bash
-commitizen init cz-customizable --save --save-exact
+commitizen init cz-customizable
 ```
 
 会在 package.json 中添加如下选项：
@@ -154,6 +154,10 @@ commitizen init cz-customizable --save --save-exact
       "path": "./node_modules/cz-customizable"
     }
   }
+```
+添加了依赖：
+```bash
+"cz-customizable": "^6.3.0",
 ```
 
 添加交互提示配置文件，希望使用中文进行交互：
@@ -243,17 +247,18 @@ npm i conventional-changelog-cli -D
 
 1. 测试配无误，提交代码到主分支。
 2. 其他人拉取代码，合并进入开发分支
-3. `npm i` 安装新的依赖，全局安装`npm i commitizen -g` 或者 ``
+3. `npm i` 安装新的依赖，全局安装 `npm i commitizen -g`
 4. 使用`g cz` 提交一次使用可用
+5. 添加日志依赖，一般不加日志
 
-> 在新项目里添加约束：
+## 在新项目里添加约束：
 
 1. 添加依赖
 
 ```bash
-npm i commitlint @commitlint/config-conventional commitizen -D
-commitizen init cz-customizable --save --save-exact # 执行
-npm i commitizen -g # 全局安装
+npm i -D @commitlint/cli @commitlint/config-conventional commitizen husky@^4.3.8
+npm i -g commitizen # 全局安装
+commitizen init cz-customizable # 执行
 ```
 
 2. 添加 git hook
@@ -276,14 +281,15 @@ package.json
 
 依赖以及`package.json`配置:
 
+
 ```js
   "devDependencies": {
-    "@commitlint/config-conventional": "^12.1.4",
-    "commitizen": "^4.2.4",
-    "commitlint": "^12.1.4",
-    "cz-customizable": "^6.3.0",
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
     "husky": "^4.3.8",
-    "lint-staged": "^11.0.1"
+    "lint-staged": "^11.0.1" // 不适应 lint-staged 可不安装
+    "commitizen": "^4.2.4",
+    "cz-customizable": "^6.3.0"
   },
   "config": {
     "commitizen": {
