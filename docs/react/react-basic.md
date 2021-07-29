@@ -455,6 +455,73 @@ BookFun.propTypes = {
 // TODO 如何对props的内层属性设置默认值 属性默认值
 // BookFun.defaultProps = { book.price: 39 }
 ```
+#### 常见数据类型验证
+
+```js
+PropTypes.number
+PropTypes.bool.isRequired// 必需属性
+PropTypes.string
+PropTypes.symbol
+PropTypes.array
+PropTypes.object
+PropTypes.func
+```
+
+- 限制数组类型 `PropTypes.arrayOf(PropTypes.number)`
+
+- 自定义验证元素：
+
+```js
+customArrayProp: PropTypes.arrayOf(function(propValue, key, componentName, location, propFullName) {
+  if (!/matchme/.test(propValue[key])) {
+    return new Error(
+      'Invalid prop `' + propFullName + '` supplied to' +
+      ' `' + componentName + '`. Validation failed.'
+     );
+  }
+})
+```
+
+- 精确限制对象结构 `PropTypes.exact({name: PropTypes.string,quantity: PropTypes.number})`，不多不少。
+
+- 大致限制对象结构 `PropTypes.shape({name: PropTypes.string,quantity: PropTypes.number})`，不能少。
+
+- 对象的值为某种类型 `PropTypes.objectOf(PropTypes.number)`
+
+- 自定义验证：
+
+```js
+customArrayProp: PropTypes.objectOf(function(propValue, key, componentName, location, propFullName) {
+  if (!/matchme/.test(propValue[key])) {
+    return new Error(
+      'Invalid prop `' + propFullName + '` supplied to' +
+      ' `' + componentName + '`. Validation failed.'
+     );
+  }
+})
+```
+
+- > 自定义：函数返回一个 Error 对象。
+
+```js
+customProp: function(props, propName, componentName) {
+  if (!/matchme/.test(props[propName])) {
+    return new Error(
+      'Invalid prop `' + propName + '` supplied to' +
+    ' `' + componentName + '`. Validation failed.'
+    );
+  }
+},
+```
+> 其他类型的验证
+
+- 组件类型 `PropTypes.element`，jsx、`React.createElement` 的返回值
+
+- 组件类型 `PropTypes.elementType`，元素的 type。
+
+- 可渲染的类型 `PropTypes.node`： `number`、`string`、`DOM`、`array`、`fragments`，undefined 、bool、null 不是可渲染的。
+
+- 任何类型 `PropTypes.any`
 
 ## 子节点 children 属性
 
