@@ -46,9 +46,9 @@ router.beforeEach((to, from, next) => {
       //     next(false)
       //     console.log('取消请求')
       //   })
-      const answer = window.confirm('Do you really want to leave? you have unsaved changes!')
-      console.log(answer)
-      if (!answer) return next(false)
+      // const answer = window.confirm('Do you really want to leave? you have unsaved changes!')
+      // console.log(answer)
+      // if (!answer) return next(false)
       next()
     }
     next()
