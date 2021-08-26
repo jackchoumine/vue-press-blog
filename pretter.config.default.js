@@ -226,6 +226,6 @@ module.exports = {
    * default: "lf"
    */
   // endOfLine: 'lf',
-  // 是否格式化嵌入的代码，比如 markdown 的代码块
+  // TODO 是否格式化嵌入的代码，比如 markdown 的代码块
   // embeddedLanguageFormatting: "auto"
 }

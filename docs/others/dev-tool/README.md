@@ -1,5 +1,6 @@
 # 开发工具使用
 
+## [最常用的prettier配置](./最常用的prettier配置.md)
 ## [choco 包管理器](./choco包管理器.md)
 
 ## [git 使用](./git.md)
