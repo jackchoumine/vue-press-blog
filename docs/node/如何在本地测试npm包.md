@@ -26,7 +26,7 @@ my-npm build 后， 执行`npm i . -g`，然后 my-project `npm link my-npm`
 
 测试完毕，my-project `npm unlink my-npm` 释放软连接。
 
-## 这些命名做了啥
+## 这些命令做了啥
 
 link 和 npm i . 都在 npm 的全局 node_modules 内创建了链接到 npm 的软连接。
 
