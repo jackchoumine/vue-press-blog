@@ -19,6 +19,8 @@ footer: MIT Licensed | Copyright © 2019.01.11-present JackChou -->
 
 ## 最近的文章
 
+### [如何在本地测试 npm 包？](./node/如何在本地测试npm包.md)
+
 ### [箭头函数和普通函数的有哪些区别？](./web/js/箭头函数和普通函数的区别.md)
 
 ### [如何优雅地封装 axios?](./web/js/封装axios.md)
