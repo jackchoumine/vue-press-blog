@@ -1,6 +1,6 @@
 .DS_Store
-node_modules
-dist
+node_modules/
+dist/
 *.docx
 *.zip
 *.html
@@ -26,4 +26,7 @@ pnpm-debug.log*
 周其军-前端笔试题目-答案/demos.js
 resume.md
 demos.js
-.history
+.history/
+# 本地测试包
+.yalc/
+yalc.lock
