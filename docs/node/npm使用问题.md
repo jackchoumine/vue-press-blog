@@ -10,6 +10,7 @@ node-sass 有资源放在美国亚马逊上,不科学上网,很慢.
 
 ```bash
 sass_binary_site=https://npm.taobao.org/mirrors/node-sass/
+puppeteer_download_host=https://npm.taobao.org/mirrors/mirrors
 registry=https://registry.npm.taobao.org
 ```
 
@@ -17,6 +18,12 @@ registry=https://registry.npm.taobao.org
 
 ```bash
 SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ npm install node-sass
+```
+
+同理， puppeteer 下载很慢。
+
+```bash
+puppeteer_download_host=https://npm.taobao.org/mirrors/mirrors
 ```
 
 2. 科学上网
