@@ -1,8 +1,10 @@
-# 如何设计一个组件？常见的 React 组件设计模 --- render-prop
+# 如何设计一个组件？常见的 React 组件设计模 --- render-prop vs HOC
+
+## render-prop
 
 `render-prop`：
 
-> 将**渲染函数**通过组件的 prop 传入组件内部，组件的使用者就可完全控制渲染的内容，可在组件内部传递相关参数。
+> 将**渲染函数**通过组件的 prop 传入组件内部，组件的使用者就可完全控制渲染的内容，可在组件内部传递相关参数。它是一种重用组件逻辑和状态的方式。
 
 ```jsx
 <Counter
@@ -94,3 +96,58 @@ renderProp 还能再传递子组件，renderChildren 不能再传递子组件，
 > renderProp 性能会变差吗？
 
 <!-- FIXME -->
+
+## HOC
+
+高阶组件：接收一个组件作为参数，返回一个新组件的函数，是一种重用逻辑的方方式。
+
+```jsx
+import { useState } from 'react'
+import { CounterWith } from './Counter'
+import { Count, Increment, Decrement, Label } from './components'
+
+function InnerComponent({ onIncrement, onDecrement, value, max = 10, text = '计数器' }) {
+  return (
+    <>
+      <Increment onIncrement={onIncrement} />
+      <Label>{text}</Label>
+      <Count count={value} max={max} />
+      <Decrement onDecrement={onDecrement} />
+    </>
+  )
+}
+
+function Counter() {
+  const [value, setValue] = useState(0)
+  return CounterWith(InnerComponent, {
+    value,
+    onIncrement: () => {
+      setValue(value => value + 1)
+    },
+    onDecrement: () => {
+      setValue(value => Math.max(0, value - 1))
+    },
+  })
+}
+
+export default Counter
+```
+
+HOC 的问题：
+
+1. 不直接：会不知道 props 来自哪儿。
+2. 命令冲突：两个高阶组件使用相同的 prop,容易冲突。
+3. 静态组合，不是很明白静态组合的问题。
+
+## renderProp vs HOC
+
+它们都能解决逻辑重用问题，renderProp 不存在 HOC 的问题，更加灵活，我更喜欢使用 renderProp
+。
+
+## 参考
+
+[Use a Render Prop!](https://medium.com/@mjackson/use-a-render-prop-50de598f11ce)
+
+[Function as Child Components](https://medium.com/merrickchristensen/function-as-child-components-5f3920a9ace9)
+
+[When to NOT use Render Props](https://kentcdodds.com/blog/when-to-not-use-render-props)
