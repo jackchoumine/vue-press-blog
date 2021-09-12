@@ -272,7 +272,29 @@ changeName(city) {
 
 > 如何确定组件的 state 最小集合？
 
+参与渲染的变量。
+
 <!-- TODO 如何确定组件的 state 最小集合 -->
+
+> 想要在 state 更新后，立即获取更新后的 state， 怎么办？
+
+setState 的第二个回调函数里，可获取更新后的 state。
+
+```js
+this.setState(
+  (prevState, props) => {
+    return {} // 返回 newState
+  },
+  () => {
+    // 获取最新的 state
+    // console.log(newState)
+  }
+)
+```
+
+> setState 第一个回调、第二个回调和 render 函数的执行顺序是怎样的？
+
+第一个回调 -> render -> 第二个回调
 
 ### 组件的属性 --- props
 
