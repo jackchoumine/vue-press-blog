@@ -68,6 +68,7 @@
     "prettierignore",
     "preuninstall",
     "preversion",
+    "proto",
     "querystring",
     "rednpm",
     "rwxr",
