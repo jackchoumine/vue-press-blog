@@ -21,6 +21,10 @@ footer: MIT Licensed | Copyright © 2019.01.11-present JackChou -->
 
 ### [如何更好的管理公共组件?](./vue2/如何更好的管理公共组件.md)
 
+### [如何设计一个组件？常见的 React 组件设计模 --- renderProp](./react/render-props.md)
+
+### [如何设计一个组件？常见的 React 组件设计模 --- 复合组件](./react/compound-component.md)
+
 ### [如何在优雅地在本地测试 npm 包？](./node/如何在本地测试npm包.md)
 
 ### [箭头函数和普通函数的有哪些区别？](./web/js/箭头函数和普通函数的区别.md)
