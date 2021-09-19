@@ -19,7 +19,7 @@ footer: MIT Licensed | Copyright © 2019.01.11-present JackChou -->
 
 ## 最近的文章
 
-## [如何更好的管理公共组件](./vue2/如何更好的管理公共组件.md)
+### [如何更好的管理公共组件?](./vue2/如何更好的管理公共组件.md)
 
 ### [如何在本地测试 npm 包？](./node/如何在本地测试npm包.md)
 
