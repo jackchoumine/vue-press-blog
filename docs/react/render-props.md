@@ -159,6 +159,12 @@ HOC 的问题：
 
  -->
 
+## vue 中如何实现 renderProp?
+
+> 把 h 函数作为普通函数的第一个参数，那么这个函数被当成渲染函数，可返回 jsx，再把该函数通过 props 传递给组件，组件的 `setup` 或者 `render` 返回这个函数的调用，即可实现在数据里写 jsx，提高组件的可维护性和扩展性。
+
+具体看[如何使用 render 改善组件](./vue2/如何使用render函数封装高扩展的组件.md)
+
 ## 参考
 
 [Use a Render Prop!](https://medium.com/@mjackson/use-a-render-prop-50de598f11ce)

@@ -19,6 +19,8 @@ footer: MIT Licensed | Copyright © 2019.01.11-present JackChou -->
 
 ## 最近的文章
 
+## [vue3 的 render 函数有哪些变化](./vue3/render函数.md)
+
 ### [如何更好的管理公共组件?](./vue2/如何更好的管理公共组件.md)
 
 ### [如何设计一个组件？常见的 React 组件设计模 --- renderProp](./react/render-props.md)
