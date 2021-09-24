@@ -97,15 +97,17 @@ renderProp 还能再传递子组件，renderChildren 不能再传递子组件，
 
 将 renderProp 提取成函数，可解决可读性问题。
 
-> renderProp 性能会变差吗？
+<!-- > renderProp 性能会变差吗？ -->
 
 <!-- FIXME -->
 
 > 什么情况从组件内部给 renderProp 传递参数？从内部传递参数有什么好处吗？不传递参数，也能实现相同的功能。
 
+目前 react 还没遇到必需从内部传递参数的情况。 vue 需要从内部传递参数，使用起来才方便。
+
 <!-- FIXME -->
 
-> props getter 并没有解决属性被覆盖的问题。
+<!-- > props getter 并没有解决属性被覆盖的问题。 -->
 
 <!-- FIXME -->
 
