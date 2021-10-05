@@ -49,7 +49,7 @@ class BookComponent extends Component {
     this.state = {
       // 定义内部状态
       like: 0,
-      dislike: 0
+      dislike: 0,
     }
   }
   vote() {
@@ -59,13 +59,13 @@ class BookComponent extends Component {
     //   vote: vote,
     // }
     this.setState({
-      like: ++like
+      like: ++like,
     })
   }
   hate() {
     let { dislike } = this.state
     this.setState({
-      dislike: ++dislike
+      dislike: ++dislike,
     })
   }
   render() {
@@ -241,7 +241,7 @@ function Welcome(props) {
 import React from 'react'
 function BookFun(props) {
   const {
-    book: { title, author, version, bookId, dislike, like }
+    book: { title, author, version, bookId, dislike, like },
   } = props // 所有传递进来的属性会组成一个简单的对象
   const handleLike = () => {
     props.onLike(bookId)
@@ -286,7 +286,7 @@ class Books extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      books: []
+      books: [],
     }
     this.timer = ''
     this.handleLike = this.handleLike.bind(this) // es6 的 class，需要手动绑定 this
@@ -304,7 +304,7 @@ class Books extends Component {
             version: '第二版',
             like: 0,
             dislike: 0,
-            bookId: (Math.random() + 1).toString(36).substring(2) // 随机字符串
+            bookId: (Math.random() + 1).toString(36).substring(2), // 随机字符串
           },
           {
             title: 'react进阶',
@@ -312,7 +312,7 @@ class Books extends Component {
             version: '第三版',
             like: 0,
             dislike: 0,
-            bookId: (Math.random() + 1).toString(36).substring(2)
+            bookId: (Math.random() + 1).toString(36).substring(2),
           },
           {
             title: 'react专家之路',
@@ -320,9 +320,9 @@ class Books extends Component {
             version: '第一版',
             like: 0,
             dislike: 0,
-            bookId: (Math.random() + 1).toString(36).substring(2)
-          }
-        ]
+            bookId: (Math.random() + 1).toString(36).substring(2),
+          },
+        ],
       })
     }, 100)
   }
@@ -334,7 +334,7 @@ class Books extends Component {
       return book.bookId === id ? { ...book, dislike: ++book.dislike } : book
     })
     this.setState({
-      books
+      books,
     })
   }
   handleLike(id) {
@@ -342,7 +342,7 @@ class Books extends Component {
       return book.bookId === id ? { ...book, like: ++book.like } : book
     })
     this.setState({
-      books
+      books,
     })
   }
   render() {
@@ -413,7 +413,7 @@ class BookComponent extends Component {
     const bookList = [
       { title: 'react入门', author: '小马', version: '第二版' },
       { title: 'react进阶', author: '小明', version: '第三版' },
-      { title: 'react专家之路', author: '小华', version: '第一版' }
+      { title: 'react专家之路', author: '小华', version: '第一版' },
     ]
     const Books = (
       <ol>
@@ -447,19 +447,20 @@ BookFun.propTypes = {
     version: PropTypes.string,
     price: PropTypes.number,
     like: PropTypes.number,
-    disLike: PropTypes.number
+    disLike: PropTypes.number,
   }).isRequired,
   onLike: PropTypes.func.isRequired,
-  onDislike: PropTypes.func.isRequired
+  onDislike: PropTypes.func.isRequired,
 }
 // TODO 如何对props的内层属性设置默认值 属性默认值
 // BookFun.defaultProps = { book.price: 39 }
 ```
+
 #### 常见数据类型验证
 
 ```js
 PropTypes.number
-PropTypes.bool.isRequired// 必需属性
+PropTypes.bool.isRequired // 必需属性
 PropTypes.string
 PropTypes.symbol
 PropTypes.array
@@ -472,12 +473,9 @@ PropTypes.func
 - 自定义验证元素：
 
 ```js
-customArrayProp: PropTypes.arrayOf(function(propValue, key, componentName, location, propFullName) {
+customArrayProp: PropTypes.arrayOf(function (propValue, key, componentName, location, propFullName) {
   if (!/matchme/.test(propValue[key])) {
-    return new Error(
-      'Invalid prop `' + propFullName + '` supplied to' +
-      ' `' + componentName + '`. Validation failed.'
-     );
+    return new Error('Invalid prop `' + propFullName + '` supplied to' + ' `' + componentName + '`. Validation failed.')
   }
 })
 ```
@@ -491,12 +489,9 @@ customArrayProp: PropTypes.arrayOf(function(propValue, key, componentName, locat
 - 自定义验证：
 
 ```js
-customArrayProp: PropTypes.objectOf(function(propValue, key, componentName, location, propFullName) {
+customArrayProp: PropTypes.objectOf(function (propValue, key, componentName, location, propFullName) {
   if (!/matchme/.test(propValue[key])) {
-    return new Error(
-      'Invalid prop `' + propFullName + '` supplied to' +
-      ' `' + componentName + '`. Validation failed.'
-     );
+    return new Error('Invalid prop `' + propFullName + '` supplied to' + ' `' + componentName + '`. Validation failed.')
   }
 })
 ```
@@ -513,6 +508,7 @@ customProp: function(props, propName, componentName) {
   }
 },
 ```
+
 > 其他类型的验证
 
 - 组件类型 `PropTypes.element`，jsx、`React.createElement` 的返回值
@@ -799,7 +795,7 @@ console.log(this.myButton2)
 
 ### forwardRef() -- 传递 ref
 
-标签上的 key 和 ref 属属性会被 react 特殊处理，不能通过 props 传递。
+标签上的 key 和 ref 属性会被 react 特殊处理，不能通过 props 传递。
 
 > forwardRef 返回一个 React 组件，能够将其接受的 ref 属性转发到其子组件中，第一个参数为 props, 第二个参数为`ref`
 
@@ -876,7 +872,7 @@ demo:
 
 vue 中 ref 和循环一起使用，拿到的`this.$refs` 是一个数组。
 
-1. 声明一个数字存储 ref
+1. 声明一个数组存储 ref
 
 ```js{3,11,22}
 class App extends React.Component {
@@ -993,7 +989,7 @@ this.context.onAddUser(this.state.newUser)
 
 // 声明 context 的类型
 Child.contextTypes = {
-  onAddUser: PropTypes.func
+  onAddUser: PropTypes.func,
 }
 ```
 
