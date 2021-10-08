@@ -1,6 +1,7 @@
 # 开发工具使用
 
-## [最常用的prettier配置](./最常用的prettier配置.md)
+## [最常用的 prettier 配置](./最常用的prettier配置.md)
+
 ## [choco 包管理器](./choco包管理器.md)
 
 ## [git 使用](./git.md)
@@ -8,6 +9,8 @@
 ## [git 提交规范](./git提交规范.md)
 
 ## [vscode 使用](./vscode.md)
+
+## [vscode 配置](./vscode配置.md)
 
 ## [jsconfig 文件](./jsconfig文件.md)
 
