@@ -8,6 +8,8 @@
 
 ## [npm 使用](./npm使用.md)
 
+## [npm 源管理的方式](./npm源管理的方式.md)
+
 ## [npm 使用问题](./npm使用问题.md)
 
 ## [yarn 使用](./yarn使用.md)
