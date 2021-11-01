@@ -167,6 +167,42 @@ brew tap # 已安装的仓库列表
 brew untap user/repo [user/repo user/repo ...]
 ```
 
+### 常见问题
+
+安装软件报错：
+
+```bash
+tar: Error opening archive: Failed to open '/Users/jack/Library/Caches/Homebrew/downloads/aef75b0f44e39114353a1efb72d0623f3d0c92782a31dd9cb0afe7160d20fbf8--six-1.16.0_1.big_sur.bottle.tar.gz'
+Error: Failure while executing; `tar --extract --no-same-owner --file /Users/jack/Library/Caches/Homebrew/downloads/aef75b0f44e39114353a1efb72d0623f3d0c92782a31dd9cb0afe7160d20fbf8--six-1.16.0_1.big_sur.bottle.tar.gz --directory /private/tmp/d20211101-6634-10gmz2q` exited with 1. Here's the output:
+tar: Error opening archive: Failed to open '/Users/jack/Library/Caches/Homebrew/downloads/aef75b0f44e39114353a1efb72d0623f3d0c92782a31dd9cb0afe7160d20fbf8--six-1.16.0_1.big_sur.bottle.tar.gz'
+```
+
+解决办法：
+
+根据 [Mac Big Sur 升级后 brew 安装报错问题解决](https://blog.csdn.net/ljl6158999/article/details/118144440)
+
+`bash` 终端
+
+```bash
+echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles' >> ~/.bash_profile
+
+source ~/.bash_profile
+```
+
+`zsh` 终端
+
+```bash
+echo 'export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles' >> ~/.zshrc
+
+source ~/.zshrc
+```
+
+没有用。
+
+> 根据 [国内 Mac 安装 Homebrew 可能会跳的坑一览](https://zhuanlan.zhihu.com/p/383707713)
+
+暂时去掉国内的镜像，可行。
+
 ### brew 服务
 
 ```bash
