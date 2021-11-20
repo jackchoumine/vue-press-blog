@@ -2,8 +2,8 @@
  * @Description: 应用入口
  * @Date: 2021-06-01 10:07:44 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-07-05 00:40:57 +0800
- * @LastEditors: JackChou
+ * @LastEditTime: 2021-11-21 04:18:08 +0800
+ * @LastEditors : JackChou
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -27,6 +27,13 @@ plugins.forEach(plugin => {
 Vue.prototype.$http = http
 
 Vue.config.productionTip = false
+
+// 引入自定义组件
+const script = document.createElement('script')
+script.type = 'module'
+script.src = 'https://unpkg.com/stencil-rating-component-test'
+document.head.appendChild(script)
+Vue.config.ignoredElements = ['my-rating']
 
 new Vue({
   name: 'Root',

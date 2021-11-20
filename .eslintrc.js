@@ -16,12 +16,12 @@ module.exports = {
   root: true,
   env: {
     node: true,
-    jest: true
+    jest: true,
   },
   plugins: ['prettier'],
   extends: ['plugin:vue/essential', '@vue/standard', '@vue/prettier'],
   parserOptions: {
-    parser: 'babel-eslint'
+    parser: 'babel-eslint',
   },
   rules: {
     'prettier/prettier': 0,
@@ -61,9 +61,9 @@ module.exports = {
         singleline: 4,
         multiline: {
           max: 4,
-          allowFirstLine: true
-        }
-      }
+          allowFirstLine: true,
+        },
+      },
     ],
     // 自闭和标签
     'vue/html-self-closing': [
@@ -72,18 +72,18 @@ module.exports = {
         html: {
           void: 'always', // 通用的标签
           normal: 'never', // 知名的html元素
-          component: 'always' // vue组件
-        }
-      }
+          component: 'always', // vue组件
+        },
+      },
     ],
-    'vue/component-name-in-template-casing': [
-      2,
-      'PascalCase',
-      {
-        registeredComponentsOnly: false,
-        ignores: ['/el-(.*)/', '/router(.*)/', 'component', 'keep-alive']
-      }
-    ],
+    'vue/component-name-in-template-casing': 0,
+    //   2,
+    //   'PascalCase',
+    //   {
+    //     registeredComponentsOnly: false,
+    //     ignores: ['/el-(.*)/', '/router(.*)/', 'component', 'keep-alive', '/w-w/'],
+    //   },
+    // ],
     'vue/html-indent': [
       2,
       2,
@@ -92,8 +92,8 @@ module.exports = {
         baseIndent: 1,
         closeBracket: 0,
         alignAttributesVertically: true,
-        ignores: []
-      }
+        ignores: [],
+      },
     ],
     // https://eslint.vuejs.org/rules/attributes-order.html
     'vue/attributes-order': [
@@ -110,10 +110,10 @@ module.exports = {
           'OTHER_DIRECTIVES',
           'OTHER_ATTR',
           'EVENTS',
-          'CONTENT'
+          'CONTENT',
         ],
-        alphabetical: false
-      }
+        alphabetical: false,
+      },
     ],
     'vue/order-in-components': [
       2,
@@ -136,9 +136,9 @@ module.exports = {
           'LIFECYCLE_HOOKS',
           'methods',
           ['template', 'render'],
-          'renderError'
-        ]
-      }
-    ]
-  }
+          'renderError',
+        ],
+      },
+    ],
+  },
 }
