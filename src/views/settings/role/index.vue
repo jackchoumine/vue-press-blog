@@ -3,8 +3,8 @@
  * @Hash: /role
  * @Date: 2021-06-02 00:00:52 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-02 00:01:30 +0800
- * @LastEditors: JackChou
+ * @LastEditTime: 2021-11-21 01:14:52 +0800
+ * @LastEditors : JackChou
 -->
 <template>
   <div>role</div>
@@ -24,23 +24,23 @@ export default {
       })
     },
   },
-  async beforeRouteLeave(to, from, next) {
-    const answer = window.confirm('Do you want submit form?')
-    answer && (await this.http())
-    // next()
-    try {
-      await MessageBox.confirm('确认操作吗', '提示', {
-        confirmButtonText: '确定',
-        cancelButtonText: '取消',
-        type: 'warning',
-      })
-      const res = await this.http()
-      console.log(res)
-    } catch (error) {
-    } finally {
-      next()
-    }
-  },
+  // async beforeRouteLeave(to, from, next) {
+  //   const answer = window.confirm('Do you want submit form?')
+  //   answer && (await this.http())
+  //   // next()
+  //   try {
+  //     await MessageBox.confirm('确认操作吗', '提示', {
+  //       confirmButtonText: '确定',
+  //       cancelButtonText: '取消',
+  //       type: 'warning',
+  //     })
+  //     const res = await this.http()
+  //     console.log(res)
+  //   } catch (error) {
+  //   } finally {
+  //     next()
+  //   }
+  // },
 }
 </script>
 
