@@ -3,12 +3,13 @@
  * @Hash: ''
  * @Date: 2021-06-01 14:30:02 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-11-21 04:14:13 +0800
+ * @LastEditTime: 2021-11-21 04:23:30 +0800
  * @LastEditors : JackChou
 -->
 <template>
   <div>
-    <my-rating max-value="5" value="3" />
+    <span class="rating">rating outside</span>
+    <my-rating ref="myRating" max-value="5" value="3" />
     <DynamicComponent />
     <el-button type="primary" @click="showConfirm">显示弹窗</el-button>
     <DebounceTest />
@@ -29,6 +30,7 @@ export default {
       myRatingComponent.getValue({ maxValue: 10, value: 5 }).then(value => {
         console.log('get value', value)
       })
+      console.log(this.$refs.myRating)
     }, 2000)
 
     myRatingComponent.addEventListener('ratingChange', ({ detail }) => {
