@@ -3,13 +3,13 @@
  * @Hash: ''
  * @Date: 2021-06-01 14:30:02 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-11-22 00:47:50 +0800
+ * @LastEditTime: 2021-11-22 01:21:18 +0800
  * @LastEditors : JackChou
 -->
 <template>
   <div>
     <span class="rating">{{ msg }}</span>
-    <my-rating ref="myRating" :max-value="maxValue" :value="value" />
+    <my-rating ref="myRating" :max-value="maxValue" :value="value" @ratingChange="ratingChange" />
     <ElButton @click="changeRating">修改评价</ElButton>
     <DynamicComponent />
     <el-button type="primary" @click="showConfirm">显示弹窗</el-button>
@@ -42,10 +42,10 @@ export default {
       console.log(this.$refs.myRating)
     }, 2000)
 
-    myRatingComponent.addEventListener('ratingChange', ({ detail }) => {
-      console.log('rating changed', detail)
-      // alert(`rating change ${detail.value}`)
-    })
+    // myRatingComponent.addEventListener('ratingChange', ({ detail }) => {
+    //   console.log('rating changed', detail)
+    //   // alert(`rating change ${detail.value}`)
+    // })
   },
   methods: {
     showConfirm() {
@@ -54,6 +54,9 @@ export default {
     },
     changeRating() {
       this.value = Math.floor(Math.random() * this.maxValue)
+    },
+    ratingChange({ detail }) {
+      console.log('rating changed', detail)
     },
   },
 }
