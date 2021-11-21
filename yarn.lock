@@ -1335,6 +1335,11 @@
   "resolved" "https://registry.npmjs.org/@soda/get-current-script/-/get-current-script-1.0.2.tgz"
   "version" "1.0.2"
 
+"@stencil/core@^2.7.0":
+  "integrity" "sha512-15rWMTPQ/sp0lSV82HVCXkIya3QLN+uBl7pqK4JnTrp4HiLrzLmNbWjbvgCs55gw0lULbCIGbRIEsFz+Pe/Q+A=="
+  "resolved" "https://registry.npmjs.org/@stencil/core/-/core-2.10.0.tgz"
+  "version" "2.10.0"
+
 "@szmarczak/http-timer@^1.1.2":
   "integrity" "sha1-sWZeLEYaLNkvTBu/UNVFTeDUtCE="
   "resolved" "https://registry.nlark.com/@szmarczak/http-timer/download/@szmarczak/http-timer-1.1.2.tgz"
@@ -12208,6 +12213,13 @@
   "integrity" "sha1-NbCYdbT/SfJqd35QmzCQoyJr8ks="
   "resolved" "https://registry.npmjs.org/stealthy-require/-/stealthy-require-1.1.1.tgz"
   "version" "1.1.1"
+
+"stencil-rating-component-test@^0.0.1":
+  "integrity" "sha512-/zJKEpGZ0/+gkaAKyoIOMlgvi8gb9POd7LfETrrWjKr43Uv9ypZs9QwECTU3N+p5mjDtHj9J0pjFPSFd9xGWIA=="
+  "resolved" "https://registry.npmjs.org/stencil-rating-component-test/-/stencil-rating-component-test-0.0.1.tgz"
+  "version" "0.0.1"
+  dependencies:
+    "@stencil/core" "^2.7.0"
 
 "stream-browserify@^2.0.1":
   "integrity" "sha512-nX6hmklHs/gr2FuxYDltq8fJA1GDlxKQCz8O/IM4atRqBH8OORmBNgfvW5gG10GT/qQ9u0CzIvr2X5Pkt6ntqg=="

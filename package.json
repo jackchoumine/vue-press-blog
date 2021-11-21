@@ -24,6 +24,7 @@
     "element-ui": "^2.15.2",
     "j-form-table": "^0.0.17",
     "qs": "^6.10.1",
+    "stencil-rating-component-test": "^0.0.1",
     "vue": "^2.6.11",
     "vue-router": "^3.5.1",
     "vuepress-plugin-mygitalk": "^1.0.5",
