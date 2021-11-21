@@ -3,13 +3,21 @@
  * @Hash: ''
  * @Date: 2021-06-01 14:30:02 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-11-22 01:21:18 +0800
+ * @LastEditTime: 2021-11-22 04:01:27 +0800
  * @LastEditors : JackChou
 -->
 <template>
   <div>
     <span class="rating">{{ msg }}</span>
-    <my-rating ref="myRating" :max-value="maxValue" :value="value" @ratingChange="ratingChange" />
+    <my-rating
+      ref="myRating"
+      :max-value="maxValue"
+      :value="value"
+      is-show
+      :person.prop="{ name: 'jack' }"
+      :personArray.prop="persons"
+      @ratingChange="ratingChange"
+    />
     <ElButton @click="changeRating">修改评价</ElButton>
     <DynamicComponent />
     <el-button type="primary" @click="showConfirm">显示弹窗</el-button>
@@ -26,6 +34,7 @@ export default {
       msg: 'Hello web components in stencil!',
       maxValue: 5,
       value: 2,
+      persons: [{ name: 'jack', age: 30 }],
     }
   },
   mounted() {
@@ -54,6 +63,7 @@ export default {
     },
     changeRating() {
       this.value = Math.floor(Math.random() * this.maxValue)
+      this.persons.push({ age: 30 * Math.random() })
     },
     ratingChange({ detail }) {
       console.log('rating changed', detail)

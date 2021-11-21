@@ -12214,10 +12214,10 @@
   "resolved" "https://registry.npmjs.org/stealthy-require/-/stealthy-require-1.1.1.tgz"
   "version" "1.1.1"
 
-"stencil-rating-component-test@^0.0.1":
-  "integrity" "sha512-/zJKEpGZ0/+gkaAKyoIOMlgvi8gb9POd7LfETrrWjKr43Uv9ypZs9QwECTU3N+p5mjDtHj9J0pjFPSFd9xGWIA=="
-  "resolved" "https://registry.npmjs.org/stencil-rating-component-test/-/stencil-rating-component-test-0.0.1.tgz"
-  "version" "0.0.1"
+"stencil-rating-component-test@^0.1.0":
+  "integrity" "sha512-mXiFqfx9l0NYOLNdJ6ZxbxjAFXMEQRSA3+RoRfh6uQ2mVcZkvz1y1+o7hDSHC7a/tMWlSYkDyAvvQ5tYSD2aFQ=="
+  "resolved" "https://registry.npmjs.org/stencil-rating-component-test/-/stencil-rating-component-test-0.1.0.tgz"
+  "version" "0.1.0"
   dependencies:
     "@stencil/core" "^2.7.0"
 
