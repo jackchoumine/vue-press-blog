@@ -7,6 +7,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build:vue": "vue-cli-service build",
+    "wc": "vue-cli-service build --target wc --name my-wc './src/views/web-component/components/*.vue'",
     "lint": "vue-cli-service lint --fix",
     "unit": "vue-cli-service test:unit --watch",
     "e2e": "vue-cli-service test:e2e",
