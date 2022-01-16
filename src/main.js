@@ -2,7 +2,7 @@
  * @Description: 应用入口
  * @Date: 2021-06-01 10:07:44 +0800
  * @Author: JackChou
- * @LastEditTime: 2022-01-16 21:40:53 +0800
+ * @LastEditTime: 2022-01-16 21:57:51 +0800
  * @LastEditors : JackChou
  */
 import Vue from 'vue'
@@ -17,7 +17,7 @@ import router from './route'
 import store from './store'
 import http from './http/index'
 
-// import { defineCustomElements } from 'stencil-rating-component-test/loader'
+// import { defineCustomElements } from 'web-components-jack/loader'
 // defineCustomElements(window)
 // 引入自定义组件
 const script = document.createElement('script')
@@ -39,7 +39,7 @@ Vue.prototype.$http = http
 
 Vue.config.productionTip = false
 
-Vue.config.ignoredElements = ['my-rating']
+Vue.config.ignoredElements = ['my-rating', 'my-name']
 
 new Vue({
   name: 'Root',

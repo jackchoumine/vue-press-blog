@@ -1335,10 +1335,10 @@
   "resolved" "https://registry.npmjs.org/@soda/get-current-script/-/get-current-script-1.0.2.tgz"
   "version" "1.0.2"
 
-"@stencil/core@^2.7.0":
-  "integrity" "sha512-15rWMTPQ/sp0lSV82HVCXkIya3QLN+uBl7pqK4JnTrp4HiLrzLmNbWjbvgCs55gw0lULbCIGbRIEsFz+Pe/Q+A=="
-  "resolved" "https://registry.npmjs.org/@stencil/core/-/core-2.10.0.tgz"
-  "version" "2.10.0"
+"@stencil/core@^2.12.0":
+  "integrity" "sha512-u24TZ+FEvjnZt5ZgIkLjLpUNsO6Ml3mUZqwmqk81w6RWWz75hgB5p4RFI5rvuErFeh2xvMIGo+pNdG24XUBz1A=="
+  "resolved" "https://registry.npmjs.org/@stencil/core/-/core-2.12.1.tgz"
+  "version" "2.12.1"
 
 "@szmarczak/http-timer@^1.1.2":
   "integrity" "sha1-sWZeLEYaLNkvTBu/UNVFTeDUtCE="
@@ -12214,13 +12214,6 @@
   "resolved" "https://registry.npmjs.org/stealthy-require/-/stealthy-require-1.1.1.tgz"
   "version" "1.1.1"
 
-"stencil-rating-component-test@^0.1.0":
-  "integrity" "sha512-mXiFqfx9l0NYOLNdJ6ZxbxjAFXMEQRSA3+RoRfh6uQ2mVcZkvz1y1+o7hDSHC7a/tMWlSYkDyAvvQ5tYSD2aFQ=="
-  "resolved" "https://registry.npmjs.org/stencil-rating-component-test/-/stencil-rating-component-test-0.1.0.tgz"
-  "version" "0.1.0"
-  dependencies:
-    "@stencil/core" "^2.7.0"
-
 "stream-browserify@^2.0.1":
   "integrity" "sha512-nX6hmklHs/gr2FuxYDltq8fJA1GDlxKQCz8O/IM4atRqBH8OORmBNgfvW5gG10GT/qQ9u0CzIvr2X5Pkt6ntqg=="
   "resolved" "https://registry.npmjs.org/stream-browserify/-/stream-browserify-2.0.2.tgz"
@@ -13524,6 +13517,13 @@
   "version" "1.0.1"
   dependencies:
     "defaults" "^1.0.3"
+
+"web-components-jack@^1.2.3":
+  "integrity" "sha512-KY3nvbGSwIiUph+Hs/8vppYfyyvUt4GxaPFz3EXva0/iyHh7ObaKk2fHaEdfn1SqyHcdtTEwzUJ7CnDiNeUPKg=="
+  "resolved" "https://registry.npmjs.org/web-components-jack/-/web-components-jack-1.2.3.tgz"
+  "version" "1.2.3"
+  dependencies:
+    "@stencil/core" "^2.12.0"
 
 "webidl-conversions@^4.0.2":
   "integrity" "sha512-YQ+BmxuTgd6UXZW3+ICGfyqRyHXVlD5GtQr5+qjiNW7bF0cqrzX500HVXPBOvgXb5YnzDd+h0zqyv61KUD7+Sg=="

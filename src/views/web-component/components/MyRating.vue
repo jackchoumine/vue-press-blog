@@ -1,25 +1,29 @@
 <!--
  * @Description : 
- * @Date        : 2022-01-16 19:20:31 +0800
+ * @Date        : 2022-01-16 22:01:25 +0800
  * @Author      : JackChou
- * @LastEditTime: 2022-01-16 22:06:43 +0800
+ * @LastEditTime: 2022-01-16 22:07:59 +0800
  * @LastEditors : JackChou
 -->
 <template>
   <div>
-    <MyRating />
-    <MyVueName />
+    <span class="rating">{{ msg }}</span>
+    <my-rating
+      ref="myRating"
+      :max-value="maxValue"
+      :value="value"
+      is-show
+      :person.prop="{ name: 'jack' }"
+      :personArray.prop="persons"
+      @ratingChange="ratingChange"
+    />
+    <ElButton @click="changeRating">修改评价</ElButton>
   </div>
 </template>
 
 <script>
-import { MyRating, MyVueName } from './components'
 export default {
-  name: 'WebComponent',
-  components: {
-    MyRating,
-    MyVueName,
-  },
+  name: 'MyVueRating',
   data() {
     return {
       msg: 'Hello web components in stencil!',
