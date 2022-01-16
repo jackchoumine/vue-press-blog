@@ -2,7 +2,7 @@
  * @Description: 应用入口
  * @Date: 2021-06-01 10:07:44 +0800
  * @Author: JackChou
- * @LastEditTime: 2022-01-16 19:30:33 +0800
+ * @LastEditTime: 2022-01-16 21:40:53 +0800
  * @LastEditors : JackChou
  */
 import Vue from 'vue'
@@ -17,13 +17,15 @@ import router from './route'
 import store from './store'
 import http from './http/index'
 
-import { defineCustomElements } from 'stencil-rating-component-test/loader'
-defineCustomElements(window)
+// import { defineCustomElements } from 'stencil-rating-component-test/loader'
+// defineCustomElements(window)
 // 引入自定义组件
-// const script = document.createElement('script')
-// script.type = 'module'
-// script.src = 'https://unpkg.com/stencil-rating-component-test'
-// document.head.appendChild(script)
+const script = document.createElement('script')
+script.type = 'module'
+// NOTE jsdelivr 支持
+// script.src = 'https://cdn.jsdelivr.net/npm/web-components-jack@1.2.3'
+script.src = 'https://unpkg.com/web-components-jack'
+document.head.appendChild(script)
 
 const plugins = [VueRouter, globalComponents, myComponents, FormTable]
 // 注入 element-ui 组件
