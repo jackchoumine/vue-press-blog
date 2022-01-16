@@ -2,31 +2,32 @@
  * @Description: 路由配置
  * @Date: 2021-06-01 14:24:30 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-07-01 18:26:43 +0800
- * @LastEditors: JackChou
+ * @LastEditTime: 2022-01-16 19:42:19 +0800
+ * @LastEditors : JackChou
  */
 import VueRouter from 'vue-router'
-import { MessageBox } from 'element-ui'
+// import { MessageBox } from 'element-ui'
 
 // import Vue from 'vue'
-const childrenRoutes = []
 
 // TODO 前端工程化
-function importRoutes(r) {
+export function importRoutes(r = require.context('../views', true, /route\.js$/)) {
+  const childrenRoutes = []
   const paths = r.keys()
   paths.forEach(path => {
     childrenRoutes.push(...r(path).default)
   })
+  return childrenRoutes
 }
 
-importRoutes(require.context('../views', true, /route\.js$/))
+const childrenRoutes = importRoutes()
 
 const router = new VueRouter({
   mode: 'hash',
   routes: [
     {
       path: '/',
-      component: () => import('views'),
+      component: () => import(/* webpackChunkName: "layout" */ 'views'),
       children: childrenRoutes,
     },
   ],

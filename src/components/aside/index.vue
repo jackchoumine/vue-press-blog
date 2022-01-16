@@ -2,8 +2,8 @@
  * @Description: 侧边栏
  * @Date: 2021-06-01 15:03:58 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-07-02 20:34:52 +0800
- * @LastEditors: JackChou
+ * @LastEditTime: 2022-01-16 19:45:45 +0800
+ * @LastEditors : JackChou
 -->
 <template>
   <div class="aside-container">
@@ -38,6 +38,16 @@
 <script>
 // 默认展开的子菜单的 index
 import { Menu, MenuItem, Submenu } from 'element-ui'
+import webComponentRoutes from '../../views/web-component/route'
+// import { importRoutes } from '../../route'
+// const routes = importRoutes()
+// console.log(routes)
+
+const webComponentMenus = webComponentRoutes.map(item => {
+  const { path, name } = item
+  return { path, name, type: 'path', id: `web-component-${Math.random()}` }
+})
+
 const defaultOpeneds = ['ajfakfkaf', 'a3easd43fakwer']
 const menuList = [
   {
@@ -96,6 +106,7 @@ const menuList = [
     name: 'my-http',
     id: 'router1213',
   },
+  ...webComponentMenus,
 ]
 export default {
   name: 'Aside',

@@ -3,29 +3,29 @@
  * @Hash:
  * @Date: 2021-06-01 23:58:13 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-06-02 00:05:53 +0800
- * @LastEditors: JackChou
+ * @LastEditTime: 2022-01-16 18:54:59 +0800
+ * @LastEditors : JackChou
  */
 const homeRoutes = [
   {
     path: '/settings',
     name: 'settings',
-    component: () => import('./index.vue'),
+    component: () => import(/* webpackChunkName: "settings-page" */ './index.vue'),
   },
   {
     path: '/role',
     name: 'role',
-    component: () => import('./role'),
+    component: () => import(/* webpackChunkName: "role-page" */ './role'),
   },
   {
     path: '/menu',
     name: 'menu',
-    component: () => import('./menu'),
+    component: () => import(/* webpackChunkName: "menu-page" */ './menu'),
   },
   {
     path: '/test',
     name: 'test',
-    component: () => import('./test-page'),
+    component: () => import(/* webpackChunkName: "test-page" */ './test-page'),
   },
 ]
 export default homeRoutes

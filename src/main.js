@@ -2,7 +2,7 @@
  * @Description: 应用入口
  * @Date: 2021-06-01 10:07:44 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-11-22 00:36:38 +0800
+ * @LastEditTime: 2022-01-16 19:30:33 +0800
  * @LastEditors : JackChou
  */
 import Vue from 'vue'
@@ -19,6 +19,11 @@ import http from './http/index'
 
 import { defineCustomElements } from 'stencil-rating-component-test/loader'
 defineCustomElements(window)
+// 引入自定义组件
+// const script = document.createElement('script')
+// script.type = 'module'
+// script.src = 'https://unpkg.com/stencil-rating-component-test'
+// document.head.appendChild(script)
 
 const plugins = [VueRouter, globalComponents, myComponents, FormTable]
 // 注入 element-ui 组件
@@ -32,11 +37,6 @@ Vue.prototype.$http = http
 
 Vue.config.productionTip = false
 
-// 引入自定义组件
-// const script = document.createElement('script')
-// script.type = 'module'
-// script.src = 'https://unpkg.com/stencil-rating-component-test'
-// document.head.appendChild(script)
 Vue.config.ignoredElements = ['my-rating']
 
 new Vue({
