@@ -23,9 +23,11 @@ footer: MIT Licensed | Copyright © 2019.01.11-present JackChou -->
 
 ### [如何更好的管理公共组件?](./vue2/如何更好的管理公共组件.md)
 
-### [如何设计一个组件？常见的 React 组件设计模 --- renderProp](./react/render-props.md)
+### [如何设计一个组件？常见的 React 组件设计模式 --- renderProp](./react/render-props.md)
 
-### [如何设计一个组件？常见的 React 组件设计模 --- 复合组件](./react/compound-component.md)
+### [如何设计一个组件？常见的 React 组件设计模式 --- 复合组件](./react/compound-component.md)
+
+### [如何设计一个组件？常见的 React 组件设计模式 --- 受控的复合组件](./react/control-props.md)
 
 ### [如何在优雅地在本地测试 npm 包？](./node/如何在本地测试npm包.md)
 
