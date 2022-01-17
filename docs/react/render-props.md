@@ -1,4 +1,4 @@
-# 如何设计一个组件？常见的 React 组件设计模 --- render-prop
+# 如何设计一个组件？常见的 React 组件设计模式 --- render-prop
 
 <!-- vs HOC -->
 
