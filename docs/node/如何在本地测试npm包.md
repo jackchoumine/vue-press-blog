@@ -6,19 +6,21 @@
 
 ## 三种方法
 
-> 1. yalc 模拟仓库
+> 1. npm link
+
+my-npm build 后，执行 `npm link`，然后 my-project `npm link my-npm`
+
+测试完毕，在 my-project `npm unlink my-npm` 释放软连接。
+
+**推荐这种方式，优点：my-npm 再次构建后，在 my-project 直接得到变更后的代码**
+
+> 2. yalc 模拟仓库
 
 全局安装 `npm i yalc -g`
 
 my-npm build 后， 执行 `yalc public`， my-project `yalc add my-npm`
 
-推荐这种方式，更加简单透明。
-
-> 2. npm link
-
-my-npm build 后，执行 `npm link`，然后 my-project `npm link my-npm`
-
-测试完毕，my-project `npm unlink my-npm` 释放软连接。
+缺点：再次构建后，还需要在`my-project`安装，有点繁琐。
 
 > 3. npm i . -g
 
@@ -66,6 +68,8 @@ yalc dir npm-name # 查看 npm 的目录
 配置了 npmignore
 
 ![添加.npmignore后](https://tva1.sinaimg.cn/large/008i3skNgy1gu9ju6n8cxj60ey0gc3zc02.jpg)
+
+`package.json`的 files 字段，指定发布到 npm 的文件。
 
 ## 参考
 
