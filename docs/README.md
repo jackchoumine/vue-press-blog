@@ -29,7 +29,7 @@ footer: MIT Licensed | Copyright © 2019.01.11-present JackChou -->
 
 ### [如何设计一个组件？常见的 React 组件设计模式 --- 受控的复合组件](./react/control-props.md)
 
-### [如何在优雅地在本地测试 npm 包？](./node/如何在本地测试npm包.md)
+### [如何优雅地在本地测试 npm 包？](./node/如何在本地测试npm包.md)
 
 ### [箭头函数和普通函数的有哪些区别？](./web/js/箭头函数和普通函数的区别.md)
 
