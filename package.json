@@ -13,6 +13,7 @@
     "e2e": "vue-cli-service test:e2e",
     "dev": "vuepress dev docs --open",
     "build": "vuepress build docs",
+    "pred": "vuepress build docs",
     "d": "bash deploy.sh",
     "prettier": "prettier --write './src/**/*.{js,jsx,tsx,ts,less,md,json}'",
     "scm": "scheme < ./docs/scheme/src/hello.scm",
