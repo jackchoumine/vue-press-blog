@@ -2,7 +2,7 @@
 
 使用 webpack5 实现了微前端，希望能把这些应用部署到 git-pages, 如何办呢？
 
-[webpack5 模块联邦实现微前端](./模块联邦实现微前端.md)
+[webpack5 模块联邦实现微前端](https://jackchoumine.github.io/webpack/%E6%A8%A1%E5%9D%97%E8%81%94%E9%82%A6%E5%AE%9E%E7%8E%B0%E5%BE%AE%E5%89%8D%E7%AB%AF.html)
 
 ## gh-pages 是什么？
 
@@ -15,6 +15,8 @@ gh-pages 是 github 提供给项目、组织等托管静态页面的服务，可
 [How to deploy React App to GitHub Pages](https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f)
 
 还可与 CI CD 工具结合，实现自动部署，相关操作可执行搜索。
+
+[部署后的效果](https://jackchoumine.github.io/vue3-dashboard/)
 
 ## 如何解决切换路由后刷新浏览器 404 ？
 
