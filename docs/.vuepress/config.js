@@ -2,8 +2,8 @@
  * @Description: vue-press 配置
  * @Date: 2021-06-04 15:36:47 +0800
  * @Author: JackChou
- * @LastEditTime: 2021-07-06 01:10:16 +0800
- * @LastEditors: JackChou
+ * @LastEditTime: 2022-01-24 00:44:22 +0800
+ * @LastEditors : JackChou
  */
 module.exports = {
   title: 'Jack 的博客',
@@ -39,6 +39,7 @@ module.exports = {
         // 二级下拉
         items: [
           { text: '函数式编程', link: '/others/functional-programming/' },
+          { text: 'webpack', link: '/webpack/' },
           { text: '开发工具', link: '/others/dev-tool/' },
           { text: 'mac使用', link: '/others/mac/' },
         ],
