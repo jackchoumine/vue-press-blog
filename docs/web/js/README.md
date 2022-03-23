@@ -1,5 +1,9 @@
 # js 学习
 
+## [stencil 组件](./stencil组件.md)
+
+## [stencil 简介](./stencil简介.md)
+
 ## [箭头函数和普通函数的有哪些区别？](./箭头函数和普通函数的区别.md)
 
 ## [如何优雅地封装 axios?](./封装axios.md)
