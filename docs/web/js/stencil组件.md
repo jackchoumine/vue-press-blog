@@ -59,7 +59,7 @@ disconnectedCallback # 组件被移除
 
 常用的：
 
-`connectedCallback`会调用多次：首次和移除后在添加到 DOM 都会调用，可设置定时器、监听原生事件等。
+`connectedCallback`会调用多次：首次和移除后再添加到 DOM 都会调用，可设置定时器、监听原生事件等。
 
 ```js
 const el = document.createElement('my-cmp')
@@ -231,7 +231,7 @@ class Cmp {
 
 如何验证 prop?
 
-从 Watch 中报错验证 prop 合法性。
+在 Watch 中验证 prop 合法性，不合法抛出错误。
 
 > 如何设置必需？
 
