@@ -304,6 +304,10 @@ systemctl stop firewalld # 关闭防火墙
 systemctl status firewalld # 查看防火墙状态
 ```
 
+## 打包镜像
+
+将软件服务打包成镜像，在部署、发布和运行时只需要操作镜像。
+
 ## 参考
 
 [How to Install and Use Docker on CentOS 8](https://linuxhint.com/install-use-docker-centos-8/)
