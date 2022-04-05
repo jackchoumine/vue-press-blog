@@ -1,0 +1,1 @@
+SELECT * FROM spt_fallback_db
