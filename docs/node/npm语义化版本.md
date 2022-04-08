@@ -109,6 +109,35 @@ fi
 
 如果想自动修改`次版本`，修改 post-commit 的内容即可。
 
+## 希望发布一个带有测试功能的版本，如何设置版本号？
+
+希望发布一个测试版本，让他人测试：
+
+```bash
+npm publish --tag beta
+```
+
+发布一个只用一次的版本
+
+```bash
+npm publish --tag testing-new-feature
+```
+
+希望安装这些带有标签的版本，安装时必须带有标签
+
+```bash
+npm i <pkg>@<tag>
+```
+
+测试完毕，修改标签
+
+```bash
+npm dist-tag --help
+npm dist-tag add <pkg>@<version> [<tag>]
+npm dist-tag rm <pkg> <tag>
+npm dist-tag ls [<pkg>] # alias: dist-tags
+```
+
 ## 版本运算符
 
 版本运算符指定了一定范围的版本。主要有**~**、**^**、**-**、**<**、**<=**、**>**、**>=**、**=**版本运算符。
