@@ -224,3 +224,20 @@ NULLS LAST -- ms sql 要报错
 ```
 
 ![](https://tva1.sinaimg.cn/large/e6c9d24egy1h1529qbbt0j21ay0pcq6s.jpg)
+
+## 限制结果集数量
+
+`FETCH`、`LIMIT`、`OFFSET`
+
+```sql
+SELECT salary, emp_name, bonus, job_id, hire_date
+FROM master.dbo.employee
+ORDER BY salary DESC
+OFFSET 20 ROWS
+```
+
+![](https://tva1.sinaimg.cn/large/e6c9d24egy1h152qzgemhj21b80ps0xt.jpg)
+
+<!-- BUG -->
+
+> SQL Server 是如何分页的？
