@@ -1,5 +1,5 @@
 -- 条件查询
-SELECT emp_name, salary
-, bonus, job_id
+SELECT salary, emp_name, bonus, job_id, hire_date
 FROM master.dbo.employee
-WHERE job_id IN ('4','7') AND salary >= 9000;
+WHERE salary >= 7000
+ORDER BY bonus DESC;

@@ -144,3 +144,83 @@ SELECT emp_name, salary
 FROM master.dbo.employee
 WHERE job_id IN ('4','7') AND salary >= 9000;
 ```
+
+## 排序
+
+```SQL
+WHERE condition ORDER BY
+```
+
+### 单列排序
+
+```SQL
+WHERE condition ORDER BY COL ASC
+-- ASC 升序 默认的
+WHERE condition ORDER BY COL DESC
+-- DESC 降序
+```
+
+薪水大于`8000`的员工，按照入职日期升序。
+
+```sql
+SELECT emp_name, salary
+, bonus, job_id, hire_date
+FROM master.dbo.employee
+WHERE salary >= 8000
+ORDER BY hire_date ASC;
+```
+
+对于字符，有些数据库区分大小写，有的不区分。
+
+![](https://tva1.sinaimg.cn/large/e6c9d24egy1h151xcmwzoj212s0dijsw.jpg)
+
+```sql
+SELECT emp_name, salary
+, bonus, job_id, hire_date
+FROM master.dbo.employee
+WHERE salary >= 8000
+ORDER BY emp_name DESC;
+```
+
+### 多列排序
+
+```SQL
+SELECT salary, emp_name, bonus, job_id, hire_date
+FROM master.dbo.employee
+WHERE salary >= 7000
+ORDER BY salary, emp_name DESC;
+```
+
+使用数字指定列
+
+```sql
+SELECT salary, emp_name, bonus, job_id, hire_date
+FROM master.dbo.employee
+WHERE salary >= 7000
+ORDER BY 1, 2 DESC;
+```
+
+> 最好明确指定列名。
+
+### 空值排序
+
+> sql server null 最小。
+
+```SQL
+SELECT salary, emp_name, bonus, job_id, hire_date
+FROM master.dbo.employee
+WHERE salary >= 7000
+ORDER BY bonus DESC;
+```
+
+指定 null 的位置。
+
+```sql
+SELECT salary, emp_name, bonus, job_id, hire_date
+FROM master.dbo.employee
+WHERE salary >= 7000
+ORDER BY bonus
+NULLS LAST -- ms sql 要报错
+```
+
+![](https://tva1.sinaimg.cn/large/e6c9d24egy1h1529qbbt0j21ay0pcq6s.jpg)
