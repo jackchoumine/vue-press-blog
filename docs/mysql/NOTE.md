@@ -241,3 +241,5 @@ OFFSET 20 ROWS
 <!-- BUG -->
 
 > SQL Server 是如何分页的？
+
+[21 集](https://www.bilibili.com/video/BV1JL411s75j/?spm_id_from=pageDriver)
