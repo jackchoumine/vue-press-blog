@@ -4,7 +4,7 @@ node 的优势之一，就是能快速搭建一个 HTTP 服务器，该优势是
 
 ## 简单服务器例子
 
-```javascript
+```js
 const http = require('http')
 const PORT = 3000
 const HOST = '127.0.0.1'
@@ -257,3 +257,7 @@ req.end()
 
 
 ```
+
+<!-- BUG -->
+
+[继续学 http 模块](https://www.bilibili.com/video/BV1zY4y1p7Cm?p=8&spm_id_from=pageDriver)
