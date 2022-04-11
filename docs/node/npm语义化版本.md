@@ -212,6 +212,15 @@ npm i lodash@~3.3.0 # 安装 3.3.1
 npm i vue@"1 - 1.9" # 安装 1.0.28
 ```
 
+> 该使用哪种版本呢？
+
+npm 默认使用`^`，我们可以修改：
+
+```bash
+npm config set save-prefix="~" # 使用 ~
+npm config set save-exact true # 使用精确版本
+```
+
 ### 版本号比较器
 
 | 版本范围 |       匹配版本        | 补充 |
