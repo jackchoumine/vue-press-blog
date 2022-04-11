@@ -116,7 +116,7 @@ npm install packageName --save-dev #安装好后写入package.json的devDependen
 ```
 
 一个模块要么是开发依赖，要么是产品依赖，不可能同时是两种依赖。
-在 `package.json`内部声明需要安装的模块。然后 `npm i`可以安装。
+在`package.json`内部声明需要安装的模块。然后`npm i`可以安装。
 
 ### 卸载
 
