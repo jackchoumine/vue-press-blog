@@ -12,3 +12,7 @@
 -- 含空格 是双引号
 SELECT DISTINCT sex AS "性别"
 FROM employee;
+
+
+SELECT @@SERVERNAME
+SELECT @@VERSION
