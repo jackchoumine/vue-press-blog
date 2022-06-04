@@ -201,6 +201,27 @@ npm i lodash@~3.3.0 # 安装 3.3.1
 
 **^** 可理解成**兼容版本**。
 
+### 如何优雅地按照版本范围升级依赖
+
+`npm outdated` 可以检查过时的依赖，然后使用`npm up`升级。
+
+更加推荐使用[npm-check-updates](https://www.npmjs.com/package/npm-check-updates)按需升级依赖。
+
+安装`npm i npm-check-updates -g`
+
+基础使用
+
+```bash
+ncu -u # 检查更新，在结果中以不同的颜色显著显示版本变化
+ncu -u packageName packageName # 升级指定包
+ncu -u -f node-fetch # 同上
+ncu react-* # 升级一类包
+ncu -u -t patch # 升级补丁版本变化的包
+ncu -u -t minor
+```
+
+> package.json 改变后，重新 npm i，然后确保项目运行正确，再提交 git
+
 ### - 指定精确范围
 
 |   版本范围    |      匹配版本       |          补充           |

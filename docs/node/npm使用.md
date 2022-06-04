@@ -141,6 +141,7 @@ npm outdated # 会列出过时的依赖
 npm update packageName
 # 可指定更新到某一特定版本
 # 会先检查远程版本，远程版本较新，则安装。
+npm update # 更新所有依赖
 ```
 
 ### 查看模块依赖
@@ -191,7 +192,7 @@ npm show packageName time # 各个版本发布的时间
 ### 查看依赖文档
 
 ```bash
-npm docs  packageName # 会在浏览器里打开依赖文档
+npm docs packageName # 会在浏览器里打开依赖文档
 ```
 
 ### 查看依赖 bug
