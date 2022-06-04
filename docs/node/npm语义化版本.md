@@ -217,6 +217,7 @@ nuc -u # 升级所有包
 ncu -u packageName packageName # 升级指定包
 ncu -u -f node-fetch # 同上
 ncu react-* # 升级一类包
+ncu -x nodemon # 除了 nodemon 不升级，其他都升级
 ncu -u -t patch # 升级补丁版本变化的包
 ncu -u -t minor
 ```
