@@ -212,7 +212,8 @@ npm i lodash@~3.3.0 # 安装 3.3.1
 基础使用
 
 ```bash
-ncu -u # 检查更新，在结果中以不同的颜色显著显示版本变化
+ncu # 检查更新，在结果中以不同的颜色显著显示版本变化
+nuc -u # 升级所有包
 ncu -u packageName packageName # 升级指定包
 ncu -u -f node-fetch # 同上
 ncu react-* # 升级一类包
