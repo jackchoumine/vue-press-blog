@@ -2,7 +2,7 @@
  * @Description: vue-press 配置
  * @Date: 2021-06-04 15:36:47 +0800
  * @Author: JackChou
- * @LastEditTime: 2022-01-24 00:44:22 +0800
+ * @LastEditTime: 2022-06-05 23:51:30 +0800
  * @LastEditors : JackChou
  */
 module.exports = {
@@ -23,23 +23,24 @@ module.exports = {
       { text: 'vue2', link: '/vue2/' },
       { text: 'vue3', link: '/vue3/' },
       { text: 'react', link: '/react/' },
-      { text: 'angular', link: '/angular/' },
-      {
-        text: '前端',
-        // 二级下拉
-        items: [
-          { text: 'js', link: '/web/js/' },
-          // { text: 'css', link: '/web/css/' },
-          // { text: 'html', link: '/web/html/' }
-        ],
-      },
+      // {
+      //   text: 'js',
+      //   // 二级下拉
+      //   items: [
+      //     { text: 'js', link: '/web/js/' },
+      //     // { text: 'css', link: '/web/css/' },
+      //     // { text: 'html', link: '/web/html/' }
+      //   ],
+      // },
       { text: 'node', link: '/node/' },
+      { text: 'webpack', link: '/webpack/' },
+      { text: '科学', link: '/science/' },
       {
         text: '其他',
         // 二级下拉
         items: [
           { text: '函数式编程', link: '/others/functional-programming/' },
-          { text: 'webpack', link: '/webpack/' },
+          { text: 'angular', link: '/angular/' },
           { text: '开发工具', link: '/others/dev-tool/' },
           { text: 'mac使用', link: '/others/mac/' },
         ],
