@@ -12,6 +12,8 @@ gh-pages 是 github 提供给项目、组织等托管静态页面的服务，可
 
 参考这个。
 
+[如何部署 create-react-app 项目到 Github pages 步骤](https://github.com/vortesnail/blog/issues/8)
+
 [How to deploy React App to GitHub Pages](https://dev.to/yuribenjamin/how-to-deploy-react-app-in-github-pages-2a1f)
 
 还可与 CI CD 工具结合，实现自动部署，相关操作可执行搜索。
