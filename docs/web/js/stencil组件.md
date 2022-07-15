@@ -192,7 +192,7 @@ comInstance.prop = value // work well 且对对象和数组无效
 
 > 如何在 html 中修改 prop？
 
-暴露方法和设置 prop 可变，调用方法修改。
+暴露方法和设置 prop 可变，在外部调用方法修改。
 
 <!-- TODO -->
 
@@ -208,7 +208,7 @@ export interface PropOptions {
 
 prop 默认是组件内部不可变更的，否则触发警告通过`mutable`修改这个默认行为。
 
-reflect：声明 DOM`prop`是否对应到标签特性上。
+reflect：声明 DOM `prop`是否对应到标签特性上，设置为 true，在 html 标签上，会显示该属性。
 
 ```tsx
 @Component({ tag: 'my-cmp' })

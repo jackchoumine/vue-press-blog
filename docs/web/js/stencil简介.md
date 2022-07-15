@@ -55,7 +55,7 @@ export class MyName {
 
 > Stencil's integration with different frameworks is currently a work **in progress**. As Stencil matures, the goal is to make it easy to write standard web components which will compile to various output targets.
 
-> 实际使用时，发现三大流行框架（react、vue angular）对 stencil 生成的 web component 支持并没有和其宣传的那么好，坑比较多，集成方案很少。
+> 实际使用时，发现三大流行框架（react、vue angular）对 stencil 生成的 web component 的支持并没有和其宣传的那么好，坑比较多，集成方案很少。
 
 > 本人测试 react17、vue2、vue3 之后，发现 vue2 对 stencil 的支持最好，配置最简单。
 
