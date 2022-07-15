@@ -30,3 +30,6 @@ demos.js
 # 本地测试包
 .yalc/
 yalc.lock
+
+*.xls
+*.xlsx
