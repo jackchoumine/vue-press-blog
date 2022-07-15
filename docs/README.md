@@ -19,6 +19,10 @@ footer: MIT Licensed | Copyright © 2019.01.11-present JackChou -->
 
 ## 最近的文章
 
+### [中医玄学之路](./science/中医玄学之路.md)
+
+### [中医与巫术](./science/中医与巫术.md)
+
 ### [rollup 基础使用](./webpack/rollup基础使用.md)
 
 ### [webpack5 模块联邦实现微前端](./webpack/模块联邦实现微前端.md)
