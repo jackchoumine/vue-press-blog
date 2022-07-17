@@ -468,6 +468,8 @@ nodeAttrs.forEach(attr => {
 
 vue2 响应式原理使用`Object.defineProperty`重新定义属性，在 getters 中收集依赖，在 setters 检查依赖更新，然后在通知 watcher 执行 render 更新模板。
 
+[demo 演示](https://jackchoumine.github.io/vue2-core-reactivity/)
+
 ## 参考
 
 [Vue 2.x 相关原理](https://weirshi.com/framework/Vue/2.x/vue.html#vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F)
