@@ -33,4 +33,4 @@ model: {
 modal 为例子
 
 1. 使用 ref 自动聚焦；在 watch 里聚焦；nextTick 里聚焦，tabIndex 进行导航，这个实现复杂了，同时不希望用户看到聚焦 而是秘密聚焦
-2. 在 created hook 里监听按下 esc 键，实现关闭 modal，在 destory 里清除事件监听 ，缺点，将事
+2. 在 created hook 里监听按下 esc 键，实现关闭 modal，在 destroy 里清除事件监听 ，缺点，将事
