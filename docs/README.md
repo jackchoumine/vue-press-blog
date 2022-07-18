@@ -19,6 +19,8 @@ footer: MIT Licensed | Copyright © 2019.01.11-present JackChou -->
 
 ## 最近的文章
 
+### [组件设计之 renderProp](./vue3/组件设计之render-prop.md)
+
 ### [组件设计之受控组件](./vue3/组件设计之受控组件.md)
 
 ### [vue2 响应式系统核心原理实现](./vue2/vue2响应式系统核心原理实现.md)
