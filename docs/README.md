@@ -19,6 +19,8 @@ footer: MIT Licensed | Copyright © 2019.01.11-present JackChou -->
 
 ## 最近的文章
 
+### [组件设计之分离公共行为](./vue3/组件设计之分离公共行为.md)
+
 ### [组件设计之 renderProp](./vue3/组件设计之render-prop.md)
 
 ### [组件设计之受控组件](./vue3/组件设计之受控组件.md)
