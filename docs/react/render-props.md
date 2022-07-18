@@ -165,7 +165,7 @@ HOC 的问题：
 
 > 把 h 函数作为普通函数的第一个参数，那么这个函数被当成渲染函数，可返回 jsx，再把该函数通过 props 传递给组件，组件的 `setup` 或者 `render` 返回这个函数的调用，即可实现在数据里写 jsx，提高组件的可维护性和扩展性。
 
-具体看[如何使用 render 改善组件](./vue2/如何使用render函数封装高扩展的组件.md)
+具体看[如何使用 render 改善组件](https://jackchoumine.github.io/vue2/%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8render%E5%87%BD%E6%95%B0%E5%B0%81%E8%A3%85%E9%AB%98%E6%89%A9%E5%B1%95%E7%9A%84%E7%BB%84%E4%BB%B6.html#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8-render-%E6%94%B9%E5%96%84%E7%BB%84%E4%BB%B6)
 
 ## 参考
 
