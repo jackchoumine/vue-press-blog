@@ -27,7 +27,7 @@ footer: MIT Licensed | Copyright © 2019.01.11-present JackChou -->
 
 ### [vue2 响应式系统核心原理实现](./vue2/vue2响应式系统核心原理实现.md)
 
-### [中医玄学之路](./science/中医玄学之路.md)
+### [中医的玄学之路](./science/中医的玄学之路.md)
 
 ### [中医与巫术](./science/中医与巫术.md)
 
