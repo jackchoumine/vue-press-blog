@@ -1,0 +1,17 @@
+{
+  "name": "@jack/http",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "private":true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "jackchoumine <jackzhoumine@gmail.com;jackchou4job@163.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "~1.2.1",
+    "element-plus": "~2.2.27"
+  }
+}

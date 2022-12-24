@@ -1,0 +1,24 @@
+{
+  "name": "jack-front",
+  "version": "1.0.0",
+  "description": "把所有前端项目都集中到这里",
+  "main": "index.js",
+  "dependencies": {
+    "mime-types": "~2.1.35"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackchoumine/jack-front.git"
+  },
+  "keywords": [],
+  "author": "jackchoumine <jackzhoumine@gmail.com;jackchou4job@163.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jackchoumine/jack-front/issues"
+  },
+  "homepage": "https://github.com/jackchoumine/jack-front#readme"
+}
