@@ -1,0 +1,88 @@
+{
+  "name": "delightful-vue3-vite-project",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --open",
+    "build": "vue-tsc --noEmit && vite build",
+    "test": "vitest",
+    "preview": "vite preview",
+    "docs:dev": "vitepress dev docs",
+    "docs:build": "vitepress build docs",
+    "docs:serve": "vitepress serve docs",
+    "d": "bash deploy.sh",
+    "lint": "eslint 'src/**/*.{vue,tsx,ts,jsx,js}' --quite --fix",
+    "lint:style": "stylelint 'src/**/*.{scss,css}'",
+    "prettier": "prettier 'src/**/*.{vue,ts,tsx,js,jsx,css,scss}' --write"
+  },
+  "lint-staged": {
+    "*.{js,vue,ts,jsx,tsx,css,scss}": [
+      "prettier --write"
+    ],
+    "*.{js,vue,ts,jsx,tsx}": [
+      "eslint --fix"
+    ],
+    "*.{css,scss}": [
+      "stylelint --fix"
+    ]
+  },
+  "dependencies": {
+    "@popperjs/core": "~2.11.6",
+    "@quasar/extras": "1.15.7",
+    "@rushstack/eslint-patch": "^1.2.0",
+    "@vue/eslint-config-typescript": "^11.0.2",
+    "@vueuse/core": "9.6.0",
+    "axios": "1.2.1",
+    "dayjs": "1.11.6",
+    "echarts-web-components": "~0.0.3",
+    "element-plus": "^2.2.19",
+    "haunted": "^5.0.0",
+    "jack-web-ui": "~0.0.8",
+    "lit": "~2.4.1",
+    "quasar": "2.10.2",
+    "sass": "1.57.1",
+    "video.js": "^7.20.3",
+    "vue": "^3.2.41",
+    "vue-router": "4.1.6"
+  },
+  "devDependencies": {
+    "@quasar/vite-plugin": "1.2.3",
+    "@types/axios": "0.14.0",
+    "@typescript-eslint/eslint-plugin": "^5.43.0",
+    "@typescript-eslint/parser": "^5.43.0",
+    "@vitejs/plugin-basic-ssl": "~0.1.2",
+    "@vitejs/plugin-vue": "~3.2.0",
+    "@vitejs/plugin-vue-jsx": "~2.1.0",
+    "eslint": "^8.0.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-config-standard-with-typescript": "^23.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-vue": "^9.7.0",
+    "husky": "8.0.2",
+    "lint-staged": "13.0.3",
+    "postcss-html": "1.5.0",
+    "postcss-scss": "4.0.5",
+    "prettier": "2.7.1",
+    "stylelint": "14.15.0",
+    "stylelint-config-prettier": "9.0.4",
+    "stylelint-config-prettier-scss": "0.0.1",
+    "stylelint-config-recommended-vue": "1.4.0",
+    "stylelint-config-scss": "1.0.0-security",
+    "stylelint-config-standard": "29.0.0",
+    "stylelint-config-standard-scss": "6.1.0",
+    "stylelint-order": "5.0.0",
+    "typescript": "^4.8.4",
+    "unplugin-auto-import": "~0.11.4",
+    "unplugin-vue-components": "^0.22.9",
+    "vite": "~3.2.4",
+    "vitepress": "~1.0.0-alpha.25",
+    "vitest": "0.25.3",
+    "vue-eslint-parser": "^9.1.0",
+    "vue-tsc": "~1.0.9"
+  }
+}

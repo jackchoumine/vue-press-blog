@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    // 必须安装的
+    "Vue.volar",
+    "stylelint.vscode-stylelint",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    // 推荐安装
+    "streetsidesoftware.code-spell-checker",// 单词拼写检查
+    "Gruntfuggly.todo-tree",
+    "eamodio.gitlens",
+  ]
+}

@@ -1,0 +1,5 @@
+docs
+src/test-lit.js
+src/components/StencilComponent
+\*.svg
+packages/plugins
