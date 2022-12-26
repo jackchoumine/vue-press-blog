@@ -1,0 +1,16 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  position: relative;
+}
+
+.box {
+  position: absolute;
+  color: white;
+  background: orange;
+  width: 200px;
+  height: 100px;
+  line-height: 100px;
+  cursor: pointer;
+  user-select: none;
+}

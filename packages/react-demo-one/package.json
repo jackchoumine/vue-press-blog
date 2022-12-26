@@ -1,0 +1,25 @@
+{
+  "name": "demos-one",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --open --host",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.11.6",
+    "date-fns": "^2.29.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "rxjs": "^6.6.7",
+    "rxjs-hooks": "^0.2.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.0.1",
+    "vite": "^3.0.7"
+  }
+}
