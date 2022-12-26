@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>插件测试</title>
+  </head>
+  <body>
+    <h2>插件</h2>
+    <div id="app">my-plugin</div>
+    <!-- <script src="./demo-one.js"></script> -->
+    <!-- <script src="./demo-tow.js"></script> -->
+    <script src="./demo-three.js"></script>
+    <script>
+      // const myPlugin = new MyPlugin('hello')
+      // console.log(myPlugin.name)
+      // myPlugin.name = '' // 属性可被修改，不安全
+      // console.log(myPlugin.name)
+      // myPlugin.say()
+      // console.log(myPlugin.random(10, 30))
+
+      // 闭包写法
+      // new 调用函数，无返回值或者返回非对象的值，返回它创建的对象
+      // 要是该函数返回一个对象，this 就是该对象
+      // const plugin = new MyPlugin('13276891234')
+      // console.log(plugin.getRegs())
+      // console.log(plugin.isPhone())
+      // console.log(plugin.isNumber())
+
+      // jQuery 写法
+      const el = $('#app')
+      console.log(el)
+      el.setBg('#ff0').setHeight('100px').setWidth('200px')
+    </script>
+  </body>
+</html>
