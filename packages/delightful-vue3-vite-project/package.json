@@ -28,6 +28,7 @@
     ]
   },
   "dependencies": {
+    "@jack/http": "workspace:1.0.0",
     "@popperjs/core": "~2.11.6",
     "@quasar/extras": "1.15.7",
     "@rushstack/eslint-patch": "^1.2.0",
