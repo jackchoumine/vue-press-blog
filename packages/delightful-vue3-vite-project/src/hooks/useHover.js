@@ -14,7 +14,6 @@ function useHover(target, inAndOut = options, opts = undefined) {
 
   function detectHover(target) {
     const _target = target?.value ? target.value : target
-    console.log(_target)
     if (_target) {
       opts &&
         hoverintent(
