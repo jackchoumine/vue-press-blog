@@ -2,7 +2,7 @@
  * @Description : 导出组件
  * @Date        : 2022-10-15 19:51:59 +0800
  * @Author      : JackChou
- * @LastEditTime: 2022-12-28 11:23:03
+ * @LastEditTime: 2022-12-28 15:27:43
  * @LastEditors : ZhouQiJun
  */
 export { default as HelloWorld } from './HelloWorld.vue'
@@ -22,4 +22,4 @@ export * from './HelloSlotted'
 export { default as MyInput } from './MyInput/MyInput.vue'
 export { default as TestLit } from './TestLit/TestLit.vue'
 export { RecursionComponentDemos } from './RecursionComponent'
-export { default as UseHoverDemo } from './UseHoverDemo.vue'
+export { default as UseHoverDemo } from './HookTest/UseHoverDemo.vue'

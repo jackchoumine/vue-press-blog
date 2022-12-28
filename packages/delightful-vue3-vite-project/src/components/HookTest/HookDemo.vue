@@ -2,11 +2,13 @@
  * @Date        : 2022-11-10 11:35:34
  * @Author      : ZhouQiJun
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2022-11-12 15:28:34
+ * @LastEditTime: 2022-12-28 15:28:20
  * @Description : 
 -->
 <template>
   <div>
+    <h4>useHover</h4>
+    <UseHoverDemo />
     <h4>useVisibilityChange</h4>
     <audio
       ref="audio"
@@ -57,6 +59,7 @@ import ContactList from './ContactList.vue'
 import { Modal, ModalHeader } from './Modal'
 import useCart from './useCart'
 import { useVisibilityChange } from '@/hooks'
+import UseHoverDemo from './UseHoverDemo.vue'
 const books = ref([
   { id: 1, name: 'vue', price: 12 },
   { id: 2, name: 'react', price: 20 },

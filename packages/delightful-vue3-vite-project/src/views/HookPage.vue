@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2022-12-26 17:59:30
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2022-12-28 11:27:12
+ * @LastEditTime: 2022-12-28 15:27:58
  * @Description : 
 -->
 <script setup lang="ts" name="HookPage">
@@ -19,8 +19,7 @@ const myInput = ref('hello')
 
 <template>
   <div class="page">
-    <UseHoverDemo />
-    <!-- <HookDemo /> -->
+    <HookDemo />
     <MyInput v-model="myInput" />
     <p>{{ myInput }}</p>
     <hr />
