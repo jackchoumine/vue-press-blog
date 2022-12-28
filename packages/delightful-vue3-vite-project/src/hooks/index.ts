@@ -1,3 +1,10 @@
+/*
+ * @Author      : ZhouQiJun
+ * @Date        : 2022-12-26 17:59:30
+ * @LastEditors : ZhouQiJun
+ * @LastEditTime: 2022-12-28 11:17:50
+ * @Description : 导出 hooks
+ */
 export { default as useLocalStorage } from './useLocalStorage.js'
 export { useWindowResize } from './useWindowResize.js'
 export { useStorage } from './useStorage.js'
@@ -10,3 +17,4 @@ export { useTitle } from './useTitle'
 export { useVModel } from './useVModel'
 export { useVisibilityChange } from './useVisibilityChange'
 export type { VisibilityChange } from './useVisibilityChange'
+export { default as useHover } from './useHover'

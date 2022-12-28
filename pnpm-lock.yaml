@@ -60,6 +60,7 @@ importers:
       eslint-plugin-promise: ^6.0.0
       eslint-plugin-vue: ^9.7.0
       haunted: ^5.0.0
+      hoverintent: 2.2.1
       husky: 8.0.2
       jack-web-ui: ~0.0.8
       lint-staged: 13.0.3
@@ -100,6 +101,7 @@ importers:
       echarts-web-components: 0.0.3
       element-plus: 2.2.27_vue@3.2.45
       haunted: 5.0.0
+      hoverintent: 2.2.1
       jack-web-ui: 0.0.8
       lit: 2.4.1
       quasar: 2.10.2
@@ -153,6 +155,7 @@ importers:
       '@vitejs/plugin-react': ~3.0.0
       antd: ~5.1.0
       antd-mobile: ^5.27.0
+      hoverintent: 2.2.1
       react: ~18.2.0
       react-dom: ~18.2.0
       typescript: ~4.9.3
@@ -160,6 +163,7 @@ importers:
     dependencies:
       antd: 5.1.0_biqbaboplfbrettd7655fr4n2y
       antd-mobile: 5.27.0_biqbaboplfbrettd7655fr4n2y
+      hoverintent: 2.2.1
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
     devDependencies:
@@ -4610,6 +4614,10 @@ packages:
     dependencies:
       lru-cache: 6.0.0
     dev: true
+
+  /hoverintent/2.2.1:
+    resolution: {integrity: sha512-VyU54L1xW5rSqpsv/LJ6ecymGXsXXeGs9iVEKot4kKBCq5UodSAuy3DqX686LZxEpaMEfeCHPu4LndsMX5Q9eQ==}
+    dev: false
 
   /html-tags/3.2.0:
     resolution: {integrity: sha512-vy7ClnArOZwCnqZgvv+ddgHgJiAFXe3Ge9ML5/mBctVJoUoYPCdxVucOywjDARn6CVoh3dRSFdPHy2sX80L0Wg==}
