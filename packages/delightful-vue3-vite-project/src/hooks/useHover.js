@@ -1,4 +1,4 @@
-import hoverintent from 'hoverintent'
+import hoverIntent from 'hoverintent'
 import { ref, onMounted } from 'vue'
 const options = {
   in: () => undefined,
@@ -16,7 +16,7 @@ function useHover(target, inAndOut = options, opts = undefined) {
     const _target = target?.value ? target.value : target
     if (_target) {
       opts &&
-        hoverintent(
+        hoverIntent(
           _target,
           () => {
             inAndOut.in()
@@ -29,7 +29,7 @@ function useHover(target, inAndOut = options, opts = undefined) {
         ).options(opts)
 
       !opts &&
-        hoverintent(
+        hoverIntent(
           _target,
           () => {
             inAndOut.in()
