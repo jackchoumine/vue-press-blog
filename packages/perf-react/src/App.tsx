@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2022-12-26 17:02:50
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2022-12-28 10:49:18
+ * @LastEditTime: 2022-12-29 10:28:31
  * @Description :
  */
 import { Button } from 'antd'
@@ -17,6 +17,7 @@ import {
   UseReactiveDemo,
   UseOnDemo,
   UseHoverDemo,
+  ThemeSwitcher,
 } from './components'
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
   }
   return (
     <div className='App'>
+      <ThemeSwitcher />
       <UseHoverDemo />
       <UseOnDemo />
       <UseReactiveDemo />
