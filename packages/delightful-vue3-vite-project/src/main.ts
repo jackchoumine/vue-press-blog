@@ -2,7 +2,7 @@
  * @Date        : 2022-08-08 14:23:25
  * @Author      : ZhouQijun
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2022-11-10 09:07:38
+ * @LastEditTime: 2022-12-30 17:07:23
  * @Description :
  */
 import { createApp } from 'vue/dist/vue.esm-bundler.js'
@@ -48,7 +48,7 @@ customElements.define('line-chart', ELineChart as unknown as CustomElementConstr
 // customElements.define('line-chart', ELineChart as unknown as CustomElementConstructor)
 customElements.define(
   'hello-stencil',
-  HelloStencil as unknown as CustomElementConstructor,
+  HelloStencil as unknown as CustomElementConstructor
 )
 
 const app = createApp(App)
@@ -77,5 +77,9 @@ app.use(ElLoading).use(router).use(Quasar, {
 // import('element-plus').then(({ default: ElementPlus }) => {
 // app.use(ElementPlus)
 // })
+
+app.config.globalProperties.globalFn = function testGlobal(name: string) {
+  console.log(name)
+}
 
 app.mount('#app')

@@ -1,14 +1,15 @@
 <!--
   * @Date        : 2022-08-08 14:23:25
   * @Author      : ZhouQijun
-  * @LastEditors : ZhouQiJun
-  * @LastEditTime: 2022-11-11 09:26:41
+ * @LastEditors : ZhouQiJun
+ * @LastEditTime: 2022-12-30 17:50:55
   * @Description : 
 -->
 <script setup lang="tsx">
 import { HelloWorld, WatchDemo, SlottedDemo } from '../components'
 // NOTE 不要使用路径别名，否则不会类型不生效
 import { USER_KEY } from '../utils/injectionKey'
+import { useGlobalProps } from '@/hooks'
 
 const SubComponent = defineComponent({
   render() {
@@ -22,10 +23,17 @@ setTimeout(() => {
 }, 5000)
 
 const user = inject(USER_KEY)
+
+const { testFn, globalFn } = useGlobalProps()
+testFn()
+onMounted(() => {
+  globalFn('global function in main.js')
+})
 </script>
 
 <template>
   <div class="page" v-water-maker="{ text: '水印' }">
+    <h4>全局属性</h4>
     <h3>provide inject</h3>
     <p>userName:{{ user?.name }}</p>
     <hr />
