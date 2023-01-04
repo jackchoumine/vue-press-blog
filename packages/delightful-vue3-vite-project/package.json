@@ -42,6 +42,7 @@
     "hoverintent": "2.2.1",
     "jack-web-ui": "~0.0.8",
     "lit": "~2.4.1",
+    "pinia": "2.0.28",
     "quasar": "2.10.2",
     "sass": "1.57.1",
     "video.js": "^7.20.3",
@@ -50,7 +51,6 @@
   },
   "devDependencies": {
     "@quasar/vite-plugin": "1.2.3",
-    "@types/axios": "0.14.0",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
     "@typescript-eslint/parser": "^5.43.0",
     "@vitejs/plugin-basic-ssl": "~0.1.2",

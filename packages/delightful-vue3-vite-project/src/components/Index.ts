@@ -2,8 +2,8 @@
  * @Description : 导出组件
  * @Date        : 2022-10-15 19:51:59 +0800
  * @Author      : JackChou
- * @LastEditTime: 2022-12-28 15:27:43
- * @LastEditors : ZhouQiJun
+ * @LastEditTime: 2023-01-05 01:40:52 +0800
+ * @LastEditors : JackChou
  */
 export { default as HelloWorld } from './HelloWorld.vue'
 export { FileViewer } from './FileViewer'
@@ -23,3 +23,4 @@ export { default as MyInput } from './MyInput/MyInput.vue'
 export { default as TestLit } from './TestLit/TestLit.vue'
 export { RecursionComponentDemos } from './RecursionComponent'
 export { default as UseHoverDemo } from './HookTest/UseHoverDemo.vue'
+export { CounterDemo } from './PiniaDemos'

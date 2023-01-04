@@ -1,8 +1,8 @@
 /*
  * @Date        : 2022-08-08 14:23:25
  * @Author      : ZhouQijun
- * @LastEditors : ZhouQiJun
- * @LastEditTime: 2022-12-30 17:07:23
+ * @LastEditors : JackChou
+ * @LastEditTime: 2023-01-05 01:25:21 +0800
  * @Description :
  */
 import { createApp } from 'vue/dist/vue.esm-bundler.js'
@@ -16,6 +16,8 @@ import 'quasar/dist/quasar.css'
 
 import './assets/styles/global.scss'
 import router from './router'
+
+import { createPinia } from 'pinia'
 // @ts-ignore
 // import Antd from 'ant-design-vue'
 // import 'ant-design-vue/dist/antd.css'
@@ -43,6 +45,7 @@ import { CountTo } from 'jack-web-ui/dist/components'
 // app.config.compilerOptions.isCustomElement = tag =>
 //   /^([a-z][a-z0-9]*)(-[a-z0-9]+)*$/.test(tag)
 import { ElLoading } from 'element-plus'
+const pinia = createPinia()
 customElements.define('count-to', CountTo as unknown as CustomElementConstructor)
 customElements.define('line-chart', ELineChart as unknown as CustomElementConstructor)
 // customElements.define('line-chart', ELineChart as unknown as CustomElementConstructor)
@@ -54,12 +57,16 @@ customElements.define(
 const app = createApp(App)
 
 app.config.performance = true
-app.use(globalDirectives) // .use(vAuth) //.use(vClickOutside) // .use(Antd)
-app.use(ElLoading).use(router).use(Quasar, {
-  plugins: {}, // import Quasar plugins and add here
-  lang: quasarLang,
-  iconSet: quasarIconSet,
-  /*
+app
+  .use(globalDirectives) // .use(vAuth) //.use(vClickOutside) // .use(Antd)
+  .use(pinia)
+  .use(ElLoading)
+  .use(router)
+  .use(Quasar, {
+    plugins: {}, // import Quasar plugins and add here
+    lang: quasarLang,
+    iconSet: quasarIconSet,
+    /*
   config: {
     brand: {
       // primary: '#e46262',
@@ -71,7 +78,7 @@ app.use(ElLoading).use(router).use(Quasar, {
     // ..and many more (check Installation card on each Quasar component/directive/plugin)
   }
   */
-})
+  })
 // import 'element-plus/dist/index.css'
 // import ElementPlus from 'element-plus'
 // import('element-plus').then(({ default: ElementPlus }) => {

@@ -41,6 +41,11 @@ export const routes = [
     name: 'about',
     component: () => import('../views/AboutPage.vue'),
   },
+  {
+    path: '/pinia',
+    name: 'pinia',
+    component: () => import('../views/PiniaPage.vue'),
+  },
 ]
 
 const router = createRouter({
