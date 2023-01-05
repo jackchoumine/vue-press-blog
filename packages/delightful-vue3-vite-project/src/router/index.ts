@@ -1,3 +1,10 @@
+/*
+ * @Author      : ZhouQiJun
+ * @Date        : 2023-01-05 09:46:55
+ * @LastEditors : ZhouQiJun
+ * @LastEditTime: 2023-01-05 09:51:53
+ * @Description :
+ */
 import { createRouter, createWebHistory } from 'vue-router'
 
 export const routes = [
@@ -45,6 +52,11 @@ export const routes = [
     path: '/pinia',
     name: 'pinia',
     component: () => import('../views/PiniaPage.vue'),
+  },
+  {
+    path: '/optimization',
+    name: 'optimization',
+    component: () => import('../views/OptimizationPage.vue'),
   },
 ]
 

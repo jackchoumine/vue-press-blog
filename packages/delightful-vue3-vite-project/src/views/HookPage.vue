@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2022-12-26 17:59:30
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2022-12-28 15:27:58
+ * @LastEditTime: 2023-01-05 09:54:23
  * @Description : 
 -->
 <script setup lang="ts" name="HookPage">
@@ -13,7 +13,7 @@ import {
   PopperButtonHook,
   MyInput,
   UseHoverDemo,
-} from '#c'
+} from '@/components'
 const myInput = ref('hello')
 </script>
 
