@@ -2,11 +2,41 @@
  * @Date        : 2022-11-10 11:35:34
  * @Author      : ZhouQiJun
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2022-12-28 15:28:20
+ * @LastEditTime: 2023-01-05 12:35:09
  * @Description : 
 -->
+<script setup lang="ts">
+import TestHook from './HookTest.vue'
+import VideoPlayer from '../VideoPlayer/VideoPlayer.vue'
+import UseMouseFollower from './UseMouseDemo.vue'
+import SimpleCounter from './SimpleCounter.vue'
+import ContactList from './ContactList.vue'
+import { Modal, ModalHeader } from './Modal'
+import useCart from './useCart'
+import { useVisibilityChange, useDebounceRef } from '@/hooks'
+import UseHoverDemo from './UseHoverDemo.vue'
+
+const books = ref([
+  { id: 1, name: 'vue', price: 12 },
+  { id: 2, name: 'react', price: 20 },
+  { id: 3, name: 'angular', price: 21 },
+])
+const { items, addCart, removeCart } = useCart()
+const audio = ref(null)
+useVisibilityChange(hidden => {
+  if (hidden) {
+    audio.value?.pause()
+  }
+})
+
+const text = useDebounceRef('hello', 1000)
+</script>
+
 <template>
   <div>
+    <h4>useDebounceRef</h4>
+    <input v-model="text" />
+    <p>{{ text }}</p>
     <h4>useHover</h4>
     <UseHoverDemo />
     <h4>useVisibilityChange</h4>
@@ -49,29 +79,5 @@
     </Modal>
   </div>
 </template>
-
-<script setup lang="ts">
-import TestHook from './HookTest.vue'
-import VideoPlayer from '../VideoPlayer/VideoPlayer.vue'
-import UseMouseFollower from './UseMouseDemo.vue'
-import SimpleCounter from './SimpleCounter.vue'
-import ContactList from './ContactList.vue'
-import { Modal, ModalHeader } from './Modal'
-import useCart from './useCart'
-import { useVisibilityChange } from '@/hooks'
-import UseHoverDemo from './UseHoverDemo.vue'
-const books = ref([
-  { id: 1, name: 'vue', price: 12 },
-  { id: 2, name: 'react', price: 20 },
-  { id: 3, name: 'angular', price: 21 },
-])
-const { items, addCart, removeCart } = useCart()
-const audio = ref(null)
-useVisibilityChange(hidden => {
-  if (hidden) {
-    audio.value?.pause()
-  }
-})
-</script>
 
 <style lang="scss"></style>

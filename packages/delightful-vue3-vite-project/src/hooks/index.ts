@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2022-12-26 17:59:30
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2022-12-30 17:39:06
+ * @LastEditTime: 2023-01-05 12:30:26
  * @Description : 导出 hooks
  */
 export { default as useLocalStorage } from './useLocalStorage.js'
@@ -19,3 +19,4 @@ export { useVisibilityChange } from './useVisibilityChange'
 export type { VisibilityChange } from './useVisibilityChange'
 export { default as useHover } from './useHover'
 export { default as useGlobalProps } from './useGlobalProps'
+export { useDebounceRef } from './useDebounceRef'
