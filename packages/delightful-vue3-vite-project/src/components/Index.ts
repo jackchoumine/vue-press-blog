@@ -2,7 +2,7 @@
  * @Description : 导出组件
  * @Date        : 2022-10-15 19:51:59 +0800
  * @Author      : JackChou
- * @LastEditTime: 2023-01-05 09:58:30
+ * @LastEditTime: 2023-01-05 11:58:53
  * @LastEditors : ZhouQiJun
  */
 export { default as HelloWorld } from './HelloWorld.vue'
@@ -25,3 +25,4 @@ export { RecursionComponentDemos } from './RecursionComponent'
 export { default as UseHoverDemo } from './HookTest/UseHoverDemo.vue'
 export { CounterDemo } from './PiniaDemos'
 export { VOnce, VMemo } from './OptimizeSkills'
+export { TabContainerDemo } from './TabContainer'
