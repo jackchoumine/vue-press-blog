@@ -2,7 +2,7 @@
  * @Description : count 全局状态
  * @Date        : 2023-01-05 01:26:42 +0800
  * @Author      : JackChou
- * @LastEditTime: 2023-01-05 22:51:52 +0800
+ * @LastEditTime: 2023-01-05 23:00:11 +0800
  * @LastEditors : JackChou
  */
 import { defineStore } from 'pinia'
@@ -21,7 +21,12 @@ export const useCounter = defineStore('counter', {
       books: ['vue', 'react', 'sevlet'],
     }
   },
-  getters: {},
+  getters: {
+    booksStr(state) {
+      console.log(state.books)
+      return this.books.join('--')
+    },
+  },
   actions: {
     complexChange(step: number) {
       this.age += step

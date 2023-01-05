@@ -2,7 +2,7 @@
  * @Description : 
  * @Date        : 2023-01-05 01:34:31 +0800
  * @Author      : JackChou
- * @LastEditTime: 2023-01-05 22:52:39 +0800
+ * @LastEditTime: 2023-01-05 22:59:02 +0800
  * @LastEditors : JackChou
 -->
 <template>
@@ -12,6 +12,7 @@
     <ul>
       <li v-for="book in books" :key="book">{{ book }}</li>
     </ul>
+    <p>{{ booksStr }}</p>
     <button @click="add">+</button>
     <hr />
     <button @click="changeMulti">批量修改</button>
@@ -28,7 +29,7 @@ import { storeToRefs } from 'pinia'
 const counter = useCounter()
 // NOTE 不要直接解构，会失去响应式
 // const { count } = counter
-const { count, age, books } = storeToRefs(counter)
+const { count, age, books, booksStr } = storeToRefs(counter)
 
 // NOTE 状态修改
 // 方式1：最简单
