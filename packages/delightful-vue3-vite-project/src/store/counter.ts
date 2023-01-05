@@ -2,7 +2,7 @@
  * @Description : count 全局状态
  * @Date        : 2023-01-05 01:26:42 +0800
  * @Author      : JackChou
- * @LastEditTime: 2023-01-05 23:00:11 +0800
+ * @LastEditTime: 2023-01-05 23:02:27 +0800
  * @LastEditors : JackChou
  */
 import { defineStore } from 'pinia'
@@ -22,7 +22,8 @@ export const useCounter = defineStore('counter', {
     }
   },
   getters: {
-    booksStr(state) {
+    // NOTE getters 使用了this，需要手动声明返回值类型
+    booksStr(state): string {
       console.log(state.books)
       return this.books.join('--')
     },
