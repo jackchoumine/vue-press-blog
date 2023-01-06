@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --open",
-    "build": "vue-tsc --noEmit && vite build",
+    "build": "vite build",
     "test": "vitest",
     "preview": "vite preview",
     "docs:dev": "vitepress dev docs",

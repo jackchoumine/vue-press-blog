@@ -7,6 +7,7 @@
     "allowJs": true,
     "strict": false,
     "jsx": "preserve",
+    "typesRoot": ["./node_modules/@types", "./types"],
     "sourceMap": true,
     // "strictNullChecks": true,
     "resolveJsonModule": true,

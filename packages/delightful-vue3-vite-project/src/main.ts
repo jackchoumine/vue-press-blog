@@ -2,7 +2,7 @@
  * @Date        : 2022-08-08 14:23:25
  * @Author      : ZhouQijun
  * @LastEditors : JackChou
- * @LastEditTime: 2023-01-05 01:25:21 +0800
+ * @LastEditTime: 2023-01-07 00:23:17 +0800
  * @Description :
  */
 import { createApp } from 'vue/dist/vue.esm-bundler.js'
@@ -45,6 +45,9 @@ import { CountTo } from 'jack-web-ui/dist/components'
 // app.config.compilerOptions.isCustomElement = tag =>
 //   /^([a-z][a-z0-9]*)(-[a-z0-9]+)*$/.test(tag)
 import { ElLoading } from 'element-plus'
+// NOTE 不到如这个，在jsx中使用指令，无效。
+import 'element-plus/theme-chalk/el-loading.css'
+
 const pinia = createPinia()
 customElements.define('count-to', CountTo as unknown as CustomElementConstructor)
 customElements.define('line-chart', ELineChart as unknown as CustomElementConstructor)
