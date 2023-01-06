@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { useCounter } from '@/store'
+import { useCounter } from '@/stores'
 import { storeToRefs } from 'pinia'
 const counter = useCounter()
 // NOTE 不要直接解构，会失去响应式
