@@ -15,7 +15,7 @@ import '@quasar/extras/material-icons/material-icons.css'
 import 'quasar/dist/quasar.css'
 
 import './assets/styles/global.scss'
-import router from './router'
+import router from './routers'
 
 import { createPinia } from 'pinia'
 // @ts-ignore
