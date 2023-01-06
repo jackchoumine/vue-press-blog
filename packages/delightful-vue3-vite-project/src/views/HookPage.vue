@@ -2,12 +2,13 @@
  * @Author      : ZhouQiJun
  * @Date        : 2022-12-26 17:59:30
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-01-05 09:54:23
+ * @LastEditTime: 2023-01-06 15:21:01
  * @Description : 
 -->
 <script setup lang="ts" name="HookPage">
 import {
   FileViewer,
+  testNameExport,
   HookDemo,
   PopperButton,
   PopperButtonHook,
@@ -24,6 +25,7 @@ const myInput = ref('hello')
     <p>{{ myInput }}</p>
     <hr />
     <FileViewer />
+    <p>{{testNameExport}}</p>
     <h4>usePopper -- hook 与第三方库</h4>
     <PopperButtonHook />
     <PopperButton />

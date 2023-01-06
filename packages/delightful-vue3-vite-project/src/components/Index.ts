@@ -6,7 +6,7 @@
  * @LastEditors : ZhouQiJun
  */
 export { default as HelloWorld } from './HelloWorld.vue'
-export { FileViewer } from './FileViewer'
+export { FileViewer,testNameExport } from './FileViewer'
 export { default as ChartDemos } from './WebComponents/ChartDemos.vue'
 // export { Button, UseButton } from './Button'
 // NOTE 导出每一个命名导出

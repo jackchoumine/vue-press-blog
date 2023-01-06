@@ -1,8 +1,8 @@
 <!--
  * @Date        : 2022-08-08 15:45:47
  * @Author      : ZhouQijun
- * @LastEditors : ZhouQijun
- * @LastEditTime: 2022-10-17 10:15:51
+ * @LastEditors : ZhouQiJun
+ * @LastEditTime: 2023-01-06 15:24:58
  * @Description : 文件预览
 -->
 <template>
@@ -116,7 +116,7 @@ export default defineComponent({
     }
   },
 })
-export const testNameExport = '从组件中导出'
+export const testNameExport = '从 export default defineComponent 中导出变量'
 </script>
 
 <style scoped>
