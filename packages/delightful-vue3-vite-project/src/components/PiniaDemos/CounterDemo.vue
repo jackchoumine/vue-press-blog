@@ -2,7 +2,7 @@
  * @Description : 
  * @Date        : 2023-01-05 01:34:31 +0800
  * @Author      : JackChou
- * @LastEditTime: 2023-01-05 22:59:02 +0800
+ * @LastEditTime: 2023-01-06 23:03:32 +0800
  * @LastEditors : JackChou
 -->
 <template>
@@ -20,13 +20,23 @@
     <button @click="changeMulti2">$patch使用接收函数</button>
     <hr />
     <button @click="changeByAaction">action 修改</button>
+    <hr />
+    <ul>
+      <li v-for="todo in todos" :key="todo.id">
+        <input type="checkbox" :checked="todo.finished" />
+        <span class="content" :class="{ finished: todo.finished }">
+          {{ todo.content }}
+        </span>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script setup lang="ts">
-import { useCounter } from '@/stores'
+import { useCounter, useTodosStore } from '@/stores'
 import { storeToRefs } from 'pinia'
 const counter = useCounter()
+const { todos } = useTodosStore()
 // NOTE 不要直接解构，会失去响应式
 // const { count } = counter
 const { count, age, books, booksStr } = storeToRefs(counter)

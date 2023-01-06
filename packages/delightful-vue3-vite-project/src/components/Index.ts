@@ -2,11 +2,11 @@
  * @Description : 导出组件
  * @Date        : 2022-10-15 19:51:59 +0800
  * @Author      : JackChou
- * @LastEditTime: 2023-01-05 11:58:53
- * @LastEditors : ZhouQiJun
+ * @LastEditTime: 2023-01-06 22:38:24 +0800
+ * @LastEditors : JackChou
  */
 export { default as HelloWorld } from './HelloWorld.vue'
-export { FileViewer,testNameExport } from './FileViewer'
+export { FileViewer, testNameExport } from './FileViewer'
 export { default as ChartDemos } from './WebComponents/ChartDemos.vue'
 // export { Button, UseButton } from './Button'
 // NOTE 导出每一个命名导出
@@ -23,6 +23,6 @@ export { default as MyInput } from './MyInput/MyInput.vue'
 export { default as TestLit } from './TestLit/TestLit.vue'
 export { RecursionComponentDemos } from './RecursionComponent'
 export { default as UseHoverDemo } from './HookTest/UseHoverDemo.vue'
-export { CounterDemo } from './PiniaDemos'
+export { CounterDemo, TodosDemo } from './PiniaDemos'
 export { VOnce, VMemo } from './OptimizeSkills'
 export { TabContainerDemo } from './TabContainer'
