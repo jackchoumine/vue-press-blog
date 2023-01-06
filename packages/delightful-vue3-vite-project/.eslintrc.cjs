@@ -36,5 +36,6 @@ module.exports = {
     ],
     '@typescript-eslint/no-unused-vars': 1,
     'vue/no-setup-props-destructure': 0,
+    'vue/no-multiple-template-root': 0,
   },
 }
