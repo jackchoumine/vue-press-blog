@@ -2,7 +2,7 @@
  * @Date        : 2022-08-08 15:54:09
  * @Author      : ZhouQijun
  * @LastEditors : JackChou
- * @LastEditTime: 2023-01-07 20:41:38 +0800
+ * @LastEditTime: 2023-01-07 21:06:32 +0800
  * @Description : vite 配置
  */
 // @ts-nocheck
@@ -25,6 +25,10 @@ const isCustomElement = tag => /^([a-z][a-z0-9]*)(-[a-z0-9]+)*$/.test(tag)
 export default defineConfig({
   test: {
     globals: true,
+    environment: 'jsdom',
+    deps: {
+      inline: ['element-plus'],
+    },
   },
   plugins: [
     vue({
