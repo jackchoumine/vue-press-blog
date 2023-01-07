@@ -2,7 +2,7 @@
  * @Date        : 2022-08-08 15:54:09
  * @Author      : ZhouQijun
  * @LastEditors : JackChou
- * @LastEditTime: 2023-01-07 21:06:32 +0800
+ * @LastEditTime: 2023-01-07 21:19:48 +0800
  * @Description : vite 配置
  */
 // @ts-nocheck
@@ -28,6 +28,9 @@ export default defineConfig({
     environment: 'jsdom',
     deps: {
       inline: ['element-plus'],
+    },
+    transformMode: {
+      web: [/.(t|j)sx$/],
     },
   },
   plugins: [
