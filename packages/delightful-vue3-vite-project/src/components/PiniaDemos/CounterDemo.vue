@@ -2,7 +2,7 @@
  * @Description : 
  * @Date        : 2023-01-05 01:34:31 +0800
  * @Author      : JackChou
- * @LastEditTime: 2023-01-06 23:03:32 +0800
+ * @LastEditTime: 2023-01-07 14:25:01 +0800
  * @LastEditors : JackChou
 -->
 <template>
@@ -22,9 +22,19 @@
     <button @click="changeByAaction">action 修改</button>
     <hr />
     <ul>
-      <li v-for="todo in todos" :key="todo.id">
-        <input type="checkbox" :checked="todo.finished" />
-        <span class="content" :class="{ finished: todo.finished }">
+      <li v-for="todo in finishedTodos" :key="todo">
+        <span class="content">
+          {{ todo }}
+        </span>
+      </li>
+    </ul>
+    <hr />
+    <ul>
+      <li v-for="todo in todos" :key="todo">
+        <span class="content">
+          {{ todo.finished ? '✅' : '' }}
+        </span>
+        <span class="content">
           {{ todo.content }}
         </span>
       </li>
@@ -35,10 +45,11 @@
 <script setup lang="ts">
 import { useCounter, useTodosStore } from '@/stores'
 import { storeToRefs } from 'pinia'
-const counter = useCounter()
-const { todos } = useTodosStore()
+const { finishedTodos, todos } = storeToRefs(useTodosStore())
+
 // NOTE 不要直接解构，会失去响应式
 // const { count } = counter
+const counter = useCounter()
 const { count, age, books, booksStr } = storeToRefs(counter)
 
 // NOTE 状态修改

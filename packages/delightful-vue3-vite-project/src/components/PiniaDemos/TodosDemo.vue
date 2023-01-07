@@ -2,12 +2,16 @@
  * @Description : 
  * @Date        : 2023-01-06 22:21:08 +0800
  * @Author      : JackChou
- * @LastEditTime: 2023-01-06 23:03:36 +0800
+ * @LastEditTime: 2023-01-07 16:19:49 +0800
  * @LastEditors : JackChou
 -->
 <template>
   <div>
     <h3>todo list</h3>
+    <h6>通过插件导入的全局属性</h6>
+    <p>{{ secret }}</p>
+    <p>{{ pluginVar }}</p>
+    <p>{{ name }}</p>
     <ul>
       <li v-for="todo in todos" :key="todo.id">
         <input
@@ -23,16 +27,27 @@
 </template>
 
 <script lang="ts">
+import { storeToRefs } from 'pinia'
 import { useTodosStore } from '@/stores'
 
 export default defineComponent({
   name: 'TodosDemo',
   setup() {
-    const { todos, finish } = useTodosStore()
+    const todosStore = useTodosStore()
+    // 解构出 actions 非响应式的数据
+    const { finish, secret, pluginVar, name } = todosStore
+
+    // NOTE 和 props 一样，直接解构，会失去响应性
+    // methods（actions）和 非响应式的数据被忽略
+    // 当你只使用 store 的状态而不调用任何 action 时，它会非常有用
+    const { todos /* finish */ } = storeToRefs(todosStore)
+
+    // console.log(todos)
+    // console.log(finish)
     function change(id, event) {
       finish(id, event.target.checked)
     }
-    return { todos, change }
+    return { todos, change, secret, pluginVar, name }
   },
 })
 </script>

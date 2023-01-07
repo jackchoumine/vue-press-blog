@@ -2,7 +2,7 @@
  * @Date        : 2022-08-08 14:23:25
  * @Author      : ZhouQijun
  * @LastEditors : JackChou
- * @LastEditTime: 2023-01-07 00:23:17 +0800
+ * @LastEditTime: 2023-01-07 16:50:44 +0800
  * @Description :
  */
 import { createApp } from 'vue/dist/vue.esm-bundler.js'
@@ -15,9 +15,10 @@ import '@quasar/extras/material-icons/material-icons.css'
 import 'quasar/dist/quasar.css'
 
 import './assets/styles/global.scss'
-import router from './routers'
 
-import { createPinia } from 'pinia'
+import router from './routers'
+import piniaStore from './stores'
+
 // @ts-ignore
 // import Antd from 'ant-design-vue'
 // import 'ant-design-vue/dist/antd.css'
@@ -48,7 +49,6 @@ import { ElLoading } from 'element-plus'
 // NOTE 不到如这个，在jsx中使用指令，无效。
 import 'element-plus/theme-chalk/el-loading.css'
 
-const pinia = createPinia()
 customElements.define('count-to', CountTo as unknown as CustomElementConstructor)
 customElements.define('line-chart', ELineChart as unknown as CustomElementConstructor)
 // customElements.define('line-chart', ELineChart as unknown as CustomElementConstructor)
@@ -62,7 +62,7 @@ const app = createApp(App)
 app.config.performance = true
 app
   .use(globalDirectives) // .use(vAuth) //.use(vClickOutside) // .use(Antd)
-  .use(pinia)
+  .use(piniaStore) // 激活 pinia
   .use(ElLoading)
   .use(router)
   .use(Quasar, {
