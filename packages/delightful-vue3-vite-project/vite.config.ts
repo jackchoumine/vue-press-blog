@@ -2,10 +2,13 @@
  * @Date        : 2022-08-08 15:54:09
  * @Author      : ZhouQijun
  * @LastEditors : JackChou
- * @LastEditTime: 2022-11-18 01:15:11 +0800
+ * @LastEditTime: 2023-01-07 20:41:38 +0800
  * @Description : vite 配置
  */
 // @ts-nocheck
+
+/// <reference  types="vitest"/>
+
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
@@ -20,6 +23,9 @@ const isCustomElement = tag => /^([a-z][a-z0-9]*)(-[a-z0-9]+)*$/.test(tag)
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  test: {
+    globals: true,
+  },
   plugins: [
     vue({
       reactivityTransform: true,
