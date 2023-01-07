@@ -2,7 +2,7 @@
  * @Description : 导出全局状态
  * @Date        : 2023-01-05 01:19:05 +0800
  * @Author      : JackChou
- * @LastEditTime: 2023-01-07 17:02:48 +0800
+ * @LastEditTime: 2023-01-07 17:20:40 +0800
  * @LastEditors : JackChou
  */
 import type { PiniaPluginContext } from 'pinia'
@@ -10,6 +10,7 @@ import { createPinia } from 'pinia'
 
 export { useCounter } from './counter'
 export { useTodosStore } from './todos'
+export { useCartStore } from './cart'
 
 const piniaStore = createPinia()
 

@@ -2,7 +2,7 @@
  * @Description : 
  * @Date        : 2023-01-06 22:21:08 +0800
  * @Author      : JackChou
- * @LastEditTime: 2023-01-07 16:19:49 +0800
+ * @LastEditTime: 2023-01-07 17:45:22 +0800
  * @LastEditors : JackChou
 -->
 <template>
@@ -23,6 +23,7 @@
         </span>
       </li>
     </ul>
+    <button @click="changeTodos">外部修改todos</button>
   </div>
 </template>
 
@@ -47,7 +48,13 @@ export default defineComponent({
     function change(id, event) {
       finish(id, event.target.checked)
     }
-    return { todos, change, secret, pluginVar, name }
+    // BUG 外部可修改 todos
+    function changeTodos() {
+      console.log(todos)
+      todos.value = []
+      console.log(todos)
+    }
+    return { todos, changeTodos, change, secret, pluginVar, name }
   },
 })
 </script>

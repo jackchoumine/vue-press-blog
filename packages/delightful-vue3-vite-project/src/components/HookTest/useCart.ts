@@ -7,6 +7,12 @@ export type Cart = {
 }
 
 const items = ref<Cart[]>([])
+const totalBooks = computed(() =>
+  items.value.reduce((preToal, current) => {
+    preToal += current.number
+    return preToal
+  }, 0)
+)
 
 export default function useCart() {
   function addCart(item) {
@@ -24,5 +30,6 @@ export default function useCart() {
   }
   // NOTE 导出的 items 是内部的 items 的只读副本
   // 防止在外部意外更改状态
-  return { items: readonly(items), addCart, removeCart }
+  return { items: readonly(items), totalBooks: readonly(totalBooks), addCart, removeCart }
+  // return { items: items, totalBooks, addCart, removeCart }
 }
