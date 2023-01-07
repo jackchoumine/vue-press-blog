@@ -1,3 +1,5 @@
+import { readonly } from 'vue'
+
 export type Cart = {
   id: number
   name: string
@@ -20,5 +22,7 @@ export default function useCart() {
       number >= 2 && (items.value[index].number -= 1)
     }
   }
-  return { items, addCart, removeCart }
+  // NOTE 导出的 items 是内部的 items 的只读副本
+  // 防止在外部意外更改状态
+  return { items: readonly(items), addCart, removeCart }
 }

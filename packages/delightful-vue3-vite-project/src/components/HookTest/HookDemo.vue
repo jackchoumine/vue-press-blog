@@ -1,8 +1,8 @@
 <!--
  * @Date        : 2022-11-10 11:35:34
  * @Author      : ZhouQiJun
- * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-01-05 12:35:09
+ * @LastEditors : JackChou
+ * @LastEditTime: 2023-01-07 17:15:54 +0800
  * @Description : 
 -->
 <script setup lang="ts">
@@ -22,6 +22,11 @@ const books = ref([
   { id: 3, name: 'angular', price: 21 },
 ])
 const { items, addCart, removeCart } = useCart()
+// console.log(items)
+// 添加 readonly 之后，外部不可更改 items
+function onChangeItems() {
+  items.value = []
+}
 const audio = ref(null)
 useVisibilityChange(hidden => {
   if (hidden) {
@@ -64,6 +69,7 @@ const text = useDebounceRef('hello', 1000)
         {{ item.name }} -- {{ item.number }}
       </li>
     </ul>
+    <button @click="onChangeItems">修改共享的 items</button>
     <TestHook />
     <hr />
     <h4>useMouse</h4>
