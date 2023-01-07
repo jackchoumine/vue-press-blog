@@ -38,6 +38,7 @@
     "dayjs": "1.11.6",
     "echarts-web-components": "~0.0.3",
     "element-plus": "^2.2.19",
+    "graphql": "16.6.0",
     "haunted": "^5.0.0",
     "hoverintent": "2.2.1",
     "jack-web-ui": "~0.0.8",
@@ -45,9 +46,12 @@
     "pinia": "2.0.28",
     "quasar": "2.10.2",
     "sass": "1.57.1",
+    "vee-validate": "4.7.3",
     "video.js": "^7.20.3",
+    "villus": "2.1.0",
     "vue": "^3.2.41",
-    "vue-router": "4.1.6"
+    "vue-router": "4.1.6",
+    "yup": "0.32.11"
   },
   "devDependencies": {
     "@quasar/vite-plugin": "1.2.3",
