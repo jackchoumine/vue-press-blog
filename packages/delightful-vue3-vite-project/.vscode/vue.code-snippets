@@ -19,16 +19,16 @@
       "  }",
       "</script>",
       "",
-      "<style lang=\"scss\"></style>"
+      "<style lang=\"scss\" scoped></style>"
     ],
     "description": "vue2 模板"
   },
   "vue3 template": {
-    "prefix": "v3",
+    "prefix": "vue3",
     "description": "vue3模板",
     "body": [
       "",
-      "<script setup lang=\"tsx\">",
+      "<script setup lang=\"ts\">",
       "import { ref } from 'vue';",
       "</script>",
       "",
@@ -36,7 +36,7 @@
       "  <div>init</div>",
       "</template>",
       "",
-      "<style lang=\"scss\"></style>",
+      "<style lang=\"scss\" scoped></style>",
       ""
     ]
   }

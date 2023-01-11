@@ -14,8 +14,8 @@ const value = useVModel(props, 'modelValue')
   <input type="text" v-model="value" />
 </template>
 
-<style lang="scss">
+<!-- <style lang="scss">
 .my-input {
   // TODO
 }
-</style>
+</style> -->

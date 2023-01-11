@@ -2,8 +2,8 @@
  * @Description : 使用 Button
  * @Date        : 2022-10-27 00:40:00 +0800
  * @Author      : JackChou
- * @LastEditTime: 2022-11-02 15:33:34
- * @LastEditors : ZhouQiJun
+ * @LastEditTime: 2023-01-07 00:25:12 +0800
+ * @LastEditors : JackChou
  */
 // import { clickOutside } from '../../plugins/directive'
 import Button from './MyButton'
@@ -36,16 +36,22 @@ const UseButton = defineComponent({
     setTimeout(() => {
       loading.value = !loading.value
     }, 5000)
+
     // NOTE 第一种方式
+    // return () => (
+    //   <div v-loading={loading.value}>
+    //     <h2 v-show={show.value}></h2>
+    //     <Button v-slots={children} v-clickOutside={clickOutside}></Button>
+    //   </div>
+    // )
+
+    // NOTE 第二种方式
     return () => (
       <div v-loading={loading.value}>
         <h2 v-show={show.value}></h2>
-        <Button v-slots={children} v-clickOutside={clickOutside}></Button>
+        <Button v-clickOutside={clickOutside}>{children}</Button>
       </div>
     )
-
-    // NOTE 第二种方式
-    // return () => <Button>{children}</Button>
 
     // NOTE 第三种方式
     // return () => (

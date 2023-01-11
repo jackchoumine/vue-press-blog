@@ -1,11 +1,11 @@
 /*
  * @Date        : 2022-11-12 15:00:57
  * @Author      : ZhouQiJun
- * @LastEditors : ZhouQiJun
- * @LastEditTime: 2022-11-12 15:42:19
+ * @LastEditors : JackChou
+ * @LastEditTime: 2023-01-07 00:08:55 +0800
  * @Description :
  */
-import { MaybeRef } from '@vueuse/shared'
+import type { MaybeRef } from '@vueuse/core'
 import video from 'video.js'
 
 type Options = {
@@ -15,7 +15,7 @@ type Options = {
 }
 export function useVideoPlayer(
   src: MaybeRef<string>,
-  options?: MaybeRef<Partial<Options>>
+  options?: MaybeRef<Partial<Options>>,
 ) {
   const videoDOM = ref<HTMLVideoElement>(null)
   let player: ReturnType<typeof video> = null

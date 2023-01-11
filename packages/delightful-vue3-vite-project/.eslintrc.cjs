@@ -7,6 +7,8 @@ module.exports = {
     node: true,
   },
   extends: [
+    // 解决 prettier 和 eslint 冲突
+    'prettier',
     'plugin:vue/vue3-essential',
     'standard',
     '@vue/eslint-config-typescript',
@@ -25,7 +27,11 @@ module.exports = {
   rules: {
     // 关闭 prettier 规则提示
     'prettier/prettier': 0,
-    'comma-dangle': ['error', 'always-multiline'],
+    // NOTE comma-dangle trailingComma 冲突
+    // https://www.npmjs.com/package/@vue/eslint-config-prettier
+    // https://www.npmjs.com/package/eslint-config-prettier
+    // 'comma-dangle': 0, // [0, 'always-multiline'],
+    'comma-dangle': ['always', 'always-multiline'],
     'space-before-function-paren': [
       'error',
       {
@@ -36,5 +42,6 @@ module.exports = {
     ],
     '@typescript-eslint/no-unused-vars': 1,
     'vue/no-setup-props-destructure': 0,
+    'vue/no-multiple-template-root': 0,
   },
 }
