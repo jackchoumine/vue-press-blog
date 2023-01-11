@@ -1,3 +1,10 @@
+/*
+ * @Author      : ZhouQiJun
+ * @Date        : 2022-12-26 17:59:30
+ * @LastEditors : ZhouQiJun
+ * @LastEditTime: 2023-01-11 14:39:18
+ * @Description :
+ */
 function getItem(key, storage) {
   const value = storage.getItem(key)
   if (!value) return null
@@ -27,5 +34,5 @@ export function useStorage(key, type = 'session') {
       storage.setItem(key, JSON.stringify(newValue))
     }
   }
-  return [value, setItem(storage)]
+  return [value, setItem(storage), getItem]
 }
