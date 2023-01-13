@@ -113,3 +113,5 @@ memo 用于缓存整个组件。
 [React Hooks: Optimizing for performance](https://itnext.io/optimizing-react-code-with-hooks-3eaaf5978351)
 
 [React, Inline Functions, and Performance](https://reacttraining.com/blog/react-inline-functions-and-performance/)
+
+[更好的 React 性能——何时使用 useCallback 和 useMemo Hook](https://mp.weixin.qq.com/s/dN5OxLeTSS3QDwKIHJXCfQ)
