@@ -2,7 +2,7 @@
  * @Date        : 2022-08-08 15:54:09
  * @Author      : ZhouQijun
  * @LastEditors : JackChou
- * @LastEditTime: 2023-01-07 21:19:48 +0800
+ * @LastEditTime: 2023-01-15 23:24:42 +0800
  * @Description : vite 配置
  */
 // @ts-nocheck
@@ -23,6 +23,7 @@ const isCustomElement = tag => /^([a-z][a-z0-9]*)(-[a-z0-9]+)*$/.test(tag)
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  // 视频教程：https://www.bilibili.com/video/BV1mg41167VX/?vd_source=9bbf149e26315d2edf55b034712e09d6
   test: {
     globals: true,
     environment: 'jsdom',
