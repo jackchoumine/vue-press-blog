@@ -54,3 +54,7 @@ test('可用性测试', () => {
   }
 }
 ```
+
+## 参考资料
+
+[JavaScript 数据结构与算法 全套教程](https://www.youtube.com/playlist?list=PLkNxDxyJqb-zYVDrpRJbxabUxOTEB3N8k)
