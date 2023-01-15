@@ -24,3 +24,26 @@
 4. isEmpty()--判断栈中是否有元素；
 5. size()--返回元素个数，类似数组的 length ;
 6. toString()--将栈中元素以字符串形式返回。
+
+## 应用
+
+### 十进制转二进制
+
+关键：对 2 取余，入栈，再依次出栈。
+
+```js
+export function des2(n = 2, convertNumber = 0) {
+  const stack = new Stack()
+  while (convertNumber > 0) {
+    stack.push(convertNumber % n)
+    convertNumber = Math.floor(convertNumber / 2)
+  }
+
+  let bin = ''
+  while (!stack.isEmpty()) {
+    bin += stack.peek()
+    stack.pop()
+  }
+  return bin
+}
+```

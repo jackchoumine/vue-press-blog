@@ -2,10 +2,11 @@
  * @Description : 测试栈
  * @Date        : 2023-01-15 23:55:57 +0800
  * @Author      : JackChou
- * @LastEditTime: 2023-01-16 00:17:52 +0800
+ * @LastEditTime: 2023-01-16 00:54:18 +0800
  * @LastEditors : JackChou
  */
 import { Stack } from './StackBaseArray'
+import { des2 } from './demo1'
 describe('栈结构测试', () => {
   let stack
   beforeEach(() => {
@@ -32,5 +33,10 @@ describe('栈结构测试', () => {
   test('toString', () => {
     expect(stack + '').toBe('"1","2","3","4"')
     // expect(stack.toString()).toBe('"1","2","3","4"')
+  })
+  test('十进制转二进制', () => {
+    expect(des2(2, 100)).toBe('1100100')
+    expect(des2(2, 10)).toBe('1010')
+    // console.log(des2(2, 1000))
   })
 })
