@@ -7,3 +7,5 @@
 [Best practices for creating a modern npm package](https://snyk.io/blog/best-practices-create-modern-npm-package/)
 
 [如何创建可进行摇树优化的库](https://blog.theodo.com/2021/04/library-tree-shaking/)
+
+[这才是现代 JavaScript 库打包指南](https://mp.weixin.qq.com/s/xYTtXtVHa1Qutnoku9VTBA)
