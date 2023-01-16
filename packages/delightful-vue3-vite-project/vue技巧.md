@@ -218,3 +218,24 @@ import { createApp } from 'vue/dist/vue.esm-bundler.js' // 导出包含运行时
   </div>
 </template>
 ```
+
+## attr 函数的妙用
+
+```html
+<template>
+  <div>
+    <p :data-text="text">123</p>
+    <p>123</p>
+    <p>123</p>
+    <p>123</p>
+  </div>
+</template>
+<script setup>
+  const text = ref('hello')
+</script>
+<style scoped>
+  div p:first-of-type:before {
+    content: attr(data-text);
+  }
+</style>
+```
