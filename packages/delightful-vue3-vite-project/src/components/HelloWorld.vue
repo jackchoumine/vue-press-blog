@@ -1,12 +1,13 @@
 <!--
  * @Date        : 2022-10-17 09:27:13
  * @Author      : ZhouQiJun
- * @LastEditors : ZhouQiJun
- * @LastEditTime: 2022-11-02 14:57:55
+ * @LastEditors : JackChou
+ * @LastEditTime: 2023-01-17 20:16:00 +0800
  * @Description : 
 -->
 <script>
 import Modal from './Modal/MyModal.vue'
+
 const st = 'hekkio'
 export default {
   components: {

@@ -14,8 +14,8 @@
 </template>
 
 <script setup lang="ts">
-import WatchRef from './WatchRef.vue'
 import WatchReactive from './WatchReactive.vue'
+import WatchRef from './WatchRef.vue'
 </script>
 
 <style lang="scss"></style>

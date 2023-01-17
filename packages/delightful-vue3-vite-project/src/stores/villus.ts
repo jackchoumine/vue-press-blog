@@ -5,10 +5,9 @@
  * @LastEditTime: 2023-01-07 17:47:41 +0800
  * @LastEditors : JackChou
  */
-
+import { defineStore } from 'pinia'
 import { useQuery } from 'villus'
 import { computed } from 'vue'
-import { defineStore } from 'pinia'
 
 export const usePetsStore = defineStore('pets', () => {
   const { data, isFetching, execute } = useQuery({

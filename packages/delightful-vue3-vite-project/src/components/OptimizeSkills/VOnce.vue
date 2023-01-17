@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2023-01-05 09:49:46
  * @LastEditors : JackChou
- * @LastEditTime: 2023-01-06 23:16:55 +0800
+ * @LastEditTime: 2023-01-17 20:13:12 +0800
  * @Description : v-once 使用
  
  NOTE 确定变量变化，元素或者组件不需要重新渲染时使用。和 v-if 或者 v-show 一起使用时，页面会保持最初的隐藏或者显示状态。
@@ -20,6 +20,7 @@
 -->
 <script setup>
 import { ref } from 'vue'
+
 const message = ref('Hello World')
 const updateMessage = () => {
   message.value = 'Goodbye World'

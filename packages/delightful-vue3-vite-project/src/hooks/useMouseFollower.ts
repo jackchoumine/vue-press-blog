@@ -1,6 +1,8 @@
-import { h, defineComponent, computed } from 'vue'
-import { LazyOrRef } from './types'
+import { computed, defineComponent, h } from 'vue'
+
 import { unravel } from '../utils/utils'
+
+import { LazyOrRef } from './types'
 
 export function useMouseFollower(position: LazyOrRef<{ x: number; y: number }>) {
   const style = computed(() => {
@@ -18,7 +20,7 @@ export function useMouseFollower(position: LazyOrRef<{ x: number; y: number }>) 
   const Follower = defineComponent(
     (props, { slots }) =>
       () =>
-        h('div', { ...props, style: style.value }, slots),
+        h('div', { ...props, style: style.value }, slots)
   )
 
   return Follower

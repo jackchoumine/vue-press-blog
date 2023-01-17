@@ -20,6 +20,7 @@
 <script lang="ts" setup>
 import { createPopper } from '@popperjs/core'
 import type { Placement } from '@popperjs/core'
+
 const isOver = ref(false)
 function onMouseover() {
   isOver.value = true
@@ -41,6 +42,6 @@ watchEffect(
   },
   {
     flush: 'post',
-  },
+  }
 )
 </script>

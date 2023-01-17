@@ -1,5 +1,6 @@
 <script setup name="MyInput">
 import { useVModel } from '@/hooks'
+
 const emit = defineEmits(['update:modelValue'])
 const props = defineProps({
   modelValue: {

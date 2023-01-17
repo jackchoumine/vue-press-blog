@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useSearchContactList, Item } from './useSearchContact'
+import { Item, useSearchContactList } from './useSearchContact'
 
 type Props = {
   searchable?: boolean

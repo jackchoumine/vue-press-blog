@@ -7,6 +7,7 @@
 -->
 <script setup lang="ts">
 import { useHover } from '@/hooks'
+
 const div1 = ref()
 const isHover1 = useHover(div1)
 const div2 = ref()

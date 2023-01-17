@@ -25,15 +25,16 @@
 </template>
 
 <script lang="ts">
+import { useFetch } from '@vueuse/core'
+
 import {
   useLocalStorage,
-  useWindowResize,
-  useStorage,
   useNetworkStatus,
   useOnClickOutsideV2,
+  useStorage,
   useTitle,
+  useWindowResize,
 } from '@/hooks'
-import { useFetch } from '@vueuse/core'
 
 const SubComponent = defineComponent({
   template: /* html */ `<div style="background-color:red">单个文中中定义多个组件</div>`,

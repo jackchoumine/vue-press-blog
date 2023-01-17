@@ -8,6 +8,7 @@
  * https://blog.arrowhitech.com/jsx-the-benefits-of-using-it-with-vue-js/
  */
 import type { App, VNode } from 'vue'
+
 // import type { DefineComponent } from 'vue'
 // const component: DefineComponent<{}, {}, any>
 declare global {

@@ -6,6 +6,7 @@
  * @LastEditors : JackChou
  */
 import { mount } from '@vue/test-utils'
+
 import MyButton from './MyButton'
 
 test('MyButton', () => {

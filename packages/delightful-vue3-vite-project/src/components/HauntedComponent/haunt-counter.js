@@ -5,8 +5,8 @@
  * @LastEditTime: 2022-11-10 10:03:31
  * @Description :
  */
-import { html } from 'lit'
 import { component, useState } from 'haunted'
+import { html } from 'lit'
 
 function Counter(props) {
   console.log('Counter')
@@ -23,7 +23,7 @@ function Counter(props) {
     this.dispatchEvent(
       new CustomEvent('hello', {
         detail: { name: 'John' },
-      }),
+      })
     )
     setCount(count + 1)
   }

@@ -5,7 +5,7 @@
  * @LastEditTime: 2022-10-14 16:56:45
  * @Description : 测试网络是否在线
  */
-import { onMounted, onBeforeUnmount, ref } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 
 export function useNetworkStatus(callback = (isOnline = false) => {}) {
   const isOnline = ref(navigator.onLine)

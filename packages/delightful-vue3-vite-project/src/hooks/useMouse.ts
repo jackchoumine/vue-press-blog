@@ -1,5 +1,4 @@
 // https://vuejs.org/guide/reusability/composables.html#mouse-tracker-example
-
 import { useOn } from './useOn'
 
 // by convention, composable function names start with "use"

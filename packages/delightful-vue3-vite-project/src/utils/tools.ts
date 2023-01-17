@@ -14,7 +14,7 @@ export function copyToClipboard(text) {
 export function copyText(
   data = '',
   success = () => ElMessage.success('复制成功'),
-  fail = () => ElMessage.error('复制失败'),
+  fail = () => ElMessage.error('复制失败')
 ) {
   const clipboard = navigator.clipboard
   if (clipboard) {

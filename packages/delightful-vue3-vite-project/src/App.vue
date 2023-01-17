@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { USER_KEY } from './utils/injectionKey'
 import { RouterView } from 'vue-router'
+
 import { routes } from './routers'
+import { USER_KEY } from './utils/injectionKey'
+
 provide(USER_KEY, { id: 1234, name: 'JackChou' })
 </script>
 

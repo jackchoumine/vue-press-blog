@@ -8,7 +8,8 @@
 </template>
 
 <script lang="ts" setup>
-import { useMouseFollower, useMouse } from '../../hooks'
+import { useMouse, useMouseFollower } from '../../hooks'
+
 const { x, y } = useMouse()
 const Follower = useMouseFollower(() => ({ x: x.value, y: y.value }))
 </script>

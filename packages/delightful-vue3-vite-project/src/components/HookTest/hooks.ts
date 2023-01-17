@@ -20,7 +20,7 @@ export function useHttpGet(key: MaybeRef<string>) {
         list.value = res
       })
     },
-    { immediate: true },
+    { immediate: true }
   )
 
   return { list }

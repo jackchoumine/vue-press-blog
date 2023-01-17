@@ -6,7 +6,7 @@
  * @LastEditors : JackChou
 -->
 <script setup lang="ts">
-import { CounterDemo, TodosDemo, PetsDemo, SingupDemo } from '@/components/PiniaDemos'
+import { CounterDemo, PetsDemo, SingupDemo, TodosDemo } from '@/components/PiniaDemos'
 </script>
 
 <template>

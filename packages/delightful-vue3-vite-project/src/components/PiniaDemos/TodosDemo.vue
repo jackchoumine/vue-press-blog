@@ -29,6 +29,7 @@
 
 <script lang="ts">
 import { storeToRefs } from 'pinia'
+
 import { useTodosStore } from '@/stores'
 
 export default defineComponent({

@@ -20,8 +20,10 @@
 </template>
 
 <script lang="ts">
-import { TabContent, TabContainer, TabHeader } from './index'
-import { ref, reactive, watch, computed, defineComponent } from 'vue'
+import { computed, defineComponent, reactive, ref, watch } from 'vue'
+
+import { TabContainer, TabContent, TabHeader } from './index'
+
 export default defineComponent({
   name: 'TabContainerDemo',
   components: {

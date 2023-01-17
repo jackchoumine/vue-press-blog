@@ -5,49 +5,44 @@
  * @LastEditTime: 2023-01-07 16:50:44 +0800
  * @Description :
  */
-import { createApp } from 'vue/dist/vue.esm-bundler.js'
-import { Quasar } from 'quasar'
-import quasarLang from 'quasar/lang/zh-CN'
-import quasarIconSet from 'quasar/icon-set/svg-material-icons'
 // Import icon libraries
 import '@quasar/extras/material-icons/material-icons.css'
-// Import Quasar css
-import 'quasar/dist/quasar.css'
-
-import './assets/styles/global.scss'
-
-import router from './routers'
-import piniaStore from './stores'
-
-// @ts-ignore
-// import Antd from 'ant-design-vue'
-// import 'ant-design-vue/dist/antd.css'
-import App from './App.vue'
-import globalDirectives from './directives'
-// 导入 haunted 创建的 web component
-import './components/HauntedComponent/haunt-counter'
-
-// import { defineCustomElements } from 'jack-ui/loader'
-// defineCustomElements()
-
-// import './assets/styles/style.css'
-
-import 'jack-web-ui/dist/jack-web-ui/jack-web-ui.css'
 // @ts-ignore
 // import { MyRating } from 'jack-web-ui/dist/components/index'
 import {
   ELineChart,
-  HelloStencil,
-  // defineCustomElementELineChart,
+  HelloStencil, // defineCustomElementELineChart,
 } from 'echarts-web-components/dist/components'
-// customElements.define('count-to', CountTo as unknown as CustomElementConstructor)
-import { CountTo } from 'jack-web-ui/dist/components'
 // web component
 // app.config.compilerOptions.isCustomElement = tag =>
 //   /^([a-z][a-z0-9]*)(-[a-z0-9]+)*$/.test(tag)
 import { ElLoading } from 'element-plus'
 // NOTE 不到如这个，在jsx中使用指令，无效。
 import 'element-plus/theme-chalk/el-loading.css'
+// customElements.define('count-to', CountTo as unknown as CustomElementConstructor)
+import { CountTo } from 'jack-web-ui/dist/components'
+// import { defineCustomElements } from 'jack-ui/loader'
+// defineCustomElements()
+// import './assets/styles/style.css'
+import 'jack-web-ui/dist/jack-web-ui/jack-web-ui.css'
+import { Quasar } from 'quasar'
+// Import Quasar css
+import 'quasar/dist/quasar.css'
+import quasarIconSet from 'quasar/icon-set/svg-material-icons'
+import quasarLang from 'quasar/lang/zh-CN'
+import { createApp } from 'vue/dist/vue.esm-bundler.js'
+
+// @ts-ignore
+// import Antd from 'ant-design-vue'
+// import 'ant-design-vue/dist/antd.css'
+import App from './App.vue'
+// 导入 haunted 创建的 web component
+import './components/HauntedComponent/haunt-counter'
+import globalDirectives from './directives'
+import router from './routers'
+import piniaStore from './stores'
+
+import './assets/styles/global.scss'
 
 customElements.define('count-to', CountTo as unknown as CustomElementConstructor)
 customElements.define('line-chart', ELineChart as unknown as CustomElementConstructor)

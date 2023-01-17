@@ -8,13 +8,14 @@
 <script setup lang="ts" name="HookPage">
 import {
   FileViewer,
-  testNameExport,
   HookDemo,
+  MyInput,
   PopperButton,
   PopperButtonHook,
-  MyInput,
   UseHoverDemo,
+  testNameExport,
 } from '@/components'
+
 const myInput = ref('hello')
 </script>
 
@@ -25,7 +26,7 @@ const myInput = ref('hello')
     <p>{{ myInput }}</p>
     <hr />
     <FileViewer />
-    <p>{{testNameExport}}</p>
+    <p>{{ testNameExport }}</p>
     <h4>usePopper -- hook 与第三方库</h4>
     <PopperButtonHook />
     <PopperButton />

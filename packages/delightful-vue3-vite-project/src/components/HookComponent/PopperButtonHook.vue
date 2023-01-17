@@ -18,6 +18,7 @@
 
 <script lang="ts" setup>
 import { usePopper } from './usePopper'
+
 const isOpen = ref(false)
 function onClick() {
   isOpen.value = !isOpen.value

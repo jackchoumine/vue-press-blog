@@ -6,7 +6,7 @@
  * @Description : vue 优化技巧 https://learnvue.co/tutorials/v-once-v-memo
 -->
 <script setup lang="ts">
-import { VOnce, VMemo, TabContainerDemo } from '@/components'
+import { TabContainerDemo, VMemo, VOnce } from '@/components'
 </script>
 
 <template>

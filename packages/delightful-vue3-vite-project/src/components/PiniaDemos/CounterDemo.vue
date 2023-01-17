@@ -43,8 +43,10 @@
 </template>
 
 <script setup lang="ts">
-import { useCounter, useTodosStore } from '@/stores'
 import { storeToRefs } from 'pinia'
+
+import { useCounter, useTodosStore } from '@/stores'
+
 const { finishedTodos, todos } = storeToRefs(useTodosStore())
 
 // NOTE 不要直接解构，会失去响应式

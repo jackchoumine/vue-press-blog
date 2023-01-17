@@ -6,10 +6,11 @@
   * @Description : 
 -->
 <script setup lang="tsx">
-import { HelloWorld, WatchDemo, SlottedDemo } from '../components'
+import { useGlobalProps } from '@/hooks'
+
+import { HelloWorld, SlottedDemo, WatchDemo } from '../components'
 // NOTE 不要使用路径别名，否则不会类型不生效
 import { USER_KEY } from '../utils/injectionKey'
-import { useGlobalProps } from '@/hooks'
 
 const SubComponent = defineComponent({
   render() {

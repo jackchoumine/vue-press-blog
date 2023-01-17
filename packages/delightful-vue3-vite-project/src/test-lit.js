@@ -1,5 +1,6 @@
-import { css as p, LitElement as f, html as d } from 'lit'
+import { html as d, LitElement as f, css as p } from 'lit'
 import { property as c, customElement as h } from 'lit/decorators.js'
+
 const u = Object.defineProperty
 const m = Object.getOwnPropertyDescriptor
 const n = (r, e, s, i) => {

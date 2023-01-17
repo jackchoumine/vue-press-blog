@@ -29,9 +29,10 @@
 </template>
 
 <script>
-import { useHttpGet, useAdd } from './hooks'
-import useCart from './useCart'
+import { useAdd, useHttpGet } from './hooks'
 import './testUseAdd'
+import useCart from './useCart'
+
 export default {
   setup() {
     const input = ref('')

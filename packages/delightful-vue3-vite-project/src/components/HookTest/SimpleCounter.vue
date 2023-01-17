@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import useCounter from './useCounter'
+
 const { count, add, reduce } = useCounter()
 </script>
 

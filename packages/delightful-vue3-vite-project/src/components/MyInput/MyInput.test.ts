@@ -6,6 +6,7 @@
  * @LastEditors : JackChou
  */
 import { mount } from '@vue/test-utils'
+
 import { MyInput } from '../index'
 
 test('MyInput', () => {

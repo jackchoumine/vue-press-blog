@@ -15,7 +15,7 @@ type Options = {
 }
 export function useVideoPlayer(
   src: MaybeRef<string>,
-  options?: MaybeRef<Partial<Options>>,
+  options?: MaybeRef<Partial<Options>>
 ) {
   const videoDOM = ref<HTMLVideoElement>(null)
   let player: ReturnType<typeof video> = null

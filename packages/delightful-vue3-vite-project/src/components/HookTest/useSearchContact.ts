@@ -1,4 +1,5 @@
 import type { MaybeRef } from '@vueuse/core'
+
 export type Item = Record<'id' | 'name' | 'phone', string>
 type Params = {
   items: MaybeRef<Item[]>

@@ -1,4 +1,5 @@
 import type { Directive, DirectiveBinding } from 'vue'
+
 import { copyText } from '@/utils'
 
 /**

@@ -6,11 +6,13 @@
  * @Description : 导出全局指令
  */
 import type { App } from 'vue'
-import copy from './copy'
-import clickOutside from './clickOutside'
+
 import auth from './auth'
+import clickOutside from './clickOutside'
+import copy from './copy'
 import title from './title'
 import waterMaker from './waterMaker'
+
 const directiveObj = {
   copy,
   clickOutside,

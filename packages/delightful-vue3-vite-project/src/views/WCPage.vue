@@ -1,5 +1,5 @@
 <script setup lang="ts" name="WCPage">
-import { TestStencilWC, TestHaunted, TestLit } from '../components'
+import { TestHaunted, TestLit, TestStencilWC } from '@/components'
 </script>
 
 <template>
