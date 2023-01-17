@@ -1,13 +1,14 @@
 /*
  * @Author      : ZhouQiJun
  * @Date        : 2022-12-28 10:43:36
- * @LastEditors : ZhouQiJun
- * @LastEditTime: 2022-12-28 12:00:36
+ * @LastEditors : JackChou
+ * @LastEditTime: 2023-01-17 22:00:01 +0800
  * @Description :
  */
 import { useState } from 'react'
 // import useOn from './useOn'
 import useMount from './useMount'
+// @ts-ignore
 import hoverintent from 'hoverintent'
 
 interface Options {
@@ -15,7 +16,7 @@ interface Options {
   onLeave: () => void
 }
 
-const useHover = (target: any, options?: Options, opts: Record<string, any>): boolean => {
+const useHover = (target: any, opts?: Record<string, any>, options?: Options): boolean => {
   const [flag, setFlag] = useState<boolean>(false)
   const { onEnter, onLeave } = options || {}
   useMount(() => {
@@ -31,7 +32,7 @@ const useHover = (target: any, options?: Options, opts: Record<string, any>): bo
           () => {
             onLeave?.()
             setFlag(false)
-          }
+          },
         ).options(opts)
       else {
         hoverintent(
@@ -43,7 +44,7 @@ const useHover = (target: any, options?: Options, opts: Record<string, any>): bo
           () => {
             onLeave?.()
             setFlag(false)
-          }
+          },
         )
       }
     }

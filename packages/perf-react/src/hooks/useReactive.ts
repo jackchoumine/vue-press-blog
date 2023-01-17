@@ -1,13 +1,13 @@
 /*
  * @Author      : ZhouQiJun
  * @Date        : 2022-12-28 10:16:08
- * @LastEditors : ZhouQiJun
- * @LastEditTime: 2022-12-28 10:17:28
+ * @LastEditors : JackChou
+ * @LastEditTime: 2023-01-17 22:59:03 +0800
  * @Description :
  */
 import { useRef } from 'react'
 import { useUpdate, useCreation } from './index'
-
+// https:/ / juejin.cn / post / 7101486767336849421
 function observer<T extends Record<string, unknown>>(initialVal: T, cb: () => void): T {
   const proxy = new Proxy<T>(initialVal, {
     get(target, key, receiver) {

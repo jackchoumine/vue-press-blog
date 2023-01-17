@@ -1,8 +1,8 @@
 /*
  * @Author      : ZhouQiJun
  * @Date        : 2022-12-28 09:46:16
- * @LastEditors : ZhouQiJun
- * @LastEditTime: 2022-12-28 09:55:01
+ * @LastEditors : JackChou
+ * @LastEditTime: 2023-01-17 22:57:55 +0800
  * @Description :
  */
 import { useMemo, useState } from 'react'
@@ -16,7 +16,8 @@ function UseCreationDemo() {
     return Math.random()
   }
 
-  const nowData = useMemo(() => getNowData(), [])
+  // const nowData = useMemo(() => getNowData(), [])
+  const nowData = useCreation(() => getNowData(), [])
 
   return (
     <div style={{ padding: 50 }}>
