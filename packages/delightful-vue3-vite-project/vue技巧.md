@@ -198,7 +198,8 @@ const cityRef = toRef(person, 'city', 'GuiYang') // 提供默认值
 使用了构建工具，vue 默认导出的是不含运行时编译器的代码，使用了内联模板，需要导出带有运行时编译的 vue。
 
 ```js
-import { createApp } from 'vue/dist/vue.esm-bundler.js' // 导出包含运行时编译器
+// 导出包含运行时编译器
+import { createApp } from 'vue/dist/vue.esm-bundler.js'
 ```
 
 > 使用`es6-string-html`可获取 template 语法高亮。

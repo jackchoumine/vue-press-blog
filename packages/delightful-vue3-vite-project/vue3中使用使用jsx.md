@@ -63,6 +63,7 @@ setup() {
 
 ```js
 import { ElLoading } from 'element-plus'
+
 app.use(ElLoading)
 ```
 
@@ -99,6 +100,7 @@ const UseButton = defineComponent({
 
 ```jsx
 import { renderSlot } from 'vue'
+
 const UseButton = defineComponent({
   setup(props, { slots }) {
     console.log('useButton slots')
