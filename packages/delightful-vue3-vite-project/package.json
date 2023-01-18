@@ -31,8 +31,6 @@
     "@jack/http": "workspace:1.0.0",
     "@popperjs/core": "~2.11.6",
     "@quasar/extras": "1.15.7",
-    "@rushstack/eslint-patch": "^1.2.0",
-    "@vue/eslint-config-typescript": "^11.0.2",
     "@vueuse/core": "9.6.0",
     "axios": "1.2.1",
     "dayjs": "1.11.6",
@@ -54,6 +52,8 @@
     "yup": "0.32.11"
   },
   "devDependencies": {
+    "@rushstack/eslint-patch": "^1.2.0",
+    "@vue/eslint-config-typescript": "^11.0.2",
     "@quasar/vite-plugin": "1.2.3",
     "@trivago/prettier-plugin-sort-imports": "4.0.0",
     "@typescript-eslint/eslint-plugin": "^5.43.0",
