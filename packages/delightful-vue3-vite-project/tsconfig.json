@@ -8,7 +8,13 @@
     "strict": false,
     "jsx": "preserve",
     // "typesRoot": ["./node_modules/@types", "./types"],
-    "types": ["vitest/globals", "./src/types", "./node_modules/@types"],
+    "types": [
+      "vitest/globals",
+      "./src/types",
+      "./node_modules/@types",
+      "auto-imports.d.ts",
+      "components.d.ts"
+    ],
     "sourceMap": true,
     // "strictNullChecks": true,
     "resolveJsonModule": true,
@@ -29,6 +35,7 @@
     "src/**/*.vue",
     "src/**/*.js",
     "auto-imports.d.ts",
+    "components.d.ts",
     "src/test-lit.js"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
