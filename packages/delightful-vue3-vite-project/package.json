@@ -49,6 +49,7 @@
     "video.js": "^7.20.3",
     "villus": "2.1.0",
     "vue": "^3.2.41",
+    "vue-hooks-plus": "1.5.5",
     "vue-router": "4.1.6",
     "yup": "0.32.11"
   },
