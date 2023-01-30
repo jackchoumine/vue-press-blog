@@ -1,22 +1,24 @@
 /*
  * @Date        : 2022-08-08 15:54:09
  * @Author      : ZhouQijun
- * @LastEditors : JackChou
- * @LastEditTime: 2023-01-15 23:24:42 +0800
+ * @LastEditors : ZhouQiJun
+ * @LastEditTime: 2023-01-30 10:03:09
  * @Description : vite 配置
  */
 // @ts-nocheck
-
 /// <reference  types="vitest"/>
-
-import { defineConfig } from 'vite'
+import { quasar, transformAssetUrls } from '@quasar/vite-plugin'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import path from 'path'
 import AutoImport from 'unplugin-auto-import/vite'
+import {
+  AntDesignVueResolver,
+  ElementPlusResolver,
+} from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
-import { quasar, transformAssetUrls } from '@quasar/vite-plugin'
+import { defineConfig } from 'vite'
+
 // import basicSsl from '@vitejs/plugin-basic-ssl'
 // import fs from 'fs'
 const isCustomElement = tag => /^([a-z][a-z0-9]*)(-[a-z0-9]+)*$/.test(tag)
@@ -62,7 +64,7 @@ export default defineConfig({
       },
     }),
     Components({
-      resolvers: [ElementPlusResolver()],
+      resolvers: [ElementPlusResolver(), AntDesignVueResolver()],
     }),
     quasar({
       autoImportComponentCase: 'combined', // 'pascal',
