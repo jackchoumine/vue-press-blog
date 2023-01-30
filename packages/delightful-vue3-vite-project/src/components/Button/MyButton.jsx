@@ -2,8 +2,8 @@
  * @Description : Button 组件，用于测试在jsx 中使用插槽
  * @Date        : 2022-10-27 00:22:59 +0800
  * @Author      : JackChou
- * @LastEditTime: 2022-10-27 00:49:54 +0800
- * @LastEditors : JackChou
+ * @LastEditTime: 2023-01-30 09:31:54
+ * @LastEditors : ZhouQiJun
  */
 
 const style = {
@@ -17,9 +17,9 @@ const Button = defineComponent({
     const { default: _default, left, right } = slots
     return () => (
       <button style={style}>
-        {left ? left() : null}
-        {_default ? _default() : 'BUTTON'}
-        {right ? right() : null}
+        {left?.()}
+        {_default?.() ?? 'BUTTON'}
+        {right?.()}
       </button>
     )
   },
