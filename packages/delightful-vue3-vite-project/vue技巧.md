@@ -277,3 +277,35 @@ import { createApp } from 'vue/dist/vue.esm-bundler.js'
   }
 </style>
 ```
+
+> [mdn attr](https://developer.mozilla.org/zh-CN/docs/Web/CSS/attr)
+
+## 自动注册组件
+
+使用 webpack 或者 vue-cli 创建的项目，可使用`require.context`注册组件。
+
+```js
+const req = require.context(dir, (subDir = false), (regExp = /^.\.\//))
+// dir: 扫描的目录
+// subDir: 是否扫描自目录
+// regExp: 匹配文件的正则
+// 返回值：req 对象，key 是文件路径
+```
+
+自动扫描全局组件，并注册
+
+```js
+function registerComponent(
+  app,
+  options = { dir: './components', subDir: false, regExp: /^Base[A-Z]\w+\.(vue|js|jsx)$/ }
+) {
+  const req = require.context(options.dir, options.subDir, options.regExp)
+  req.keys().forEach(filePath => {
+    // 可对组件名字进行转换，转为 PascalCase
+    const componentName = filePath.split('/').pop()
+    app.component(componentName, req[filePath].default)
+  })
+  return app
+}
+app.use(registerComponent)
+```
