@@ -4,6 +4,7 @@
   "scripts": {
     "build": "slidev build",
     "dev": "slidev --open",
+    "read": "slidev build && http-server dist",
     "export": "slidev export"
   },
   "dependencies": {
@@ -14,6 +15,8 @@
     "vue": "~3.2.45"
   },
   "devDependencies": {
+    "http-server": "~14.1.1",
+    "playwright-chromium": "^1.30.0",
     "sass": "~1.58.0"
   }
 }
