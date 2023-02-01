@@ -1,8 +1,8 @@
 /*
  * @Date        : 2022-11-10 11:44:22
  * @Author      : ZhouQiJun
- * @LastEditors : ZhouQiJun
- * @LastEditTime: 2022-11-11 09:49:04
+ * @LastEditors : JackChou
+ * @LastEditTime: 2023-02-02 00:12:45 +0800
  * @Description :
  */
 import type { Ref } from 'vue'
@@ -23,7 +23,7 @@ export function useHttpGet(key: MaybeRef<string>) {
     { immediate: true }
   )
 
-  return { list }
+  return list
 }
 
 export function http(key) {

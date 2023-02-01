@@ -9,6 +9,11 @@
   "dependencies": {
     "@slidev/cli": "^0.39.0",
     "@slidev/theme-default": "*",
-    "@slidev/theme-seriph": "*"
+    "@slidev/theme-seriph": "*",
+    "@vueuse/core": "~9.12.0",
+    "vue": "~3.2.45"
+  },
+  "devDependencies": {
+    "sass": "~1.58.0"
   }
 }
