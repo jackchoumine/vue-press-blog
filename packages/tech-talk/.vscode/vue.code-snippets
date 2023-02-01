@@ -1,0 +1,42 @@
+{
+  "vue2 template": {
+    "prefix": "v2",
+    "body": [
+      "<template>",
+      "  <div class=\"component ${TM_FILENAME_BASE} $1\">init</div>",
+      "</template>",
+      "",
+      "<script>",
+      "  export default {",
+      "    name: '${TM_FILENAME_BASE}',",
+      "    data() {",
+      "      return {}",
+      "    },",
+      "    mounted() {},",
+      "    computed: {},",
+      "    watch: {},",
+      "    methods: {},",
+      "  }",
+      "</script>",
+      "",
+      "<style lang=\"scss\" scoped></style>"
+    ],
+    "description": "vue2 模板"
+  },
+  "vue3 template": {
+    "prefix": "vue3",
+    "description": "vue3模板",
+    "body": [
+      "",
+      "<script setup lang=\"ts\">",
+      "</script>",
+      "",
+      "<template>",
+      "  <div>init</div>",
+      "</template>",
+      "",
+      "<style lang=\"scss\" scoped></style>",
+      ""
+    ]
+  }
+}
