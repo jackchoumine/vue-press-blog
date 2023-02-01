@@ -11,7 +11,7 @@
 ## 动态指令
 
 ```html
-<div id="dynamicexample">
+<div id="dynamic-example">
   <h3>Scroll down inside this section ↓</h3>
   <p v-pin:[direction]="200">I am pinned onto the page at 200px to the left.</p>
 </div>
@@ -26,7 +26,7 @@
   })
 
   new Vue({
-    el: '#dynamicexample',
+    el: '#dynamic-example',
     data: function () {
       return {
         direction: 'left',
@@ -60,7 +60,7 @@ export default {
 }
 ```
 
-为事件标注类型：
+使用事件标注类型：
 
 ```js
 import { defineComponent } from 'vue'
@@ -86,6 +86,8 @@ export default defineComponent({
 
 `script setup`语法：
 
+ts 类型声明
+
 ```ts
 // const emits = defineEmits(['site-change', 'date-change', 'page-change', 'area-change'])
 type Emit = {
@@ -93,4 +95,7 @@ type Emit = {
   (e: 'site-change', sites: Option[]): void
   (e: 'dateChange', date: string | unknown[]): void
 }
+const emits = defineEmits<Emit>()
+// emits('dateChange', newValue)
+// emits('site-change', sites)
 ```

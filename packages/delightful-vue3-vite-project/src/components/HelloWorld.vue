@@ -2,11 +2,12 @@
  * @Date        : 2022-10-17 09:27:13
  * @Author      : ZhouQiJun
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2022-11-02 14:57:55
+ * @LastEditTime: 2023-02-01 10:04:25
  * @Description : 
 -->
 <script>
 import Modal from './Modal/MyModal.vue'
+
 const st = 'hekkio'
 export default {
   components: {
@@ -20,8 +21,10 @@ export default {
       },
     },
   },
-  expose: ['modalIsOpen'],
-  setup() {
+  // NOTE 暴露属性
+  // expose: ['modalIsOpen'],
+  setup(_, { expose }) {
+    // console.log(context)
     // console.log('setup')
     // onBeforeMount(() => {
     //   console.log('com onBeforeMount')
@@ -48,6 +51,14 @@ export default {
     const onModalClose = () => {
       modalIsOpen.value = false
     }
+    // make the instance "closed" -
+    // i.e. do not expose anything to the parent
+    // expose()
+
+    const publicCount = ref(0)
+    const privateCount = ref(0)
+    // selectively expose local state
+    expose({ count: publicCount, exposeVar: '暴露的变量' })
     return { modalIsOpen, openModal, onModalClose }
   },
 }
