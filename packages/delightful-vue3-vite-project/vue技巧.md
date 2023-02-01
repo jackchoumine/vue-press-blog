@@ -53,9 +53,9 @@ const cityRef = toRef(person, 'city', 'GuiYang') // 提供默认值
 
 > toRef 传递给组合函数，是非常强大的用法，比如从 props 中获取某些 prop `useHttp('/hello',toRef(props,'name'))`
 
-## 暴露私有属性
+## 暴露组件的私有属性
 
-选项 api 中---`expose`
+ref 获取 setup 函数的返回值
 
 ```html
 <script>
@@ -77,6 +77,7 @@ const cityRef = toRef(person, 'city', 'GuiYang') // 提供默认值
     console.log('HelloWorldCom.value.modalIsOpen')
     console.log(HelloWorldCom.value.modalIsOpen)
     setTimeout(() => {
+      // HelloWorldCom.value 是一个对象，具有 setup 函数返回的对象属性
       HelloWorldCom.value.modalIsOpen = true
     }, 4000)
   })
@@ -87,7 +88,7 @@ const cityRef = toRef(person, 'city', 'GuiYang') // 提供默认值
 </template>
 ```
 
-希望指定暴露的属性：
+不想完全暴露 setup 函数的返回值，可使用 `expose`属性指定暴露的属性：
 
 ```html
 <script>
@@ -101,11 +102,47 @@ const cityRef = toRef(person, 'city', 'GuiYang') // 提供默认值
 </script>
 ```
 
-只能访问到`modalIsOpen`，其他属性访问不到。
+通过 ref 只能访问到`modalIsOpen`，其他属性访问不到。
 
-`script setup` 中 --- `defineExpose`
+> [vue 文档的 expose](https://cn.vuejs.org/api/options-state.html#expose)
 
-选项 api 中，组件的属性是完全暴露的，而`script setup` 是完全封闭的，除非使用`defineExpose`暴露，否则外部访问不到。
+还可以从 setup 的 context 中使用 expose 函数暴露属性：
+
+```js
+  setup(_, { expose }) {
+    // make the instance "closed" -
+    // i.e. do not expose anything to the parent
+    // expose()
+
+    const publicCount = ref(0)
+    const privateCount = ref(0)
+    // selectively expose local state
+    expose({ count: publicCount, exposeVar: '暴露的变量' })
+    return {  }
+  }
+```
+
+> [setupContext 暴露属性](https://vuejs.org/api/composition-api-setup.html#setup-context)
+
+`script setup` 中 --- `defineExpose` 暴露属性
+
+选项 api 中，组件的属性是完全暴露的，而 `script setup`中是完全封闭的，除非使用`defineExpose`暴露，否则外部访问不到。
+
+```html
+<script setup>
+  import { ref } from 'vue'
+
+  const a = 1
+  const b = ref(2)
+
+  defineExpose({
+    a,
+    b,
+  })
+</script>
+```
+
+> [vue 文档中的 defineExpose](https://cn.vuejs.org/api/sfc-script-setup.html#defineexpose)
 
 ## 在子组件内部修改插槽里的代码样式
 
@@ -198,7 +235,8 @@ const cityRef = toRef(person, 'city', 'GuiYang') // 提供默认值
 使用了构建工具，vue 默认导出的是不含运行时编译器的代码，使用了内联模板，需要导出带有运行时编译的 vue。
 
 ```js
-import { createApp } from 'vue/dist/vue.esm-bundler.js' // 导出包含运行时编译器
+// 导出包含运行时编译器
+import { createApp } from 'vue/dist/vue.esm-bundler.js'
 ```
 
 > 使用`es6-string-html`可获取 template 语法高亮。
@@ -238,4 +276,36 @@ import { createApp } from 'vue/dist/vue.esm-bundler.js' // 导出包含运行时
     content: attr(data-text);
   }
 </style>
+```
+
+> [mdn attr](https://developer.mozilla.org/zh-CN/docs/Web/CSS/attr)
+
+## 自动注册组件
+
+使用 webpack 或者 vue-cli 创建的项目，可使用`require.context`注册组件。
+
+```js
+const req = require.context(dir, (subDir = false), (regExp = /^.\.\//))
+// dir: 扫描的目录
+// subDir: 是否扫描自目录
+// regExp: 匹配文件的正则
+// 返回值：req 对象，key 是文件路径
+```
+
+自动扫描全局组件，并注册
+
+```js
+function registerComponent(
+  app,
+  options = { dir: './components', subDir: false, regExp: /^Base[A-Z]\w+\.(vue|js|jsx)$/ }
+) {
+  const req = require.context(options.dir, options.subDir, options.regExp)
+  req.keys().forEach(filePath => {
+    // 可对组件名字进行转换，转为 PascalCase
+    const componentName = filePath.split('/').pop()
+    app.component(componentName, req[filePath].default)
+  })
+  return app
+}
+app.use(registerComponent)
 ```

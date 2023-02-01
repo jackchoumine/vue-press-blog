@@ -5,16 +5,6 @@
  * @LastEditTime: 2022-11-02 14:37:00
  * @Description : 
 -->
-<template>
-  <Teleport to="#modal">
-    <div id="center" v-if="isOpen">
-      <h2>
-        <slot>this is a modal</slot>
-      </h2>
-      <button @click="buttonClick">Close</button>
-    </div>
-  </Teleport>
-</template>
 <script lang="ts">
 export default {
   props: {
@@ -38,6 +28,18 @@ export default {
   },
 }
 </script>
+
+<template>
+  <Teleport to="#modal">
+    <div id="center" v-if="isOpen">
+      <h2>
+        <slot>this is a modal</slot>
+      </h2>
+      <button @click="buttonClick">Close</button>
+    </div>
+  </Teleport>
+</template>
+
 <style>
 #center {
   width: 200px;

@@ -2,7 +2,7 @@
  * @Date        : 2022-10-17 09:27:13
  * @Author      : ZhouQiJun
  * @LastEditors : JackChou
- * @LastEditTime: 2023-01-17 20:16:00 +0800
+ * @LastEditTime: 2023-02-01 21:42:09 +0800
  * @Description : 
 -->
 <script>
@@ -21,8 +21,10 @@ export default {
       },
     },
   },
-  expose: ['modalIsOpen'],
-  setup() {
+  // NOTE 暴露属性
+  // expose: ['modalIsOpen'],
+  setup(_, { expose }) {
+    // console.log(context)
     // console.log('setup')
     // onBeforeMount(() => {
     //   console.log('com onBeforeMount')
@@ -49,6 +51,14 @@ export default {
     const onModalClose = () => {
       modalIsOpen.value = false
     }
+    // make the instance "closed" -
+    // i.e. do not expose anything to the parent
+    // expose()
+
+    const publicCount = ref(0)
+    const privateCount = ref(0)
+    // selectively expose local state
+    expose({ count: publicCount, exposeVar: '暴露的变量' })
     return { modalIsOpen, openModal, onModalClose }
   },
 }

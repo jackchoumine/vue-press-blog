@@ -1,4 +1,8 @@
-# 如何更好的使用组合式函数写 hook
+---
+highlighter: shiki
+---
+
+# vue3 与 hook (一)
 
 组合式函数是 vue3 带来的重大特性，是组织组件的新方式，关于它的好处，网上已经有很多文章阐述了，本文主要阐述编写组合函数的技巧或模式。
 
@@ -14,6 +18,8 @@ vue 官网说，组合式 API 是一系列 API 的集合，使得可使用函数
 
 使用了以上 api 的函数，叫组合函数，通常使用`use`前缀命名。
 
+---
+
 ## vue2 复用状态逻辑的方式
 
 在讨论具体的技巧之前，先看看状态和状态逻辑的区别。
@@ -22,13 +28,15 @@ vue 官网说，组合式 API 是一系列 API 的集合，使得可使用函数
 
 状态即组件状态：影响组件 UI 层的数据，可理解成 props 和 state，往往是变量，是数据，不含函数逻辑。为何说往往？有时候函数也可以作为 prop 传入组件，较少。
 
-状态逻辑：**操作**组件状态的**函数**，能在组件之间**复用**。
+状态逻辑：**操作**组件状态的**函数**，希望能在组件之间**复用**。
 
 操作的动作通常包括：订阅（获取）状态、修改状态、监听状态的变化等。
 
-[更多讨论](https://stackoverflow.com/questions/27991366/what-is-the-difference-between-state-and-props-in-react)
+[stackoverflow 上更多讨论](https://stackoverflow.com/questions/27991366/what-is-the-difference-between-state-and-props-in-react)
 
-> vue2 复用状态逻辑的方式
+---
+
+### vue2 复用状态逻辑的方式
 
 1. mixin
 
@@ -54,6 +62,8 @@ vue 官网说，组合式 API 是一系列 API 的集合，使得可使用函数
 
 > 复用状态、逻辑，在 vue 插件使用得多。
 
+---
+
 6. 将函数或者属性绑定到 vue 原型上
 
 没有严重的缺点，主要复用逻辑，比如挂载 http 请求函数。
@@ -76,6 +86,8 @@ vue 官网说，组合式 API 是一系列 API 的集合，使得可使用函数
 
 > 总之，问题比较多。
 
+---
+
 ## 如何理解 setup？
 
 vue3 的组合式函数解决 vue2 难以复用状态逻辑的问题。
@@ -94,38 +106,35 @@ vue3 的组合式函数解决 vue2 难以复用状态逻辑的问题。
 
 在编写组合函数时，相同的功能，使用 react hook 实现一遍，加深理解两者的区别。
 
+---
+
 ### 状态和逻辑如何连接的？
 
-> setup 函数在组件创建时**只执行一次**，在 setup 中组合函数建立状态（数据）和逻辑（函数）、状态和模板之间的连接，即组合函数在 setup 钩入组件。
+---
+layout: two-cols
+---
 
-有一 useAdd 组合函数：
-
-`hooks.ts`
+# hooks.ts
 
 ```ts
-export function useAdd(a: MaybeRef<number>, b: MaybeRef<number>) {
-  log()
+export function useAdd(a: MaybeRef<number>,
+ b: MaybeRef<number>) {
+  console.log('useAdd') // NOTE 这个会执行几次？
   return computed(() => unref(a) + unref(b))
-}
-
-function log() {
-  console.log('useAdd')
 }
 ```
 
-在组件使用：
+::right::
+
+# UseAdd.vue
 
 ```html
 <template>
-  <div>
-    <p>c:{{ c }}</p>
-    <button type="button" @click="b = 100">修改b</button>
-  </div>
+  <p>c:{{ c }}</p>
+  <button type="button" @click="b = 100">修改b</button>
 </template>
-
 <script>
   import { useAdd } from './hooks'
-
   export default {
     setup() {
       const a = 1
@@ -137,73 +146,74 @@ function log() {
 </script>
 ```
 
-setup 函数在组件创建时执行一次，useAdd 也执行了一次，a、b、c 之间就建立了关系，当修改 b 时，即使函数 useAdd 不会重新执行，c 也会变化。**log**函数在 b 修改时，没执行。
+> 点击按钮，修改 b 时， useAdd 会再次执行？ console.log('useAdd') 执行吗？
+
+---
+
+<UseAdd />
+
+<v-click>
+
+> setup 函数在组件创建时**只执行一次**，在 setup 中组合函数建立状态（数据）和逻辑（函数）、状态和模板之间的连接，即组合函数在 setup 钩入组件。
+
+</v-click>
+
+<v-click>
+
+setup 函数在组件创建时执行一次，useAdd 也执行了一次，a、b、c 之间就建立了关系，当修改 b 时，c 也会变化，_但 useAdd 不会再执行_。
+
+</v-click>
+
+---
 
 react 版本的 useAdd:
 
-```js
-import { useMemo } from 'react'
-
-function useAdd(a: number, b: number) {
-  log()
+```ts
+export function useAdd(a: number, b: number) {
+  console.log('useAdd')
   return useMemo(() => {
     console.log('useMemo')
     return a + b
   }, [a, b])
 }
-function log() {
-  console.log('useAdd')
-}
-export default useAdd
 ```
 
-使用：
-
 ```jsx
-import { useState } from 'react'
-
-import { useAdd } from '../hooks'
-
-function UseAddDemo() {
+import { useAdd } from './hooks'
+export default function UseAddDemo() {
   const a = 1
   const [b, setB] = useState(10)
   const c = useAdd(a, b)
-  console.log('use add demo')
   return (
     <div>
       <p>c:{c}</p>
-      <button
-        type="button"
-        onClick={() => {
-          console.log('onClick')
-          setB(oldValue => ++oldValue)
-        }}>
+      <button type='button' onClick={() => { console.log('onClick') setB(oldValue => ++oldValue)}}>
         修改b
       </button>
     </div>
   )
 }
-export default UseAddDemo
 ```
 
-> 修改 b 后，log 函数执行两次，组件重新渲染两次，注意这和 vue 的组合函数的重要区别。
+> 修改 b 后，useAdd 再次执行， 导致 console.log('useAdd') 再执行，注意这和 vue 的组合函数的重要区别。
 
-vue 的组合函数在单独的 js 文件中使用，也会建议这样的依赖关系。
+---
+
+vue 的组合函数在单独的 js 文件中使用，也会建立这样的依赖关系。
 
 `testUseAdd.js`:
 
 ```js
 import { useAdd } from './hooks'
-
 let a = 10
 const b = ref(20)
 const c = useAdd(a, b)
 console.log(c.value) // 30
 setTimeout(() => {
   a = 100
-  b.value = 1000 // 修改 b
+  b.value = 1000 // 修改 b console.log('useAdd') 会执行吗？
   console.log('setTimeout')
-  console.log(c.value) // c 变成 1010，而不是 1100
+  console.log(c.value) // c 变成 1010，而不是 1100 why？？
 }, 4000)
 ```
 
@@ -215,7 +225,13 @@ setTimeout(() => {
 </script>
 ```
 
-> **log**函数在 b 修改时，没执行。
+<v-click>
+
+> useAdd 的行为和在组件中的一致。console.log('useAdd') 不会再执行。
+
+</v-click>
+
+---
 
 总结：
 
@@ -233,7 +249,12 @@ setTimeout(() => {
 
 识别出组件状态之间的关系对提取组合函数极为重要，否则就无法提取组合函数。
 
-比如，有这样一段代码
+
+---
+layout: two-cols
+---
+
+# 比如，有这样一段代码
 
 ```js
 const a = ref(0)
@@ -259,10 +280,17 @@ const resetD = () => {
   Object.keys(d).forEach(key => delete d[key])
 }
 ```
+::right::
 
-以上代码不能明显看出状态之间的关系，比 option api 更加难以理解。理清楚状态之间的关系后，我们可提取组合函数：
+# 关系复杂，难以阅读
 
-`useHookA.js`
+不能明显看出状态之间的关系，比 option api 更加难以理解。理清楚状态之间的关系后，提取组合函数
+
+---
+layout: two-cols
+---
+
+# `useHookA.js`
 
 ```js
 export const useHookA = () => {
@@ -278,7 +306,6 @@ export const useHookA = () => {
   const actionB = () => {
     b.value += 'test'
   }
-  //这时候需要写return
   return {
     a,
     actionA,
@@ -290,7 +317,9 @@ export const useHookA = () => {
 }
 ```
 
-`useHookB.js`
+::right::
+
+# `useHookB.js`
 
 ```js
 export const useHookB = () => {
@@ -312,39 +341,47 @@ export const useHookB = () => {
 }
 ```
 
-在组件中使用：
 
 ```js
 // 从 hooks/index.js 导出 hooks
 import { useHookA, useHookB } from './hooks'
-
 const { b, actionB } = useHookA()
 const { d, restD } = useHookB()
 ```
+---
+layout: center
+---
 
-提取组合函数后，代码复用性、可读性和可维护性大大提高。
+## 理解状态之间的关系，对提取组合函数时尤其重要
 
-> 理解状态之间的逻辑关系，提取组合函数时尤其重要，实际上这对开发者提出了更高的要求：要求开发者有良好的代码设计意识和对业务有比较全面的理解。
+要求开发者有良好的**代码设计意识**和对业务有比较全面的理解，否则极可能写出难以阅读和维护的组件。
 
-## 编写组合函数的常见模式或技巧有哪些呢？
+<v-click>
 
-上述阐述了编写组合函数的关键，那么有哪些模式或者技巧呢？
+### 那么，如何设计组合函数呢？
 
-### 返回响应式状态
+</v-click>
+
+
+---
+layout: center
+---
+
+# 编写组合函数的常见模式或技巧
+
+---
+
+## 返回响应式状态
 
 使用组合函数封装一个响应式的 storage。
 
-```js
-function getItem(key, storage) {
-  const value = storage.getItem(key)
-  if (!value) return null
-  try {
-    return JSON.parse(value)
-  } catch (error) {
-    return value
-  }
-}
+---
 
+---
+layout: two-cols
+---
+
+```js
 export function useStorage(key, type = 'session') {
   let storage = null
   switch (type) {
@@ -356,7 +393,6 @@ export function useStorage(key, type = 'session') {
     default:
       break
   }
-
   const value = shallowRef(getItem(key, storage))
   function setItem(storage) {
     return newValue => {
@@ -369,7 +405,19 @@ export function useStorage(key, type = 'session') {
 }
 ```
 
-使用：
+::right::
+
+```js
+function getItem(key, storage) {
+  const value = storage.getItem(key)
+  if (!value) return null
+  try {
+    return JSON.parse(value)
+  } catch (error) {
+    return value
+  }
+}
+```
 
 ```js
 const [person, setItem] = useStorage('jack')
@@ -389,22 +437,14 @@ watch(person, value => {
   console.log(value)
 })
 ```
+---
 
-react 版本：
+---
+layout: two-cols
+---
 
 ```js
 import { useState } from 'react'
-
-function getItem(key, storage) {
-  const value = storage.getItem(key)
-  if (!value) return null
-  try {
-    return JSON.parse(value)
-  } catch (error) {
-    return value
-  }
-}
-
 function useStorage(key, type = 'session') {
   let storage = null
   switch (type) {
@@ -431,7 +471,7 @@ function useStorage(key, type = 'session') {
 export default useStorage
 ```
 
-使用方式：
+::right::
 
 ```js
 import { useEffect } from 'react'
@@ -454,13 +494,14 @@ export default function WindowResize() {
   )
 }
 ```
+---
 
 > 技巧：返回 toRefs 的数据，可使用解构且变量保持响应性。
 
 有一跟踪鼠标位置的`useMouse`的 hook:
 
 ```ts
-import { useOn } from './useOn'
+import { useOn } from './useOn' // 稍后有定义
 
 function useMouse() {
   const x = ref(0)
@@ -471,7 +512,7 @@ function useMouse() {
     y.value = event.pageY
   }
 
-  useOn('mousemove', update, window)
+  useOn('mousemove', update, window) 
 
   return { x, y }
 }
@@ -484,6 +525,8 @@ const { x, y } = useMouse()
 ```
 
 返回 ref 组成的对象，解构后的变量是响应性的。
+
+---
 
 改写 useMouse，返回 reactive 对象。
 
@@ -512,6 +555,7 @@ const { x, y } = useMouse()
 ```js
 return toRefs(position)
 ```
+---
 
 > 技巧：返回响应式状态和在组件内声明的响应式状态一样：可监听，可用于生成计算属性。
 
@@ -525,6 +569,8 @@ const avatar = computed(() => data.value?.avatar_url)
 ```
 
 页面需要展示用户头像，可通过计算属性拿到，等接口返回后，再计算出用户头像。
+
+---
 
 react 版本的 useMouse
 
@@ -546,11 +592,13 @@ function useMouse() {
 export default useMouse
 ```
 
-### 返回响应式状态及修改函数
+---
+
+### 返回响应式状态及其修改函数
 
 > 为何要返回一个修改状态的函数？
 
-返回修改函数，使得状态可变化，变化的状态才更加有用。
+返回修改函数，使得状态可变化，就可把修改状态的操作封装在 hook 内部。
 
 `useCounter`:
 
@@ -570,14 +618,15 @@ export default function useCounter(initCount: number = 0) {
   }
 }
 ```
+---
 
 在`SimpleCounter.vue`中使用：
 
 ```html
 <script setup lang="ts">
-  import useCounter from './useCounter'
+  import {useCounter} from './hooks'
 
-  const { count, add, reduce } = useCounter()
+  const { count, add, reduce } = useCounter(10)
 </script>
 
 <template>
@@ -587,25 +636,12 @@ export default function useCounter(initCount: number = 0) {
     <button @click="() => add()">+</button>
   </div>
 </template>
-
-<style lang="scss" scoped>
-  .counter {
-    button {
-      background-color: aliceblue;
-      width: 25px;
-      border-radius: 5px;
-      border: none;
-      &:hover {
-        border: 1px solid rgb(100, 108, 255);
-      }
-    }
-  }
-</style>
 ```
 
 这样就得到一个简单的 Counter:
 
-![](./counter20221214172140.png)
+<SimpleCounter/>
+---
 
 react 版本的 useCounter:
 
@@ -625,6 +661,144 @@ function useCounter(initCount = 1) {
 
 export default useCounter
 ```
+---
+
+
+### 输入响应式状态，再返回响应式状态
+
+vue 是副作用驱动的，很多场景下，某些状态变化时（可理解为副作用的依赖），需要执行副作用，比如发送网络请求，此时可提取 hook, 把依赖作为 hook 的参数。
+
+一个例子：
+
+<UseHttp/>
+
+组件的基本功能：拉取后台数据，且用户输入时，再调用接口拉取数据，非常普遍的功能。
+
+用户输入`input`是作为 httpGet 执行依赖的，当 input 变化时，执行 httpGet。
+
+---
+
+```html
+<template>
+  <input type="text" v-model="input" style="background-color:azure;" placeholder="请求输入关键字" />
+  <ul>
+    <li v-for="(item, index) in list" :key="index">{{ item.name }}</li>
+  </ul>
+</template>
+
+<script setup>
+import { http } from './utils'
+import { ref, watch } from 'vue'
+const input = ref('')
+const list = ref([])
+
+httpGet()
+watch(input, value => {
+  httpGet(value)
+})
+
+function httpGet(key='') {
+  http(key).then(res => {
+    list.value = res
+  })
+}
+</script>
+```
+
+如何使用 hook 写出相同的功能？
+
+---
+
+关键点：如何处理 httpGet 的依赖？将用户输入作为参数。
+
+`hooks.ts`
+
+```ts
+import type { Ref } from 'vue'
+
+export function useHttpGet(key: Ref<string>) {
+  const list = ref([])
+  watch(
+    key,
+    newKey => {
+      http(newKey)
+    },
+    { immediate: true }
+  )
+
+  return { list }
+}
+
+function httpGet(key ='') {
+  http(key).then(res => {
+    list.value = res
+  })
+}
+```
+---
+
+使用方式：
+
+```html
+<script setup>
+  import { useHttpGet } from './hooks'
+
+  const input = ref('')
+  const { list } = useHttpGet(input)
+</script>
+```
+
+使用 hook 之后，代码简洁多了。
+
+<!-- > 技巧：使用`toRef`可从**响应式对象**中属性转成 ref ，ref 和该对象之间会保持值的同步。然后将其作为参数传递给 hook。
+
+[详细说明](https://vuejs.org/api/reactivity-utilities.html#toref) -->
+
+react 版本的 useHttpGet：
+
+```js
+import { useEffect, useState } from 'react'
+
+function useHttpGet(key = '') {
+  const [list, setList] = useState([])
+  useEffect(() => {
+    http(key).then(res => {
+      setList(res)
+    })
+  }, [key])
+
+  return { list }
+}
+
+export default useHttpGet
+```
+<!-- 
+使用：
+
+```js
+import { useState } from 'react'
+
+import { useHttpGet } from '../../hooks'
+
+function UseHttpGetDemo() {
+  const [input, setInput] = useState('')
+  const { list } = useHttpGet(input)
+  return (
+    <div>
+      <input type='text' value={input} onInput={event => setInput(event.target.value)} />
+      <ul>
+        {list.map(item => (
+          <li key={item.name}>{item.name}</li>
+        ))}
+      </ul>
+      <p>{input}</p>
+    </div>
+  )
+}
+
+export default UseHttpGetDemo
+``` -->
+---
 
 ### 修改 hook 返回的响应式状态
 
@@ -649,6 +823,13 @@ export function useTitle(newTitle?: MaybeRef<string>) {
 const title = useTitle()
 title.value = '修改hook的返回值' // 会触发 useTitle 内的监听器执行
 ```
+<v-click>
+
+> 在外部直接修改 hook 返回的状态，可能你不清楚内置执行了什么副作用，不太建议这样做。
+
+</v-click>
+
+---
 
 react 版本的 useTitle
 
@@ -658,9 +839,8 @@ import { useEffect, useState } from 'react'
 function useTitle(initTitle = '') {
   const [title, setTitle] = useState<string>(initTitle ?? document.title)
   useEffect(() => {
-    setTitle(title)
     document.title = title
-  }, [])
+  }, [title])
 
   return { title, setTitle }
 }
@@ -668,20 +848,25 @@ function useTitle(initTitle = '') {
 export default useTitle
 ```
 
+> react 不能在外部修改 title，所以返回 setTitle
+
+---
+
+
 再看一个例子：
 
 `MyInput.vue`
 
 ```html
 <script setup>
-  const emit = defineEmits(['update:modelValue'])
   defineProps({
     modelValue: {
       type: String,
     },
   })
+  const emits = defineEmits(['update:modelValue'])
   function update(event) {
-    emit('update:modelValue', event.target.value)
+    emits('update:modelValue', event.target.value)
   }
 </script>
 
@@ -689,6 +874,9 @@ export default useTitle
   <input type="text" :value="modelValue" @input="update" />
 </template>
 ```
+
+---
+
 
 创建一个返回计算属性的 hook，代替`value`和`input`事件。
 
@@ -707,13 +895,15 @@ export function useVModel(props, name) {
 }
 ```
 
+---
+
+
 使用`useVModel`改造 MyInput：
 
 ```html
 <script setup>
-  import { useVModel } from '@hooks'
+  import { useVModel } from './hooks'
 
-  const emit = defineEmits(['update:modelValue'])
   const props = defineProps({
     modelValue: {
       type: String,
@@ -727,6 +917,10 @@ export function useVModel(props, name) {
   <input type="text" v-model="value" />
 </template>
 ```
+
+<MyInputDemo />
+
+---
 
 react 版本的 hook:
 
@@ -744,171 +938,7 @@ function useInput(initialValue = '') {
 export default useInput
 ```
 
-### 输入响应式状态，再返回响应式状态
-
-vue 是副作用驱动的，很多场景下，某些状态变化时（可理解为副作用的依赖），需要执行副作用，比如发送网络请求，此时可提取 hook, 把依赖作为 hook 的参数。
-
-看一个例子：
-
-```html
-<template>
-  <div>
-    <input type="text" v-model="input" />
-    <ul>
-      <li v-for="(item, index) in list" :key="index">{{ item.name }}</li>
-    </ul>
-    <p>{{ input }}</p>
-  </div>
-</template>
-
-<script setup>
-  const input = ref('')
-
-  httpGet()
-  watch(input, value => {
-    httpGet(value)
-  })
-
-  function httpGet(key) {
-    http(key).then(res => {
-      list.value = res
-    })
-  }
-
-  // 模拟 http 请求
-  function http(key) {
-    return new Promise(resolve => {
-      setTimeout(() => {
-        let list = [{ name: 'react' }, { name: 'vue' }]
-        key && (list = list.filter(item => item.name.includes(key)))
-        resolve(list)
-      }, 100)
-    })
-  }
-</script>
-```
-
-组件的基本功能：拉取后台数据，且用户输入时，再调用接口拉取数据，非常普遍的功能。
-
-用户输入`input`是作为 httpGet 执行依赖的，当 input 变化时，执行 httpGet。
-
-如何使用 hook 写出相同的功能？
-
-关键点：如何处理 httpGet 的依赖？将用户输入作为参数。
-
-`hooks.ts`
-
-```ts
-import type { Ref } from 'vue'
-
-export function useHttpGet(key: Ref<string>) {
-  const list = ref([])
-  watch(
-    key,
-    newKey => {
-      http(newKey).then(res => {
-        // @ts-ignore
-        list.value = res
-      })
-    },
-    { immediate: true }
-  )
-
-  return { list }
-}
-
-export function http(key) {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      let list = [{ name: 'http', age: 100 * Math.random() }, { name: 'vue' }]
-      key && (list = list.filter(item => item.name.includes(key)))
-      resolve(list)
-    }, 100)
-  })
-}
-```
-
-使用方式：
-
-```html
-<template>
-  <div>
-    <input type="text" v-model="input" />
-    <ul>
-      <li v-for="(item, index) in list" :key="index">{{ item.name }}</li>
-    </ul>
-    <p>{{ input }}</p>
-  </div>
-</template>
-
-<script setup>
-  import { useHttpGet } from './hooks'
-
-  const input = ref('')
-  const { list } = useHttpGet(input)
-</script>
-```
-
-使用 hook 之后，代码简洁多了。
-
-> 技巧：使用`toRef`可从**响应式对象**中属性转成 ref ，ref 和该对象之间会保持值的同步。然后将其作为参数传递给 hook。
-
-[详细说明](https://vuejs.org/api/reactivity-utilities.html#toref)
-
-react 版本的 useHttpGet：
-
-```js
-import { useEffect, useState } from 'react'
-
-function http(key) {
-  return new Promise(resolve => {
-    setTimeout(() => {
-      let list = [{ name: 'http', age: 100 * Math.random() }, { name: 'vue' }]
-      key && (list = list.filter(item => item.name.includes(key)))
-      resolve(list)
-    }, 100)
-  })
-}
-
-function useHttpGet(key = '') {
-  const [list, setList] = useState([])
-  useEffect(() => {
-    http(key).then(res => {
-      setList(res)
-    })
-  }, [key])
-
-  return { list }
-}
-
-export default useHttpGet
-```
-
-使用：
-
-```js
-import { useState } from 'react'
-
-import { useHttpGet } from '../../hooks'
-
-function UseHttpGetDemo() {
-  const [input, setInput] = useState('')
-  const { list } = useHttpGet(input)
-  return (
-    <div>
-      <input type="text" value={input} onInput={event => setInput(event.target.value)} />
-      <ul>
-        {list.map(item => (
-          <li key={item.name}>{item.name}</li>
-        ))}
-      </ul>
-      <p>{input}</p>
-    </div>
-  )
-}
-
-export default UseHttpGetDemo
-```
+---
 
 ### 参数可能是 Ref
 
@@ -941,9 +971,11 @@ export function useHttpGet(key: MaybeRef<string>) {
 
 `ref`函数的参数是 ref，返回 ref，是普通变量，就将其包裹成 ref。
 
+---
+
 > 技巧
 
-可让参数和现有的 ref 建立连接，修改现有 ref，触发 hook 执行。
+可让参数和现有的 ref 建立连接，修改现有 ref，触发 hook 内部的逻辑执行。
 
 还是上面 useTitle，可这样使用：
 
@@ -957,34 +989,19 @@ setTimeout(() => {
   hello.value = 'Hello'
 }, 2000)
 ```
+---
 
 ### 返回组件
 
 希望实现一个跟随鼠标移动的组件：
 
-![](./mouse-follower-20221214115910.png)
-
 使用 hook 返回一个组件：
 
 ```ts
 type LazyOrRef<T> = Ref<T> | (() => T)
-
-type MaybeLazyRef<T> = MaybeRef<T> | (() => T)
-
-function unravel<T>(value: MaybeLazyRef<T>): T {
-  if (typeof value === 'function') {
-    // casting because there is  a typescript bug
-    // https://github.com/microsoft/TypeScript/issues/37663
-    return (value as () => T)()
-  }
-
-  return unref(value)
-}
-
 export function useMouseFollower(position: LazyOrRef<{ x: number; y: number }>) {
   const style = computed(() => {
     const { x, y } = unravel(position)
-
     return {
       position: 'fixed',
       top: 0,
@@ -996,24 +1013,23 @@ export function useMouseFollower(position: LazyOrRef<{ x: number; y: number }>) 
 
   const Follower = defineComponent(
     (props, { slots }) =>
-      () =>
-        h('div', { ...props, style: style.value }, slots)
+      () => h('div', { ...props, style: style.value }, slots)
   )
-
   return Follower
 }
 ```
+
+---
+
 
 使用：
 
 ```html
 <template>
-  <div>
     <Follower>
       <div class="follower-content">I follow your mouse</div>
     </Follower>
     <pre>x: {{ x }}, y: {{ y }}</pre>
-  </div>
 </template>
 
 <script lang="ts" setup>
@@ -1034,6 +1050,7 @@ export function useMouseFollower(position: LazyOrRef<{ x: number; y: number }>) 
   }
 </style>
 ```
+---
 
 react 版本的 useMouseFollower.tsx
 
@@ -1058,6 +1075,8 @@ function useMouseFollower(position: Record<'x' | 'y', number>) {
 export default useMouseFollower
 ```
 
+---
+
 ### 封装第三方库
 
 了解了上面 hook 编写技巧，在封装第三方库的使用，充分使用才能发挥威力。
@@ -1065,6 +1084,8 @@ export default useMouseFollower
 编写一个按钮，鼠标移入，在右边显示提示信息，使用`popperjs`实现。
 
 常规实现方式：
+
+---
 
 ```html
 <template>
@@ -1074,13 +1095,15 @@ export default useMouseFollower
       ref="btn"
       @mouseover="onMouseover"
       @mouseout="onMouseout"
-      style="background-color: lightgreen; height: 40px; width: 100px">
+      style="background-color: lightgreen; height: 40px; width: 100px"
+    >
       按钮
     </button>
     <div
       v-show="isOver"
       ref="tooltip"
-      style="background-color: lightyellow; height: 20px; width: 150px">
+      style="background-color: lightyellow; height: 20px; width: 150px"
+    >
       tool tip
     </div>
   </div>
@@ -1153,13 +1176,15 @@ export function usePopper(placement) {
     <button
       :ref="reference"
       @click="onClick"
-      style="background-color: lightgreen; height: 40px; width: 100px">
+      style="background-color: lightgreen; height: 40px; width: 100px"
+    >
       use hook
     </button>
     <div
       v-show="isOpen"
       :ref="tooltip"
-      style="background-color: lightyellow; height: 20px; width: 150px">
+      style="background-color: lightyellow; height: 20px; width: 150px"
+    >
       tool tip
     </div>
   </div>
@@ -1301,7 +1326,8 @@ function PopperDemo() {
         ref={reference}
         onMouseOver={() => setShowTooltip(true)}
         onMouseOut={() => setShowTooltip(false)}
-        style={{ backgroundColor: 'lightgreen', height: '40px', width: '200px' }}>
+        style={{ backgroundColor: 'lightgreen', height: '40px', width: '200px' }}
+      >
         use hook
       </button>
       <div
@@ -1311,7 +1337,8 @@ function PopperDemo() {
           height: '20px',
           width: '100px',
           display: showToolTip ? 'block' : 'none',
-        }}>
+        }}
+      >
         tool tip
       </div>
       <br />

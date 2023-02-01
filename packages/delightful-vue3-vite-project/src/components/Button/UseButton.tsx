@@ -2,8 +2,8 @@
  * @Description : 使用 Button
  * @Date        : 2022-10-27 00:40:00 +0800
  * @Author      : JackChou
- * @LastEditTime: 2023-01-07 00:25:12 +0800
- * @LastEditors : JackChou
+ * @LastEditTime: 2023-01-30 09:48:57
+ * @LastEditors : ZhouQiJun
  */
 // import { clickOutside } from '../../plugins/directive'
 import Button from './MyButton'
@@ -14,21 +14,6 @@ const UseButton = defineComponent({
   //   clickOutside,
   // },
   setup(props, { slots }) {
-    console.log('useButton slots')
-    console.log(slots)
-    const { default: _default, left, right } = slots
-
-    const children = {}
-    if (left) Object.assign(children, { left: () => left() })
-
-    if (right) Object.assign(children, { right: () => right() })
-
-    if (_default) Object.assign(children, { right: () => _default() })
-    else {
-      Object.assign(children, {
-        default: () => <span style={{ color: 'red' }}>hello</span>,
-      })
-    }
     const show = ref(false)
     function clickOutside() {
       console.log('clickOutSide of Button')
@@ -38,6 +23,16 @@ const UseButton = defineComponent({
       loading.value = !loading.value
     }, 5000)
 
+    console.log('useButton slots')
+    console.log(slots)
+    const { default: _default, left, right } = slots
+
+    const children = {
+      // NOTE 可选链和空值合并结合使用
+      default: () => _default?.() ?? <span style={{ color: 'red' }}>hello</span>,
+      right: () => right?.(),
+      left: () => left?.(),
+    }
     // NOTE 第一种方式
     // return () => (
     //   <div v-loading={loading.value}>
@@ -58,8 +53,8 @@ const UseButton = defineComponent({
     // return () => (
     //   <Button>
     //     {left ? left() : null}
-    //     {_default ? _default() : null}
-    //     {right ? right() : null}
+    //     {_default?.()}
+    //     {right?.()}
     //   </Button>
     // )
 

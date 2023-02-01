@@ -1,16 +1,17 @@
 <!--
   * @Date        : 2022-08-08 14:23:25
   * @Author      : ZhouQijun
- * @LastEditors : ZhouQiJun
- * @LastEditTime: 2022-12-30 17:50:55
+  * @LastEditors : JackChou
+  * @LastEditTime: 2023-02-01 21:41:53 +0800
   * @Description : 
 -->
 <script setup lang="tsx">
-import { useGlobalProps } from '@/hooks'
+import { FunComponent, HelloWorld, SlottedDemo, WatchDemo } from '#c'
 
-import { HelloWorld, SlottedDemo, WatchDemo } from '../components'
-// NOTE 不要使用路径别名，否则不会类型不生效
-import { USER_KEY } from '../utils/injectionKey'
+import { useGlobalProps } from '@/hooks'
+import { USER_KEY } from '@/utils/injectionKey'
+
+// import { FunComponent } from '#c/FunctionalCom'
 
 const SubComponent = defineComponent({
   render() {
@@ -24,12 +25,24 @@ setTimeout(() => {
 }, 5000)
 
 const user = inject(USER_KEY)
+const helloWorld = ref()
+const funComponent = ref()
 
 const { testFn, globalFn } = useGlobalProps()
 testFn()
 onMounted(() => {
   globalFn('global function in main.js')
+  console.log(funComponent.value)
 })
+setTimeout(() => {
+  console.log(helloWorld.value)
+  console.log(helloWorld.value.exposeVar)
+  console.log(helloWorld.value.count)
+  // helloWorld.value.modalIsOpen = true
+}, 2000)
+function onClick(params) {
+  console.log(params)
+}
 </script>
 
 <template>
@@ -42,7 +55,7 @@ onMounted(() => {
     <hr />
     <WatchDemo />
     <hr />
-    <HelloWorld />
+    <HelloWorld ref="helloWorld" />
     <!-- <button @click="toggle">toggle</button> -->
     <!-- <count-to v-if="show" :end-value="endValue" :precision="3" @on-end="updated">
       <span slot="left">工资：</span>
@@ -51,6 +64,17 @@ onMounted(() => {
     <!-- <my-rating :max-value="10" :person="person" :personArray="[person]"></my-rating>
     <button type="button" @click="changePerson">修改person</button> -->
     <SubComponent />
+    <hr />
+    <FunComponent
+      @my-click="onClick"
+      ref="funComponent"
+      name="函数组件属性"
+      title="attrs属性">
+      <p>hello-world</p>
+      <template #left>
+        <p>left</p>
+      </template>
+    </FunComponent>
   </div>
 </template>
 
