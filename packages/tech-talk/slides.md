@@ -698,10 +698,20 @@ layout: center
 
 希望实现一个跟随鼠标移动的组件
 
+<UseMouseDemo/>
+
 ---
 
 ```ts
+export function unravel<T>(value: MaybeLazyRef<T>): T {
+  if (typeof value === 'function') {
+    return (value as () => T)()
+  }
+  return unref(value)
+}
+
 type LazyOrRef<T> = Ref<T> | (() => T)
+
 export function useMouseFollower(position: LazyOrRef<{ x: number; y: number }>) {
   const style = computed(() => {
     const { x, y } = unravel(position)
@@ -715,8 +725,7 @@ export function useMouseFollower(position: LazyOrRef<{ x: number; y: number }>) 
   })
 
   const Follower = defineComponent(
-    (props, { slots }) =>
-      () => h('div', { ...props, style: style.value }, slots)
+    (props, { slots }) => () => h('div', { ...props, style: style.value }, slots)
   )
   return Follower
 }
@@ -817,7 +826,11 @@ function httpGet(key='') {
 </script>
 ```
 
+<v-click>
+
 如何使用 hook 写出相同的功能？
+
+</v-click>
 
 ---
 
@@ -838,7 +851,7 @@ export function useHttpGet(key: Ref<string>) {
     { immediate: true }
   )
 
-  return [list]
+  return list
 }
 
 function httpGet(key ='') {
@@ -868,6 +881,8 @@ function httpGet(key ='') {
 
 react 版本的 useHttpGet：
 
+<v-click>
+
 ```js
 import { useEffect, useState } from 'react'
 
@@ -884,6 +899,7 @@ function useHttpGet(key = '') {
 
 export default useHttpGet
 ```
+</v-click>
 
 ---
 layout: center
@@ -1048,7 +1064,7 @@ export function useHttpGet(key: MaybeRef<string>) {
     { immediate: true }
   )
 
-  return { list }
+  return  list
 }
 ```
 
@@ -1120,6 +1136,44 @@ function useMouse() {
   return { x, y }
 }
 ```
+---
+layout: center
+---
+
+# hook 内部可以有哪些操作？
+
+- [computed](http://localhost:3030/9)
+- [watch](http://localhost:3030/35)、watchEffect
+- [事件监听](http://localhost:3030/20)
+
+<v-click>
+
+setup 函数能使用的，都可放在 hook 内部
+
+> provide & inject 不行
+
+</v-click>
+
+<v-click>
+
+```ts
+import type { ComponentInternalInstance } from 'vue'
+import { getCurrentInstance } from 'vue'
+
+function useGlobalProps() {
+  const { appContext } = getCurrentInstance() as ComponentInternalInstance
+  const globalProps = appContext.config.globalProperties
+  return { ...globalProps }
+}
+
+export default useGlobalProps
+// main
+app.config.globalProperties.globalFn = function testGlobal(name: string) {
+  console.log(name)
+}
+```
+</v-click>
+
 ---
 layout: center
 ---
