@@ -1,8 +1,8 @@
 <!--
  * @Date        : 2022-11-10 11:35:34
  * @Author      : ZhouQiJun
- * @LastEditors : JackChou
- * @LastEditTime: 2023-01-17 19:55:16 +0800
+ * @LastEditors : ZhouQiJun
+ * @LastEditTime: 2023-02-03 11:30:52
  * @Description : 
 -->
 <script setup lang="ts">
@@ -18,6 +18,7 @@ import ContactList from './ContactList.vue'
 import TestHook from './HookTest.vue'
 import { Modal, ModalHeader } from './Modal'
 import SimpleCounter from './SimpleCounter.vue'
+import UseDebounceRefDemo from './UseDebounceRefDemo.vue'
 import UseHoverDemo from './UseHoverDemo.vue'
 import UseMouseFollower from './UseMouseDemo.vue'
 
@@ -50,8 +51,7 @@ const text = useDebounceRef('hello', 1000)
 <template>
   <div>
     <h4>useDebounceRef</h4>
-    <input v-model="text" />
-    <p>{{ text }}</p>
+    <UseDebounceRefDemo />
     <h4>useHover</h4>
     <UseHoverDemo />
     <h4>useVisibilityChange</h4>
@@ -83,8 +83,8 @@ const text = useDebounceRef('hello', 1000)
     <button @click="onChangeItems">修改共享的 items</button>
     <TestHook />
     <hr />
-    <h4>useMouse</h4>
-    <UseMouseFollower />
+    <!-- <h4>useMouse</h4> -->
+    <!-- <UseMouseFollower /> -->
     <!-- <VideoPlayer /> -->
     <hr />
     <h4>useContext</h4>
