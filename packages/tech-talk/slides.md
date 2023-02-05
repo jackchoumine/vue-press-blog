@@ -1143,9 +1143,9 @@ layout: center
 
 # hook 内部可以有哪些操作？
 
-- [computed](http://localhost:3030/9)
-- [watch](http://localhost:3030/35)、watchEffect
-- [事件监听](http://localhost:3030/20)
+- [computed](http://127.0.0.1:3030/9)
+- [watch](http://127.0.0.1:3030/35)、watchEffect
+- [事件监听](http://127.0.0.1:3030/20)
 
 <v-click>
 
@@ -1164,7 +1164,7 @@ import { getCurrentInstance } from 'vue'
 function useGlobalProps() {
   const { appContext } = getCurrentInstance() as ComponentInternalInstance
   const globalProps = appContext.config.globalProperties
-  return { ...globalProps }
+  return globalProps
 }
 
 export default useGlobalProps
@@ -1181,7 +1181,7 @@ layout: center
 
 # 下周分享预告
 
-- 把第三库函数封装成 hook
+- 把第三库方函数封装成 hook
 
 - hook 共享状态
 
