@@ -1,0 +1,12 @@
+<button
+  ref="btn"
+  @mouseover="onMouseover"
+  @mouseout="onMouseout"
+  style="background-color: lightgreen; height: 40px; width: 100px"
+>
+  按钮
+</button>
+<div v-show="isOver" ref="tooltip" style="background-color: red; height: 20px; width: 150px">
+  tool tip
+</div>
+<button type="button" @click="placement = 'top'">修改位置</button>

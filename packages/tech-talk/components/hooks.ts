@@ -2,7 +2,7 @@
  * @Description :
  * @Date        : 2023-02-01 22:29:28 +0800
  * @Author      : JackChou
- * @LastEditTime: 2023-02-02 00:42:58 +0800
+ * @LastEditTime: 2023-02-07 23:43:44 +0800
  * @LastEditors : JackChou
  */
 import { computed, unref, ref, watch, getCurrentInstance, onMounted, onUnmounted } from 'vue'
@@ -97,4 +97,25 @@ export function useMouse() {
 
   // expose managed state as return value
   return { x, y }
+}
+
+export function useOnClickOutside(callback) {
+  const isClickOutside = ref(false)
+
+  const DOMRef = ref(null)
+  function handleClick(event) {
+    if (DOMRef.value && !DOMRef.value.contains(event.target)) {
+      callback && callback(event.target)
+      isClickOutside.value = true
+      return
+    }
+    isClickOutside.value = false
+  }
+  useOn('mousedown', handleClick, document)
+
+  function whenClickOutside(DOM) {
+    DOMRef.value = DOM
+  }
+
+  return { isClickOutside, whenClickOutside }
 }
