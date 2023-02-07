@@ -7,6 +7,7 @@ export type Cart = {
 }
 
 const items = ref<Cart[]>([])
+
 const totalBooks = computed(() =>
   items.value.reduce((preToal, current) => {
     preToal += current.number

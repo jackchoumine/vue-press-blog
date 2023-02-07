@@ -38,8 +38,8 @@ if (searchable) {
     <input v-model="filterKey" v-if="searchable" />
     <ul>
       <li v-for="(item, index) in result" :key="index">
-        <p>{{ item.name }}</p>
-        <p>{{ item.phone }}</p>
+        <p>{{ item?.name }}</p>
+        <p>{{ item?.phone }}</p>
       </li>
     </ul>
   </div>
