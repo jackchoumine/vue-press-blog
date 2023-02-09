@@ -62,6 +62,7 @@ transition: slide-left
 
 前端常常会用到一下操作 DOM 的第三库
 <!--  -->
+
 <PopperButton />
 
 ---
@@ -192,7 +193,7 @@ transition: slide-up
 
 <v-click>
 
-> ref 可作为参数，还可作为返回值，绑定到 DOM 上。这种用法尤其是在涉及到 DOM 操时很有用。
+> hook 可返回一个函数形式的 ref，在组件中绑定到 ref 属性上。这种用法尤其是在涉及到 DOM 操时很有用。
 
 
 
@@ -374,6 +375,8 @@ if (searchable) {
 <v-click>
 
 > react 的 hook 有严格的调用时序，不能在条件语句中使用
+
+> vue 组合函数则没有这个限制，就和普通函数一样使用，可见它更加符合编码直觉
 </v-click>
 
 ---
@@ -382,7 +385,7 @@ class: text-center
 ---
 # vue hook vs react hook
 
-vue 和 react 都采用相似的方式实现**状态逻辑复用**，那它们有什么区别？
+vue 和 react 都采用相似的方式实现**状态逻辑复用**，那它们在使用上有什么区别？
 
 ---
 
@@ -470,18 +473,21 @@ transition: slide-left
 ```html
 <script setup>
 import { debounce } from 'lodash-es'
-import MyInput from './MyInput.vue'
-
 const input = ref('')
 const debounceHttp = debounce(args => http(args), 3000)
-watch(input,value => {
-  debounceHttp(value)
-})
-function http(params) {
-  console.log(params)
-}
+watch(
+  input,
+  value => { 
+      console.log('lodash triger', value); 
+      debounceHttp(value)
+  },
+  {
+    onTrack() { console.log('lodash track')},
+    onTrigger() {console.log('lodash trigger')},
+  },
+)
+function http(params) { console.log(params)}
 </script>
-
 <template>
   <MyInput v-model="input" />
 </template>
@@ -495,18 +501,21 @@ function http(params) {
 ```html
 <script setup>
 import { useDebounceRef } from './useDebounceRef'
-import MyInput from './MyInput.vue'
 
 const input = useDebounceRef('', 3000)
-
-watch(input, value => {
-  http(value)
-})
-function http(params) {
-  console.log(params)
-}
+watch(
+  input,
+  value => {
+    console.log('useDebounceRef triger', value)
+    http(value)
+  },
+  {
+    onTrack() {console.log('useDebounceRef track')},
+    onTrigger() {console.log('useDebounceRef trigger')},
+  },
+)
+function http(params) {console.log(params)}
 </script>
-
 <template>
   <MyInput v-model="input" />
 </template>
