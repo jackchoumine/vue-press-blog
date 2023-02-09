@@ -1,8 +1,8 @@
 <!--
  * @Author      : ZhouQiJun
  * @Date        : 2023-02-08 14:31:41
- * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-02-09 14:22:59
+ * @LastEditors : JackChou
+ * @LastEditTime: 2023-02-09 15:34:11 +0800
  * @Description : 河道水情
 -->
 <script lang="ts" setup>
@@ -17,6 +17,7 @@ import Lookup from '@/core/Lookup'
 
 import { FormTable, SiteFilter } from '../../../tech-talk/components'
 import { riverAllColumns, riverWarningColumns } from '../config/columns'
+// NOTE
 import { useAlarms, useSiteFilter } from '../hooks'
 
 const loading = ref(false)
@@ -282,6 +283,7 @@ const onAreaClear = () => {
       .then(() => (around = null))
   }
 }
+// BUG
 const { currentFilter, formValueChange } = useSiteFilter(navData, onAreaChange)
 const alarmDataParams = computed(() => {
   return {
@@ -293,6 +295,7 @@ const alarmDataParams = computed(() => {
   }
 })
 const { colList, alarmData } = useAlarms(store, alarmDataParams)
+//
 //搜索
 const getOnLoadTable = () => {
   if (navData.tab == 1) {
