@@ -22,6 +22,22 @@ transition: fade-out
 css: unocss
 ---
 
+# 关于我
+
+- 周其军
+
+- 毕节市 织金县
+
+- 2017年本科毕业  
+
+- 前端开发
+
+- [博客](https://jackchoumine.github.io/)
+
+---
+layout: center
+---
+
 # vue3 与 hook (二)
 
 1. 把第三库方函数封装成 hook
@@ -504,7 +520,7 @@ class: text-center
 ---
 # hook 和 headless component
 
-> headless component：hook 状态逻辑，不提供或者少提供样式的组件，最大程度让用户自定义样式和布局。
+> headless component：hook 状态逻辑，不提供或者少提供样式的组件，最大程度让用户自定义样式和布局。headless component 有时也叫 renderless component。
 
 <v-click>
 
