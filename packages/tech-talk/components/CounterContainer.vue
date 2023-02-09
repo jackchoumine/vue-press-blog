@@ -1,11 +1,11 @@
 <!--
  * @Author      : ZhouQiJun
  * @Date        : 2023-02-09 10:14:38
- * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-02-09 10:25:06
+ * @LastEditors : JackChou
+ * @LastEditTime: 2023-02-09 11:32:00 +0800
  * @Description : renderless 状态逻辑复用
 -->
-<script lang="ts">
+<script>
 import { defineComponent, ref } from 'vue'
 
 export default defineComponent({

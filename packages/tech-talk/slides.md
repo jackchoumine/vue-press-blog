@@ -542,6 +542,126 @@ class: text-center
 </v-click>
 
 ---
+layout: two-cols
+---
+
+# SimpleCounter
+
+```html
+<script setup lang="ts">
+import { useCounter } from './hooks'
+const { count, add, reduce } = useCounter(10)
+</script>
+<template>
+  <div class="counter">
+    <button @click="() => reduce()">-</button>
+    {{ count }}
+    <button @click="() => add()">+</button>
+  </div>
+</template>
+<style lang="scss" scoped>
+.counter {
+  button {
+    background-color: aliceblue;
+    width: 25px;
+    border-radius: 5px;
+    border: none;
+    &:hover {
+      border: 1px solid rgb(100, 108, 255);
+    }
+  }
+}
+</style>
+```
+
+::right::
+
+# SimpleCounter2
+
+```html
+<script setup lang="ts">
+import { useCounter } from './hooks'
+const { count, add, reduce } = useCounter(10)
+</script>
+<template>
+  <div class="counter">
+    {{ count }}
+    <button @click="() => reduce()">-</button>
+    <button @click="() => add()">+</button>
+  </div>
+</template>
+<style lang="scss" scoped>
+.counter {
+  button {
+    background-color: lightpink;
+    width: 25px;
+    border-radius: 50%;
+    border: none;
+    &:hover {
+      border: 1px solid lightgreen;
+    }
+  }
+}
+</style>
+```
+---
+layout: two-cols
+---
+# renderless component
+
+```html
+<script>
+import { defineComponent, ref } from 'vue'
+
+export default defineComponent({
+  props: ['initCount'],
+  setup(props, { slots }) {
+    const count = ref(props.initCount)
+    function add(step = 1) {
+      count.value += step
+    }
+    function reduce(step = 1) {
+      count.value -= step
+    }
+    return () => slots?.default?.({ count, add, reduce })
+  },
+})
+</script>
+```
+
+::right::
+
+# 使用
+
+```html
+<template>
+  <CounterContainer :init-count="10">
+    <template #default="{ count, add, reduce }">
+      <div class="counter">
+        {{ count }}
+        <button @click="() => reduce()">-</button>
+        <button @click="() => add()">+</button>
+      </div>
+    </template>
+  </CounterContainer>
+</template>
+<style lang="scss" scoped>
+.counter {
+  button {
+    background-color: lightpink;
+    width: 25px;
+    border-radius: 50%;
+    border: none;
+    &:hover {
+      border: 1px solid lightgreen;
+    }
+  }
+}
+</style>
+```
+
+
+---
 layout: center
 class: text-center
 ---
