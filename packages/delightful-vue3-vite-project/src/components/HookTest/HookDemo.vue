@@ -1,8 +1,8 @@
 <!--
  * @Date        : 2022-11-10 11:35:34
  * @Author      : ZhouQiJun
- * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-02-03 11:30:52
+ * @LastEditors : JackChou
+ * @LastEditTime: 2023-02-09 11:35:22 +0800
  * @Description : 
 -->
 <script setup lang="ts">
@@ -17,6 +17,7 @@ import VideoPlayer from '../VideoPlayer/VideoPlayer.vue'
 import ContactList from './ContactList.vue'
 import TestHook from './HookTest.vue'
 import { Modal, ModalHeader } from './Modal'
+import SimpleCounter3 from './SimpleCounter3.vue'
 import SimpleCounter from './SimpleCounter.vue'
 import UseDebounceRefDemo from './UseDebounceRefDemo.vue'
 import UseHoverDemo from './UseHoverDemo.vue'
@@ -61,6 +62,7 @@ const text = useDebounceRef('hello', 1000)
       src="https://mdn.github.io/webaudio-examples/audio-basics/outfoxing.mp3"></audio>
     <h3>组合函数例子</h3>
     <SimpleCounter />
+    <SimpleCounter3 />
     <h3>在条件语句下使用组合函数</h3>
     <ContactList />
     <ContactList searchable />
