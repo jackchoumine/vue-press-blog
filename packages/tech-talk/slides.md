@@ -623,7 +623,11 @@ export default defineComponent({
     function reduce(step = 1) {
       count.value -= step
     }
-    return () => slots?.default?.({ count, add, reduce })
+    return () => slots?.default?.({ 
+      count,
+      add,
+      reduce 
+    })
   },
 })
 </script>
