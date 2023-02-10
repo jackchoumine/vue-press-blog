@@ -623,7 +623,11 @@ export default defineComponent({
     function reduce(step = 1) {
       count.value -= step
     }
-    return () => slots?.default?.({ count, add, reduce })
+    return () => slots?.default?.({ 
+      count,
+      add,
+      reduce 
+    })
   },
 })
 </script>
@@ -666,6 +670,25 @@ layout: center
 class: text-center
 ---
 
-# Learn More
+# 参考 
 
-[Documentations](https://sli.dev) · [GitHub](https://github.com/slidevjs/slidev) · [Showcases](https://sli.dev/showcases.html)
+[是否可使用 react hook 共享状态](https://stackoverflow.com/questions/53451584/is-it-possible-to-share-states-between-components-using-the-usestate-hook-in-r)
+
+[如何在组合函数中使用 ref](https://logaretm.com/blog/juggling-refs-around/)
+
+[可组合的 vue](https://talks.antfu.me/2021/vueconf-china/1)
+
+[Conditional Vue.js Compositions](https://logaretm.com/blog/conditional-vuejs-compositions)
+
+[State Management with React Hooks — No Redux or Context API](https://javascript.plainenglish.io/state-management-with-react-hooks-no-redux-or-context-api-8b3035ceecf8)
+
+[React's State-Management Holy Wars Series' Articles](https://dev.to/bytebodger/series/5062)
+
+[使用 Vue3 封装一些有用的组合 API](https://juejin.cn/post/6888925879243079687)
+
+---
+layout: center
+class: text-center
+---
+
+# Q & A

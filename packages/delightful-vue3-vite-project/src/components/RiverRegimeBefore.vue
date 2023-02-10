@@ -68,6 +68,7 @@
   const selectedArea = ref([store.user.adcd])
   const navData: navData = reactive({
     value: "",
+    // NOTE 
     showNoDataContent: "无告警站点",
     superAlarmRiverOne: "告警站点总数",
     superAlarmRiverTwo: "超历史最高站点",
@@ -79,6 +80,7 @@
     superAlarmRiverThreeNumber: "",
     superAlarmRiverFourNumber: "",
     superAlarmRiverFiveNumber: "",
+    // NOTE
     areaApi: "area.cascader",
     param: {
       parentAdcd: store.user.adcd,
@@ -442,6 +444,7 @@
         <div class="right-icon-color" @click="checkAllTopDetail">列表>></div>
       </div>
     </div>
+    <!-- NOTE -->
     <div class="super-alarm-river-one">
       <div>
         <div class="top-content">
@@ -463,6 +466,7 @@
         </div>
       </div>
     </div>
+    <!-- NOTE -->
     <div class="point-background-color"></div>
     <div class="super-alarm-center overflow-hidden">
       <template v-if="isSy">
