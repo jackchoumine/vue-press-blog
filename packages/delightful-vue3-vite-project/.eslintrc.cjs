@@ -1,3 +1,10 @@
+/*
+ * @Author      : ZhouQiJun
+ * @Date        : 2023-01-11 20:20:20
+ * @LastEditors : ZhouQiJun
+ * @LastEditTime: 2023-02-10 11:38:29
+ * @Description : stylelint 配置
+ */
 require('@rushstack/eslint-patch/modern-module-resolution')
 
 module.exports = {
