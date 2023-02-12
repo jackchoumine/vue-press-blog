@@ -7,13 +7,13 @@
     "dev": "parcel ./index.html",
     "build": "parcel build ./index.html"
   },
-  "keywords": [],
-  "author": "jackchoumine <jackzhoumine@gmail.com;jackchou4job@163.com>",
-  "license": "MIT",
   "devDependencies": {
     "parcel": "~2.8.3"
   },
   "dependencies": {
     "three": "~0.149.0"
-  }
+  },
+  "keywords": [],
+  "author": "jackchoumine <jackzhoumine@gmail.com;jackchou4job@163.com>",
+  "license": "MIT"
 }
