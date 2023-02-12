@@ -149,6 +149,7 @@ importers:
       jsdom: 20.0.3
       lint-staged: 13.0.3
       lit: ~2.4.1
+      only-allow: ~1.1.1
       pinia: 2.0.28
       postcss-html: 1.5.0
       postcss-scss: 4.0.5
@@ -227,6 +228,7 @@ importers:
       husky: 8.0.2
       jsdom: 20.0.3
       lint-staged: 13.0.3
+      only-allow: 1.1.1
       postcss-html: 1.5.0
       postcss-scss: 4.0.5
       prettier: 2.7.1

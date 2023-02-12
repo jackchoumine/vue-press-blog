@@ -315,3 +315,18 @@ app.use(registerComponent)
 
 <!-- TODO -->
 
+
+## vue3 + ts 目录无法跳转？
+
+```ts
+import { useDebounceRef, useVisibilityChange } from '../../hooks' //可跳转
+import { useDebounceRef, useVisibilityChange } from '@/hooks' // 使用路径别名，不可跳转
+```
+
+可能的原因：
+
+1. 路径别名没设置好？
+
+[Why does VSCode not pick up path aliases in tsconfig](https://stackoverflow.com/questions/70072923/why-does-vscode-not-pick-up-path-aliases-in-tsconfig)
+
+<!-- TODO -->

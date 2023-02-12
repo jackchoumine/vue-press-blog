@@ -2,16 +2,16 @@
  * @Date        : 2022-11-10 11:35:34
  * @Author      : ZhouQiJun
  * @LastEditors : JackChou
- * @LastEditTime: 2023-02-09 11:35:22 +0800
+ * @LastEditTime: 2023-02-12 21:57:13 +0800
  * @Description : 
 -->
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 
-import { useDebounceRef, useVisibilityChange } from '@/hooks'
 // import useCart from './useCart'
 import { useCartStore } from '@/stores'
 
+import { useDebounceRef, useVisibilityChange } from '../../hooks'
 import VideoPlayer from '../VideoPlayer/VideoPlayer.vue'
 
 import ContactList from './ContactList.vue'
