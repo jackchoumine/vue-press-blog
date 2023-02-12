@@ -8,6 +8,7 @@
     "build": "parcel build ./index.html"
   },
   "devDependencies": {
+    "@types/three": "~0.149.0",
     "parcel": "~2.8.3"
   },
   "dependencies": {
