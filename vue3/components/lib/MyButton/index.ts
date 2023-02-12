@@ -2,7 +2,7 @@
  * @Description :
  * @Date        : 2022-12-25 00:54:20 +0800
  * @Author      : JackChou
- * @LastEditTime: 2022-12-25 00:57:45 +0800
+ * @LastEditTime: 2023-02-12 19:28:08 +0800
  * @LastEditors : JackChou
  */
 import type { App } from 'vue'
@@ -13,4 +13,5 @@ MyButton.install = (app: App) => {
   app.component('MyButton', MyButton)
   return app
 }
+export { MyButton }
 export default MyButton

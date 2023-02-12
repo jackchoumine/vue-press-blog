@@ -32,6 +32,19 @@ export default defineConfig({
 })
 ```
 
+修改package.json
+
+```json
+{
+  "exports": {
+    ".": {
+      "import": "./dist/jack-components.js",
+      "require": "./dist/jack-components.umd.js"
+    }
+  },
+}
+```
+
 2. 最外层的 package.json 的依赖是 packages 里的项目共享的吗？
 
 是的。

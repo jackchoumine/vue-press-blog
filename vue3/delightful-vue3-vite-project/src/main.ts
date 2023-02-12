@@ -2,9 +2,12 @@
  * @Date        : 2022-08-08 14:23:25
  * @Author      : ZhouQijun
  * @LastEditors : JackChou
- * @LastEditTime: 2023-01-07 16:50:44 +0800
+ * @LastEditTime: 2023-02-12 20:09:34 +0800
  * @Description :
  */
+// import { default as jackComponents }from '@jack/components'
+// @ts-ignore
+import jackComponents from '@jack/components'
 // Import icon libraries
 import '@quasar/extras/material-icons/material-icons.css'
 // @ts-ignore
@@ -56,6 +59,7 @@ const app = createApp(App)
 
 app.config.performance = true
 app
+  .use(jackComponents)
   .use(globalDirectives) // .use(vAuth) //.use(vClickOutside) // .use(Antd)
   .use(piniaStore) // 激活 pinia
   .use(ElLoading)
