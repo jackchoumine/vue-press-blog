@@ -307,5 +307,11 @@ function registerComponent(
   })
   return app
 }
+// 用法
 app.use(registerComponent)
 ```
+
+## 如何给 vue3 的全局属性扩展类型以支持全局自定义属性？
+
+<!-- TODO -->
+
