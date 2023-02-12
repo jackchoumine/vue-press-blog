@@ -342,4 +342,6 @@ import { useDebounceRef, useVisibilityChange } from '@/hooks' // 使用路径别
 
 似乎没有用。
 
+[How to intellisense alias module path in VSCode](https://stackoverflow.com/questions/58249053/how-to-intellisense-alias-module-path-in-vscode)
+
 <!-- TODO -->
