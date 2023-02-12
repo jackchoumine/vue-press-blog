@@ -329,4 +329,17 @@ import { useDebounceRef, useVisibilityChange } from '@/hooks' // 使用路径别
 
 [Why does VSCode not pick up path aliases in tsconfig](https://stackoverflow.com/questions/70072923/why-does-vscode-not-pick-up-path-aliases-in-tsconfig)
 
+可能的解决办法：
+
+1. vscode 配置文件设置：
+
+```json
+{
+  "typescript.disableAutomaticTypeAcquisition": true
+}
+```
+[Enable Go to Implementation in Typescript Editors](https://github.com/microsoft/TypeScript/issues/6209#issuecomment-310578734)
+
+似乎没有用。
+
 <!-- TODO -->
