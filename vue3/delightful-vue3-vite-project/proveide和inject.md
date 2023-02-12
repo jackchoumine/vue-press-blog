@@ -86,7 +86,7 @@ export const USER_KEY: InjectionKey<User> = Symbol('User')
 
 配置正确，编辑器会提示：
 
-![](./QQ%E6%88%AA%E5%9B%BE20221210175356.png)
+![](./right-alias-20221210175356.png)
 
 且能点击导出，能正确跳转目录。
 
