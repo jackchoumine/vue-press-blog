@@ -1,19 +1,18 @@
 <!--
  * @Date        : 2022-11-10 11:35:34
  * @Author      : ZhouQiJun
- * @LastEditors : JackChou
- * @LastEditTime: 2023-02-12 22:08:04 +0800
+ * @LastEditors : ZhouQiJun
+ * @LastEditTime: 2023-02-13 09:23:02
  * @Description : 
 -->
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 
-import { useDebounceRef, useVisibilityChange } from '@/hooks'
-// import useCart from './useCart'
+import { useVisibilityChange } from '@/hooks'
 import { useCartStore } from '@/stores'
 
-import VideoPlayer from '../VideoPlayer/VideoPlayer.vue'
-
+// import useCart from './useCart'
+// import VideoPlayer from '../VideoPlayer/VideoPlayer.vue'
 import ContactList from './ContactList.vue'
 import TestHook from './HookTest.vue'
 import { Modal, ModalHeader } from './Modal'
@@ -21,7 +20,8 @@ import SimpleCounter3 from './SimpleCounter3.vue'
 import SimpleCounter from './SimpleCounter.vue'
 import UseDebounceRefDemo from './UseDebounceRefDemo.vue'
 import UseHoverDemo from './UseHoverDemo.vue'
-import UseMouseFollower from './UseMouseDemo.vue'
+
+// import UseMouseFollower from './UseMouseDemo.vue'
 
 // hello
 const books = ref([
@@ -29,8 +29,8 @@ const books = ref([
   { id: 2, name: 'react', price: 20 },
   { id: 3, name: 'angular', price: 21 },
 ])
-const { addCart, removeCart /*items, totalBooks*/ } = useCartStore() //useCart()
-const { items, totalBooks } = storeToRefs(useCartStore()) //useCart()
+const { addCart, removeCart /* items, totalBooks */ } = useCartStore() // useCart()
+const { items, totalBooks } = storeToRefs(useCartStore()) // useCart()
 console.log(items)
 // console.log(addCart)
 // console.log(removeCart)
@@ -45,8 +45,6 @@ useVisibilityChange(hidden => {
     audio.value?.pause()
   }
 })
-
-const text = useDebounceRef('hello', 1000)
 </script>
 
 <template>

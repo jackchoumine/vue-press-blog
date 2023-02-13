@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2022-12-28 11:18:42
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2022-12-28 11:48:50
+ * @LastEditTime: 2023-02-13 09:25:07
  * @Description : 
 -->
 <script setup lang="ts">
@@ -29,16 +29,20 @@ const isHover3 = useHover(div3)
   display: flex;
   justify-content: center;
   align-items: center;
+
   .items {
     width: 100px;
     height: 100px;
     margin: 0 10px;
+
     &.one {
       background-color: lightgreen;
     }
+
     &.two {
       background-color: lightgray;
     }
+
     &.three {
       background-color: lightyellow;
     }
