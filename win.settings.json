@@ -1,0 +1,152 @@
+{
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorCustomizations": {
+    "editor.lineHighlightBackground": "#1073cf2d",
+    "editor.lineHighlightBorder": "#9fced11f"
+  },
+  "editor.fontSize": 18,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+    // "source.fixAll.eslint": true,
+    // "source.fixAll.stylelint": true
+  },
+  "editor.wordWrap": "off",
+  "diffEditor.wordWrap": "off",
+  "editor.guides.indentation": true,
+  "editor.guides.bracketPairs": true,
+  "editor.unicodeHighlight.allowedLocales": {
+    "zh-hant": true
+  },
+  // "eslint.codeActionsOnSave.rules": null,
+  // "files.autoSaveDelay": 1000,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[markdown]": {
+    "editor.formatOnSave": false
+  },
+  "editor.linkedEditing": true,
+  "editor.inlineSuggest.enabled": true,
+  "files.autoSave": "onFocusChange",
+  // stylelint 配置
+  "css.validate": false,
+  "less.validate": false,
+  "scss.validate": false,
+  "stylelint.validate": ["css", "scss", "less", "postcss", "scss", "vue", "sass"],
+
+  // prettier 设置
+  "prettier.useEditorConfig": false,
+  "prettier.singleQuote": true,
+  "prettier.bracketSameLine": true,
+  "prettier.jsxSingleQuote": true,
+  "prettier.embeddedLanguageFormatting": "off",
+  "prettier.printWidth": 90,
+  "prettier.semi": false,
+  "prettier.arrowParens": "avoid",
+
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "security.workspace.trust.untrustedFiles": "open",
+  "tabnine.experimentalAutoImports": true,
+
+  "fileheader.customMade": {
+    // "Hash": "不是路由组件",
+    // "Des": "",
+    "Author": "ZhouQiJun",
+    "Date": "Do not edit",
+    "LastEditors": "ZhouQiJun",
+    "LastEditTime": "Do not edit",
+    "Description": ""
+  },
+  "fileheader.cursorMode": {
+    "param": "",
+    "return": "",
+    "Author": "ZhouQiJun"
+  },
+  "fileheader.configObj": {
+    "autoAdd": true,
+    // "autoAlready": true, // 默认开启
+    "wideSame": true, // 设置为true开启
+    "wideNum": 12, // 字段长度 默认为13
+    "CheckFileChange": true, //  只有文件头改变，回滚到最新版
+    // "autoAddLine": 100,
+    "prohibitAutoAdd": ["json", "md", "less"], //  禁止.json .md 文件，自动添加头部注释
+    "dateFormat": "YYYY-MM-DD HH:mm:ss" // ZZ" // 日期格式 输出：2019-05-20 15:42:07 +0800
+  },
+  /* todo-tree settings */
+  // "todo-tree.regex.regex": "((//|#|<!--|;|/\\*|^)\\s*($TAGS):|^\\s*- \\[ \\])", // 在文件中匹配 tag 的正则
+  // "todo-tree.regex.regexCaseSensitive": false,//tag  是否大小写敏感
+  "todo-tree.regex.regex": "(//|#|<!--|;|/\\*|^|^\\s*(-|\\d+.))\\s*($TAGS)",
+  "todo-tree.general.tags": ["TODO", "CHECKME", "FIXME", "BUG", "NOTE", "DEL"],
+  "todo-tree.highlights.defaultHighlight": {
+    // 默认 tag 设置
+    "background": "#f9f9fb", //"peekViewResult.background", // 使用 // "yellow", // 标记的背景色
+    "foreground": "#FFFF00", // 标记前景色 (文字颜色)
+    "icon": "check", // 使用的图标
+    "rulerColour": "#FFFF00", // 在右侧快速预览的颜色
+    "type": "tag", // 在文件中如何高亮  tag：只高亮标签  text：标签和后面的文字  tag-and-comment：高亮注释和标签  text-and-comment：标签 文字和注释  line：标记的一行  whole-line：
+    "iconColour": "#fff" // 左侧 todo tree  图标的颜色，没有设置，使用前景色
+  },
+  "todo-tree.highlights.customHighlight": {
+    "BUG": {
+      "background": "#D01F00", // 红色
+      "foreground": "#f9f9fb",
+      "icon": "bug", // 显示的 icon
+      "rulerColor": "#D01F00", // 预览表标尺的颜色
+      "iconColour": "#D01F00", // todo  树中图标颜色
+      "gutterIcon": true // 是否在行号旁显示图标
+    },
+    "CHECKME": {
+      "background": "#3399CC", // 蓝色
+      "foreground": "#f9f9fb",
+      "iconColour": "#3399CC",
+      "icon": "checklist",
+      "rulerLane": "full",
+      "gutterIcon": true
+    },
+    "FIXME": {
+      "background": "#FF9900", // 黄色
+      "foreground": "#f9f9fb",
+      "iconColour": "#FF9900",
+      "icon": "alert", // 警告
+      "gutterIcon": true,
+      "type": "text" // 有文字部分（代码、tab、text）, 后面的空白部分不高亮
+    },
+    "NOTE": {
+      "background": "#f9f9fb",
+      "foreground": "#000", // 黑色
+      "icon": "note",
+      // "type": "whole-line", // 整行高亮
+      "rulerColour": "#D1BC15",
+      "iconColour ": "white",
+      "hideFromTree": true // 在  todo  树中隐藏
+    },
+    "DEL": {
+      "background": "#FFC300",
+      "foreground": "#000", // 黑色
+      "icon": "eye",
+      // "type": "whole-line", // 整行高亮
+      "rulerColour": "#D1BC15",
+      "iconColour ": "white"
+    }
+  },
+  "todo-tree.general.statusBar": "tags",
+  "markdown.preview.breaks": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "svelte.enable-ts-plugin": true,
+  "svelte.plugin.svelte.note-new-transformation": false,
+  "cSpell.userWords": [
+    "Cascader",
+    "lgtd",
+    "pinia",
+    "Qijun",
+    "turnlatlon",
+    "vueuse",
+    "Zhou"
+  ],
+  "editor.accessibilitySupport": "off",
+  "gitlens.currentLine.dateFormat": "YYYY-MM-DD HH:mm:ss",
+  "codiga.showWelcomeMessage": false,
+  "blockman.n01LineHeight": 0,
+  "editor.rulers": [90],
+  "editor.overviewRulerBorder": false
+}
