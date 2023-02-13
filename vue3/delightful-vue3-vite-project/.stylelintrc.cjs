@@ -16,6 +16,11 @@ module.exports = {
     },
   ],
   rules: {
+    'font-family-no-missing-generic-family-keyword': null,
+    'string-quotes': 'single',
+    'alpha-value-notation': 'number',
+    'declaration-block-trailing-semicolon': null,
+    'selector-class-pattern': null,
     'alpha-value-notation': 'number',
     'no-empty-source': null,
     'at-rule-no-unknown': [
@@ -34,6 +39,16 @@ module.exports = {
     'order/properties-order': [
       // 布局
       'display',
+      'flex',
+      'flex-flow',
+      'flex-direction',
+      'flex-wrap',
+      'justify-content',
+      'order',
+      'flex-grow',
+      'align-items',
+      'flex-shrink',
+      'align-self',
       'visibility',
       'float',
       'clear',
