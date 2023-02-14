@@ -259,3 +259,51 @@ $border-width: 5px !default; // 如果变量已经定义，使用定义的值
 // 未定义，是这个值
 // NOTE 之一 default 前面的 !
 ```
+
+## 导入
+
+css 引入
+
+```css
+@import url(css-file-path-with-ex);
+@import url(./var.css);
+```
+
+scss 引入
+
+```scss
+@import 'scss-file-path';
+@import 'var.scss';
+@import 'var';
+```
+
+哪些情况视为 css 导入：
+
+1. 扩展名为`.css`
+
+2. 路径以`http://`开头
+
+3. 使用`url`语法
+
+4. @import 包含媒体查询
+
+```scss
+@import 'var.css';
+@import 'http://exmaple.com/css.css';
+@import url('var.css');
+@import 'landscape' screen and (orientation landscape);
+```
+
+> 如何让 scss 文件不编译产生`.css`文件
+
+文件名称使用`_`开头。
+
+> 可在哪些位置导入？
+
+文件头部、选择器内部。
+
+```scss
+body {
+  @import 'var';
+}
+```
