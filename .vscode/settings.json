@@ -6,8 +6,7 @@
       // compact 紧凑模式
       "format": "expanded",
       "extensionName": ".css",
-      "savePath": "~/css",
-      "savePathReplacementPairs": null
+      "savePath": "~/css"
     }
   ],
   "[markdown]": {
