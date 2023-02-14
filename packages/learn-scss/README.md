@@ -251,3 +251,11 @@ body {
   font-size: 60px;
 }
 ```
+
+变量默认值：
+
+```scss
+$border-width: 5px !default; // 如果变量已经定义，使用定义的值
+// 未定义，是这个值
+// NOTE 之一 default 前面的 !
+```
