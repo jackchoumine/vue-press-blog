@@ -1,29 +1,38 @@
-.button%base {
-  display: inline-block;
-  margin: {
-    top: 10px;
-    right: 4px;
-  }
-  font: {
-    size: 20px;
-    weight: bold;
-  }
+// @import 'var';
+:root {
+  $font-color: blue;
 }
-.btn-primary {
-  @extend %base;
-  background-color: lightgreen;
-  border: {
-    color: green;
-    style: solid;
-    width: 2px;
+
+body {
+  @import 'var';
+  color: $font-color;
+  .container {
+    $font-color: green;
+    color: $font-color;
+    z-index: $layer-index;
+    $border-width: 5px !default;
+    border: {
+      style: dotted;
+      color: green;
+      width: $border-width;
+    }
+    @if $blank-mode {
+      color: lightpink;
+    } @else {
+      color: $font-color;
+    }
+    &::after {
+      display: inline-block;
+      // content: length($base-padding);// 4
+      // content: type-of($base-padding); // list
+      content: type-of($value: $has-value);
+      // content: 'hi';
+      color: map-get($map: $color-map, $key: 'color1');
+    }
   }
-}
-.btn-info {
-  @extend %base;
-  background-color: #f0f0f0;
-  border: {
-    color: lightblue;
-    style: solid;
-    width: 2px;
+
+  .hello {
+    color: $font-color;
+    font-size: 60px;
   }
 }
