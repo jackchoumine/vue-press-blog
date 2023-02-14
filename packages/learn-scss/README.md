@@ -138,3 +138,53 @@
 ```
 
 占位符常常用于提取几个类的共有的样式。
+
+### 变量
+
+css 的变量
+
+```css
+:root {
+  --font-color: red;
+}
+
+body {
+  color: var(--font-color);
+}
+
+.container {
+  --font-color: green;
+  color: var(--font-color);
+}
+
+.hello {
+  --font-color: yellow;
+  color: var(--font-color);
+}
+```
+
+> 作用域：后代选择器里定义的变量覆盖父级的同名变量。
+
+scss 的变量：使用`$`作为前缀。
+
+```scss
+$font-color: blue;
+:root {
+  $font-color: red;
+}
+
+body {
+  color: $font-color;
+}
+
+.container {
+  $font-color: green;
+  color: $font-color;
+}
+
+.hello {
+  color: $font-color;
+}
+```
+
+作用域：局部变量覆盖全局变量。
