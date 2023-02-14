@@ -187,4 +187,67 @@ body {
 }
 ```
 
-作用域：局部变量覆盖全局变量。
+> 作用域：局部变量覆盖全局变量
+
+> 值有哪些类型：
+
+1. 数字：`1`，`2`，`10px`
+
+2. 字符串：`'foo'`
+
+3. 颜色： rgb， hex 或者文字
+
+4. 布尔值： true false
+
+5. 空值：null
+
+6. 数组（list)：`1px 20px` 是逗号或者空格作为分隔符
+
+7. map：`(key1:value,key2:value2)`
+
+```scss
+$layer-index: 10;
+$border-width: 10px;
+$font-family: 'Open Sans';
+$blank-mode: true;
+$has-value: null;
+$base-padding: 1px 2px 3px 4px;
+$color-map: (
+  color1: red,
+  color2: green,
+);
+
+$font-color: red;
+
+:root {
+  $font-color: blue;
+}
+
+body {
+  color: $font-color;
+}
+
+.container {
+  $font-color: green;
+  color: $font-color;
+  z-index: $layer-index;
+  @if $blank-mode {
+    color: lightpink;
+  } @else {
+    color: $font-color;
+  }
+  &::after {
+    display: inline-block;
+    // content: length($base-padding);// 4
+    // content: type-of($base-padding); // list
+    content: type-of($value: $has-value);
+    // content: 'hi';
+    color: map-get($map: $color-map, $key: 'color1');
+  }
+}
+
+.hello {
+  color: $font-color;
+  font-size: 60px;
+}
+```
