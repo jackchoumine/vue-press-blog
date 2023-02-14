@@ -1,0 +1,29 @@
+.button%base {
+  display: inline-block;
+  margin: {
+    top: 10px;
+    right: 4px;
+  }
+  font: {
+    size: 20px;
+    weight: bold;
+  }
+}
+.btn-primary {
+  @extend %base;
+  background-color: lightgreen;
+  border: {
+    color: green;
+    style: solid;
+    width: 2px;
+  }
+}
+.btn-info {
+  @extend %base;
+  background-color: #f0f0f0;
+  border: {
+    color: lightblue;
+    style: solid;
+    width: 2px;
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "liveSassCompile.settings.formats": [
+    {
+      // nested 嵌套模式
+      // compressed 压缩模式
+      // compact 紧凑模式
+      "format": "expanded",
+      "extensionName": ".css",
+      "savePath": "~/css",
+      "savePathReplacementPairs": null
+    }
+  ],
+  "[markdown]": {
+    "editor.formatOnSave": true
+  }
+}
