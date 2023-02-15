@@ -1,26 +1,27 @@
-// @import 'var';
-:root {
-  $font-color: blue;
+%alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 12px;
 }
-
-body {
-  @mixin block($top, $right, $bottom: 2px, $left: 5px) {
-    width: 100px;
-    height: 100px;
-    border: {
-      width: 10px;
-      color: red;
-      style: solid;
-    }
-    padding: {
-      top: $top;
-      right: $right;
-      bottom: $bottom;
-      left: $left;
-    }
-  }
-  .container {
-    @include block(10px, 0);
-    color: lightgreen;
-  }
+// .important {
+//   @extend .alert;
+//   font: {
+//     size: 14px;
+//     weight: bold;
+//   }
+// }
+.alert-info {
+  @extend %alert;
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+.alert-danger {
+  // @extend .important;
+  @extend %alert;
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
 }

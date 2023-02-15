@@ -381,3 +381,219 @@ background-image: linear-gradient(to right, red, orange, yellow);
 属性一样，属性值不同的重复样式。
 
 ## 继承 extend
+
+有这些样式
+
+```css
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 12px;
+}
+.alert-info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+.alert-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+```
+
+```html
+<div class="alert-info">alert info</div>
+<div class="alert alert-danger">alert danger</div>
+```
+
+![](./extend.png)
+
+使用继承完成上述功能：
+
+```scss
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 12px;
+}
+.alert-info {
+  @extend .alert;
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+.alert-danger {
+  @extend .alert;
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+```
+
+编译结果：
+
+```css
+.alert,
+.alert-danger,
+.alert-info {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.alert-info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+
+.alert-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+```
+
+`@extend` 对选择器进行继承时，会对选择器进行分组。
+
+html 变化：
+
+```html
+<div class="alert-info">alert info</div>
+<div class="alert-danger">alert danger</div>
+```
+
+多继承
+
+```scss
+.alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 12px;
+}
+.important {
+  font: {
+    size: 14px;
+    weight: bold;
+  }
+}
+.alert-info {
+  @extend .alert;
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+.alert-danger {
+  @extend .alert;
+  @extend .important;
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+```
+
+编译结果：
+
+```css
+.alert,
+.alert-danger,
+.alert-info {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.important,
+.alert-danger {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.alert-info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+
+.alert-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+```
+
+`.alert-danger` 和多个类形成分组选择器。
+
+可能会产生多余的选择器，往往是被继承的选择器。
+
+## 占位符选择器 (%)
+
+占位符选择器可解决继承生产冗余选择器的问题。
+
+```scss
+%alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.alert-info {
+  @extend %alert;
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+.alert-danger {
+  @extend %alert;
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+```
+
+编译结果：
+
+```css
+.alert-danger,
+.alert-info {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.alert-info {
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+
+.alert-danger {
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+} /*# sourceMappingURL=index.css.map */
+```
+
+使用：
+
+```html
+<div class="alert-info">alert info</div>
+<div class="alert-danger">alert danger</div>
+```
+
+没有冗余的选择器。
