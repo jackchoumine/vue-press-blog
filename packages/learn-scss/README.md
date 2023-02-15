@@ -305,3 +305,48 @@ body {
   @import 'var';
 }
 ```
+
+## 混入
+
+混入（mixin）用于定义**可重复**使用的片段，混入指令包含所有 CSS 规则，绝大部分 SCSS 规则，支持传递参数和默认值。
+
+```scss
+body {
+  @mixin block($top, $right, $bottom: 2px, $left: 5px) {
+    width: 100px;
+    height: 100px;
+    border: {
+      width: 10px;
+      color: red;
+      style: solid;
+    }
+    padding: {
+      top: $top;
+      right: $right;
+      bottom: $bottom;
+      left: $left;
+    }
+  }
+  .container {
+    @include block(10px, 0);
+    color: lightgreen;
+  }
+}
+```
+
+编译输出：
+
+```css
+body .container {
+  width: 100px;
+  height: 100px;
+  border-width: 10px;
+  border-color: red;
+  border-style: solid;
+  padding-top: 10px;
+  padding-right: 0;
+  padding-bottom: 2px;
+  padding-left: 5px;
+  color: lightgreen;
+}
+```
