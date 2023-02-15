@@ -39,6 +39,7 @@ $theme: 3;
   }
   &::after {
     content: 'hello ' + world;
+    display: block;
     // content: "hello world";
     // content: hello + ' world';
     // content: hello world;
