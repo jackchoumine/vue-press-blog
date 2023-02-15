@@ -306,9 +306,11 @@ body {
 }
 ```
 
-## 混入
+## 混入 mixin
 
-混入（mixin）用于定义**可重复**使用的片段，混入指令包含所有 CSS 规则，绝大部分 SCSS 规则，支持传递参数和默认值。
+混入（mixin）用于定义**可重复**使用的片段，混入指令包含所有 CSS 规则，绝大部分 SCSS 规则，支持传递参数、默认值、位置参数和不定参数，位置参数、默认值和不定参数都需要在后面。
+
+> 比较推荐的实践：添加默认值，使用位置参数。
 
 ```scss
 body {
@@ -328,7 +330,9 @@ body {
     }
   }
   .container {
-    @include block(10px, 0);
+    @include block(10px, $right: 20px);
+    // 位置参数需要在后面，这种不行
+    // @include block($right: 20px，10px);
     color: lightgreen;
   }
 }
@@ -350,3 +354,30 @@ body .container {
   color: lightgreen;
 }
 ```
+
+不定参数，对于具有多个属性值的 css 属性而言，不定参数对混入尤其有用。
+
+```scss
+@mixin liner-gradient($direction, $rest...) {
+  background-color: nth($rest, 0); // NOTE rest 是数组，获取 下标为 1 的元素
+  background-image: linear-gradient($direction, $rest);
+}
+.container {
+  @include block(10px, $right: 10px);
+  @include liner-gradient(to right, red, orange, yellow);
+  color: lightgreen;
+}
+```
+
+liner-gradient 编译结果：
+
+```css
+background-color: red;
+background-image: linear-gradient(to right, red, orange, yellow);
+```
+
+> 哪些场景适合混入？
+
+属性一样，属性值不同的重复样式。
+
+## 继承 extend
