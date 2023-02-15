@@ -656,3 +656,100 @@ html 变化：
   border-color: #ebccd1;
 } /*# sourceMappingURL=index.css.map */
 ```
+
+## 运算符
+
+### 等于(==)和不等于(!=)
+
+可用于数字和字符串的相等判断。
+
+### 比较运算（>、<、>=、<=）
+
+用于数字的比较。
+
+```scss
+$theme: 3;
+
+.container {
+  // 注意 >= 前后的空格
+  @if $theme >= 5 {
+    background-color: red;
+  } @else {
+    background-color: blue;
+  }
+}
+```
+
+### 逻辑运算符 (and、or、not)
+
+```scss
+$theme: 3;
+
+.container {
+  @if not($theme >= 5) {
+    background-color: red;
+  } @else {
+    background-color: blue;
+  }
+}
+```
+
+### 数字四则运算（+、-、\*、/、% ）
+
+数字包含哪些值？
+
+> 纯数字、百分号、px、vh、vw 等。
+
+百分号和其他单位的数字进行运算，可能转换不兼容而运算报错。
+
+```scss
+// width: 100px + 10px;
+// width: 100px + 10;
+width: 100 + 10px;
+// width: 100 + 10;
+// Error: 100px and 10% have incompatible units.
+// width: 100px + 10%;
+
+// * 只能有一个符号
+// height: 2 * 20px;
+// Error: 40px*px isn't a valid CSS value.
+height: 2px * 20;
+$width: 20.56px;
+// 出发
+border: {
+  // / 是合法的 css 语法
+  // width: 10px/2;
+  // width: (10px/2);
+  // 表单式含有变量或者返回返回值
+  // width: $width/2;
+  // width: round($width) / 2;
+  // 值被圆括号包裹
+  // width: (30px/2);
+  // / 包含在表达式中
+  width: 5px + 12px/3px;
+  color: lightgreen;
+  style: solid;
+}
+padding: {
+  top: 11 % 3px;
+}
+```
+
+> 单位问题
+
+1. % 不能 px 不能一起运算
+
+2. 纯数字和具有单位的数值或者百分号运算，保留单位
+
+### 字符串连接符（+）
+
+```scss
+&::after {
+  content: 'hello ' + world;
+  // content: "hello world";
+  // content: hello + ' world';
+  // content: hello world;
+}
+```
+
+结果是否有引号，由`+`左侧是否有引号决定。

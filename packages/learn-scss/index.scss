@@ -1,27 +1,46 @@
-%alert {
-  padding: 15px;
-  margin-bottom: 20px;
-  border: 1px solid transparent;
-  border-radius: 4px;
-  font-size: 12px;
-}
-// .important {
-//   @extend .alert;
-//   font: {
-//     size: 14px;
-//     weight: bold;
-//   }
-// }
-.alert-info {
-  @extend %alert;
-  color: #31708f;
-  background-color: #d9edf7;
-  border-color: #bce8f1;
-}
-.alert-danger {
-  // @extend .important;
-  @extend %alert;
-  color: #a94442;
-  background-color: #f2dede;
-  border-color: #ebccd1;
+$theme: 3;
+
+.container {
+  @if not($theme >= 5) {
+    background-color: red;
+  } @else {
+    background-color: blue;
+  }
+
+  // width: 100px + 10px;
+  // width: 100px + 10;
+  width: 100 + 10px;
+  // width: 100 + 10;
+  // Error: 100px and 10% have incompatible units.
+  // width: 100px + 10%;
+
+  // * 只能有一个符号
+  // height: 2 * 20px;
+  // Error: 40px*px isn't a valid CSS value.
+  height: 2px * 20;
+  $width: 20.56px;
+  // 出发
+  border: {
+    // / 是合法的 css 语法
+    // width: 10px/2;
+    // width: (10px/2);
+    // 表单式含有变量或者返回返回值
+    // width: $width/2;
+    // width: round($width) / 2;
+    // 值被圆括号包裹
+    // width: (30px/2);
+    // / 包含在表达式中
+    width: 5px + 12px/3px;
+    color: lightgreen;
+    style: solid;
+  }
+  padding: {
+    top: 11 % 3px;
+  }
+  &::after {
+    content: 'hello ' + world;
+    // content: "hello world";
+    // content: hello + ' world';
+    // content: hello world;
+  }
 }
