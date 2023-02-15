@@ -70,71 +70,6 @@
 }
 ```
 
-### 占位符
-
-`%placeholder` 和 `@extend` 一起使用。
-
-```scss
-.button%base {
-  display: inline-block;
-  margin: {
-    top: 10px;
-    right: 4px;
-  }
-  font: {
-    size: 20px;
-    weight: bold;
-  }
-}
-.btn-primary {
-  @extend %base;
-  background-color: lightgreen;
-  border: {
-    color: green;
-    style: solid;
-    width: 2px;
-  }
-}
-.btn-info {
-  @extend %base;
-  background-color: #f0f0f0;
-  border: {
-    color: lightblue;
-    style: solid;
-    width: 2px;
-  }
-}
-```
-
-编译结果：
-
-```css
-.button.btn-info,
-.button.btn-primary {
-  display: inline-block;
-  margin-top: 10px;
-  margin-right: 4px;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.btn-primary {
-  background-color: lightgreen;
-  border-color: green;
-  border-style: solid;
-  border-width: 2px;
-}
-
-.btn-info {
-  background-color: #f0f0f0;
-  border-color: lightblue;
-  border-style: solid;
-  border-width: 2px;
-}
-```
-
-占位符常常用于提取几个类的共有的样式。
-
 ### 变量
 
 css 的变量
@@ -461,7 +396,7 @@ background-image: linear-gradient(to right, red, orange, yellow);
 }
 ```
 
-`@extend` 对选择器进行继承时，会对选择器进行分组。
+`@extend` 对选择器进行继承时，会对选择器进行合并，形成分组选择器。
 
 html 变化：
 
@@ -533,13 +468,15 @@ html 变化：
 }
 ```
 
-`.alert-danger` 和多个类形成分组选择器。
+`.alert-danger` 和多个选择器合并形成分组选择器。
 
 可能会产生多余的选择器，往往是被继承的选择器。
 
 ## 占位符选择器 (%)
 
 占位符选择器可解决继承生产冗余选择器的问题。
+
+`%placeholder` 和 `@extend` 一起使用。
 
 ```scss
 %alert {
@@ -597,3 +534,125 @@ html 变化：
 ```
 
 没有冗余的选择器。
+
+```scss
+.button%base {
+  display: inline-block;
+  margin: {
+    top: 10px;
+    right: 4px;
+  }
+  font: {
+    size: 20px;
+    weight: bold;
+  }
+}
+.btn-primary {
+  @extend %base;
+  background-color: lightgreen;
+  border: {
+    color: green;
+    style: solid;
+    width: 2px;
+  }
+}
+.btn-info {
+  @extend %base;
+  background-color: #f0f0f0;
+  border: {
+    color: lightblue;
+    style: solid;
+    width: 2px;
+  }
+}
+```
+
+编译结果：
+
+```css
+.button.btn-info,
+.button.btn-primary {
+  display: inline-block;
+  margin-top: 10px;
+  margin-right: 4px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-color: lightgreen;
+  border-color: green;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.btn-info {
+  background-color: #f0f0f0;
+  border-color: lightblue;
+  border-style: solid;
+  border-width: 2px;
+}
+```
+
+占位符常常用于提取几个类的共有的样式。
+
+使用
+
+```html
+<button class="btn btn-primary">btn-primary</button>
+```
+
+## 混入和继承区别
+
+混入是混入样式规则，继承时对选择进行分组合并。
+
+混入会产生冗余的样式规则，编译输出的 css 文件会更大，继承会产生冗余的选择器。
+
+```scss
+@mixin alert {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 12px;
+}
+
+.alert-info {
+  @include alert();
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+.alert-danger {
+  @include alert();
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+}
+```
+
+编译输出：
+
+```css
+.alert-info {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #31708f;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+}
+
+.alert-danger {
+  padding: 15px;
+  margin-bottom: 20px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+} /*# sourceMappingURL=index.css.map */
+```
