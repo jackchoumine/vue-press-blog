@@ -159,3 +159,17 @@ $theme: 'light';
 // 外部更改内部变量默认值
 // $variable: 10px !default;
 // @use 'url' with($variable:value)
+
+// NOTE @forward
+// 作用：将模块成员暴露出去
+//
+// @forward url/module 暴露 module 的所有成员
+// @forward url/module show $variable 选择暴露的成员
+// @forward url/module show $variable1,$variable2 选择暴露的成员
+// @forward url/module hide $variable1,$variable2 选择隐藏的成员
+// 暴露成员时添加前缀
+// @forward 'url/module' as m- hide $variable1
+
+// 太复杂了。
+
+// NOTE @at-root 使样式规则脱离嵌套，当需要扩展作用范围时，非常实用。
