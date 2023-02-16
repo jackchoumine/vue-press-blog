@@ -30,7 +30,10 @@ $theme: 3;
     // 值被圆括号包裹
     // width: (30px/2);
     // / 包含在表达式中
-    width: 5px + 12px/3px;
+    // NOTE 使用 / 做除法已经废弃，使用 math.div 或者 calc 代替
+    // width: 5px + 12px/3px;
+    // width: 5px + math.div(12px, 3px); //
+    width: 5px + calc(12px / 3px); //
     color: lightgreen;
     style: solid;
   }
@@ -44,4 +47,115 @@ $theme: 3;
     // content: hello + ' world';
     // content: hello world;
   }
+
+  // NOTE 插值语法 #{}
+  // 可用于选择器、属性名、属性值、注释
+  // FIXME 插值在注释中，不注意，会引起错误，在 debug 时要小心
+  $class-name: danger;
+  $attr-color: color;
+  a.#{$class-name} {
+    display: block;
+    width: 100px;
+    height: 30px;
+    border: {
+      #{$attr-color}: #f00;
+      width: 2px;
+      style: solid;
+    }
+  }
 }
+
+// NOTE 常用函数
+// 1. 颜色函数 lighten 加亮 darken 加暗 opacify 透明度
+// 2. quote 天字符串 string-length 字符串长度 string-insert 给给定位置插入字符串
+// 3. math 函数 abs 取绝对值 ceil 向上取整
+// 4. list 相关函数 length 获取长度 index(list,value) 获取 value 在list 中的位置
+// append(list,value) 追加 nth(list,index) 根据位置获取值
+// 5. map 相关函数 map-get(map,'key') map-keys(map) 获取keys map-has-key(key) key检查
+// map-values()
+// map-merge 合并
+// 6. 选择器函数
+// selector-append(selector1,selector2,...) // 合并选择器
+// selector-unfiy(selector1,selector2) // 合并
+// 7. 自检函数
+// variable-exists(string) 变量是否存在
+// mixin-exists(mixin-name) 混入是否存在
+$test-color-fn: #5c7a29;
+p {
+  height: 30px;
+  line-height: 30px;
+}
+.p0 {
+  background-color: $test-color-fn;
+  &::after {
+    // content: 这是quote函数;
+    content: quote($string: 这是quote函数);
+    background-color: unquote($string: 'red');
+  }
+}
+.p1 {
+  background-color: lighten($color: $test-color-fn, $amount: 1);
+}
+.p2 {
+  background-color: darken($color: $test-color-fn, $amount: 1);
+}
+.p3 {
+  background-color: opacify(rgba($test-color-fn, 0.1), $amount: 0.1);
+}
+
+// ----------------
+// NOTE 流程控制指令
+// 条件 #if #else
+// 条件 #if #else if  #else if #else
+// 循环 #for
+// #for $var from start to end // 不含有 end
+// #for $var from start through end // 含有 end
+// #each $var in $list  // 循环列表
+// while
+//
+
+// NOTE 函数 默认参数 剩余参数
+// 作用：经过逻辑运算，得到一个属性值
+@function testFn($param1, $param2, $paramN...) {
+  @return $value;
+}
+
+// 调用
+
+// function vs mixin
+
+//NOTE 三元条件函数
+$theme: 'light';
+.test-if {
+  background-color: if($theme == 'light', lightgreen, lightyellow);
+}
+
+// NOTE @use
+// 作用： 导入 scss 模块，加载scss中的mixin、function 和变量，多次使用，值加载一次。
+// 可看作 @import 的增强
+
+// @use 'url'
+
+// @use 'scss.math'
+// math.div()
+
+// @use 'scss.math' as * 取消命名空间 // 不推荐这么使用
+// div()
+
+// @use 'scss.math' as myMath // 命名别名
+// myMath.div()
+
+// 默认加载
+// @use 'uses'
+// 等同于
+// @use 'uses/index'
+
+// @import  vs  @use
+// @use 不会重复引入
+
+// 模块私有成员 $- / $_ 开头
+// $-font-size //
+
+// 外部更改内部变量默认值
+// $variable: 10px !default;
+// @use 'url' with($variable:value)

@@ -26,6 +26,12 @@ importers:
       axios: 1.2.1
       element-plus: 2.2.27
 
+  packages/learn-scss:
+    specifiers:
+      dart-sass: ^1.25.0
+    devDependencies:
+      dart-sass: 1.25.0
+
   packages/plugins:
     specifiers:
       '@babel/core': 7.20.5
@@ -6137,6 +6143,15 @@ packages:
       d3: 7.8.2
       lodash-es: 4.17.21
     dev: false
+
+  /dart-sass/1.25.0:
+    resolution: {integrity: sha512-syNOAstJXAmvD3RifcDk3fiPMyYE2fY8so6w9gf2/wNlKpG0zyH+oiXubEYVOy1WAWkzOc72pbAxwx+3OU4JJA==}
+    engines: {node: '>=8.9.0'}
+    deprecated: This package has been renamed to 'sass'.
+    hasBin: true
+    dependencies:
+      chokidar: 3.5.3
+    dev: true
 
   /data-urls/3.0.2:
     resolution: {integrity: sha512-Jy/tj3ldjZJo63sVAvg6LHt2mHvl4V6AgRAmNDtLdm7faqtsx+aJG42rsyCo9JCoRVKwPFzKlIPx3DIibwSIaQ==}
