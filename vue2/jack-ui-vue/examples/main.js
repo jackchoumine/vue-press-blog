@@ -7,9 +7,9 @@ import App from './App.vue'
 // import { JButton, JToggle } from '../components'
 // Vue.use(JButton).use(JToggle) //.use(JTabs)
 import '../components/index.scss'
-import jackUi from '../components'
+import jackUI from '../components'
 
-Vue.use(jackUi)
+Vue.use(jackUI)
 
 Vue.config.productionTip = false
 
