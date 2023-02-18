@@ -140,3 +140,172 @@ import '../components/button/button.scss'
 > 为何不在组件的 style 内编写样式？
 
 希望能样式单独打包，在组件按需引入是，也能按需引入样式。
+
+## 再编写一个 toggle 组件
+
+JToggle.vue
+
+```html
+<template>
+  <span
+    class="j-toggle"
+    tabindex="0"
+    role="checkbox"
+    :aria-checked="inToggle"
+    @click="toggle"
+    @keydown.space.prevent="toggle">
+  </span>
+</template>
+
+<script>
+  export default {
+    name: 'JToggle',
+    props: {
+      value: {
+        type: Boolean,
+        default: false,
+      },
+    },
+    data() {
+      return {
+        inToggle: this.value,
+      }
+    },
+    methods: {
+      toggle() {
+        this.inToggle = !this.inToggle
+        this.$emit('input', this.inToggle)
+      },
+    },
+  }
+</script>
+```
+
+toggle.scs:
+
+```scss
+$border-radius: 9999px;
+$toggle-width: 3rem;
+$toggle-height: 1.5rem;
+
+.j-toggle {
+  position: relative;
+  display: inline-block;
+  height: $toggle-height;
+  width: $toggle-width;
+
+  flex-shrink: 0;
+  border-radius: $border-radius;
+  cursor: pointer;
+
+  /* 聚焦时样式 */
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px rgba(52, 144, 220, 0.5);
+  }
+
+  &:before {
+    display: inline-block;
+    border-radius: $border-radius;
+    height: 100%;
+    width: 100%;
+    content: '';
+    background-color: #dae1e7;
+    /* background-color: red; */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.2s ease;
+  }
+  /* 开启后背景颜色变为绿色 */
+  &[aria-checked='true']:before {
+    background-color: #04be02;
+  }
+
+  /* 移动的按钮，关闭时位于左侧，left:0 */
+  &:after {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    height: $toggle-height;
+    width: $toggle-height;
+    background-color: #fff;
+
+    border-radius: $border-radius;
+    border-width: 1px;
+    border-color: #dae1e7;
+
+    box-shadow: 0 2px 4px 0 rgb(0 0 0 / 10%);
+    content: '';
+
+    transform: translateX(0);
+    transition: transform 0.2s ease;
+  }
+
+  /* 开启后，向右移动 0.5 的 span 宽度 */
+  &[aria-checked='true']:after {
+    transform: translateX(#{$toggle-height});
+  }
+}
+```
+
+index.js 导出组件
+
+```js
+import JToggle from './JToggle.vue'
+
+JToggle.install = Vue => {
+  Vue.component(JToggle.name, JToggle)
+  return Vue
+}
+
+export default JToggle
+```
+
+在`components/index.js`在导出组件：
+
+```js
+import JButton from './button'
+import JToggle from './toggle'
+
+export { JButton, JToggle }
+```
+
+在 main.js 中引入组件：
+
+```js
+import '../components/button/button.scss'
+import '../components/toggle/toggle.scss'
+import { JButton, JToggle } from '../components'
+
+Vue.use(JButton).use(JToggle)
+```
+
+测试组件：
+
+App.vue
+
+```html
+<template>
+  <div id="app">
+    <j-toggle v-model="toggle" />
+    <p>toggle 开启了吗?{{ toggle ? '是' : '否' }}</p>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: 'App',
+    data() {
+      return {
+        toggle: true,
+      }
+    },
+  }
+</script>
+```
+
+渲染输出：
+
+![](./public//toggle-demo.png)
+
+完美！

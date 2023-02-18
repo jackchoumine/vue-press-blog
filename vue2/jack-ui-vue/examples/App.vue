@@ -3,6 +3,10 @@
     <JButton>
       <span>测试按钮</span>
     </JButton>
+    <hr />
+    <j-toggle v-model="toggle" />
+    <p>toggle 开启了吗?{{ toggle ? '是' : '否' }}</p>
+    <hr />
   </div>
 </template>
 
@@ -10,6 +14,11 @@
 export default {
   name: 'App',
   components: {},
+  data() {
+    return {
+      toggle: true,
+    }
+  },
 }
 </script>
 
