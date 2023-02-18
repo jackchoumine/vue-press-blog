@@ -18,4 +18,15 @@ app.use(ESUI)
 // import { JToggle } from '../dist/es-ui'
 // app.use(JToggle)
 
+// import '../components/Button/button.scss'
+// // @ts-ignore
+// import { JButton } from '../dist/es-ui'
+// app.use(JButton)
+
+// import '../components/Toggle/toggle.scss'
+// // // @ts-ignore
+// import { JToggle, JButton } from '../dist'
+// app.use(JToggle)
+// app.use(JButton)
+
 app.mount('#app')
