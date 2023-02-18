@@ -429,3 +429,22 @@ gulp.task('default', gulp.series(['clean', 'sass']))
 ```bash
 "build:jackUI":"npm run build:js && npm run build:css"
 ```
+
+## 测试打包参数
+
+main.js
+
+```js
+// 全局引入
+// import '../dist/css/index.css'
+// import jackUI from '../dist'
+// Vue.use(jackUI)
+
+// 按需引入
+import '../dist/css/button.css'
+import { JButton } from '../dist'
+Vue.use(JButton)
+import '../dist/css/toggle.css'
+import { JToggle } from '../dist'
+Vue.use(JToggle)
+```
