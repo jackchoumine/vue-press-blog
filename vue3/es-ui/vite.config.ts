@@ -2,9 +2,10 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import dts from 'vite-plugin-dts'
+import { HstVue } from '@histoire/plugin-vue'
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), dts({ include: './components' })],
+  plugins: [vue(), HstVue(), dts({ include: './components' })],
   build: {
     minify: true,
     //css分离
