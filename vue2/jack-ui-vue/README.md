@@ -421,3 +421,11 @@ gulp.task('default', gulp.series(['clean', 'sass']))
 - [Gulp Sass](https://zetcode.com/gulp/sass/)
 
 - [Setting up GULP to compile SCSS in less than 5 minutes](https://jhinter.medium.com/setting-up-gulp-to-compile-scss-in-less-than-5-minutes-fee8bea2b68b)
+
+## 打包组件
+
+把 js 打包和 css 结合起来。
+
+```bash
+"build:jackUI":"npm run build:js && npm run build:css"
+```
