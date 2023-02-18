@@ -400,6 +400,7 @@ importers:
       '@vitejs/plugin-vue': ^4.0.0
       typescript: ^4.9.3
       vite: ^4.1.0
+      vite-plugin-dts: ~1.7.2
       vue: ^3.2.45
       vue-tsc: ^1.0.24
     dependencies:
@@ -408,6 +409,7 @@ importers:
       '@vitejs/plugin-vue': 4.0.0_vite@4.1.1+vue@3.2.45
       typescript: 4.9.4
       vite: 4.1.1
+      vite-plugin-dts: 1.7.2_vite@4.1.1
       vue-tsc: 1.1.3_typescript@4.9.4
 
 packages:
@@ -20968,6 +20970,27 @@ packages:
       kolorist: 1.6.0
       ts-morph: 17.0.1
       vite: 4.0.4
+    transitivePeerDependencies:
+      - '@types/node'
+      - rollup
+      - supports-color
+    dev: true
+
+  /vite-plugin-dts/1.7.2_vite@4.1.1:
+    resolution: {integrity: sha512-55Jwfv6n8gAlRSVGCpIY13TCqadtaKex9d2mCbaSxMFAU06suMDsFhIch1x55eptpC2RpeiresqbTjhN2HSEtQ==}
+    engines: {node: ^14.18.0 || >=16.0.0}
+    peerDependencies:
+      vite: '>=2.9.0'
+    dependencies:
+      '@microsoft/api-extractor': 7.34.4
+      '@rollup/pluginutils': 5.0.2
+      '@rushstack/node-core-library': 3.55.2
+      debug: 4.3.4
+      fast-glob: 3.2.12
+      fs-extra: 10.1.0
+      kolorist: 1.6.0
+      ts-morph: 17.0.1
+      vite: 4.1.1
     transitivePeerDependencies:
       - '@types/node'
       - rollup
