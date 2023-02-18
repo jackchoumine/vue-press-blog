@@ -309,3 +309,66 @@ App.vue
 ![](./public//toggle-demo.png)
 
 完美！
+
+## 使用 webpack 打包
+
+安装依赖：
+
+```bash
+pnpm i webpack webpack-cli glob vue-loader^15 -D
+```
+
+vue-loader 安装 15 的版本，不然可能报错。
+
+[问题详情](https://stackoverflow.com/questions/74115950/vue-loader-17-0-0-webpack-5-74-0-module-build-failed)
+
+webpack.config.js 配置
+
+```js
+const glob = require('glob')
+const { join } = require('path')
+const { VueLoaderPlugin } = require('vue-loader')
+
+function makeEntry(dirPath = 'components') {
+  const entry = {}
+  const entryFiles = glob.sync(join(__dirname, `${dirPath}/**/index.js`))
+  entryFiles.forEach(path => {
+    const componentPath = path.split(dirPath)[1]
+    const name = componentPath.split(/[/.]/)[1].toLowerCase()
+    entry[name] = path
+  })
+  return entry
+}
+
+const entry = makeEntry()
+// console.log(entry)
+
+module.exports = {
+  entry,
+  output: {
+    filename: '[name].js',
+    path: join(__dirname, 'dist'),
+    library: 'jackUI',
+    libraryTarget: 'umd',
+  },
+  // mode: 'development',
+  mode: 'production',
+  module: {
+    rules: [
+      {
+        test: /\.vue$/,
+        use: [
+          {
+            loader: 'vue-loader',
+          },
+        ],
+      },
+    ],
+  },
+  plugins: [new VueLoaderPlugin()],
+  externals: {
+    // FIXME 如何排除 core.js
+    vue: 'Vue',
+  },
+}
+```
