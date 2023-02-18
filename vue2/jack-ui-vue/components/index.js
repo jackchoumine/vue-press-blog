@@ -2,12 +2,11 @@
  * @Description :
  * @Date        : 2023-02-18 20:50:43 +0800
  * @Author      : JackChou
- * @LastEditTime: 2023-02-18 22:44:55 +0800
+ * @LastEditTime: 2023-02-18 23:34:40 +0800
  * @LastEditors : JackChou
  */
 import JButton from './Button'
 import JToggle from './Toggle'
-// import JTabs, { JTabContent, JTabHeader } from './Tabs'
 
 export { JButton, JToggle }
 
