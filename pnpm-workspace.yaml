@@ -5,6 +5,7 @@ packages:
   # all packages in subdirs of components/
   - 'react/**'
   - 'vue3/**'
+  - 'vue2/**'
   - 'web-components/**'
   - 'tech-talks/**'
   # exclude packages that are inside test directories
