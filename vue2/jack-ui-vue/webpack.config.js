@@ -17,11 +17,17 @@ const entry = makeEntry()
 // console.log(entry)
 module.exports = {
   entry,
+  experiments: {
+    outputModule: true,
+  },
   output: {
     filename: '[name].js',
     path: join(__dirname, 'dist'),
-    library: 'jackUI',
-    libraryTarget: 'umd',
+    // library: 'jackUI', // NOTE 输出esm 模块，不设置 library 属性
+    libraryTarget: 'module',
+    clean: {
+      keep: /css/, // Keep these assets under 'css'.
+    },
   },
   // mode: 'development',
   mode: 'production',
