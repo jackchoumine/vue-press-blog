@@ -1,6 +1,10 @@
 import Vue from 'vue'
 import App from './App.vue'
 
+import { JButton } from '../components'
+
+Vue.use(JButton)
+
 Vue.config.productionTip = false
 
 new Vue({

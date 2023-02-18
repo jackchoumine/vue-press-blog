@@ -55,3 +55,56 @@ package.json
 在 components 下编写组件，在 examples 下测试组件，主要关心这个两个目录。
 
 ## 开发组件
+
+在 components 下新建 `button`目录，然后新建一个`JButton.vue` 和 `index.js`,
+
+index.js 用于导出组件：
+
+```js
+import JButton from './JButton.vue'
+
+JButton.install = Vue => {
+  Vue.component(JButton.name, JButton)
+  return Vue
+}
+
+export default JButton
+```
+
+> 为何要添加`install`方法？
+
+能组件能通过`Vue.use`实现全局注册，从而实现按需引入部分组件。
+
+`JButton.vue`
+
+```html
+<template>
+  <div>
+    <button><slot></slot></button>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: 'JButton',
+  }
+</script>
+```
+
+在`components/index.js`内导出组件：
+
+```js
+export { default as JButton } from './button'
+```
+
+测试组件：
+
+main.js 中引入组件：
+
+```js
+import { JButton } from '../components'
+
+Vue.use(JButton)
+```
+
+这就完成了 JButton 组件的全局注册，可在 examples 下的任何组件内使用了。
