@@ -372,3 +372,52 @@ module.exports = {
   },
 }
 ```
+
+## 打包 scss
+
+安装依赖
+
+```bash
+pnpm i gulp gulp-cli gulp-minify-css gulp-rename gulp-sass dart-sass del
+```
+
+gulpfile.js
+
+```js
+const gulp = require('gulp')
+const sass = require('gulp-sass')(require('dart-sass'))
+const minify = require('gulp-minify-css')
+const rename = require('gulp-rename')
+const dest = 'dist/css'
+
+gulp.task('sass', () => {
+  return gulp
+    .src('components/**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(minify())
+    .pipe(
+      rename(function (path) {
+        console.log(path)
+        if (path.dirname !== '.') path.dirname = '.'
+      })
+    )
+    .pipe(gulp.dest(dest))
+})
+
+gulp.task('clean', () => {
+  return import('del').then(res => {
+    // console.log(res)
+    res.deleteAsync(dest)
+  })
+})
+
+gulp.task('default', gulp.series(['clean', 'sass']))
+```
+
+添加脚本：`build:css:"npx gulp"`
+
+### 参考
+
+- [Gulp Sass](https://zetcode.com/gulp/sass/)
+
+- [Setting up GULP to compile SCSS in less than 5 minutes](https://jhinter.medium.com/setting-up-gulp-to-compile-scss-in-less-than-5-minutes-fee8bea2b68b)
