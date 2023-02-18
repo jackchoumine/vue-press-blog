@@ -2,17 +2,25 @@
  * @Description : 
  * @Date        : 2023-02-18 20:47:26 +0800
  * @Author      : JackChou
- * @LastEditTime: 2023-02-18 21:03:51 +0800
+ * @LastEditTime: 2023-02-19 07:22:07 +0800
  * @LastEditors : JackChou
 -->
 <template>
-  <div class="j-button">
+  <div class="j-button" @click="onClick">
     <button><slot></slot></button>
   </div>
 </template>
 
-<script>
-export default {
-  name: 'JButton',
+<script setup lang="ts">
+import { ref } from 'vue'
+
+const emit = defineEmits<{
+  (e: 'click', value: any): void
+}>()
+
+const value1 = ref('Hello')
+const value2 = ref('World')
+function onClick() {
+  emit('click', { str: 'hello' })
 }
 </script>
