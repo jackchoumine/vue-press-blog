@@ -430,7 +430,7 @@ gulp.task('default', gulp.series(['clean', 'sass']))
 "build:jackUI":"npm run build:js && npm run build:css"
 ```
 
-## 测试打包参数
+## 测试打包输出
 
 main.js
 
