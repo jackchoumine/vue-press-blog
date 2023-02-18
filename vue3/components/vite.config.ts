@@ -5,6 +5,8 @@ import dts from 'vite-plugin-dts'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue(), dts({ include: './lib' })],
+  // vite 打包 js 库
+  // https://andrewwalpole.com/blog/use-vite-for-javascript-libraries/
   build: {
     lib: {
       entry: resolve(__dirname, './lib/index.ts'),
