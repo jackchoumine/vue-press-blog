@@ -108,3 +108,35 @@ Vue.use(JButton)
 ```
 
 这就完成了 JButton 组件的全局注册，可在 examples 下的任何组件内使用了。
+
+## 添加组件样式
+
+`button.scss`
+
+```scss
+.j-button {
+  background-color: #fff;
+  display: inline-block;
+  button {
+    width: 100%;
+    height: 34px;
+    border-radius: 5px;
+    border: none;
+    &:hover {
+      background-color: lightblue;
+    }
+  }
+}
+```
+
+在`JButton.vue`的根元素添加`j-button`的类。
+
+在`main.js`引入样式，验证是否生效。
+
+```js
+import '../components/button/button.scss'
+```
+
+> 为何不在组件的 style 内编写样式？
+
+希望能样式单独打包，在组件按需引入是，也能按需引入样式。
