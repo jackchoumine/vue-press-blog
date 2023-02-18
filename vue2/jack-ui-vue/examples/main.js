@@ -6,10 +6,21 @@ import App from './App.vue'
 // import '../components/Tabs/tabs.scss'
 // import { JButton, JToggle } from '../components'
 // Vue.use(JButton).use(JToggle) //.use(JTabs)
-import '../components/index.scss'
-import jackUI from '../components'
+// import '../components/index.scss'
+// import jackUI from '../components'
 
-Vue.use(jackUI)
+// 全局引入
+// import '../dist/css/index.css'
+// import jackUI from '../dist'
+// Vue.use(jackUI)
+
+// 按需引入
+import '../dist/css/button.css'
+import { JButton } from '../dist'
+Vue.use(JButton)
+import '../dist/css/toggle.css'
+import { JToggle } from '../dist'
+Vue.use(JToggle)
 
 Vue.config.productionTip = false
 
