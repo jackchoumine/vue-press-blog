@@ -12,5 +12,6 @@
   "[markdown]": {
     "editor.formatOnSave": true
   },
-  "compile-hero.disable-compile-files-on-did-save-code": false
+  "compile-hero.disable-compile-files-on-did-save-code": false,
+  "livePreview.defaultPreviewPath": "c:\\Users\\Administrator\\Desktop\\pro\\jack-front\\packages\\ts-practices\\index.html"
 }
