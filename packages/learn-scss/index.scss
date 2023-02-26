@@ -81,27 +81,27 @@ $theme: 3;
 // variable-exists(string) 变量是否存在
 // mixin-exists(mixin-name) 混入是否存在
 $test-color-fn: #5c7a29;
-p {
-  height: 30px;
-  line-height: 30px;
-}
-.p0 {
-  background-color: $test-color-fn;
-  &::after {
-    // content: 这是quote函数;
-    content: quote($string: 这是quote函数);
-    background-color: unquote($string: 'red');
-  }
-}
-.p1 {
-  background-color: lighten($color: $test-color-fn, $amount: 1);
-}
-.p2 {
-  background-color: darken($color: $test-color-fn, $amount: 1);
-}
-.p3 {
-  background-color: opacify(rgba($test-color-fn, 0.1), $amount: 0.1);
-}
+// p {
+//   height: 30px;
+//   line-height: 30px;
+// }
+// .p0 {
+//   background-color: $test-color-fn;
+//   &::after {
+//     // content: 这是quote函数;
+//     content: quote($string: 这是quote函数);
+//     background-color: unquote($string: 'red');
+//   }
+// }
+// .p1 {
+//   background-color: lighten($color: $test-color-fn, $amount: 1);
+// }
+// .p2 {
+//   background-color: darken($color: $test-color-fn, $amount: 1);
+// }
+// .p3 {
+//   background-color: opacify(rgba($test-color-fn, 0.1), $amount: 0.1);
+// }
 
 // ----------------
 // NOTE 流程控制指令
@@ -173,3 +173,74 @@ $theme: 'light';
 // 太复杂了。
 
 // NOTE @at-root 使样式规则脱离嵌套，当需要扩展作用范围时，非常实用。
+
+// @for $n from 1 through 4 {
+//   .p#{$n} {
+//     width: 10px * $n;
+//   }
+// }
+
+@keyframes loading {
+  0% {
+    opacity: 0.3;
+    transform: translateY(0px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-20px);
+    background-color: green;
+  }
+  100% {
+    opacity: 0.3;
+    transform: translateY(0px);
+  }
+}
+
+.loading {
+  position: fixed;
+  top: 100px;
+  left: 45%;
+  span {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #3498db;
+    opacity: 0.5;
+    border-radius: 50%;
+    animation: loading 1s infinite ease-in-out;
+  }
+}
+
+@for $n from 1 through 5 {
+  .loading {
+    span:nth-child(#{$n}) {
+      left: 20 * ($n - 1) + px;
+      animation-delay: ($n - 1) * 0.2 + s;
+    }
+  }
+}
+
+p {
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  margin: 10px;
+}
+
+$colors: red green blue turquoise darkmagenta;
+
+@each $color in $colors {
+  $position: index($colors, $color);
+  .p#{$position - 1 } {
+    background-color: $color;
+  }
+}
+
+$cols: 12;
+
+@while $cols > 0 {
+  .col-#{$cols} {
+    width: $cols / 12 * 100%;
+  }
+  $cols: $cols - 1;
+}
