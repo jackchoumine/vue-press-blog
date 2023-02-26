@@ -1046,7 +1046,7 @@ $variable: 10px !default;
 @forward 'url/module' show $variable; // 选择暴露的成员
 @forward 'url/module' show $variable1, $variable2; // 选择暴露的成员
 @forward 'url/module' hide $variable1, $variable2; // 选择隐藏的成员
-@forward 'url/module' as m- hide $variable1; // 暴露成员时添加前缀
+@forward 'url/module' as m-* hide $variable1; // 暴露成员时添加前缀，解决不同模块的命名冲突
 ```
 
 ## @at-root
