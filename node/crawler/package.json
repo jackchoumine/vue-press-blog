@@ -1,0 +1,34 @@
+{
+  "name": "crawler",
+  "version": "1.0.0",
+  "description": "ts 爬虫",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node ./dist/index.js",
+    "dev": "nodemon"
+  },
+  "dependencies": {
+    "@prisma/client": "^3.3.0",
+    "cheerio": "^1.0.0-rc.10",
+    "cookie-session": "^1.4.0",
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "reflect-metadata": "^0.1.13",
+    "superagent": "^6.1.0"
+  },
+  "devDependencies": {
+    "@types/cheerio": "^0.22.30",
+    "@types/cookie-session": "^2.0.43",
+    "@types/express": "^4.17.13",
+    "@types/express-session": "^1.17.4",
+    "@types/superagent": "^4.1.13",
+    "nodemon": "^2.0.14",
+    "prisma": "^3.3.0",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.4.4"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}

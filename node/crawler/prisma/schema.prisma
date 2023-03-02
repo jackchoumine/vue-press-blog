@@ -1,0 +1,28 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// "file:./dev.db"
+datasource db {
+  provider = "mysql"
+  url      = env("MySQL_CONNECTION_STRING")
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String
+  price       Float
+  reviews     Review[]
+}
+
+model Review {
+  id        String  @id @default(cuid())
+  content   String
+  rate      Int
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+}

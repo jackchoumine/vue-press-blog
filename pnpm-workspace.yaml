@@ -8,5 +8,6 @@ packages:
   - 'vue2/**'
   - 'web-components/**'
   - 'tech-talks/**'
+  - 'nodes/**'
   # exclude packages that are inside test directories
   - '!**/test/**'
