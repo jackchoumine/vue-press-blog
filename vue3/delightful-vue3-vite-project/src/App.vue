@@ -1,3 +1,10 @@
+<!--
+ * @Author      : ZhouQiJun
+ * @Date        : 2023-03-13 20:21:08
+ * @LastEditors : ZhouQiJun
+ * @LastEditTime: 2023-03-13 20:21:38
+ * @Description : 
+-->
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 
@@ -23,9 +30,10 @@ provide(USER_KEY, { id: 1234, name: 'JackChou' })
 
 <style scoped>
 header {
-  line-height: 1.5;
   max-height: 100vh;
+  line-height: 1.5;
 }
+
 .q-tabs {
   min-width: 100%;
 }

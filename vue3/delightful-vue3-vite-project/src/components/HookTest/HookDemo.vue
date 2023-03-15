@@ -2,7 +2,7 @@
  * @Date        : 2022-11-10 11:35:34
  * @Author      : ZhouQiJun
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-02-13 09:23:02
+ * @LastEditTime: 2023-03-10 12:09:34
  * @Description : 
 -->
 <script setup lang="ts">
@@ -20,8 +20,7 @@ import SimpleCounter3 from './SimpleCounter3.vue'
 import SimpleCounter from './SimpleCounter.vue'
 import UseDebounceRefDemo from './UseDebounceRefDemo.vue'
 import UseHoverDemo from './UseHoverDemo.vue'
-
-// import UseMouseFollower from './UseMouseDemo.vue'
+import UseMouseFollower from './UseMouseDemo.vue'
 
 // hello
 const books = ref([
