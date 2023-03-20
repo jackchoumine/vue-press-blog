@@ -2,36 +2,90 @@
  * @Author      : ZhouQiJun
  * @Date        : 2023-03-10 16:51:52
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-03-20 15:16:08
+ * @LastEditTime: 2023-03-20 15:57:08
  * @Description :  
 -->
 <script lang="ts" setup>
-type Props = {
-  angleStart?: number
-  angleEnd?: number
-  angleStep?: number
-  strokeWidth?: number
-  radius?: number
-  color?: string
-  lineType?: 'line' | 'arc'
-}
-const props = withDefaults(defineProps<Props>(), {
-  angleStart: 0,
-  angleEnd: 360,
-  angleStep: 30,
-  strokeWidth: 20,
-  radius: 200,
-  color: 'red',
-  lineType: 'arc',
+import type { PropType } from 'vue'
+
+const props = defineProps({
+  angleStart: {
+    type: Number,
+    default: 0,
+    validator: (value: number) => {
+      if (!(value >= 0 && value <= 360)) {
+        console.warn('开始角度在 0 -- 360 之间，默认 0')
+        return false
+      }
+      return true
+    },
+  },
+  angleEnd: {
+    type: Number,
+    default: 360,
+    validator: (value: number) => {
+      if (!(value >= 0 && value <= 360)) {
+        console.warn('结束角度在 0 -- 360 之间，默认 360')
+        return false
+      }
+      return true
+    },
+  },
+  angleStep: {
+    type: Number,
+    default: 6,
+    validator: (value: number) => {
+      if (!(value >= 0 && value <= 360)) {
+        console.warn('角度变化在 0 -- 360 之间，默认 6')
+        return false
+      }
+      return true
+    },
+  },
+  /**
+   * 改变一个变化幅度的时间，默认 1/60 毫秒
+   */
+  timePreStep: {
+    type: Number,
+    default: 1 / 60,
+    validator: (value: number) => {
+      if (!(value > 0)) {
+        console.warn('改变一个变化幅度的时间，不能为负数，默认 1/60 毫秒')
+        return false
+      }
+      return true
+    },
+  },
+  strokeWidth: {
+    type: Number,
+    default: 20,
+  },
+  radius: {
+    type: Number,
+    default: 200,
+  },
+  color: {
+    type: String,
+    default: 'red',
+  },
+  lineType: {
+    type: String as PropType<'arc' | 'line'>,
+    default: 'arc',
+    validator: (value: string) => {
+      if (!['arc', 'line'].includes(value)) {
+        console.warn('line-type 只支持 arc 和 line')
+        return false
+      }
+      return true
+    },
+  },
 })
 
 let timer = null
-const path = ref()
-function clearCircle() {
-  timer && window.clearInterval(timer)
-  const circle = path.value
-  circle.setAttribute('d', 'M200,200')
-}
+
+onMounted(drawCircle)
+onBeforeUnmount(clearCircle)
+
 function drawCircle() {
   let i = 0
   const circle = path.value
@@ -41,7 +95,9 @@ function drawCircle() {
   const strokeWidth = props.strokeWidth
   const angleStart = props.angleStart
   let angle = angleStart
-  const angleArc = props.angleEnd - props.angleStart
+  let angleArc = props.angleEnd - props.angleStart
+  // 加1度，解决圆环有空隙的问题
+  angleArc = angleArc === 360 ? 361 : angleArc
   const angleStep = props.angleStep
   const radius = props.radius
   const radiusWithStroke = radius - strokeWidth / 2
@@ -89,108 +145,22 @@ function drawCircle() {
     circle.setAttribute('d', d)
     i++
   }
-  // convert to requestAnimationFrame soon:
-  timer = window.setInterval(drawCircleArc, 60)
+  // CHECKME convert to requestAnimationFrame soon:
+  timer = window.setInterval(drawCircleArc, props.timePreStep)
 }
 
-onMounted(drawCircle)
-onBeforeUnmount(clearCircle)
+const path = ref()
+function clearCircle() {
+  timer && window.clearInterval(timer)
+  const circle = path.value
+  circle.setAttribute('d', 'M200,200')
+}
 </script>
 
 <template>
-  <div class="gridpaper inlineWrap">
-    <svg viewBox="0 0 400 400" width="300">
-      <!-- onclick="alert('clicked')" -->
-      <a href="#">
-        <!--  stroke="red" -->
-        <path ref="path" d="M200,200" fill="none" />
-      </a>
-    </svg>
-  </div>
+  <svg viewBox="0 0 400 400" width="400">
+    <path ref="path" d="M200,200" fill="none" />
+  </svg>
 </template>
 
-<style scoped>
-.gridpaper {
-  display: inline-block;
-  padding: 10px;
-  border: 1px solid #ccc;
-
-  /* background-color: linen; */
-  background-image: linear-gradient(0deg, transparent 0, transparent 99px, #333 100px),
-    linear-gradient(90deg, transparent 0, transparent 99px, #333 100px),
-    linear-gradient(0deg, transparent 0, transparent 49px, #888 50px, transparent 50px),
-    linear-gradient(90deg, transparent 0, transparent 49px, #888 50px, transparent 50px),
-    linear-gradient(
-      0deg,
-      transparent 0,
-      transparent 9px,
-      #ccc 10px,
-      transparent 10px,
-      transparent 19px,
-      #ccc 20px,
-      transparent 20px,
-      transparent 29px,
-      #ccc 30px,
-      transparent 30px,
-      transparent 39px,
-      #ccc 40px,
-      transparent 40px,
-      transparent 59px,
-      #ccc 60px,
-      transparent 60px,
-      transparent 69px,
-      #ccc 70px,
-      transparent 70px,
-      transparent 79px,
-      #ccc 80px,
-      transparent 80px,
-      transparent 89px,
-      #ccc 90px,
-      transparent 90px
-    ),
-    linear-gradient(
-      90deg,
-      transparent 0,
-      transparent 9px,
-      #ccc 10px,
-      transparent 10px,
-      transparent 19px,
-      #ccc 20px,
-      transparent 20px,
-      transparent 29px,
-      #ccc 30px,
-      transparent 30px,
-      transparent 39px,
-      #ccc 40px,
-      transparent 40px,
-      transparent 59px,
-      #ccc 60px,
-      transparent 60px,
-      transparent 69px,
-      #ccc 70px,
-      transparent 70px,
-      transparent 79px,
-      #ccc 80px,
-      transparent 80px,
-      transparent 89px,
-      #ccc 90px,
-      transparent 90px
-    );
-  background-repeat: repeat;
-  background-position: 10px 10px;
-  background-size: 100px 100px;
-}
-
-.gridpaper > *:first-child {
-  background: rgb(255 255 255 / 0.5);
-  box-shadow: 0 0 5px;
-}
-
-svg {
-  max-width: calc(100% - 40px); /* responsive stuff */
-}
-
-.inlineWrap {
-  font-size: 0;
-}
-</style>
+<style scoped></style>
