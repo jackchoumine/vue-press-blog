@@ -2,8 +2,9 @@
  * @Author      : ZhouQiJun
  * @Date        : 2023-03-10 16:51:52
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-03-20 15:57:08
- * @Description :  
+ * @LastEditTime: 2023-03-20 16:13:15
+ * @Description : 圆环
+ * 参考实现: https://codepen.io/pixelthing/pen/RGKJaV
 -->
 <script lang="ts" setup>
 import type { PropType } from 'vue'
@@ -58,11 +59,11 @@ const props = defineProps({
   },
   strokeWidth: {
     type: Number,
-    default: 20,
+    default: 6,
   },
   radius: {
     type: Number,
-    default: 200,
+    default: 45,
   },
   color: {
     type: String,
@@ -96,7 +97,7 @@ function drawCircle() {
   const angleStart = props.angleStart
   let angle = angleStart
   let angleArc = props.angleEnd - props.angleStart
-  // 加1度，解决圆环有空隙的问题
+  // 加 1 度，解决圆环有空隙的问题
   angleArc = angleArc === 360 ? 361 : angleArc
   const angleStep = props.angleStep
   const radius = props.radius
@@ -158,7 +159,7 @@ function clearCircle() {
 </script>
 
 <template>
-  <svg viewBox="0 0 400 400" width="400">
+  <svg :viewBox="`0 0 ${radius * 2}  ${radius * 2}`" :width="radius * 2">
     <path ref="path" d="M200,200" fill="none" />
   </svg>
 </template>
