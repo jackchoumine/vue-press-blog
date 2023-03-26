@@ -1,3 +1,10 @@
+<!--
+ * @Author      : ZhouQiJun
+ * @Date        : 2023-02-28 19:26:14
+ * @LastEditors : ZhouQiJun
+ * @LastEditTime: 2023-03-26 19:01:29
+ * @Description : 保持 props 稳定
+-->
 <script setup>
 import ListItem from './ListItem.vue'
 
@@ -25,5 +32,12 @@ const activeId = ref(0)
       :active="item.id === activeId"
       :id="item.id"
       :name="item.name" />
+    <br />
+    <!-- v-for in 指令可写成 v-for of  -->
+    <ul>
+      <li v-for="(item, key, index) in list[0]" :key="index">
+        key => {{ key }} index => {{ index }} name => {{ item }}
+      </li>
+    </ul>
   </ul>
 </template>
