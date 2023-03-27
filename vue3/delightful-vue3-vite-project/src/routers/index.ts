@@ -1,8 +1,8 @@
 /*
  * @Author      : ZhouQiJun
  * @Date        : 2023-01-05 09:46:55
- * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-01-05 09:51:53
+ * @LastEditors : JackChou
+ * @LastEditTime: 2023-03-28 01:47:04 +0800
  * @Description :
  */
 import { createRouter, createWebHistory } from 'vue-router'
@@ -57,6 +57,11 @@ export const routes = [
     path: '/optimization',
     name: 'optimization',
     component: () => import('../views/OptimizationPage.vue'),
+  },
+  {
+    path: '/flex-box',
+    name: 'flex布局',
+    component: () => import('../views/LayoutPage.vue'),
   },
 ]
 
