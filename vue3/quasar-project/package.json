@@ -6,8 +6,8 @@
   "author": "jack <jackzhoumine@gmail.com>",
   "private": true,
   "scripts": {
-    "lint": "eslint --ext .js,.ts,.vue ./",
-    "test": "echo \"No test specified\" && exit 0"
+    "lint": "eslint --ext .js,.ts,.vue ./ --fix",
+    "dev": "quasar dev"
   },
   "dependencies": {
     "vue-i18n": "^9.2.2",

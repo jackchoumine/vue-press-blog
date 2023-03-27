@@ -25,7 +25,7 @@ export default boot(({ app }) => {
   const i18n = createI18n({
     locale: 'en-US',
     legacy: false,
-    messages
+    messages,
   })
 
   // Set i18n instance on app

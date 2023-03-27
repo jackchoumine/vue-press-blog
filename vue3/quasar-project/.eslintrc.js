@@ -77,7 +77,8 @@ module.exports = {
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
     'import/no-extraneous-dependencies': 'off',
-    'space-before-function-paren': ['warn', 'never'],
+    // 'space-before-function-paren': ['warn', 'never'],
+    'space-before-function-paren': 0,
     // The core 'import/named' rules
     // does not work with type definitions
     'import/named': 'off',
