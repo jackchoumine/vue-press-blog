@@ -10,7 +10,7 @@
 
 常用的选择器的优先级是怎样的？如何计算优先级？
 
-当一个元素匹配多个选择器，这些选择器里具有相同的样式属性，浏览器通过**选择器的优先级高低**来判断哪个属性值和元素的相关性，应用最优先级最高的那个属性值。
+当**多个选择器**匹配到同一个元素，这些选择器里具有**相同的样式属性**，浏览器通过**选择器的优先级高低**来判断哪个选择器的优先级高，最优先级最高的选择器的样式属性生效。
 
 ```html
 <style>
@@ -98,7 +98,7 @@
 </div>
 ```
 
-> 由于类型选择器和元素选择器的优先级较低，优先使用它们。
+> 由于类型选择器和元素选择器的优先级较低，优先在项目中使用。
 
 2. 通过类明预设一些可能的样式
 
@@ -106,6 +106,216 @@
 
 3. 使用`scoped`限制样式作用域好吗？
 
+> 封装通用的组件，比如 `element-plus`，使用类，不使用 vue 的 `scoped` 属性限制类的作用域，因为方便使用者修改样式。
+
+> 项目中封装具体的不太通用的**业务组件**，使用`scoped`来防止样式冲突。 因为业务组件的可能会经常变化，经过多人修改后，随着项目复杂或者项目成员较多的增加，样式冲突的可能性越大。
+
+> 业务组件会使用通用组件，如何在业务组件内修改通用组件的样式呢？
+
+两种方案：
+
+①. 不使用`scoped`，使用一个全局唯一的选择器嵌套通用组件
+
+```html
+<template>
+  <div class="my-input">
+    <q-input
+      :model-value="modelValue"
+      type="search"
+      placeholder="请输入搜索内容"
+      filled
+      dense
+      clearable
+      v-bind="attrs">
+      <template #append>
+        <i class="icon iconfont icon-chazhao"></i>
+      </template>
+    </q-input>
+  </div>
+</template>
+
+<script lang="ts">
+// declare additional options
+export default {
+  inheritAttrs: false,
+}
+</script>
+
+<style lang="scss">
+.my-input {
+  background-color: antiquewhite;
+
+  .q-field {
+    height: 2rem;
+    background-color: red;
+    .q-field__inner {
+      .q-field__control {
+        height: 2rem;
+        padding: 0;
+      }
+
+      .q-field__marginal {
+        height: 2rem;
+        padding-right: 6px;
+        background: {
+          color: #f9f9fb;
+        }
+      }
+
+      .q-field__control-container {
+        padding: {
+          left: 12px;
+        }
+      }
+    }
+  }
+}
+</style>
+```
+
+`my-input`是全局唯一的。
+
+
+②. 业务组件使用`scoped`，和 `::v-deep` 一起使用
+
+```html
+<template>
+  <q-input
+    :model-value="modelValue"
+    type="search"
+    placeholder="请输入搜索内容"
+    filled
+    dense
+    clearable
+    v-bind="attrs">
+    <template #append>
+      <i class="icon iconfont icon-chazhao"></i>
+    </template>
+  </q-input>
+</template>
+
+<script lang="ts">
+// declare additional options
+export default {
+  inheritAttrs: false,
+}
+</script>
+
+<style lang="scss" scoped>
+.q-field {
+  height: 2rem;
+
+  // CHECKME 拿到 q-input 组件根元素内的第一个元素，获取更深嵌套的元素，直接按照 scss 语法写
+  ::v-deep(.q-field__inner) {
+    .q-field__control {
+      height: 2rem;
+      padding: 0;
+    }
+
+    .q-field__marginal {
+
+      height: 2rem;
+      padding-right: 6px;
+      background: {
+        color: #f9f9fb;
+      }
+    }
+
+    .q-field__control-container {
+      padding: {
+        left: 12px;
+      }
+    }
+  }
+
+  // CHECKME  获取组件根元素更深层级的元素
+  // ::v-deep(.q-field__control) {
+  //   height: 2rem;
+  //   padding: 0;
+  // }
+
+  // ::v-deep(.q-field__marginal) {
+  //   height: 2rem;
+  //   padding-right: 6px;
+  //   background: {
+  //     color: #f9f9fb;
+  //   }
+  // }
+}
+</style>
+```
+> q-input 有父元素，如何办？
+
+还是使用`::v-deep` 获取组件内部的选择器。
+
+```html
+<template>
+  <div class="my-input">
+    <q-input
+      :model-value="modelValue"
+      type="search"
+      placeholder="请输入搜索内容"
+      filled
+      dense
+      clearable
+      v-bind="attrs">
+      <template #append>
+        <i class="icon iconfont icon-chazhao"></i>
+      </template>
+    </q-input>
+  </div>
+</template>
+
+<script lang="ts">
+// declare additional options
+export default {
+  inheritAttrs: false,
+}
+</script>
+
+<style lang="scss" scoped>
+.my-input {
+  background-color: antiquewhite;
+
+  .q-field {
+    height: 2rem;
+    background-color: red;
+
+    ::v-deep(.q-field__inner) {
+      .q-field__control {
+        height: 2rem;
+        padding: 0;
+        background-color: blue;
+      }
+
+      .q-field__marginal {
+        height: 2rem;
+        padding-right: 6px;
+        background: {
+          color: #f9f9fb;
+        }
+      }
+
+      .q-field__control-container {
+        padding: {
+          left: 12px;
+        }
+      }
+    }
+  }
+}
+</style>
+```
+
+总结：
+
+业务组件中修改通用组件的样式的两种方案：
+
+① 使用 `scopded` 和 `::v-deep`，不产生多余的元素，且冲突的可能性小。
+
+② 不使用 `scoped`，在通用最上添加一个新 `class`，或者 `div` 和唯一的 `class` 包裹通用组件，会产生多余的元素，导致元素更多的嵌套，且冲突的可能性更大。
+
+推荐业务组件都使用`scoped`。
 ### 模板
 
 最好提供默认插槽，方便从父组件传递模板进来。作用域插槽向组件抛出数据。
