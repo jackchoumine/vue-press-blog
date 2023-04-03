@@ -1,16 +1,17 @@
 <!--
  * @Author      : ZhouQiJun
  * @Date        : 2023-03-13 20:21:08
- * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-03-13 20:21:38
+ * @LastEditors : JackChou
+ * @LastEditTime: 2023-04-04 00:26:31 +0800
  * @Description : 
 -->
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
 
-import { routes } from './routers'
+import { generateRoutes } from './routers'
 import { USER_KEY } from './utils/injectionKey'
 
+const routes = generateRoutes()
 provide(USER_KEY, { id: 1234, name: 'JackChou' })
 </script>
 
