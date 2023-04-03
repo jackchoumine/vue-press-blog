@@ -280,7 +280,7 @@ import { createApp } from 'vue/dist/vue.esm-bundler.js'
 
 > [mdn attr](https://developer.mozilla.org/zh-CN/docs/Web/CSS/attr)
 
-## 自动注册组件
+## webpack 自动注册组件
 
 使用 webpack 或者 vue-cli 创建的项目，可使用`require.context`注册组件。
 
@@ -311,10 +311,48 @@ function registerComponent(
 app.use(registerComponent)
 ```
 
+## vite 自动注册组件
+
+vite 提供了 `import.meta.glob` ，可使用其读取文件。
+
+比如，读取`views`下的`.vue`文件，生成路由。
+
+```js
+function generateRoutes({ keepOriginalNames = ['JSX', 'WC'] } = {}) {
+  // { path: ()=>import(path) }
+  const modules = import.meta.glob('../views/**/*.vue')
+
+  const routes = Object.keys(modules).map(key => {
+    const dashNameMap = {}
+    const dashKeys = []
+    keepOriginalNames.forEach(name => {
+      const dashName = name.toLowerCase().split('').join('-')
+      dashKeys.push(dashName)
+      dashNameMap[dashName] = name
+    })
+
+    const fileName = key.split('/').at(-1).replace('.vue', '')
+    let dashCasePath = fileName.replace(/[A-Z]/g, m => '-' + m.toLowerCase()).slice(1)
+    const hasDashKey = dashKeys.find(key => dashCasePath.includes(key))
+    if (hasDashKey) {
+      // 路径中含有专门的大写，不转化
+      dashCasePath = dashCasePath.replace(hasDashKey, dashNameMap[hasDashKey])
+    }
+    // {path:'/about-page',name:'about'}
+    // 首页 - 分隔路径，读写性高
+    return {
+      path: dashCasePath.includes('home') ? '/' : `/${dashCasePath}`,
+      name: dashCasePath.replace('-page', ''),
+      component: modules[key],
+    }
+  })
+  return routes
+}
+```
+
 ## 如何给 vue3 的全局属性扩展类型以支持全局自定义属性？
 
 <!-- TODO -->
-
 
 ## vue3 + ts 目录无法跳转？
 
@@ -338,6 +376,7 @@ import { useDebounceRef, useVisibilityChange } from '@/hooks' // 使用路径别
   "typescript.disableAutomaticTypeAcquisition": true
 }
 ```
+
 [Enable Go to Implementation in Typescript Editors](https://github.com/microsoft/TypeScript/issues/6209#issuecomment-310578734)
 
 似乎没有用。
