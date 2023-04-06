@@ -1,4 +1,5 @@
 import L from 'leaflet'
+import type { LeafletMouseEvent } from 'leaflet'
 
 var map = L.map('map').setView([51.505, -0.09], 13)
 
@@ -29,4 +30,16 @@ console.log(polygon)
 polygon.bindPopup('I am a polygon.')
 
 // NOTE 一个单独的 popup
-var popup = L.popup().setLatLng([51.513, -0.09]).setContent('I am a standalone popup.').openOn(map)
+// var popup = L.popup().setLatLng([51.513, -0.09]).setContent('I am a standalone popup.').openOn(map)
+
+var popup = L.popup()
+
+function onMapClick(e: LeafletMouseEvent) {
+  console.log(e)
+  popup
+    .setLatLng(e.latlng)
+    .setContent('You clicked the map at ' + e.latlng.toString())
+    .openOn(map)
+}
+
+map.on('click', onMapClick)
