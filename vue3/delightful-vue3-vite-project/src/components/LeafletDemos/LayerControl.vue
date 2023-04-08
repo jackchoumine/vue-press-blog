@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2023-04-08 23:46:05
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-04-09 00:38:45
+ * @LastEditTime: 2023-04-09 02:28:45
  * @Description : 图层控制
 -->
 <script lang="ts" setup>
@@ -25,6 +25,19 @@ const baseLayers = {
   streetMap: osm,
   dark: stadiaAlidadeSmoothDark,
 }
+
+// NOTE WMS 是什么数据格式
+// WKT 是什么数据格式
+const nexrad = L.tileLayer.wms(
+  'http://mesonet.agron.iastate.edu/cgi-bin/wms/nexrad/n0r.cgi',
+  {
+    layers: 'nexrad-n0r-900913',
+    format: 'image/png',
+    transparent: true,
+    attribution: 'Weather data © 2012 IEM Nexrad',
+  }
+)
+
 const cities = makerCitiesLayer()
 
 const parks = makerParks()
@@ -82,6 +95,7 @@ function initMap() {
   // layerControl.removeLayer(osm)
   layerControl.addBaseLayer(USGS_USImagery, 'USImageryOnly')
   layerControl.addOverlay(myMarkers, 'myMarkers')
+  layerControl.addOverlay(nexrad, 'nexrad')
 }
 </script>
 
