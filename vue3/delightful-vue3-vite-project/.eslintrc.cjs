@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2023-01-11 20:20:20
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-02-13 09:15:40
+ * @LastEditTime: 2023-04-08 21:29:38
  * @Description : stylelint 配置
  */
 require('@rushstack/eslint-patch/modern-module-resolution')
@@ -38,7 +38,17 @@ module.exports = {
     // https://www.npmjs.com/package/@vue/eslint-config-prettier
     // https://www.npmjs.com/package/eslint-config-prettier
     // 'comma-dangle': 0, // [0, 'always-multiline'],
-    'comma-dangle': [2, 'always-multiline'],
+    // 'comma-dangle': [2, 'always-multiline'],
+    'comma-dangle': [
+      'error',
+      {
+        arrays: 'always-multiline',
+        exports: 'always-multiline',
+        functions: 'never',
+        imports: 'always-multiline',
+        objects: 'always-multiline',
+      },
+    ],
     'space-before-function-paren': [
       'error',
       {

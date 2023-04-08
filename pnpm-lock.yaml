@@ -339,6 +339,7 @@ importers:
       '@quasar/vite-plugin': 1.2.3
       '@rushstack/eslint-patch': ^1.2.0
       '@trivago/prettier-plugin-sort-imports': 4.0.0
+      '@types/leaflet': ~1.9.3
       '@typescript-eslint/eslint-plugin': ^5.43.0
       '@typescript-eslint/parser': ^5.43.0
       '@vitejs/plugin-basic-ssl': ~0.1.2
@@ -367,6 +368,7 @@ importers:
       husky: 8.0.2
       jack-web-ui: ~0.0.8
       jsdom: 20.0.3
+      leaflet: ~1.9.3
       lint-staged: 13.0.3
       lit: ~2.4.1
       only-allow: ~1.1.1
@@ -414,6 +416,7 @@ importers:
       haunted: 5.0.0
       hoverintent: 2.2.1
       jack-web-ui: 0.0.8
+      leaflet: 1.9.3
       lit: 2.4.1
       pinia: 2.0.28_prq2uz4lho2pwp6irk4cfkrxwu
       quasar: 2.10.2
@@ -429,6 +432,7 @@ importers:
       '@quasar/vite-plugin': 1.2.3_vmn523rqk3nwna4u23caojjjom
       '@rushstack/eslint-patch': 1.2.0
       '@trivago/prettier-plugin-sort-imports': 4.0.0_prettier@2.7.1
+      '@types/leaflet': 1.9.3
       '@typescript-eslint/eslint-plugin': 5.47.0_ncmi6noazr3nzas7jxykisekym
       '@typescript-eslint/parser': 5.47.0_lzzuuodtsqwxnvqeq4g4likcqa
       '@vitejs/plugin-basic-ssl': 0.1.2_vite@3.2.5
@@ -6804,7 +6808,7 @@ packages:
       vite: ^3.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 3.2.5_6dih7kb24lmnzfb2dpzu2iqgq4
+      vite: 3.2.5_sass@1.57.1
       vue: 3.2.45
     dev: true
 
@@ -6826,7 +6830,7 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.1.1
+      vite: 4.1.1_sass@1.57.1
       vue: 3.2.45
 
   /@volar/code-gen/0.27.24:
@@ -8887,7 +8891,7 @@ packages:
   /axios/1.2.1:
     resolution: {integrity: sha512-I88cFiGu9ryt/tfVEi4kX2SITsvDddTajXTOFmt2uK1ZVA8LytjtdeyefdQWEf5PU8w+4SSJDoYnggflB5tW4A==}
     dependencies:
-      follow-redirects: 1.15.2_debug@4.3.4
+      follow-redirects: 1.15.2
       form-data: 4.0.0
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
@@ -13936,6 +13940,16 @@ packages:
     dependencies:
       inherits: 2.0.4
       readable-stream: 2.3.7
+
+  /follow-redirects/1.15.2:
+    resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
+    engines: {node: '>=4.0'}
+    peerDependencies:
+      debug: '*'
+    peerDependenciesMeta:
+      debug:
+        optional: true
+    dev: false
 
   /follow-redirects/1.15.2_debug@4.3.4:
     resolution: {integrity: sha512-VQLG33o04KaQ8uYi2tVNbdrWp1QWxNNea+nmIB4EVM28v0hmP17z7aG1+wAkNzVq4KeXTq3221ye5qTJP91JwA==}
@@ -23916,6 +23930,7 @@ packages:
       rollup: 3.15.0
     optionalDependencies:
       fsevents: 2.3.2
+    dev: true
 
   /vite/4.1.1_sass@1.57.1:
     resolution: {integrity: sha512-LM9WWea8vsxhr782r9ntg+bhSFS06FJgCvvB0+8hf8UWtvaiDagKYWXndjfX6kGl74keHJUcpzrQliDXZlF5yg==}
@@ -23949,7 +23964,6 @@ packages:
       sass: 1.57.1
     optionalDependencies:
       fsevents: 2.3.2
-    dev: true
 
   /vite/4.1.1_sass@1.58.0:
     resolution: {integrity: sha512-LM9WWea8vsxhr782r9ntg+bhSFS06FJgCvvB0+8hf8UWtvaiDagKYWXndjfX6kGl74keHJUcpzrQliDXZlF5yg==}

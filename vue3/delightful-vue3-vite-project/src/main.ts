@@ -1,8 +1,8 @@
 /*
  * @Date        : 2022-08-08 14:23:25
  * @Author      : ZhouQijun
- * @LastEditors : JackChou
- * @LastEditTime: 2023-02-12 20:09:34 +0800
+ * @LastEditors : ZhouQiJun
+ * @LastEditTime: 2023-04-08 21:32:00
  * @Description :
  */
 // import { default as jackComponents }from '@jack/components'
@@ -28,6 +28,7 @@ import { CountTo } from 'jack-web-ui/dist/components'
 // defineCustomElements()
 // import './assets/styles/style.css'
 import 'jack-web-ui/dist/jack-web-ui/jack-web-ui.css'
+import 'leaflet/dist/leaflet.css'
 import { Quasar } from 'quasar'
 // Import Quasar css
 import 'quasar/dist/quasar.css'
