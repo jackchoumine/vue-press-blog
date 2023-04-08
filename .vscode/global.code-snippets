@@ -2,7 +2,7 @@
   "import": {
     "scope": "javascript,typescript",
     "prefix": "im",
-    "body": ["import { $1 } from '$2';"],
+    "body": ["import { $2 } from '$1';"],
     "description": "Import a module"
   },
   "export-all": {
