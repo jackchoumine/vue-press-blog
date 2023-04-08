@@ -2,11 +2,11 @@
  * @Author      : ZhouQiJun
  * @Date        : 2023-04-08 20:29:05
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-04-08 21:42:02
+ * @LastEditTime: 2023-04-08 21:55:07
  * @Description : leaflet 学习
 -->
 <script setup>
-import { InitMap } from '#c'
+import { InitMap, MarkerDemo } from '#c'
 
 const tab = ref('init')
 </script>
@@ -24,26 +24,24 @@ const tab = ref('init')
           align="justify"
           narrow-indicator>
           <QTab name="init" label="初始化" />
-          <!-- <QTab name="alarms" label="Alarms" /> -->
-          <!-- <QTab name="movies" label="Movies" /> -->
+          <QTab name="tile-layer" label="瓦片图层" />
+          <QTab name="marker" label="标记" />
+          <QTab name="layer-control" label="图层控制" />
+          <QTab name="geo-json" label="geoJson" />
+          <QTab name="event" label="事件" />
+          <QTab name="style-custom" label="修改组件样式" />
         </QTabs>
-
         <QSeparator />
-
-        <QTabPanels v-model="tab" animated class="h-full">
+        <QTabPanels v-model="tab" animated>
           <QTabPanel name="init">
             <InitMap />
-            <!-- <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quas animi
-              repellendus quaerat, iusto esse reiciendis iste at consequuntur unde
-              commodi, voluptas ullam amet dolorem, odio veniam minus? Temporibus, fugiat
-              eveniet!
-            </p> -->
           </QTabPanel>
-
-          <QTabPanel name="alarms"> </QTabPanel>
-
-          <QTabPanel name="movies"> </QTabPanel>
+          <QTabPanel name="tile-layer"> </QTabPanel>
+          <QTabPanel name="marker"> <MarkerDemo /> </QTabPanel>
+          <QTabPanel name="layer-control"> </QTabPanel>
+          <QTabPanel name="geo-json"> </QTabPanel>
+          <QTabPanel name="event"> </QTabPanel>
+          <QTabPanel name="style-custom"> </QTabPanel>
         </QTabPanels>
       </QCard>
     </div>
