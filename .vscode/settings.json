@@ -19,5 +19,6 @@
     "markdown": true,
     "plaintext": false,
     "yaml": false
-  }
+  },
+  "cSpell.words": ["latlng"]
 }
