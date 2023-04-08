@@ -2,7 +2,7 @@
  * @Date        : 2022-08-08 14:23:25
  * @Author      : ZhouQijun
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-04-08 21:32:00
+ * @LastEditTime: 2023-04-09 03:01:46
  * @Description :
  */
 // import { default as jackComponents }from '@jack/components'
@@ -35,6 +35,9 @@ import 'quasar/dist/quasar.css'
 import quasarIconSet from 'quasar/icon-set/svg-material-icons'
 import quasarLang from 'quasar/lang/zh-CN'
 import { createApp } from 'vue/dist/vue.esm-bundler.js'
+
+// NOTE 重置leaflet的样式
+import '@/components/LeafletDemos/reset.scss'
 
 // @ts-ignore
 // import Antd from 'ant-design-vue'
