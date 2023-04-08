@@ -13,5 +13,11 @@
     "editor.formatOnSave": true
   },
   "compile-hero.disable-compile-files-on-did-save-code": false,
-  "livePreview.defaultPreviewPath": "/packages/learn-scss/index.html"
+  "livePreview.defaultPreviewPath": "/packages/learn-scss/index.html",
+  "github.copilot.enable": {
+    "*": true,
+    "markdown": true,
+    "plaintext": false,
+    "yaml": false
+  }
 }
