@@ -371,6 +371,7 @@ importers:
       leaflet: ~1.9.3
       lint-staged: 13.0.3
       lit: ~2.4.1
+      lodash-es: ~4.17.21
       only-allow: ~1.1.1
       pinia: 2.0.28
       postcss-html: 1.5.0
@@ -418,6 +419,7 @@ importers:
       jack-web-ui: 0.0.8
       leaflet: 1.9.3
       lit: 2.4.1
+      lodash-es: 4.17.21
       pinia: 2.0.28_prq2uz4lho2pwp6irk4cfkrxwu
       quasar: 2.10.2
       sass: 1.57.1
