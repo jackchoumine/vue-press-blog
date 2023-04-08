@@ -2,11 +2,11 @@
  * @Author      : ZhouQiJun
  * @Date        : 2023-04-08 20:29:05
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-04-08 21:55:07
+ * @LastEditTime: 2023-04-08 23:50:55
  * @Description : leaflet 学习
 -->
 <script setup>
-import { InitMap, MarkerDemo } from '#c'
+import { InitMap, LayerControl, MarkerDemo } from '#c'
 
 const tab = ref('init')
 </script>
@@ -38,7 +38,7 @@ const tab = ref('init')
           </QTabPanel>
           <QTabPanel name="tile-layer"> </QTabPanel>
           <QTabPanel name="marker"> <MarkerDemo /> </QTabPanel>
-          <QTabPanel name="layer-control"> </QTabPanel>
+          <QTabPanel name="layer-control"> <LayerControl /> </QTabPanel>
           <QTabPanel name="geo-json"> </QTabPanel>
           <QTabPanel name="event"> </QTabPanel>
           <QTabPanel name="style-custom"> </QTabPanel>

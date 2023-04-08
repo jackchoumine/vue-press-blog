@@ -2,18 +2,19 @@
  * @Author      : ZhouQiJun
  * @Date        : 2023-04-08 21:53:14
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-04-08 22:58:29
+ * @LastEditTime: 2023-04-09 00:43:26
  * @Description : 添加标记
  * 标记文档：https://leafletjs.cn/reference.html#marker
  * hover 事件：https://leafletjs.com/reference-1.7.1.html#marker-mouseover
 -->
 <script lang="ts" setup>
 import L from 'leaflet'
-import type { LeafletMouseEvent, Marker, TooltipOptions } from 'leaflet'
+import type { LeafletMouseEvent, Marker } from 'leaflet'
 import { debounce } from 'lodash-es'
 
 import blackMarkerIcon from './imgs/black_marker.png'
 import redMarkerIcon from './imgs/red_marker.png'
+import { markerIcon } from './leafletTool'
 
 // 添加谷歌地图
 const googleStreets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
@@ -51,8 +52,8 @@ function onMouseout(e: LeafletMouseEvent) {
   marker.closeTooltip()
   marker.setIcon(L.icon({ iconUrl: redMarkerIcon, iconSize: [20, 40] }))
 }
-let map = null
 
+let map = null
 onMounted(() => {
   map = initMap([googleStreets])
   const redMarker = markerIcon()
@@ -80,30 +81,6 @@ function initMap(
     layers,
   })
   return map
-}
-
-function markerIcon(
-  iconUrl = redMarkerIcon,
-  coordinates: [number, number] = [51.5, -0.1],
-  draggable: boolean = true,
-  iconSize: [number, number] = [20, 40]
-): Marker {
-  // TODO 鼠标hover，图标放大
-  const myIcon = L.icon({
-    iconUrl,
-    // width height
-    iconSize,
-    iconAnchor: [22, 94],
-  })
-  const marker = L.marker(coordinates, {
-    title: '悬停在标记（marker）上时出现的浏览器 tooltip 提示文本内容',
-    alt: '标记（marker）的 alt 属性',
-    opacity: 0.8,
-    draggable,
-    icon: myIcon,
-  })
-  console.log('marker', marker.toGeoJSON())
-  return marker
 }
 </script>
 
