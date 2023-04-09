@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2023-04-08 21:53:14
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-04-09 00:43:26
+ * @LastEditTime: 2023-04-09 23:15:25
  * @Description : 添加标记
  * 标记文档：https://leafletjs.cn/reference.html#marker
  * hover 事件：https://leafletjs.com/reference-1.7.1.html#marker-mouseover
@@ -65,6 +65,7 @@ onMounted(() => {
   const blackMarker = markerIcon(blackMarkerIcon, position, false)
   redMarker.addTo(map)
   blackMarker.addTo(map)
+  blackMarker.bindPopup('Hello World!').openPopup()
 })
 
 const mapContainer = ref()
