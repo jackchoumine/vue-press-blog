@@ -1,4 +1,5 @@
 {
+  "stylelint.validate": ["css", "scss", "less", "scss", "vue", "sass"],
   "liveSassCompile.settings.formats": [
     {
       // nested 嵌套模式
@@ -20,5 +21,19 @@
     "plaintext": false,
     "yaml": false
   },
-  "cSpell.words": ["latlng", "Littleton", "USGS"]
+  "cSpell.words": [
+    "echarts",
+    "hoverintent",
+    "latlng",
+    "Littleton",
+    "popperjs",
+    "preinstall",
+    "rushstack",
+    "stylelint",
+    "todos",
+    "trivago",
+    "unplugin",
+    "USGS",
+    "vitepress"
+  ]
 }

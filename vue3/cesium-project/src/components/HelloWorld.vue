@@ -1,3 +1,10 @@
+<!--
+ * @Author      : ZhouQiJun
+ * @Date        : 2023-02-12 18:53:38
+ * @LastEditors : ZhouQiJun
+ * @LastEditTime: 2023-04-09 16:03:39
+ * @Description : 
+-->
 <template>
   <div class="cesium-container" ref="mapRef"></div>
 </template>
@@ -12,6 +19,7 @@ import { token } from '../config'
  * const viewer = new Cesium.Viewer('cesiumContainer');
  */
 import * as Cesium from 'cesium'
+
 export default defineComponent({
   name: 'HelloWorld',
   setup: () => {
@@ -19,14 +27,19 @@ export default defineComponent({
     Cesium.Ion.defaultAccessToken = token // 设置 token 隐藏版权声明，使用token才能使用 cesium Ion 的服务
     // 将默认视角对准中国
     // TODO 对准某一个省份呢？
-    Cesium.Camera.DEFAULT_VIEW_RECTANGLE = Cesium.Rectangle.fromDegrees(89.5, 20.4, 110.4, 61.2)
+    Cesium.Camera.DEFAULT_VIEW_RECTANGLE = Cesium.Rectangle.fromDegrees(
+      89.5,
+      20.4,
+      110.4,
+      61.2
+    )
     onMounted(() => {
       const viewer = new Cesium.Viewer(mapRef.value!, {
         geocoder: true, // 位置搜索框，支持关注点（POI）和经纬度坐标搜索，
         // TODO 坐标如何输入呢？
         homeButton: true, // 主页按钮，将视角设到默认视角：俯视美洲大陆。
         // sceneModePicker: false, // 场景切换:3D，2.5D，2D
-        // baseLayerPicker: false, // 图层选择去器：切换地图图层
+        // baseLayerPicker: false, // 图层选择器：切换地图图层
         // navigationHelpButton: false, // 导航按钮：帮助信息
         animation: false, // 左下角 动画设置按钮
         timeline: false, // 时间线按钮，类似于视频进度条
@@ -50,7 +63,9 @@ export default defineComponent({
       })
       // TODO 取消默认双击行为
       // 不取消会有什么行为
-      viewer.cesiumWidget.screenSpaceEventHandler.removeInputAction(Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK)
+      viewer.cesiumWidget.screenSpaceEventHandler.removeInputAction(
+        Cesium.ScreenSpaceEventType.LEFT_DOUBLE_CLICK
+      )
       // viewer
       // const layer = viewer.scene.imageryLayers
       // const blackMarble = layer.addImageryProvider(new Cesium.IonImageryProvider({ assetId: 3812 }))
