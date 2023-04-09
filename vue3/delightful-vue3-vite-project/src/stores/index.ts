@@ -2,8 +2,8 @@
  * @Description : 导出全局状态
  * @Date        : 2023-01-05 01:19:05 +0800
  * @Author      : JackChou
- * @LastEditTime: 2023-01-07 17:58:41 +0800
- * @LastEditors : JackChou
+ * @LastEditTime: 2023-04-09 17:04:07
+ * @LastEditors : ZhouQiJun
  */
 import type { PiniaPluginContext } from 'pinia'
 import { createPinia } from 'pinia'
@@ -19,6 +19,9 @@ const piniaStore = createPinia()
 // NOTE pinia 插件
 // 在安装此插件后创建的每个 store 中都会添加一个名为 `secret` 的属性。
 // 插件可以保存在不同的文档中
+// TODO 通过插件修改后，store 的类型如何定义?
+// https://stackoverflow.com/questions/74902593/how-do-i-correctly-use-a-custom-property-added-to-my-pinia-stores-in-typescript
+// https://pinia.vuejs.org/core-concepts/plugins.html#typing-new-store-properties
 function piniaPlugin(context: PiniaPluginContext) {
   // const { options, store, pinia } = context
   // console.log(app)
