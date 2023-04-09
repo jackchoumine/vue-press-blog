@@ -35,5 +35,12 @@
     "unplugin",
     "USGS",
     "vitepress"
-  ]
+  ],
+  // 这些文件将不会显示在工作空间中
+  "files.exclude": {
+    // "**/*.js": {
+    //   "when": "$(basename).ts" //ts编译后生成的js文件将不会显示在工作空中
+    // },
+    "**/node_modules": true
+  }
 }
