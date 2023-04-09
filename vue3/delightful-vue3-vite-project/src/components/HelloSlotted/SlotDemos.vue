@@ -14,6 +14,7 @@ import TestSlotted from './TestSlotted.vue'
 <style scoped lang="scss">
 .slotted-test {
   background-color: #ccc;
+
   //   .slot {
   //     background-color: aquamarine;
   //   }

@@ -2,7 +2,7 @@
  * @Date        : 2022-11-02 14:19:48
  * @Author      : ZhouQiJun
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2022-11-02 14:37:00
+ * @LastEditTime: 2023-04-09 16:35:22
  * @Description : 
 -->
 <script lang="ts">
@@ -42,14 +42,14 @@ export default {
 
 <style>
 #center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
   width: 200px;
   height: 200px;
-  border: 2px solid black;
-  background: white;
-  position: fixed;
-  left: 50%;
-  top: 50%;
-  margin-left: -100px;
   margin-top: -100px;
+  margin-left: -100px;
+  border: 2px solid black;
+  background-color: white;
 }
 </style>

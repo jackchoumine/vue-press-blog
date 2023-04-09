@@ -2,8 +2,8 @@
  * @Description : 
  * @Date        : 2023-01-06 22:21:08 +0800
  * @Author      : JackChou
- * @LastEditTime: 2023-01-07 17:45:22 +0800
- * @LastEditors : JackChou
+ * @LastEditTime: 2023-04-09 17:07:43
+ * @LastEditors : ZhouQiJun
 -->
 <template>
   <div>
@@ -68,14 +68,14 @@ ul > li {
 
 .content {
   display: inline-block;
-  height: 30px;
   width: 120px;
-  line-height: 30px;
+  height: 30px;
   margin: 0 10px;
+  line-height: 30px;
 }
 
 .finished {
-  color: gray;
   text-decoration: line-through lightcoral;
+  color: gray;
 }
 </style>

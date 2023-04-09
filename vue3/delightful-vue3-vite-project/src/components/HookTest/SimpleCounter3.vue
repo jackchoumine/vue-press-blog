@@ -17,10 +17,11 @@ import CounterContainer from './CounterContainer.vue'
 <style lang="scss" scoped>
 .counter {
   button {
-    background-color: lightpink;
     width: 25px;
-    border-radius: 50%;
     border: none;
+    background-color: lightpink;
+    border-radius: 50%;
+
     &:hover {
       border: 1px solid lightgreen;
     }

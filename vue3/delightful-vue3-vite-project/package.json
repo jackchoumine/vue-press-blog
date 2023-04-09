@@ -14,18 +14,18 @@
     "docs:serve": "vitepress serve docs",
     "d": "bash deploy.sh",
     "lint": "eslint 'src/**/*.{vue,tsx,ts,jsx,js}' --quite --fix",
-    "lint:style": "stylelint 'src/**/*.{scss,css}'",
+    "lint:style": "stylelint 'src/**/*.{scss,css,vue}' --fix",
     "prettier": "prettier 'src/**/*.{vue,ts,tsx,js,jsx,css,scss}' --write"
   },
   "lint-staged": {
-    "*.{js,vue,ts,jsx,tsx,css,scss}": [
-      "prettier --write"
-    ],
     "*.{js,vue,ts,jsx,tsx}": [
       "eslint --fix"
     ],
-    "*.{css,scss}": [
+    "*.{css,scss,vue}": [
       "stylelint --fix"
+    ],
+    "*.{js,vue,ts,jsx,tsx,css,scss}": [
+      "prettier --write"
     ]
   },
   "dependencies": {

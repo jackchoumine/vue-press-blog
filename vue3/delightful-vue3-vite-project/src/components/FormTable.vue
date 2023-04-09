@@ -61,8 +61,9 @@ function calcWith(item: Col, index: number) {
 
 <style lang="scss" scoped>
 .component.form-table {
-  background-color: #fff;
   width: 100%;
+  background-color: #fff;
+
   div,
   ul,
   li {
@@ -70,22 +71,24 @@ function calcWith(item: Col, index: number) {
     margin: 0;
     padding: 0;
   }
+
   .list {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+
     .item {
       display: flex;
       flex-wrap: wrap;
       height: 36px;
-      line-height: 36px;
       margin: 5px 0;
-      list-style-type: none;
-      background-color: #eeeeee;
-      border-radius: 2px;
-      text-indent: 8px;
       font-size: 16px;
+      line-height: 36px;
+      text-indent: 8px;
       color: #3b4252;
+      background-color: #eee;
+      list-style-type: none;
+      border-radius: 2px;
 
       &:nth-child(2n) {
         margin-left: 2px;

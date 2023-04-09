@@ -3,13 +3,13 @@
     <button
       :ref="reference"
       @click="onClick"
-      style="background-color: lightgreen; height: 40px; width: 100px">
+      style="width: 100px; height: 40px; background-color: lightgreen">
       use hook
     </button>
     <div
       v-show="isOpen"
       :ref="tooltip"
-      style="background-color: lightyellow; height: 20px; width: 150px">
+      style="width: 150px; height: 20px; background-color: lightyellow">
       tool tip
     </div>
     <button @click="placement = 'top'">修改tooltip位置</button>

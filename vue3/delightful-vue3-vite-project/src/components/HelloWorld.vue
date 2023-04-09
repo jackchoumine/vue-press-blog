@@ -1,14 +1,16 @@
 <!--
  * @Date        : 2022-10-17 09:27:13
  * @Author      : ZhouQiJun
- * @LastEditors : JackChou
- * @LastEditTime: 2023-02-01 21:42:09 +0800
+ * @LastEditors : ZhouQiJun
+ * @LastEditTime: 2023-04-09 16:26:53
  * @Description : 
 -->
 <script>
+import { ref } from 'vue'
+
 import Modal from './Modal/MyModal.vue'
 
-const st = 'hekkio'
+// const st = 'hello-world'
 export default {
   components: {
     Modal,
@@ -59,7 +61,7 @@ export default {
     const privateCount = ref(0)
     // selectively expose local state
     expose({ count: publicCount, exposeVar: '暴露的变量' })
-    return { modalIsOpen, openModal, onModalClose }
+    return { modalIsOpen, openModal, onModalClose, privateCount }
   },
 }
 </script>
@@ -83,6 +85,7 @@ export default {
 <style>
 .hello-world {
   /* width: 100px; */
+
   /* height: 100px; */
   background-color: aliceblue;
 }

@@ -6,13 +6,17 @@ module.exports = {
     'stylelint-config-prettier-scss',
     'stylelint-config-recommended-vue',
   ],
-  customSyntax: 'postcss-html',
   ignoreFiles: ['dist/**/*', 'src/**/*.{ts,tsx,js,jsx}'],
   plugins: ['stylelint-order'],
+  customSyntax: ['postcss-scss', 'postcss-html'],
   overrides: [
     {
       files: ['**/*.{scss,css,sass}'], // css 相关文档由 postcss-scss 处理
       customSyntax: 'postcss-scss',
+    },
+    {
+      files: ['**/*.vue'],
+      customSyntax: 'postcss-html',
     },
   ],
   rules: {
@@ -21,6 +25,12 @@ module.exports = {
     'alpha-value-notation': 'number',
     'declaration-block-trailing-semicolon': null,
     'selector-class-pattern': null,
+    // 'selector-class-pattern': [
+    //   '/^[a-z]+(?:-[a-z]+)*(?:_{2}[a-z]+(?:-[a-z]+)*)?(?:-{2}[a-z]+(?:-[a-z]+)*)?$/',
+    //   {
+    //     resolveNestedSelectors: true,
+    //   },
+    // ],
     'alpha-value-notation': 'number',
     'no-empty-source': null,
     'at-rule-no-unknown': [
