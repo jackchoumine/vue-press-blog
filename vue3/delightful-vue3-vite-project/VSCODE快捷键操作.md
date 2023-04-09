@@ -97,6 +97,12 @@
 `ctrl + enter` 在下一行插入新行
 `ctrl + shift + enter` 在上一行插入新行
 
+## 选中
+
+`cmd + d` 选中单词
+
+`cmd + l` 向后选中
+
 # window 10 快捷键
 
 ## 回到桌面
