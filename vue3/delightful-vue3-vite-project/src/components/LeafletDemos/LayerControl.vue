@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2023-04-08 23:46:05
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-04-09 02:28:45
+ * @LastEditTime: 2023-04-09 15:34:07
  * @Description : 图层控制
 -->
 <script lang="ts" setup>
@@ -22,7 +22,7 @@ const stadiaAlidadeSmoothDark = L.tileLayer(
 
 const osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png')
 const baseLayers = {
-  streetMap: osm,
+  "<span style='color: red;'>streetMap</span>": osm,
   dark: stadiaAlidadeSmoothDark,
 }
 
