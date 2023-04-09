@@ -3,7 +3,7 @@ import { biCameraReelsFill, biSignStopFill } from '@quasar/extras/bootstrap-icon
 </script>
 
 <template>
-  <div>
+  <div class="mx-1">
     <div class="bg-info">
       <p class="text-center text-h3">quasar 布局</p>
     </div>
@@ -25,5 +25,9 @@ import { biCameraReelsFill, biSignStopFill } from '@quasar/extras/bootstrap-icon
         :size="size"
         name="font_download" />
     </div>
+    <q-btn type="a">详情</q-btn>
+    <q-btn type="a" color="primary">详情</q-btn>
+    <q-btn type="a" color="primary">详情</q-btn>
+    <q-btn type="reset" color="secondary" :rounded="true">详情</q-btn>
   </div>
 </template>
