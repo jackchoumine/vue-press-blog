@@ -1,9 +1,11 @@
 {
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
   "workbench.iconTheme": "material-icon-theme",
-  "workbench.colorCustomizations": {
-    "editor.lineHighlightBackground": "#1073cf2d",
-    "editor.lineHighlightBorder": "#9fced11f"
-  },
+  // "workbench.colorCustomizations": {
+  //   "editor.lineHighlightBackground": "#1073cf2d",
+  //   "editor.lineHighlightBorder": "#9fced11f"
+  // },
   "editor.fontSize": 18,
   "editor.codeActionsOnSave": {
     "source.fixAll": true
@@ -19,6 +21,7 @@
   },
   // "eslint.codeActionsOnSave.rules": null,
   // "files.autoSaveDelay": 1000,
+  "files.autoSave": "onFocusChange",
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[markdown]": {
@@ -26,7 +29,16 @@
   },
   "editor.linkedEditing": true,
   "editor.inlineSuggest.enabled": true,
-  "files.autoSave": "onFocusChange",
+  "editor.rulers": [90],
+  "editor.overviewRulerBorder": false,
+  "editor.accessibilitySupport": "off",
+  "editor.quickSuggestions": {
+    "comments": "on",
+    "strings": "on"
+  },
+  // 代码片段配置
+  "editor.tabCompletion": "onlySnippets",
+  "editor.suggestSelection": "first",
   // stylelint 配置
   "css.validate": false,
   "less.validate": false,
@@ -44,7 +56,10 @@
   "prettier.arrowParens": "avoid",
 
   "git.confirmSync": false,
+  "git.openRepositoryInParentFolders": "never",
   "git.autofetch": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "gitlens.currentLine.dateFormat": "YYYY-MM-DD HH:mm:ss",
   "security.workspace.trust.untrustedFiles": "open",
   "tabnine.experimentalAutoImports": true,
 
@@ -79,8 +94,8 @@
   "todo-tree.general.tags": ["TODO", "CHECKME", "FIXME", "BUG", "NOTE", "DEL"],
   "todo-tree.highlights.defaultHighlight": {
     // 默认 tag 设置
-    "background": "#f9f9fb", //"peekViewResult.background", // 使用 // "yellow", // 标记的背景色
-    "foreground": "#FFFF00", // 标记前景色 (文字颜色)
+    "background": "#6eff6b", //"peekViewResult.background", // 使用 // "yellow", // 标记的背景色
+    "foreground": "#222", // 标记前景色 (文字颜色)
     "icon": "check", // 使用的图标
     "rulerColour": "#FFFF00", // 在右侧快速预览的颜色
     "type": "tag", // 在文件中如何高亮  tag：只高亮标签  text：标签和后面的文字  tag-and-comment：高亮注释和标签  text-and-comment：标签 文字和注释  line：标记的一行  whole-line：
@@ -131,7 +146,6 @@
   },
   "todo-tree.general.statusBar": "tags",
   "markdown.preview.breaks": true,
-  "diffEditor.ignoreTrimWhitespace": false,
   "svelte.enable-ts-plugin": true,
   "svelte.plugin.svelte.note-new-transformation": false,
   "cSpell.userWords": [
@@ -143,10 +157,15 @@
     "vueuse",
     "Zhou"
   ],
-  "editor.accessibilitySupport": "off",
-  "gitlens.currentLine.dateFormat": "YYYY-MM-DD HH:mm:ss",
   "codiga.showWelcomeMessage": false,
   "blockman.n01LineHeight": 0,
-  "editor.rulers": [90],
-  "editor.overviewRulerBorder": false
+  "highlightLine.borderColor": "#dee2e6",
+  "highlightLine.borderWidth": "1px",
+  "volar.inlayHints.eventArgumentInInlineHandlers": false,
+  "volar.icon.splitEditors": true,
+  "terminal.integrated.inheritEnv": false,
+  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "terminal.integrated.detectLocale": "on",
+  // "terminal.integrated.shellIntegration.decorationIcon": "C:dev-softGit\bin\bash.exe",
+  "terminal.integrated.defaultProfile.windows": "PowerShell"
 }
