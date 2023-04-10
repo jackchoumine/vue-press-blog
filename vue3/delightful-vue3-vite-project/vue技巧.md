@@ -222,6 +222,22 @@ ref 获取 setup 函数的返回值
 </template>
 ```
 
+或者
+
+```html
+<script setup lang="jsx">
+  const SubComponent = () => (
+    <div style={{ backgroundColor: 'red' }}>单个文中中定义多个组件</div>
+  )
+</script>
+
+<template>
+  <div>
+    <SubComponent />
+  </div>
+</template>
+```
+
 2. 使用内联模板
 
 ```html
@@ -242,6 +258,70 @@ import { createApp } from 'vue/dist/vue.esm-bundler.js'
 > 使用`es6-string-html`可获取 template 语法高亮。
 
 推荐使用 jsx 的方式，可读性更好。
+
+> 在组件内定义组件，有哪些使用场景？
+
+看下面一个例子
+
+`MyInput.vue`
+
+```html
+<script lang="ts" setup>
+  const input = ref('')
+</script>
+
+<template>
+  <input v-model="input" type="text" placeholder="my input" />
+</template>
+```
+
+`TestKeepAlive.vue`
+
+```html
+<script setup lang="tsx">
+  import MyInput from './MyInput.vue'
+
+  const tab = ref('a')
+  const comMap = {
+    a: MyInput,
+    b: MyInput,
+  }
+  const input = ref('hello')
+</script>
+
+<template>
+  <div>
+    <q-tabs v-model="tab">
+      <q-tab name="a" label="A" />
+      <q-tab name="b" label="B" />
+    </q-tabs>
+    <KeepAlive>
+      <component :is="comMap[tab]" />
+    </KeepAlive>
+  </div>
+</template>
+```
+
+使用 KeepAlive，希望在你切换 tab 的时候，维持输入的数据，但是这样的代码不能实现。
+
+`TestKeepAlive.vue` 修改如下：
+
+```html
+<script setup lang="tsx">
+  import MyInput from './MyInput.vue'
+
+  const tab = ref('a')
+  const MyNewInput = defineComponent({
+    setup() {
+      return () => <MyInput />
+    },
+  })
+  const comMap = {
+    a: MyInput,
+    b: MyNewInput,
+  }
+</script>
+```
 
 ## 二次封装如何处理插槽
 
