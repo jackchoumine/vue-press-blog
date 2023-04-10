@@ -2,9 +2,10 @@
  * @Author      : ZhouQiJun
  * @Date        : 2023-03-10 16:51:52
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-03-20 16:13:15
- * @Description : 圆环
+ * @LastEditTime: 2023-03-20 18:00:58
+ * @Description : 颜色渐变色环
  * 参考实现: https://codepen.io/pixelthing/pen/RGKJaV
+ * https://stackoverflow.com/questions/14633363/can-i-apply-a-gradient-along-an-svg-path
 -->
 <script lang="ts" setup>
 import type { PropType } from 'vue'
@@ -24,13 +25,13 @@ const props = defineProps({
   angleEnd: {
     type: Number,
     default: 360,
-    validator: (value: number) => {
-      if (!(value >= 0 && value <= 360)) {
-        console.warn('结束角度在 0 -- 360 之间，默认 360')
-        return false
-      }
-      return true
-    },
+    // validator: (value: number) => {
+    //   if (!(value >= 0 && value <= 360)) {
+    //     console.warn('结束角度在 0 -- 360 之间，默认 360')
+    //     return false
+    //   }
+    //   return true
+    // },
   },
   angleStep: {
     type: Number,
@@ -65,9 +66,21 @@ const props = defineProps({
     type: Number,
     default: 45,
   },
+  // color 的优先级比 gradColors 高
   color: {
     type: String,
-    default: 'red',
+    default: undefined,
+  },
+  gradColors: {
+    type: Array as PropType<string[]>,
+    default: () => ['#dd1713', '#f95f41'],
+    validator: (value: string[]) => {
+      if (value.length > 2) {
+        console.warn('目前组件只支持两种颜色渐变，多于两个，取前两个')
+        return true
+      }
+      return true
+    },
   },
   lineType: {
     type: String as PropType<'arc' | 'line'>,
@@ -84,6 +97,8 @@ const props = defineProps({
 
 let timer = null
 
+const path = ref()
+
 onMounted(drawCircle)
 onBeforeUnmount(clearCircle)
 
@@ -92,7 +107,6 @@ function drawCircle() {
   const circle = path.value
   const lineType = props.lineType
 
-  const color = props.color
   const strokeWidth = props.strokeWidth
   const angleStart = props.angleStart
   let angle = angleStart
@@ -102,10 +116,19 @@ function drawCircle() {
   const angleStep = props.angleStep
   const radius = props.radius
   const radiusWithStroke = radius - strokeWidth / 2
-
-  circle.setAttribute('stroke', color)
+  // CHECKME 未来知识传递插槽实现渐变
+  // const id = 'id_' + Math.random().toString(16).slice(2)
+  // const linearGradient = svg.value.querySelector('defs linearGradient')
+  // if (linearGradient) {
+  //   linearGradient.setAttribute('id', id)
+  //   circle.setAttribute('stroke', `url(#${id})`)
+  // } else {
+  //   const color = props.color
+  //   circle.setAttribute('stroke', color)
+  // }
+  const color = props.color
+  color && circle.setAttribute('stroke', color)
   circle.setAttribute('stroke-width', '' + strokeWidth)
-
   const drawCircleArc = function () {
     const e = circle.getAttribute('d')
     let d = ''
@@ -150,17 +173,24 @@ function drawCircle() {
   timer = window.setInterval(drawCircleArc, props.timePreStep)
 }
 
-const path = ref()
 function clearCircle() {
   timer && window.clearInterval(timer)
   const circle = path.value
   circle.setAttribute('d', 'M200,200')
 }
+const id = ref('id_' + Math.random().toString(16).slice(2))
 </script>
 
 <template>
-  <svg :viewBox="`0 0 ${radius * 2}  ${radius * 2}`" :width="radius * 2">
-    <path ref="path" d="M200,200" fill="none" />
+  <svg :viewBox="`0 0 ${radius * 2}  ${radius * 2}`" :width="radius * 2" ref="svg">
+    <defs>
+      <linearGradient :id="id">
+        <!-- CHECKME  未来更多渐变 -->
+        <stop offset="0%" :stop-color="gradColors[0]" />
+        <stop offset="100%" :stop-color="gradColors[1]" stop-opacity="0" />
+      </linearGradient>
+    </defs>
+    <path ref="path" d="M200,200" fill="none" :stroke="`url(#${id})`" />
   </svg>
 </template>
 
