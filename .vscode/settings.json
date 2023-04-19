@@ -11,7 +11,18 @@
     }
   ],
   "[markdown]": {
-    "editor.formatOnSave": true
+    "editor.formatOnSave": true,
+    "editor.wordWrap": "on",
+    "editor.quickSuggestions": {
+      "other": true,
+      "comments": true,
+      "strings": true
+    }
+  },
+  "editor.quickSuggestions": {
+    "other": true,
+    "comments": true,
+    "strings": true
   },
   "compile-hero.disable-compile-files-on-did-save-code": false,
   "livePreview.defaultPreviewPath": "/packages/learn-scss/index.html",
