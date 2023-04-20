@@ -1,0 +1,29 @@
+.j-split-pane {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  .pane {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    &-left {
+      // width: 30%;
+      background-color: #eeeeee;
+    }
+    &-right {
+      right: 0;
+      bottom: 0;
+      // left: 30%; 同一个数值，赋值给不同的属性，实现改变数据，控制两个元素的属性
+      background-color: #eeeeee;
+    }
+    &-trigger-con {
+      height: 100%;
+      background-color: darkgrey;
+      position: absolute;
+      top: 0;
+      z-index: 10;
+      user-select: none;
+      cursor: col-resize;
+    }
+  }
+}
