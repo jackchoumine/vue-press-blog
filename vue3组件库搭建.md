@@ -6,6 +6,11 @@
 
 ## 文档站点
 
+打包工具 `unbuild`
+
+`npx husky add .husky/pre-commit "npx unbuild"`
+`npx husky add .husky/pre-push "npx run test"`
+
 ## 参考
 
 [前端组件库搭建之开发演示站点搭建](https://www.bilibili.com/video/BV1bY411E7ds/?spm_id_from=pageDriver&vd_source=9bbf149e26315d2edf55b034712e09d6)
