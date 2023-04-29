@@ -2,18 +2,10 @@
  * @Author      : ZhouQiJun
  * @Date        : 2023-04-29 20:19:57
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-04-29 22:33:06
+ * @LastEditTime: 2023-04-30 00:01:08
  * @Description : 深复制
  */
-/**
- * 获取类型
- * @param {any} value 需要检查类型的值
- * @returns {string} 返回类型
- */
-export function type(value) {
-  const typeStr = Object.prototype.toString.call(value)
-  return typeStr.slice(8, -1).toLowerCase()
-}
+import { type } from './type'
 /**
  * 深度复制
  * @param {any} source
