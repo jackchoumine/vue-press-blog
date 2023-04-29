@@ -1,0 +1,27 @@
+{
+  "name": "@jack/utils",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build:cjs": "rollup -c build/rollup.config.js",
+    "build:umd": "rollup -c build/rollup.config.umd.js",
+    "build:es": "rollup -c build/rollup.config.es.js",
+    "build": "npm run build:cjs && npm run build:umd && npm run build:es"
+  },
+  "devDependencies": {
+    "rollup": "3.5.1",
+    "rollup-plugin-terser": "~7.0.2"
+  },
+  "keywords": [
+    "clone",
+    "deep clone",
+    "deep copy"
+  ],
+  "author": "jackchoumine <jackzhoumine@gmail.com;jackchou4job@163.com>",
+  "license": "MIT"
+}
