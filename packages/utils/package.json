@@ -8,9 +8,9 @@
     "dist"
   ],
   "scripts": {
-    "build:cjs": "rollup -c build/rollup.config.js",
-    "build:umd": "rollup -c build/rollup.config.umd.js",
-    "build:es": "rollup -c build/rollup.config.es.js",
+    "build:cjs": "rollup -c build/rollup.config.cjs",
+    "build:umd": "rollup -c build/rollup.config.umd.cjs",
+    "build:es": "rollup -c build/rollup.config.es.cjs",
     "build": "npm run build:cjs && npm run build:umd && npm run build:es"
   },
   "devDependencies": {
@@ -22,6 +22,7 @@
     "deep clone",
     "deep copy"
   ],
+  "description": "deep copy; 深度复制",
   "author": "jackchoumine <jackzhoumine@gmail.com;jackchou4job@163.com>",
   "license": "MIT"
 }
