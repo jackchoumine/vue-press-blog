@@ -4,7 +4,8 @@
   "description": "把所有前端项目都集中到这里",
   "main": "index.js",
   "scripts": {
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow pnpm",
+    "dev:delight": "pnpm --filter='delight*' run dev "
   },
   "devDependencies": {
     "only-allow": "~1.1.1"

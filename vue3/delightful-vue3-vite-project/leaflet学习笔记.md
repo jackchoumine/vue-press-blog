@@ -82,7 +82,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 ## 要素
 
-地图上可添加要素（feature），要素可以是一个点、一个线、一个多边形或者圆圈。通过要素把数据展示在地图上，用户可以通过**点击**、**拖动**要素或者**hover**到要素上来获取更多信息。
+地图上可添加实体或者要素（feature），实体可以是点、线、多边形或者圆圈。通过要素把数据展示在地图上，用户可以通过**点击**、**拖动**要素或者**hover**到要素上来获取更多信息。
 
 ### 标记
 
@@ -121,6 +121,8 @@ const myIcon = L.icon({
   iconAnchor: [22, 94],
 })
 ```
+
+[更多自定义图标的教程](https://leafletjs.cn/examples/custom-icons/)
 
 ### 圆圈
 
@@ -204,6 +206,116 @@ popup.openOn(map)
 `setContent` 接收一个参数，和`bindPopup`的第一个参数类型一样。
 
 ## 图层
+
+```ts
+
+```
+
+## 地理信息数据结构
+
+表示地理信息的数据格式有多种：`geoJSON`、`WKT`、`WKB`、`GML`、`GPX`、`KML`、`TopoJSON`等。
+
+### geoJSON
+
+geoJSON 是一种用于表示地理信息的数据结构，它是一种 JSON 格式的数据，可以用于表示点、线、面等实体。2016 年被 IETF 标准化为 RFC 7946。Leaflet 也是支持 geoJSON 格式的数据的。
+
+一个 GeoJSON 对象可以是 Geometry, Feature 或者 FeatureCollection。
+
+其几何对象包括有点（表示位置）、线（表示街道、公路、边界）、多边形（表示国家、省、领土），以及由以上类型组合成的复合几何图形。
+
+> TopoJSON（英语：TopoJSON]]）基于 GeoJSON 作了扩展，使得文件更小。
+
+#### 基本几何体
+
+> 点
+
+```json
+{
+  "type": "Point",
+  "coordinates": [30, 10]
+}
+```
+
+![点](./102px-SFA_Point.svg.png)
+
+> 线段
+
+```json
+{
+  "type": "LineString",
+  "coordinates": [
+    [30, 10],
+    [10, 30],
+    [40, 40]
+  ]
+}
+```
+
+![线段](./102px-SFA_LineString.svg.png)
+
+> 多边形或面
+
+```json
+{
+  "type": "Polygon",
+  "coordinates": [
+    [
+      [30, 10],
+      [40, 40],
+      [20, 40],
+      [10, 20],
+      [30, 10]
+    ]
+  ]
+}
+```
+
+![多边形](./SFA_Polygon.svg.png)
+
+```json
+{
+  "type": "Polygon",
+  "coordinates": [
+    [
+      [35, 10],
+      [45, 45],
+      [15, 40],
+      [10, 20],
+      [35, 10]
+    ],
+    [
+      [20, 30],
+      [35, 35],
+      [30, 20],
+      [20, 30]
+    ]
+  ]
+}
+```
+
+![多边形](./SFA_Polygon_with_hole.svg)
+
+#### 复合几何体
+
+[维基百科例子](https://www.wikiwand.com/zh-cn/GeoJSON)
+
+#### 相关资源
+
+[获取 geojson](http://datav.aliyun.com/portal/school/atlas/area_selector#&lat=33.521903996156105&lng=104.29849999999999&zoom=4)
+
+[另一获取 geojson 的网站](http://geojson.io/#map=2/0/20)
+
+### 参考
+
+[【第三章 数据格式】geojson 格式详解](https://zhuanlan.zhihu.com/p/510882183)
+
+[维基百科 geoJSON](ttps://www.wikiwand.com/zh-cn/GeoJSON)
+
+[GeoJSON 格式入门](https://mahouoji.com/geojson-101)
+
+[geoJson 格式说明](https://chenoge.github.io/2019/07/18/geoJson%E6%A0%BC%E5%BC%8F/)
+
+### WKT
 
 ## 问题
 

@@ -1,5 +1,20 @@
-<script setup lang="tsx" name="Dmeos">
+<!--
+ * @Author      : ZhouQiJun
+ * @Date        : 2023-02-12 18:41:36
+ * @LastEditors : ZhouQiJun
+ * @LastEditTime: 2023-05-06 01:16:50
+ * @Description : 
+-->
+<script setup lang="tsx" name="Demos">
 // TODO
+import { useEvent, useEventBus } from '@/hooks'
+
+// const { emit } = useEventBus()
+const { emit } = useEvent()
+onMounted(() => {
+  console.log('ant-design-vue mounted')
+  emit('ant-btn-mounted', 'ant-design-vue')
+})
 </script>
 
 <template>

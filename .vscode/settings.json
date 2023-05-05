@@ -35,6 +35,7 @@
   "cSpell.words": [
     "echarts",
     "hoverintent",
+    "IIFE",
     "latlng",
     "Littleton",
     "popperjs",
@@ -52,6 +53,6 @@
     // "**/*.js": {
     //   "when": "$(basename).ts" //ts编译后生成的js文件将不会显示在工作空中
     // },
-    "**/node_modules": true
+    // "**/node_modules": true
   }
 }

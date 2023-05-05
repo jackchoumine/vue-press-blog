@@ -5,6 +5,18 @@
     "body": ["import { $2 } from '$1';"],
     "description": "Import a module"
   },
+  "import default": {
+    "scope": "javascript,typescript,vue",
+    "prefix": "imd",
+    "body": ["import  $2  from '$1';"],
+    "description": "Import a module default"
+  },
+  "log": {
+    "scope": "javascript,typescript",
+    "prefix": "clg",
+    "body": ["console.log($1,'zqj log')"],
+    "description": "console.log"
+  },
   "export": {
     "scope": "javascript,typescript",
     "prefix": "e",
@@ -22,6 +34,12 @@
     "prefix": "eall",
     "body": ["export * from '$1';"],
     "description": "Export a module"
+  },
+  "function": {
+    "scope": "javascript,typescript",
+    "prefix": "fn",
+    "body": ["function $1($2) {", "  $3", "}"],
+    "description": "function 函数定义"
   },
   "vue-script-setup": {
     "scope": "vue",
