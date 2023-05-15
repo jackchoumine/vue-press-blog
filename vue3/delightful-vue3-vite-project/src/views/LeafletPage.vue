@@ -6,7 +6,7 @@
  * @Description : leaflet 学习
 -->
 <script setup>
-import { GeoJSON, InitMap, LayerControl, MarkerDemo } from '#c'
+import { GeoJSON, InitMap, LayerControl, MarkerDemo } from '@/components'
 
 const tab = ref('init')
 </script>

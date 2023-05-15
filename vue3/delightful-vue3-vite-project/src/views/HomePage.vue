@@ -6,8 +6,7 @@
   * @Description : 
 -->
 <script setup lang="tsx">
-import { FunComponent, HelloWorld, SlottedDemo, WatchDemo } from '#c'
-
+import { FunComponent, HelloWorld, SlottedDemo, WatchDemo } from '@/components'
 import { useGlobalProps } from '@/hooks'
 import { USER_KEY } from '@/utils/injectionKey'
 
