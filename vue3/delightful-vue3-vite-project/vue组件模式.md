@@ -135,20 +135,81 @@
 </template>
 
 <script lang="ts">
-// declare additional options
-export default {
-  inheritAttrs: false,
-}
+  // declare additional options
+  export default {
+    inheritAttrs: false,
+  }
 </script>
 
 <style lang="scss">
-.my-input {
-  background-color: antiquewhite;
+  .my-input {
+    background-color: antiquewhite;
 
+    .q-field {
+      height: 2rem;
+      background-color: red;
+      .q-field__inner {
+        .q-field__control {
+          height: 2rem;
+          padding: 0;
+        }
+
+        .q-field__marginal {
+          height: 2rem;
+          padding-right: 6px;
+          background: {
+            color: #f9f9fb;
+          }
+        }
+
+        .q-field__control-container {
+          padding: {
+            left: 12px;
+          }
+        }
+      }
+    }
+  }
+</style>
+```
+
+`my-input`是全局唯一的。
+
+②. 业务组件使用`scoped`，和 `:deep` 一起使用
+
+```html
+<template>
+  <q-input
+    :model-value="modelValue"
+    type="search"
+    placeholder="请输入搜索内容"
+    filled
+    dense
+    clearable
+    v-bind="attrs">
+    <template #append>
+      <i class="icon iconfont icon-chazhao"></i>
+    </template>
+  </q-input>
+</template>
+
+<script lang="ts">
+  // declare additional options
+  export default {
+    inheritAttrs: false,
+  }
+</script>
+
+<style lang="scss" scoped>
   .q-field {
     height: 2rem;
-    background-color: red;
-    .q-field__inner {
+
+    /* CHECKME 拿到 q-input 组件根元素内的第一个元素，获取更深嵌套的元素，直接按照 scss 语法写
+    outer-selector  :deep(inner-selector){}
+    outer-selector inner-selector 是后代关系
+    实践中，组件根元素上的选择器作为 outer-selector 最方便
+    */
+    :deep(.q-field__inner) {
       .q-field__control {
         height: 2rem;
         padding: 0;
@@ -169,84 +230,12 @@ export default {
       }
     }
   }
-}
 </style>
 ```
 
-`my-input`是全局唯一的。
-
-
-②. 业务组件使用`scoped`，和 `::v-deep` 一起使用
-
-```html
-<template>
-  <q-input
-    :model-value="modelValue"
-    type="search"
-    placeholder="请输入搜索内容"
-    filled
-    dense
-    clearable
-    v-bind="attrs">
-    <template #append>
-      <i class="icon iconfont icon-chazhao"></i>
-    </template>
-  </q-input>
-</template>
-
-<script lang="ts">
-// declare additional options
-export default {
-  inheritAttrs: false,
-}
-</script>
-
-<style lang="scss" scoped>
-.q-field {
-  height: 2rem;
-
-  // CHECKME 拿到 q-input 组件根元素内的第一个元素，获取更深嵌套的元素，直接按照 scss 语法写
-  ::v-deep(.q-field__inner) {
-    .q-field__control {
-      height: 2rem;
-      padding: 0;
-    }
-
-    .q-field__marginal {
-
-      height: 2rem;
-      padding-right: 6px;
-      background: {
-        color: #f9f9fb;
-      }
-    }
-
-    .q-field__control-container {
-      padding: {
-        left: 12px;
-      }
-    }
-  }
-
-  // CHECKME  获取组件根元素更深层级的元素
-  // ::v-deep(.q-field__control) {
-  //   height: 2rem;
-  //   padding: 0;
-  // }
-
-  // ::v-deep(.q-field__marginal) {
-  //   height: 2rem;
-  //   padding-right: 6px;
-  //   background: {
-  //     color: #f9f9fb;
-  //   }
-  // }
-}
-</style>
-```
 > q-input 有父元素，如何办？
 
-还是使用`::v-deep` 获取组件内部的选择器。
+还是使用`:deep` 获取组件内部的选择器。
 
 ```html
 <template>
@@ -267,43 +256,43 @@ export default {
 </template>
 
 <script lang="ts">
-// declare additional options
-export default {
-  inheritAttrs: false,
-}
+  // declare additional options
+  export default {
+    inheritAttrs: false,
+  }
 </script>
 
 <style lang="scss" scoped>
-.my-input {
-  background-color: antiquewhite;
+  .my-input {
+    background-color: antiquewhite;
 
-  .q-field {
-    height: 2rem;
-    background-color: red;
+    .q-field {
+      height: 2rem;
+      background-color: red;
 
-    ::v-deep(.q-field__inner) {
-      .q-field__control {
-        height: 2rem;
-        padding: 0;
-        background-color: blue;
-      }
-
-      .q-field__marginal {
-        height: 2rem;
-        padding-right: 6px;
-        background: {
-          color: #f9f9fb;
+      :deep(.q-field__inner) {
+        .q-field__control {
+          height: 2rem;
+          padding: 0;
+          background-color: blue;
         }
-      }
 
-      .q-field__control-container {
-        padding: {
-          left: 12px;
+        .q-field__marginal {
+          height: 2rem;
+          padding-right: 6px;
+          background: {
+            color: #f9f9fb;
+          }
+        }
+
+        .q-field__control-container {
+          padding: {
+            left: 12px;
+          }
         }
       }
     }
   }
-}
 </style>
 ```
 
@@ -311,11 +300,12 @@ export default {
 
 业务组件中修改通用组件的样式的两种方案：
 
-① 使用 `scopded` 和 `::v-deep`，不产生多余的元素，且冲突的可能性小。
+① 使用 `scopded` 和 `:deep`，不产生多余的元素，且冲突的可能性小。
 
 ② 不使用 `scoped`，在通用最上添加一个新 `class`，或者 `div` 和唯一的 `class` 包裹通用组件，会产生多余的元素，导致元素更多的嵌套，且冲突的可能性更大。
 
 推荐业务组件都使用`scoped`。
+
 ### 模板
 
 最好提供默认插槽，方便从父组件传递模板进来。作用域插槽向组件抛出数据。
@@ -325,6 +315,18 @@ export default {
 'default' in $slots
 
 > 二次封装组件如何暴露插槽？
+
+```html
+<template>
+  <div>
+    <ThirdPartyComponent>
+      <template v-for="(_,name) in $slots" #[name]="slotProps">
+        <slot :name="name" v-bind="slotProps??{}"></slot>
+      </template>
+    </ThirdPartyComponent>
+  </div>
+</template>
+```
 
 ### 组件行为
 
@@ -347,6 +349,36 @@ export default {
 > 总结：
 
 设计一个组件，通过默认的 prop、默认插槽等减少参数，提高易用性，但是提供更多的组件接口（props、行为钩子、插槽等）能提高扩展性，但是会降低易用性，需要在扩展性和易用性进行权衡。
+
+## 二次封装组件
+
+### 二次封装如何处理插槽
+
+```html
+<template>
+  <div>
+    <ThirdPartyComponent>
+      <template v-for="(_,name) in $slots" #[name]="slotProps">
+        <slot :name="name" v-bind="slotProps??{}"></slot>
+      </template>
+    </ThirdPartyComponent>
+  </div>
+</template>
+```
+
+### 二次封装如何处理 props
+
+1. 给默认值提高易用性
+
+2. `inheritAttrs: false` 防止冲突
+
+3. `v-bind="$attrs"` 传递未声明的 props
+
+### 二次封装如何处理事件
+
+1. `v-on="$listeners"` 传递事件
+
+### 暴露组件的私有属性和方法
 
 ## 异步组件
 
