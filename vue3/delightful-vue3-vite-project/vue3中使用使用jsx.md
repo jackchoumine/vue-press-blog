@@ -57,6 +57,8 @@ setup() {
 }
 ```
 
+[jsx 使用自定义指令](https://juju.one/using-jsx-with-vue3/)
+
 > 按需自动导入报错。
 
 解决：手动导入
