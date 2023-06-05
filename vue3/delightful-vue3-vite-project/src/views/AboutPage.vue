@@ -1,14 +1,18 @@
 <!--
  * @Date        : 2022-08-08 16:42:27
  * @Author      : ZhouQijun
- * @LastEditors : ZhouQijun
- * @LastEditTime: 2022-10-12 09:31:13
+ * @LastEditors : ZhouQiJun
+ * @LastEditTime: 2023-06-05 10:17:19
  * @Description : 关于页面
 -->
+<script setup lang="ts">
+import { DemoOne } from '@/components/ConcurrencyControl'
+</script>
 <template>
-  <div class="page">init</div>
+  <div class="page">
+    <h3>并发控制</h3>
+    <DemoOne />
+  </div>
 </template>
-
-<script setup lang="ts"></script>
 
 <style lang="scss"></style>
