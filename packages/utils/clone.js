@@ -2,10 +2,11 @@
  * @Author      : ZhouQiJun
  * @Date        : 2023-04-29 20:19:57
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-04-30 00:01:08
+ * @LastEditTime: 2023-04-30 01:13:02
  * @Description : 深复制
  */
 import { type } from './type'
+// import from from 'core-js/features/array/from'
 /**
  * 深度复制
  * @param {any} source
@@ -32,4 +33,8 @@ export function clone(source) {
     }
   }
   return target
+}
+
+export function last(arr) {
+  return arr.at(-1)
 }
