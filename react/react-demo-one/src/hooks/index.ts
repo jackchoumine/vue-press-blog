@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2022-12-14 17:39:35
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2022-12-26 11:27:21
+ * @LastEditTime: 2023-06-05 23:29:26
  * @Description : hooks 出口
  */
 export { default as useCounter } from './useCounter'
@@ -17,3 +17,4 @@ export { default as useTitle } from './useTitle'
 export { default as usePopper } from './usePopper'
 export { default as useInput } from './useInput'
 export { default as useAdd } from './useAdd'
+export * from './useSingleton'

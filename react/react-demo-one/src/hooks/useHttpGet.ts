@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2022-12-14 20:25:43
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2022-12-14 20:57:31
+ * @LastEditTime: 2023-06-05 21:35:45
  * @Description :
  */
 import { useState, useEffect } from 'react'
@@ -23,8 +23,9 @@ function useHttpGet(key = '') {
     http(key).then(res => {
       setList(res as any)
     })
+    console.log('useEffect', 'zqj log')
   }, [key])
-
+  console.log('useHttpGet', 'zqj log')
   return { list }
 }
 

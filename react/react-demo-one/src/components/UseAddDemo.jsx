@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2022-12-26 11:22:56
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2022-12-26 14:54:34
+ * @LastEditTime: 2023-06-03 23:32:25
  * @Description :
  */
 import { useState } from 'react'
@@ -20,8 +20,7 @@ function UseAddDemo() {
         onClick={() => {
           console.log('onClick')
           setB(oldValue => ++oldValue)
-        }}
-      >
+        }}>
         修改b
       </button>
     </div>

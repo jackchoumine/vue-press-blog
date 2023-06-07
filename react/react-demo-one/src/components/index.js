@@ -2,7 +2,7 @@
  * @Date        : 2022-09-01 15:17:41
  * @Author      : ZhouQijun
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2022-12-26 11:26:09
+ * @LastEditTime: 2023-06-05 22:23:17
  * @Description :
  */
 export { PrimeApp } from './PrimeApp'
@@ -15,3 +15,4 @@ export { default as UseHttpGetDemo } from './UseHttpGetDemo'
 export { default as PopperDemo } from './PopperDemo'
 export { default as RxjsHooksDemo } from './RxjsHooksDemo'
 export { default as UseAddDemo } from './UseAddDemo'
+export { default as UseCallbackDemo } from './UseCallbackDemo'
