@@ -66,7 +66,7 @@ webGL
 
 web mercator = WGS84 + 莫卡托投影
 
-![坐标系比较](xy.png)
+![](https://cdn.jsdelivr.net/gh/jackchoumine/jack-picture@master/xy.png)
 
 投影变换
 
@@ -119,9 +119,9 @@ png jpg bmp
 
 （矢量）图层（FeatureLayer）：将具有同类特征的要素(Feature)归为一类要素类(FeatureClass)，通过一定的配置(标注、渲染符号等)渲染到地图上。
 
-![](./%E7%9F%A2%E9%87%8F%E5%9B%BE%E5%B1%82-1.png)
+![](https://cdn.jsdelivr.net/gh/jackchoumine/jack-picture@master/%E7%9F%A2%E9%87%8F%E5%9B%BE%E5%B1%82-1.png)
 
-![](./%E7%9F%A2%E9%87%8F%E5%9B%BE%E5%B1%82-2.png)
+![](https://cdn.jsdelivr.net/gh/jackchoumine/jack-picture@master/%E7%9F%A2%E9%87%8F%E5%9B%BE%E5%B1%82-2.png)
 
 > 矢量图层数据源格式：
 
