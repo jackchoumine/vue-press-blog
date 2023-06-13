@@ -1,0 +1,49 @@
+name: 部署
+on:
+  # workflow_dispatch: {}
+  push:
+    branches:
+      - master
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      # pages: write
+      # id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+          
+      - name: 安装pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - uses: actions/setup-node@v3
+        with:
+          cache: pnpm
+
+      - name: 安装 node 依赖
+        run: pnpm i --frozen-lockfile
+
+      - name: Build
+        run: pnpm docs-build
+
+      - name: Deploy to GitHub Pages 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.4.2
+        with:
+          folder: docs/.vitepress/dist # The folder the action should deploy.
+          # branch: master
+          # token: ${{ secrets.DEPLOY }}
+      # - uses: actions/configure-pages@master
+      # - uses: actions/upload-pages-artifact@v1
+      #   with:
+      #     path: .vitepress/dist
+      # - name: Deploy
+      #   id: deployment
+      #   uses: actions/deploy-pages@v1
