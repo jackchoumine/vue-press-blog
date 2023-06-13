@@ -198,7 +198,7 @@ props: {
   route 的 params 传递参数</a> by JackChouMine (<a href="https://codepen.io/JackZhouMine">@JackZhouMine</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<component is="script" async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></component>
 
 ## HTML5 History 模式
 

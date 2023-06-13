@@ -214,7 +214,8 @@ onClick = p => event => {
   处理事件</a> by JackChouMine (<a href="https://codepen.io/JackZhouMine">@JackZhouMine</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+<component is="script" async src="https://static.codepen.io/assets/embed/ei.js">
+</component>
 
 [合成事件](https://react.docschina.org/docs/events.html)
 
@@ -722,7 +723,8 @@ ReactDOM.render(<App />, document.getElementById('root'))
   createRef函数</a> by JackChouMine (<a href="https://codepen.io/JackZhouMine">@JackZhouMine</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<component is="script" async  src="https://cpwebassets.codepen.io/assets/embed/ei.js">
+</component>
 
 ### 回调形式的 ref
 
@@ -832,7 +834,7 @@ demo:
   ref回调函数</a> by JackChouMine (<a href="https://codepen.io/JackZhouMine">@JackZhouMine</a>)
   on <a href="https://codepen.io">CodePen</a>.</span>
 </p>
-<script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+<component is="script" async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></component>
 
 :::tip 函数式组件的 ref
 函数式组件没有`this`，只能通过 forwardRef 设置 ref。
@@ -857,7 +859,8 @@ demo:
 1. 性能不好，ref 会被 react 处理成闭包；
 2. 不好跟踪 this;
 3. 处理循环不方便。
-   :::
+
+:::
 
 ### 循环中的 ref
 
