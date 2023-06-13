@@ -1,0 +1,69 @@
+<!--
+ * @Description: 水平居中布局
+ * @Date: 2020-11-17 01:03:36
+ * @Author: JackChouMine
+ * @LastEditTime: 2020-11-17 13:12:36
+ * @LastEditors: JackChouMine
+-->
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>水平居中布局</title>
+	<style>
+		#parent {
+			width: 100vw;
+			height: 400px;
+			background-color: lightblue;
+			position: relative;
+		}
+
+		#left,
+		#right {
+			height: 300px;
+		}
+
+		#left {
+			width: 100px;
+			float: left;
+			background-color: lightyellow;
+		}
+
+		#right-fix {
+			float: right;
+			width: calc(100% - 100px);
+			background-color: #fff;
+		}
+
+		#right {
+			background-color: lightgray;
+		}
+
+		#inner {
+			background-color: aqua;
+			/* clear: both; */
+			height: 200px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="parent">
+		<!-- 父元素 -->
+		<div id="left">
+			左:定宽
+		</div>
+		<div id="right-fix">
+			<div id="right">
+				右边
+				<div id="inner">
+					你好
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>正则</title>
+</head>
+
+<body>
+  <h1>正则表达式</h1>
+  <div class="samurai ninja">你好</div>
+  <span class="ninja">牛年快乐</span>
+  <span class="ninja ">牛年快乐</span>
+  <span class=" ninja ">牛年快乐</span>
+  </div>
+  <script>
+    const reg = /[\S\s]+/
+    const tel = `<span>
+            regex
+      </span>`
+    console.log(tel.match(reg))
+    function findEleByClass(className, type) {
+      const elems = document.getElementsByTagName(type) || []
+      console.log(elems)
+      // 以空格或者类开头，以空格或者类结尾
+      const regex = new RegExp("(^|\\s)" + className + "(\\s|$)")
+      // const regex = `/(^|\\s)${className}(\\s|$)/`
+      console.log(regex)
+      const results = []
+      for (const item of elems) {
+        if (regex.test(item.className)) results.push(item)
+      }
+      console.log(results)
+    }
+    findEleByClass('ninja', 'span')
+    const test = `Hello 
+    WOrld`
+    // TODO g 和 m 有何不同？
+    console.log(test.match(/O/ig))
+    //输入
+    const hd = `
+     #1 JS,200元 #
+     #2 php,180元 #
+     #3 test # 测试
+     #4 node.js,300元 #
+    `
+    // NOTE 多行匹配
+    // 输出
+    // [{name:'JS',price:'200元'}]
+    const priceArr = hd.match(/\s*#\d+\s+.+\s+#$/mg).map(str => {
+      const [name, price] = str.replace(/\s*#\d+\s*/, '').replace(/\s*#/, '').split(',')
+      return { name, price }
+    })
+    console.log(priceArr)
+    // unicode 属性
+    const chineseCharacter = 'houdunren2020.中国'
+    console.log(chineseCharacter.match(/\p{P}/ug))
+    // script 特性 sc
+    console.log(chineseCharacter.match(/\p{sc=Han}/gu))
+    // 宽字节 
+    const str = '𝒳𝒴xy'
+    console.log(str.length)
+    console.log(str.match(/[𝒳𝒴]/gu))// NOTE 不加 u 出现乱码
+    /**
+     *
+     * 更多阅读：https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/RegExp#browser_compatibility
+     *
+     * https://zh.javascript.info/regular-expressions
+     *
+     * */
+
+    // lastIndex 指定正则开始搜索的位置 全局模式下记录下次匹配开始的索引
+    console.log('***************************')
+    console.log(chineseCharacter.match(/\w/g))// 字符串方法
+    const regLastIndex = /u/g
+    console.log(regLastIndex.exec(chineseCharacter))
+    console.log(regLastIndex.lastIndex)
+    console.log(regLastIndex.exec(chineseCharacter))
+    console.log(regLastIndex.lastIndex)
+    while ((res = regLastIndex.exec('houdunren2021'))) {
+      console.log(res)
+    }
+    // y 模式
+    const info = '中国人 1111, 2222, 3333你好 hello'
+    const regY = /(\d+),?\s?/y
+    regY.lastIndex = 5
+    const numbers = []
+    while (res = regY.exec(info)) {
+      numbers.push(res[1])
+    }
+    console.log(numbers)
+
+    // 原子表 包含 和位置无关
+    const yearInfo = 'year 2020-08-30 你好 2020/08/31 2020-08/31'
+    // const regAuto = /\d{4}[-\/]\d{1,2}[-\/]\d{1,2}/g
+    const regAuto = /\d{4}([-\/])\d{1,2}\1\d{1,2}/g
+    console.log(yearInfo.match(regAuto))
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!--
+ * @Description: css 中各种单位
+ * @Date: 2020-09-26 23:22:20 +0800
+ * @Author: JackChouMine
+ * @LastEditTime: 2020-09-27 01:06:35 +0800
+ * @LastEditors: JackChouMine
+-->
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>rem em px</title>
+  <style>
+    html {
+      font-size: 1rem;
+    }
+
+    p.one {
+      font-size: 2rem;
+      width: 10rem;
+      height: 10rem;
+      background-color: lightblue;
+    }
+
+    p.two {
+      font-size: 20px;
+      width: 100px;
+      height: 100px;
+      background-color: lightgreen;
+    }
+
+    p.three {
+      font-size: 20px;
+      width: 10em;
+      height: 10em;
+      background-color: lightcoral;
+    }
+
+    p.four {
+      background-color: lightcyan;
+      height: 10vh;
+      width: 10vw;
+    }
+
+    p.five {
+      font-size: 5ex;
+      width: 10ex;
+      height: 10ex;
+      background-color: lightsalmon;
+    }
+  </style>
+  <link rel="stylesheet" href="white.css" media="screen and (max-width:540px)">
+  <link rel="stylesheet" href="red.css" media="screen and (min-width:541px)">
+  <link rel="stylesheet" href="green.css" media="screen and (min-width:970px)">
+</head>
+
+<body>
+  <div>
+    <p class="one">rem em px</p>
+    <p class="two">rem em px</p>
+    <p class="three">rem em px</p>
+    <p class="four">rem em px</p>
+    <p class="five">rem em px</p>
+  </div>
+  <p>
+    相对单位：rem em % vw vh ex
+    绝对单位：px pt in cm mm
+  </p>
+</body>
+</body>
+
+</html>
