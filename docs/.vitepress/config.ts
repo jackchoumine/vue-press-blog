@@ -2,13 +2,14 @@
  * @Author      : ZhouQiJun
  * @Date        : 2023-06-12 03:01:09
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-06-14 02:12:21
+ * @LastEditTime: 2023-06-14 03:17:19
  * @Description : 
  */
 import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
+  ignoreDeadLinks: true,
   title:`Jack Chou's blog`,
   description: 'A VitePress Site',
   base: '/jack-front/',
