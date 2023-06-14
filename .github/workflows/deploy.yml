@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - master
+    paths:
+      - 'docs/**' # 指定 docs 目录下的文件变化时才触发
 jobs:
   deploy:
     runs-on: ubuntu-latest
