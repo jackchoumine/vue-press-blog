@@ -31,7 +31,7 @@
     "mongoose": "~6.2.11",
     "mssql": "~8.1.0",
     "qs": "^6.10.1",
-    "vue": "^2.6.11",
+    "vue": "^2.7.14",
     "vue-router": "^3.5.1",
     "vuepress-plugin-mygitalk": "^1.0.5",
     "vuex": "^3.6.2",
@@ -71,8 +71,7 @@
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "sql-cli": "^0.6.2",
-    "vitepress": "~1.0.0-beta.2",
-    "vue-template-compiler": "^2.6.11"
+    "vue-template-compiler": "^2.7.14"
   },
   "keywords": [],
   "author": "",
