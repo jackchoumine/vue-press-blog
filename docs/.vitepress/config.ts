@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2023-06-12 03:01:09
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-06-14 23:05:22
+ * @LastEditTime: 2023-06-14 23:14:30
  * @Description :
  */
 import { defineConfig } from 'vitepress'
@@ -34,14 +34,14 @@ export default defineConfig({
     // logo:'https://avatars.githubusercontent.com/u/21340150?s=96&v=4',
     logo: '/jack.png',
     // 搜索功能 需要自己去algolia注册账号
-    search: {
-      provider: 'algolia',
-      options: {
-        appId: '8J64VVRP8K',
-        apiKey: 'a18e2f4cc5665f6602c5631fd868adfd',
-        indexName: 'vitepress',
-      },
-    },
+    // search: {
+    //   provider: 'algolia',
+    //   options: {
+    //     appId: '8J64VVRP8K',
+    //     apiKey: 'a18e2f4cc5665f6602c5631fd868adfd',
+    //     indexName: 'vitepress',
+    //   },
+    // },
     nav: [
       { text: 'vue3', link: '/vue3/', activeMatch: '/vue3/' },
       { text: 'vue2', link: '/vue2/', activeMatch: '^/vue2/' },

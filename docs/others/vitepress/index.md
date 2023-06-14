@@ -30,3 +30,7 @@ nav 里配置 `activeMatch`
 ## 如何添加评论功能？
 
 <!-- TODO -->
+
+## 如何添加`algolia`搜索功能？
+
+<!-- TODO我的账号 jackchou4job@163.com -->
