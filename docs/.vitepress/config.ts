@@ -2,13 +2,16 @@
  * @Author      : ZhouQiJun
  * @Date        : 2023-06-12 03:01:09
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-06-14 23:14:30
- * @Description :
+ * @LastEditTime: 2023-06-14 23:36:27
+ * @Description : vitepress 配置
  */
 import { defineConfig } from 'vitepress'
-// import { default as replPlugin, } from 'vitepress-markdown-it-repl'
-// https://vitepress.dev/reference/site-config
+import { pagefindPlugin } from 'vitepress-plugin-pagefind'
+
 export default defineConfig({
+  vite: {
+    plugins: [pagefindPlugin()],
+  },
   ignoreDeadLinks: true,
   title: `Jack Chou's blog`,
   description: 'A VitePress Site',
@@ -27,6 +30,7 @@ export default defineConfig({
       //生成目录的 markdown 标题 默认 2 3
       // NOTE 需要安装 # ## ### 的层级编写才会在右侧生成目录
       // NOTE 在文档里使用 [[toc]] 会在当前位置生成目录
+      // BUG 不生效，只有 2 3 级标题生成目录
       level: [1, 2, 3, 4],
     },
   },
@@ -41,6 +45,10 @@ export default defineConfig({
     //     apiKey: 'a18e2f4cc5665f6602c5631fd868adfd',
     //     indexName: 'vitepress',
     //   },
+    // },
+    // vitepress 的本地搜索
+    // search: {
+    //   provider: 'local',
     // },
     nav: [
       { text: 'vue3', link: '/vue3/', activeMatch: '/vue3/' },

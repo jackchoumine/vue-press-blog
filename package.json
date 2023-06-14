@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/jackchoumine/jack-front/issues"
   },
-  "homepage": "https://github.com/jackchoumine/jack-front#readme"
+  "homepage": "https://github.com/jackchoumine/jack-front#readme",
+  "dependencies": {
+    "vitepress-plugin-pagefind": "~0.2.4"
+  }
 }

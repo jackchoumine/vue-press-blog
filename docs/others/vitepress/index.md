@@ -31,6 +31,37 @@ nav 里配置 `activeMatch`
 
 <!-- TODO -->
 
-## 如何添加`algolia`搜索功能？
+## 如何开启搜索功能？
+
+### vitepress 自带的搜索
+
+```js
+{
+  themeConfig: {
+    search: {
+      provider: 'local',
+    },
+  },
+}
+```
+
+效果一般，不建议使用。
+
+### 使用 vitepress 插件
+
+```js
+import { pagefindPlugin } from 'vitepress-plugin-pagefind'
+export default defineConfig({
+  vite: {
+    plugins: [pagefindPlugin()],
+  }
+})
+```
+
+效果好，推荐使用。
+
+还有其他插件，可以自行搜索。
+
+### 接入`algolia`搜索
 
 <!-- TODO我的账号 jackchou4job@163.com -->
