@@ -2,7 +2,7 @@
  * @Author      : ZhouQiJun
  * @Date        : 2023-06-12 03:01:09
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-06-14 03:17:19
+ * @LastEditTime: 2023-06-14 22:04:58
  * @Description : 
  */
 import { defineConfig } from 'vitepress'
@@ -31,8 +31,8 @@ export default defineConfig({
       }
     },
     nav: [
-      { text: 'vue3', link: '/vue3/' },
-      { text: 'vue2', link: '/vue2/' },
+      { text: 'vue3', link: '/vue3/', activeMatch: '/vue3/' },
+      { text: 'vue2', link: '/vue2/', activeMatch: '^/vue2/' },
       { text: 'react', link: '/react/' },
       { text: 'node', link: '/node/' },
       { text: '科学', link: '/science/' },
@@ -50,6 +50,7 @@ export default defineConfig({
         items: [
           { text: '函数式编程', link: '/others/functional-programming/' },
           { text: 'angular', link: '/angular/' },
+          { text: 'vitepress', link: '/others/vitepress/' },
           { text: '开发工具', link: '/others/dev-tool/' },
           { text: 'mac使用', link: '/others/mac/' },
         ],
