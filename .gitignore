@@ -115,7 +115,7 @@ test.*
 *.css
 *.css.map
 
-docs/.vitepress/cache
+blog/.vitepress/cache
 
 *.zip
 *.xlsx
