@@ -6,20 +6,13 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build:vue": "vue-cli-service build",
+    "build": "vue-cli-service build",
     "wc": "vue-cli-service build --target wc --name my-wc './src/views/web-component/components/*.vue'",
     "lint": "vue-cli-service lint --fix",
     "unit": "vue-cli-service test:unit --watch",
     "e2e": "vue-cli-service test:e2e",
-    "dev": "vuepress dev docs --open",
-    "build": "vuepress build docs",
     "prettier": "prettier --write './src/**/*.{js,jsx,tsx,ts,less,md,json}'",
-    "scm": "scheme < ./docs/scheme/src/hello.scm",
-    "eslint": "eslint --fix './src/**/*.{vue,js,jsx,tsx,ts,less,json}'",
-    "dp": "gh-pages -d dist",
-    "docs-dev": "vitepress dev docs",
-    "docs-build": "vitepress build docs",
-    "docs-preview": "vitepress preview docs"
+    "eslint": "eslint --fix './src/**/*.{vue,js,jsx,tsx,ts,less,json}'"
   },
   "dependencies": {
     "axios": "^0.21.1",
