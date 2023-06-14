@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@com/*": [
+        "src/components/*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "public",
+    "tests"
+  ],
+  "include": [
+    "src/**/*.vue",
+    "src/**/*.js",
+    "src/**/*.jsx"
+  ]
+}

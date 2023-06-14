@@ -1,17 +1,35 @@
+<!--
+ * @Description: 模板html
+ * @Date: 2021-06-01 10:07:44 +0800
+ * @Author: JackChou
+ * @LastEditTime: 2021-11-22 00:36:31 +0800
+ * @LastEditors : JackChou
+-->
 <!DOCTYPE html>
-<html lang="">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-  </body>
+<html lang="zh-cn">
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico" />
+  <!-- <link rel="preload" as="script" href="https://utteranc.es/client.js" repo="jackchoumine/vue-press-blog"
+    issue-term="title" label="comment" theme="github-light" crossorigin="anonymous" async> -->
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+</head>
+
+<body>
+  <noscript>
+    <strong>
+      We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please
+        enable it to continue.
+    </strong>
+  </noscript>
+  <div id="app" class="app"></div>
+  <!-- <script type="module" src="https://unpkg.com/stencil-rating-component-test"></script> -->
+  <!-- built files will be auto injected -->
+</body>
+
 </html>

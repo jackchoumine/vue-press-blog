@@ -1,0 +1,4 @@
+jquery*.js
+*.html
+./src/my-store/index.js
+./src/_vuex/index.js

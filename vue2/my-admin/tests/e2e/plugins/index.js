@@ -1,3 +1,10 @@
+/*
+ * @Description:
+ * @Date: 2021-06-04 21:49:39 +0800
+ * @Author: JackChou
+ * @LastEditTime: 2021-06-04 22:05:31 +0800
+ * @LastEditors: JackChou
+ */
 /* eslint-disable arrow-body-style */
 // https://docs.cypress.io/guides/guides/plugins-guide.html
 
@@ -16,10 +23,10 @@ module.exports = (on, config) => {
   // }))
 
   return Object.assign({}, config, {
-    fixturesFolder: "tests/e2e/fixtures",
-    integrationFolder: "tests/e2e/specs",
-    screenshotsFolder: "tests/e2e/screenshots",
-    videosFolder: "tests/e2e/videos",
-    supportFile: "tests/e2e/support/index.js",
-  });
-};
+    fixturesFolder: 'tests/e2e/fixtures',
+    integrationFolder: 'tests/e2e/specs',
+    screenshotsFolder: 'tests/e2e/screenshots',
+    videosFolder: 'tests/e2e/videos',
+    supportFile: 'tests/e2e/support/index.js',
+  })
+}
