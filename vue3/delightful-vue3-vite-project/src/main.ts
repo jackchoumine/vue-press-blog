@@ -2,7 +2,7 @@
  * @Date        : 2022-08-08 14:23:25
  * @Author      : ZhouQijun
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-06-07 13:00:48
+ * @LastEditTime: 2023-06-14 20:50:50
  * @Description :
  */
 // import { default as jackComponents }from '@jack/components'
@@ -22,6 +22,7 @@ import {
 import { ElLoading } from 'element-plus'
 // NOTE 不到如这个，在jsx中使用指令，无效。
 import 'element-plus/theme-chalk/el-loading.css'
+import 'element-plus/theme-chalk/src/base.scss'
 // customElements.define('count-to', CountTo as unknown as CustomElementConstructor)
 import { CountTo } from 'jack-web-ui/dist/components'
 // import { defineCustomElements } from 'jack-ui/loader'

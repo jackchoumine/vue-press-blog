@@ -2,12 +2,12 @@
  * @Author      : ZhouQiJun
  * @Date        : 2023-04-08 20:29:05
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-06-02 09:33:52
+ * @LastEditTime: 2023-06-14 20:48:53
  * @Description : leaflet 学习
 -->
 <script setup>
 import {
-  InitMap,
+  OLInitMap,
   /* GeoJSON, InitMap, LayerControl, MarkerDemo */
 } from '@/components/OpenLayersDemos'
 
@@ -37,7 +37,7 @@ const tab = ref('init')
         <QSeparator />
         <QTabPanels v-model="tab" animated>
           <QTabPanel name="init">
-            <InitMap />
+            <OLInitMap />
           </QTabPanel>
           <QTabPanel name="tile-layer"> </QTabPanel>
           <QTabPanel name="marker">
