@@ -155,7 +155,9 @@ commitizen init cz-customizable
     }
   }
 ```
+
 添加了依赖：
+
 ```bash
 "cz-customizable": "^6.3.0",
 ```
@@ -281,7 +283,6 @@ package.json
 
 依赖以及`package.json`配置:
 
-
 ```js
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
@@ -308,3 +309,5 @@ package.json
     ]
   },
 ```
+
+<!-- 为何没进入版本控制 -->
