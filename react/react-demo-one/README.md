@@ -74,7 +74,8 @@ function App({ text }) {
 
 - 引用类型（对象、数组和函数）比较两个对象的引用（内存里的值）是否相同
 
-![Object.is 的比较情况](../delightful-vue3-vite-project/Object.is.png)
+
+![Object.is 的比较情况](https://cdn.jsdelivr.net/gh/jackchoumine/jack-picture@master/Object.is.png)
 
 通过比较，依赖或者 props 不同时，才会触发函数执行或者重新渲染。
 
