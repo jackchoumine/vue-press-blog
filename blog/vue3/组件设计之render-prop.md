@@ -14,7 +14,7 @@ render-prop，顾名思义，就是从组件 prop 提供一个 render 函数，�
 
 ## vue3 如何使用 renderProp
 
-![](https://tva1.sinaimg.cn/large/e6c9d24egy1h4bht1q5ipj21b607eq3o.jpg)
+![e6c9d24egy1h4bht1q5ipj21b607eq3o](https://cdn.jsdelivr.net/gh/jackchoumine/jack-picture@master/e6c9d24egy1h4bht1q5ipj21b607eq3o.webp)
 
 这是 vue2 使用 renderProp 实现是一个组件，现在用 vue3 语法改写。
 
@@ -272,7 +272,7 @@ const vCopy = {
 </template>
 <script setup lang="jsx">
 import { ref } from 'vue'
-const img = 'https://tva1.sinaimg.cn/large/008i3skNgy1gu9gco1hdbj605k05kgll02.jpg'
+const img = 'https://cdn.jsdelivr.net/gh/jackchoumine/jack-picture@master/008i3skNgy1gu9gco1hdbj605k05kgll02.webp'
 
 const data = ref({
   name: 'LiHei',

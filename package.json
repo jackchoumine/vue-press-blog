@@ -4,7 +4,6 @@
   "description": "把所有前端项目都集中到这里",
   "main": "index.js",
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
     "dev:delight": "pnpm --filter='delight*' run dev ",
     "docs-dev": "vitepress dev blog",
     "docs-build": "vitepress build blog",
@@ -26,7 +25,6 @@
   },
   "homepage": "https://github.com/jackchoumine/jack-front#readme",
   "dependencies": {
-    "pagefind": "~0.12.0",
     "vitepress-plugin-pagefind": "~0.2.4"
   }
 }

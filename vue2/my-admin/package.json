@@ -32,7 +32,6 @@
   },
   "devDependencies": {
     "@commitlint/config-conventional": "^12.1.4",
-    "@mr-hope/vuepress-plugin-copy-code": "^1.18.1",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-e2e-cypress": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
@@ -46,7 +45,6 @@
     "@vuepress/plugin-medium-zoom": "^1.8.2",
     "babel-eslint": "^10.1.0",
     "babel-plugin-component": "^1.1.1",
-    "commitizen": "^4.2.4",
     "commitlint": "^12.1.4",
     "cz-customizable": "^6.3.0",
     "eslint": "^6.7.2",
