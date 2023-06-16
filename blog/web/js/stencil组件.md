@@ -17,7 +17,7 @@ stencil 提供一些装饰器、生命周期钩子和渲染函数去编写一个
 
 ### 生命周期
 
-![stencil组件生命周期](https://tva1.sinaimg.cn/large/008i3skNgy1gxyq0ishibj30u0147418.jpg)
+![stencil组件生命周期](https://jsd.cdn.zzko.cn/gh/jackchoumine/jack-picture@master/008i3skNgy1gxyq0ishibj30u0147418.jpg)
 
 > 第一次挂载
 
