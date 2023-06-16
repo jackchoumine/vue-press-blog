@@ -21,20 +21,20 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 安装pnpm
-        uses: pnpm/action-setup@v2
-        with:
-          version: 8
+      # - name: 安装pnpm
+      #   uses: pnpm/action-setup@v2
+      #   with:
+      #     version: 8
 
       - uses: actions/setup-node@v3
         with:
-          cache: pnpm
+          cache: npm # pnpm
 
       - name: 安装 node 依赖
-        run: pnpm i --frozen-lockfile
+        run: npm i # pnpm i --frozen-lockfile
 
       - name: Build
-        run: pnpm docs-build
+        run: npm run docs-build # pnpm docs-build
 
       - name: Deploy to GitHub Pages 🚀
         uses: JamesIves/github-pages-deploy-action@v4.4.2
