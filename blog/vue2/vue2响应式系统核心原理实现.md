@@ -222,7 +222,7 @@ Watcher.prototype.update = function () {
 }
 ```
 
-![](https://tva1.sinaimg.cn/large/e6c9d24egy1h4a2hzckb8j20ma052dgd.jpg)
+![](https://cdn.jsdelivr.net/gh/jackchoumine/jack-picture@master/e6c9d24egy1h4a2hzckb8j20ma052dgd.2kdcch4bl6k0.webp)
 
 fn 是在模板编译阶段传入的更新函数，该函数将模板和 Watcher 连接起来，比如模板里使用`v-model`指令，在 fn 中就要更新`node`的 value，检测到`@`指令，就要去处理事件。
 
@@ -390,7 +390,7 @@ if (reg.test(text)) {
 
 首次挂载组件时需要将 vue 实例中的属性绑定到页面上，否则会看到这样的情况：
 
-![](https://tva1.sinaimg.cn/large/e6c9d24egy1h4a3o29j8bj20nq0fsaaz.jpg)
+![](https://cdn.jsdelivr.net/gh/jackchoumine/jack-picture@master/e6c9d24egy1h4a3o29j8bj20nq0fsaaz.2rdwigg48mc0.webp)
 
 `{{}}`中的属性值没有被替换。
 

@@ -47,7 +47,7 @@ render(createElement: CreateElement, hack: RenderContext<Props>): VNode;
 
 1. 返回值 -- VNode (虚拟节点) --- 一个用于描述 vue 组件结构的 JS 对象
 
-![](https://tva1.sinaimg.cn/large/008i3skNgy1gqrnq8dbcpj31j60t4n1d.jpg 'VNode 对象')
+![](https://cdn.jsdelivr.net/gh/jackchoumine/jack-picture@master/008i3skNgy1gqrnq8dbcpj31j60t4n1d.webp 'VNode 对象')
 
 ::: tip 说明
 
@@ -67,7 +67,7 @@ render(createElement: CreateElement, hack: RenderContext<Props>): VNode;
 
 第二个参数 `hack` 是渲染上下文，组件的`props`、`listeners`、`slots` 都在这个参数里。
 
-![](https://tva1.sinaimg.cn/large/008i3skNgy1gqrop38n2dj30ps0g80ts.jpg 'hack参数')
+![](https://cdn.jsdelivr.net/gh/jackchoumine/jack-picture@master/008i3skNgy1gqrop38n2dj30ps0g80ts.46at6hvtjw00.webp 'hack参数')
 
 ::: tip 说明
 第二个参数在函数组件中才有，非函数组件为 undefined。因为函数组件中不存在组件实例 this，要提供这个参数获取 props 等内容。
@@ -517,7 +517,7 @@ export default {
 
 指令对象 `bindings`
 
-![](https://tva1.sinaimg.cn/large/008i3skNgy1gqvqnptj8rj30kh04q3z2.jpg '指令对象')
+![](https://cdn.jsdelivr.net/gh/jackchoumine/jack-picture@master/008i3skNgy1gqrop38n2dj30ps0g80ts.webp '指令对象')
 
 ::: tip 总结
 

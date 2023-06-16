@@ -6,7 +6,7 @@
 
 后台管理中常常有如下布局的数据展示需求：
 
-![](https://tva1.sinaimg.cn/large/008i3skNgy1grboa6ymuhj31wm0ekach.jpg 'Ant Design Vue Descriptions 描述列表')
+![](https://cdn.jsdelivr.net/gh/jackchoumine/jack-picture@master/008i3skNgy1grboa6ymuhj31wm0ekach.7frqog22iqs0.webp 'Ant Design Vue Descriptions 描述列表')
 
 像表格又不是表格，像表单又不是表单，实际上样子像表格，呈现的数据是一个对象，和 form 的绑定的值一样，我将其称为表单式表格。
 
