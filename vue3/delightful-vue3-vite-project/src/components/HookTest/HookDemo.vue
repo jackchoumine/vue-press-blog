@@ -2,7 +2,7 @@
  * @Date        : 2022-11-10 11:35:34
  * @Author      : ZhouQiJun
  * @LastEditors : ZhouQiJun
- * @LastEditTime: 2023-03-10 12:09:34
+ * @LastEditTime: 2023-06-20 00:25:13
  * @Description : 
 -->
 <script setup lang="ts">
@@ -11,7 +11,6 @@ import { storeToRefs } from 'pinia'
 import { useVisibilityChange } from '@/hooks'
 import { useCartStore } from '@/stores'
 
-// import useCart from './useCart'
 // import VideoPlayer from '../VideoPlayer/VideoPlayer.vue'
 import ContactList from './ContactList.vue'
 import TestHook from './HookTest.vue'
@@ -21,6 +20,7 @@ import SimpleCounter from './SimpleCounter.vue'
 import UseDebounceRefDemo from './UseDebounceRefDemo.vue'
 import UseHoverDemo from './UseHoverDemo.vue'
 import UseMouseFollower from './UseMouseDemo.vue'
+import useCart from './useCart'
 
 // hello
 const books = ref([
@@ -28,15 +28,17 @@ const books = ref([
   { id: 2, name: 'react', price: 20 },
   { id: 3, name: 'angular', price: 21 },
 ])
-const { addCart, removeCart /* items, totalBooks */ } = useCartStore() // useCart()
-const { items, totalBooks } = storeToRefs(useCartStore()) // useCart()
-console.log(items)
+const { addCart, removeCart /* items, totalBooks */ } = useCartStore()
+// const { items, totalBooks } = storeToRefs(useCartStore())
+// const { addCart, removeCart /* items, totalBooks */ } = useCart()
+// const { items, totalBooks } = useCart()
+// console.log(items)
 // console.log(addCart)
 // console.log(removeCart)
 // 添加 readonly 之后，外部不可更改 items
-function onChangeItems() {
-  items.value = []
-}
+// function onChangeItems() {
+//   items.value = []
+// }
 
 const audio = ref(null)
 useVisibilityChange(hidden => {
@@ -72,14 +74,14 @@ useVisibilityChange(hidden => {
         <button @click="() => addCart(item)">+</button>
       </li>
     </ul>
-    <h4>购物车</h4>
+    <!-- <h4>购物车</h4>
     <ul>
       <li v-for="(item, index) in items" :key="index">
         {{ item.name }} -- {{ item.number }}
       </li>
     </ul>
-    <p>总的书本书数量：{{ totalBooks }}</p>
-    <button @click="onChangeItems">修改共享的 items</button>
+    <p>总的书本书数量：{{ totalBooks }}</p> -->
+    <!-- <button @click="onChangeItems">修改共享的 items</button> -->
     <TestHook />
     <hr />
     <!-- <h4>useMouse</h4> -->

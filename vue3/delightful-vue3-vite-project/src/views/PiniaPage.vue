@@ -2,11 +2,11 @@
  * @Description : 
  * @Date        : 2023-01-05 01:33:43 +0800
  * @Author      : JackChou
- * @LastEditTime: 2023-01-07 18:02:26 +0800
- * @LastEditors : JackChou
+ * @LastEditTime: 2023-06-19 23:42:05
+ * @LastEditors : ZhouQiJun
 -->
 <script setup lang="ts">
-import { CounterDemo, PetsDemo, SingupDemo, TodosDemo } from '@/components/PiniaDemos'
+import { CounterDemo, PetsDemo, SignupDemo, TodosDemo } from '@/components/PiniaDemos'
 </script>
 
 <template>
@@ -17,7 +17,7 @@ import { CounterDemo, PetsDemo, SingupDemo, TodosDemo } from '@/components/Pinia
     <!-- <hr /> -->
     <!-- <PetsDemo /> -->
     <hr />
-    <SingupDemo />
+    <SignupDemo />
   </div>
 </template>
 
