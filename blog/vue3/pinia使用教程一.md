@@ -60,11 +60,12 @@ export const useCounter = defineStore('counter', {
 })
 ```
 
-三个注意点：
+四个注意点：
 
 1. state 使用函数返回一个状态；
 2. getters 使用了 this，需要手动声明返回值类型；
-3. actions 使用 this 访问状态和 getters。`actions`可以是异步的，不再有 mutations。
+3. actions 使用 this 访问状态和 getters。`actions`可以是异步的，不再有 mutations；
+4. getters 和 actions 不使用箭头函数，否则 this 会指向 window，而不是 state。
 
 ## 使用 store
 
