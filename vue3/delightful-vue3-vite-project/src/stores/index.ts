@@ -2,7 +2,7 @@
  * @Description : 导出全局状态
  * @Date        : 2023-01-05 01:19:05 +0800
  * @Author      : JackChou
- * @LastEditTime: 2023-04-09 17:04:07
+ * @LastEditTime: 2023-06-20 01:37:10
  * @LastEditors : ZhouQiJun
  */
 import type { PiniaPluginContext } from 'pinia'
@@ -62,11 +62,13 @@ function piniaPlugin3({ store }) {
       after, // 在 action 返回或解决后的钩子
       onError, // action 抛出或拒绝的钩子
     }) => {
-      console.log(store.$id)
+      console.log(store.$id, '------')
       // 为这个特定的 action 调用提供一个共享变量
       const startTime = Date.now()
       // 这将在执行 "store "的 action 之前触发。
-      console.log(`Start "${name}" with params [${args.join(', ')}].`)
+      const _args = JSON.parse(JSON.stringify(args))
+      // console.log(_args)
+      console.log(`Start "${name}" with params`, _args)
 
       // 这将在 action 成功并完全运行后触发。
       // 它等待着任何返回的 promise
