@@ -70,3 +70,60 @@ const tableData: User[] = [
 提供了`defaultSort`设置默认排序，但是如果需要重置排序，需要使用`clearSort`方法清除原来的排序，然后再调用`sort`方法设置新的排序规则。
 
 > 不是很理解为什么要这样设计，如果只是想要重置排序，直接重置`defaultSort`不就好了吗？
+
+## ele 懒加载的表格，展开懒加载的行后，懒加载部分不更新
+
+解决方案：记录行展开时的调用参数，监听表格更新条件，变化时设置`treeNode.loading`为`true`，在手动调用 load 函数。
+
+```ts
+const expandedRows = new Set()
+const expandedRowMap = new Map()
+// 行展开事件处理器
+function onExpandChange(row, expanded) {
+  if (expanded) expandedRows.add(row.code)
+  else expandedRows.delete(row.code)
+}
+// 监听表格更新的参数，手动调用加载函数
+watch(params, value => {
+  expandedRows.forEach(id => {
+    const { row, treeNode, resolve } = expandedRowMap.get(id)
+    treeNode.loading = true
+    loadMore(row, treeNode, resolve)
+  })
+})
+
+function loadMore(row, treeNode, resolve) {
+  // 记录加载函数的参数
+  if (!expandedRowMap.get(row.code)) {
+    expandedRowMap.set(row.code, { row, treeNode, resolve })
+  }
+  const obj = {
+    area: row.code,
+    type: {
+      motype: 1,
+      sttypes: selectedTypes.value, // ? [selectedTypes.value] : [],
+    },
+  }
+  http('water.all.tree.data', obj).then((res: any) => {
+    if (!Array.isArray(res)) {
+      resolve([])
+      return
+    }
+    // 9个0 是区县级别
+    // 6个0 乡镇
+    // 3个0 村级
+    const isCounty = res[0].code.includes('000000000')
+    if (isCounty) {
+      const data = res.map(item => {
+        // 区县级，不再向下请求
+        return { ...item, hasChild: false }
+      })
+      resolve(data)
+      return
+    }
+    resolve(res)
+  })
+}
+```
+
+[参考文章](https://blog.csdn.net/qq_43653951/article/details/125180296)
