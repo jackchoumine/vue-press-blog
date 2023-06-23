@@ -1,0 +1,1 @@
+import{_ as s,o as a,c as n,R as l}from"./chunks/framework.bf742a9e.js";const m=JSON.parse('{"title":"npm 使用","description":"","frontmatter":{},"headers":[],"relativePath":"node/npm使用.md","filePath":"node/npm使用.md"}'),p={name:"node/npm使用.md"},e=l("",79),o=[e];function t(c,r,C,y,i,D){return a(),n("div",null,o)}const b=s(p,[["render",t]]);export{m as __pageData,b as default};

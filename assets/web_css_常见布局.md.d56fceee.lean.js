@@ -1,0 +1,1 @@
+import{_ as s,o as a,c as n,R as l}from"./chunks/framework.bf742a9e.js";const b=JSON.parse('{"title":"常见页面布局","description":"","frontmatter":{},"headers":[],"relativePath":"web/css/常见布局.md","filePath":"web/css/常见布局.md"}'),p={name:"web/css/常见布局.md"},o=l("",67),e=[o];function r(t,c,i,D,C,y){return a(),n("div",null,e)}const d=s(p,[["render",r]]);export{b as __pageData,d as default};

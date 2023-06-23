@@ -1,0 +1,1 @@
+import{_ as s,o as n,c as a,R as l}from"./chunks/framework.bf742a9e.js";const C=JSON.parse('{"title":"项目总结","description":"","frontmatter":{},"headers":[],"relativePath":"vue3/项目总结.md","filePath":"vue3/项目总结.md"}'),p={name:"vue3/项目总结.md"},e=l("",20),o=[e];function t(c,r,D,y,F,i){return n(),a("div",null,o)}const u=s(p,[["render",t]]);export{C as __pageData,u as default};

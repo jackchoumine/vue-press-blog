@@ -1,0 +1,1 @@
+import{_ as s,o as a,c as n,R as l}from"./chunks/framework.bf742a9e.js";const A=JSON.parse('{"title":"jsx 语法","description":"","frontmatter":{},"headers":[],"relativePath":"react/jsx语法.md","filePath":"react/jsx语法.md"}'),p={name:"react/jsx语法.md"},o=l("",26),e=[o];function t(c,r,D,i,y,F){return a(),n("div",null,e)}const d=s(p,[["render",t]]);export{A as __pageData,d as default};

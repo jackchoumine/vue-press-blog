@@ -1,0 +1,1 @@
+import{_ as s,o as n,c as a,R as l}from"./chunks/framework.bf742a9e.js";const A=JSON.parse('{"title":"vue 指令总结","description":"","frontmatter":{},"headers":[],"relativePath":"vue3/指令.md","filePath":"vue3/指令.md"}'),p={name:"vue3/指令.md"},o=l("",98),e=[o];function t(c,r,F,y,i,D){return n(),a("div",null,e)}const b=s(p,[["render",t]]);export{A as __pageData,b as default};

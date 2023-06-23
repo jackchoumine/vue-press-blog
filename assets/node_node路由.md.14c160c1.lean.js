@@ -1,0 +1,1 @@
+import{_ as s,o as n,c as a,R as l}from"./chunks/framework.bf742a9e.js";const i=JSON.parse('{"title":"node 路由","description":"","frontmatter":{},"headers":[],"relativePath":"node/node路由.md","filePath":"node/node路由.md"}'),p={name:"node/node路由.md"},o=l("",15),e=[o];function r(t,c,D,F,y,A){return n(),a("div",null,e)}const b=s(p,[["render",r]]);export{i as __pageData,b as default};

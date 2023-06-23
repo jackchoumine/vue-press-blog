@@ -1,0 +1,1 @@
+import{_ as s,o as n,c as a,R as l}from"./chunks/framework.bf742a9e.js";const A=JSON.parse('{"title":"跨域请求","description":"","frontmatter":{},"headers":[],"relativePath":"web/js/跨域请求.md","filePath":"web/js/跨域请求.md"}'),p={name:"web/js/跨域请求.md"},o=l("",75),e=[o];function r(t,c,y,D,F,C){return n(),a("div",null,e)}const b=s(p,[["render",r]]);export{A as __pageData,b as default};

@@ -1,0 +1,1 @@
+import{_ as a,o as e,c as t,R as i}from"./chunks/framework.bf742a9e.js";const _=JSON.parse('{"title":"js 学习","description":"","frontmatter":{},"headers":[],"relativePath":"web/js/index.md","filePath":"web/js/index.md"}'),s={name:"web/js/index.md"},o=i("",11),h=[o];function n(r,l,d,c,m,f){return e(),t("div",null,h)}const b=a(s,[["render",n]]);export{_ as __pageData,b as default};
